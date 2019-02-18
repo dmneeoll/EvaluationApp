@@ -10,7 +10,7 @@
     <chcp>
         <auto-download enabled="false" />
         <auto-install enabled="false" />
-        <config-file url="https://zhmobile.flextronics.com/EvaluationApp/www/chcp.json" />
+        <config-file url="https://zhmobile.flextronics.com/CSFlexAPP/www/chcp.json" />
     </chcp>
     <content src="index.html" />
     <access launch-external="yes" origin="tel:*" />

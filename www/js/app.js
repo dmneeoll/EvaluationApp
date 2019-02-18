@@ -253,7 +253,7 @@ angular.module('evaluationApp', ['ionic', 'ionic.native',
         var orgin = $sceDelegateProvider.resourceUrlWhitelist();
         orgin.push('https://s*.ax1x.com/2018/**');
         orgin.push('https://s*.ax1x.com/2019/**');
-        orgin.push('https://zhmobile.flextronics.com/EvaluationApp/Upload/**');
+        orgin.push('https://zhmobile.flextronics.com/CSFlexAPP/Upload/**');
         $sceDelegateProvider.resourceUrlWhitelist(orgin);
 
     });

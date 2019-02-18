@@ -430,7 +430,7 @@ angular.module('evaluationApp.appServices', [])
             http.catch(function (error) {
                 
                 if(false==IsDebugMode){
-                    API_HOST = 'https://zhmobile.flextronics.com/EvaluationApp';
+                    API_HOST = 'https://zhmobile.flextronics.com/CSFlexAPP';
                 }                
                 if (error.status <= 0) {
                     error.data = {
