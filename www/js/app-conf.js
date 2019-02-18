@@ -37,6 +37,9 @@ function isEmptyString(str){
     return !str || 0==str.length;
 }
 
+function isValidMobile(str){
+    return /^(((13[0-9]{1})|(14[0-9]{1})|(15[0-9]{1})|(18[0-9]{1})|(17[0-9]{1})|(16[0-9]{1}))+\d{8})$/.test(str);
+}
 ///////////////////////////////////////////////////////////////////////////////////
 
 if (IsDebugMode) {

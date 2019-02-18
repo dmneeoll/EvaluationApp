@@ -485,10 +485,8 @@ angular.module('evaluationApp.appControllers', [])
         else
             $scope.btnText='Get the verifying code';
 
-        $scope.myreg = /^(((13[0-9]{1})|(14[0-9]{1})|(15[0-9]{1})|(18[0-9]{1})|(17[0-9]{1})|(16[0-9]{1}))+\d{8})$/;
         $scope.getSecurityCode=function(passmodels){
-
-            if(! $scope.myreg.test(passmodels.mobile)) {
+            if(!isValidMobile(passmodels.mobile)) {
                 if($rootScope.Language==ZH_CN)
                     alertService.showAlert('请输入正确的手机号');
                 else
@@ -636,7 +634,6 @@ angular.module('evaluationApp.appControllers', [])
             $location.path('signin');
         };
 
-        $scope.myreg = /^(((13[0-9]{1})|(15[0-9]{1})|(18[0-9]{1})|(17[0-9]{1}))+\d{8})$/;
         $scope.getSecurityCode=function(passmodels){
 
             commonServices.getForgetPswSecurityCode({WorkdayNo:passmodels.workdayNo,Mobile:passmodels.mobile}).then(function (response) {
