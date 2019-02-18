@@ -1,8 +1,8 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.flex.evaluation" version="1.2.3" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget id="com.flex.evaluationCS" version="1.2.3" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <name>Flex+</name>
     <description>
-    Flex+
+    Flex+ CS
   </description>
     <author email="you@example.com" href="http://example.com.com/">
     Flex+
@@ -63,5 +63,4 @@
         <splash height="960" src="resources\ios\splash\Default@2x~iphone.png" width="640" />
         <splash height="480" src="resources\ios\splash\Default~iphone.png" width="320" />
     </platform>
-    <engine name="android" spec="^5.0.0" />
 </widget>
