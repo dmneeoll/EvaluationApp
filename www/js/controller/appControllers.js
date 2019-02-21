@@ -494,7 +494,7 @@ angular.module('evaluationApp.appControllers', [])
 
                 return false;
             };
-            if(passmodels.workdayNo.length==0) {
+            if(isEmptyString(passmodels.workdayNo)) {
                 if($rootScope.Language==ZH_CN)
                     alertService.showAlert('请输入工号');
                 else
@@ -502,13 +502,11 @@ angular.module('evaluationApp.appControllers', [])
 
                 return false;
             };
-            if(passmodels.CName.length==0) {
+            if(isEmptyString(passmodels.CName)) {
                 if($rootScope.Language==ZH_CN)
                     alertService.showAlert('请输入姓名');
                 else
                     alertService.showAlert('Please enter the name');
-
-
                 return false;
             };
 
