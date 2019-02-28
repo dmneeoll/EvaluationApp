@@ -1,0 +1,61 @@
+<!-- 工会2019春节返程补贴 -->
+<ion-view view-title="Flex工会2019春节返程补贴抽奖活动" cache-view="false"  hide-tabs >
+    <ion-content style="background-color:lavender">
+
+        <div class="list card" >
+            <div class="divOff lightRedBack">
+                <span class="text-left">{{Language.common.Explain}}：</span>
+                <div class="divOff">
+                    <ol class="numOl">
+                        <li>
+                            如有未在斗门区总活动名单中中奖的员工，可以继续参加公司工会的春节返程补贴活动；
+                        </li>
+                        <li>
+                            名额有限，中奖结果将于活动结束后公布，可在Flex+查询到。
+                        </li>
+                    </ol>
+                </div>
+            </div>
+
+            <div ng-if="!hasSubmit">
+            <div class="item item-input">
+                <span class="input-label" style="width: 30px;font-size:80%">{{Language.like.name}}</span>
+                <span class="input-label" style="width: 10px;color: red">*</span>
+                <input type="text" style="font-size:80%" readonly="readonly" ng-model="model.CName" />
+            </div>
+            <div class="item item-input">
+                <span class="input-label" style="width:30px;font-size:80%">{{Language.like.employee_ID}}</span>
+                <span class="input-label" style="width: 10px;color: red">*</span>
+                <input type="text" style="font-size:80%" readonly="readonly" ng-model="model.WorkdayNO" />
+            </div>
+            <div class="item item-input">
+                <span class="input-label" style="width: 30px;font-size:80%">{{Language.like.department}}</span>
+                <span class="input-label" style="width: 10px;color: red">*</span>
+                <input type="text" style="font-size:80%" readonly="readonly" ng-model="model.Organization" />
+            </div>
+            <div class="item item-input">
+                <span class="input-label" style="width: 50px;font-size:80%">{{Language.shareCar.mobile}}</span>
+                <span class="input-label" style="width: 10px;color: red">*</span>
+                <input type="text" style="font-size:80%" placeholder="{{Language.shareCar.mobile}}" ng-model="model.MobileNo" />
+            </div>
+            <div style="text-align: center">
+                <button class="button  button-positive" ng-click="Submit()">{{Language.menu.submit}}</button>
+            </div>
+            </div>
+        </div>
+        <br/>
+        <ion-list ng-if="hasSubmit">
+            <ion-item class="item item-divider">您已提交过申请。</ion-item>
+            <ion-item class="item">
+                <div class="row">
+                    <div class="col">
+                        <h3 style="color:blue" class="ng-binding">{{LastState.ApplyResult}}</h3>
+                    </div>
+                    <div class="col">
+                        <h3 class="ng-binding">{{LastState.SubmitDate|date:"yyyy-MM-dd HH:mm"}}</h3>
+                    </div>
+                </div>
+            </ion-item>
+        </ion-list>        
+    </ion-content>
+</ion-view>

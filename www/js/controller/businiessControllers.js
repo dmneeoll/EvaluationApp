@@ -906,8 +906,8 @@ angular.module('evaluationApp.businiessControllers', ['ngSanitize'])
 
         $scope.accessEmployee = JSON.parse(CacheFactory.get('accessEmployee'));
         $scope.isMechanical = isMech($scope.accessEmployee.Organization);
-        $scope.isMultek = isMultek($scope.accessEmployee.Organization);
-        $scope.isB11 = isB11($scope.accessEmployee.Organization);
+        $scope.isMultek     = isMultek($scope.accessEmployee.Organization);
+        $scope.isB11        = isB11($scope.accessEmployee.Organization);
 
         var params=commonServices.getBaseParas();
         //获取一般活动列表
@@ -1050,8 +1050,8 @@ angular.module('evaluationApp.businiessControllers', ['ngSanitize'])
             case "补贴申请结果查询":
               $state.go("union_welfare_applyResult");
               break;
-            // case "2019年新春文艺晚会门票":
-            //   $state.go("act_AnnualPartyTicket2019");
+            case "Flex工会2019春节返程补贴":
+              $state.go("act_2019SpringSubsidy");
               break;
             default:
               break;
@@ -1059,7 +1059,6 @@ angular.module('evaluationApp.businiessControllers', ['ngSanitize'])
         };
         
         $scope.canUseMech38 = function() {
-            if($scope.canUseAction('MECH基层分工会三八')){ return true;}
             if($scope.isMechanical){                
                 //todo check gender
                 return true;
@@ -1068,12 +1067,12 @@ angular.module('evaluationApp.businiessControllers', ['ngSanitize'])
         };
         $scope.checkOpenMech38 = function() {
             var dtNow = new Date();
-            var dtBegin = new Date('2019-03-07 09:00');
-            var dtEnd = new Date('2019-03-07 18:00');
-            // if(dtNow<dtBegin || dtNow>dtEnd){
-            //     alertService.showAlert("活动时间是2019年3月7日 9:00~18:00。");
-            //     return;
-            // }
+            var dtBegin = new Date('2019-03-06 08:30');
+            var dtEnd = new Date('2019-03-07 17:00');
+            if(dtNow<dtBegin || dtNow>dtEnd){
+                alertService.showAlert("活动时间是2019年3月6日 8:30 ~ 2019年3月7日 17:00。");
+                return;
+            }
             $scope.openOutLink('https://www.wjx.cn/jq/34994975.aspx');
         }
 
@@ -2078,4 +2077,42 @@ angular.module('evaluationApp.businiessControllers', ['ngSanitize'])
         InitInfo();
 
     })
+    .controller('Act2019SpringSubsidyCtrl', function ($scope, $rootScope, $state, $ionicHistory, $ionicPopup,
+        commonServices, alertService, duplicateSubmitServices) 
+    {
+        //工会2019春节返程补贴
+        function InitInfo() {
+            var url = commonServices.getUrl("ApplySubmitService.ashx", "GetAct2019SpringSubsidy");
+            var paras = $.extend({}, commonServices.getBaseParas());
+            paras.SubmitGuid = duplicateSubmitServices.genGUID();
+            $scope.model = paras;
+
+            commonServices.submit(paras, url).then(function (resp) {
+                if (resp) {
+                    $scope.hasSubmit = resp.success;                    
+                    if (resp.success) {
+                        $scope.LastState = resp.obj;
+                    }
+                }
+            });
+        }
+        InitInfo();
+
+        $scope.Submit = function() {
+            var url = commonServices.getUrl("ApplySubmitService.ashx", "SubmitAct2019SpringSubsidy");
+            var paras =  $scope.model;
+            commonServices.submit(paras, url).then(function (resp) {
+                if (resp) {
+                    if(resp.success){
+                        alertService.showAlert("提交成功，请留意后续发布的中奖结果！");
+                    }else{
+                        alertService.showAlert(resp.message);
+                    }
+                }
+                $ionicHistory.goBack();
+            });
+        };
+    })
+    
+////////////////////////////////////////////////    
 ;

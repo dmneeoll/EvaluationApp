@@ -1084,7 +1084,13 @@ angular.module('evaluationApp.router', [])
             url: '/act_AnnualPartyTicket2019',
             templateUrl: 'templates/activity/annualPartyTicket2019.html',
             controller: 'AnnualPartyTicket2019Ctrl'
-        })                   
+        })
+        .state('act_2019SpringSubsidy', {
+            url: '/act_2019SpringSubsidy',
+            templateUrl: 'templates/activity/activity2019SprintSubsidy.html',
+            controller: 'Act2019SpringSubsidyCtrl'
+        })
+
         
         $urlRouterProvider.otherwise('signin');
 
