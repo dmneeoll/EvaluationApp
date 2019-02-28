@@ -905,7 +905,8 @@ angular.module('evaluationApp.businiessControllers', ['ngSanitize'])
         };
 
         $scope.accessEmployee = JSON.parse(CacheFactory.get('accessEmployee'));
-        //$scope.isMechanical = isMech($scope.accessEmployee.Organization);
+        $scope.isMechanical = isMech($scope.accessEmployee.Organization);
+        $scope.isMultek = isMultek($scope.accessEmployee.Organization);
         $scope.isB11 = isB11($scope.accessEmployee.Organization);
 
         var params=commonServices.getBaseParas();
@@ -1049,14 +1050,33 @@ angular.module('evaluationApp.businiessControllers', ['ngSanitize'])
             case "补贴申请结果查询":
               $state.go("union_welfare_applyResult");
               break;
-            case "2019年新春文艺晚会门票":
-              $state.go("act_AnnualPartyTicket2019");
+            // case "2019年新春文艺晚会门票":
+            //   $state.go("act_AnnualPartyTicket2019");
               break;
             default:
               break;
           }
         };
         
+        $scope.canUseMech38 = function() {
+            if($scope.canUseAction('MECH基层分工会三八')){ return true;}
+            if($scope.isMechanical){                
+                //todo check gender
+                return true;
+            }
+            return false;
+        };
+        $scope.checkOpenMech38 = function() {
+            var dtNow = new Date();
+            var dtBegin = new Date('2019-03-07 09:00');
+            var dtEnd = new Date('2019-03-07 18:00');
+            // if(dtNow<dtBegin || dtNow>dtEnd){
+            //     alertService.showAlert("活动时间是2019年3月7日 9:00~18:00。");
+            //     return;
+            // }
+            $scope.openOutLink('https://www.wjx.cn/jq/34994975.aspx');
+        }
+
         //历史活动列表
         $scope.outDateActivities=[];
         actionVisitServices.getOutDateActivity($scope);        
