@@ -42,20 +42,20 @@
                 <button class="button  button-positive" ng-click="Submit()">{{Language.menu.submit}}</button>
             </div>
             </div>
+            <ion-list ng-if="hasSubmit">
+                    <ion-item class="item item-divider">您已提交过申请。</ion-item>
+                    <ion-item class="item">
+                        <div class="row">
+                            <div class="col">
+                                <h3 style="color:blue" class="ng-binding">{{LastState.ApplyResult}}</h3>
+                            </div>
+                            <div class="col">
+                                <h3 class="ng-binding">{{LastState.SubmitDate|date:"yyyy-MM-dd HH:mm"}}</h3>
+                            </div>
+                        </div>
+                    </ion-item>
+                </ion-list>
         </div>
         <br/>
-        <ion-list ng-if="hasSubmit">
-            <ion-item class="item item-divider">您已提交过申请。</ion-item>
-            <ion-item class="item">
-                <div class="row">
-                    <div class="col">
-                        <h3 style="color:blue" class="ng-binding">{{LastState.ApplyResult}}</h3>
-                    </div>
-                    <div class="col">
-                        <h3 class="ng-binding">{{LastState.SubmitDate|date:"yyyy-MM-dd HH:mm"}}</h3>
-                    </div>
-                </div>
-            </ion-item>
-        </ion-list>        
     </ion-content>
 </ion-view>
