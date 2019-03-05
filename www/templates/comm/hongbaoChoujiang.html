@@ -99,6 +99,13 @@
             padding-top:25px;
             color:#ffffff;
         }
+        .textContextMemo{
+            text-align: center;
+            font-size: 18px;
+            font-family: "微软雅黑";
+            padding-top:25px;
+            color:#c7c7c7;
+        }
         .close{
             width: 30px;
             height: 30px;
@@ -177,6 +184,7 @@ $(document).ready(function(){
 <div class="windows" style="font-size: 30px">
     <div class="textTitle" >恭喜中奖</div>
     <div class="textContext" >{{money}}</div>
+    <div class="textContextMemo" nf-if="memo && memo.length>0">{{memo}}</div>
 	<div class="close"><img src="img/close.png"/></div>
 </div>
 

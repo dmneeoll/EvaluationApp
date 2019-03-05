@@ -8,7 +8,22 @@ angular.module('evaluationApp.businiess2Controllers', [])
     {
         var params=commonServices.getBaseParas();
         $scope.canUseAction = function (action) {
+            switch(action){
+                case '园区38女王节有奖答题':{
+                    if(actionVisitServices.isTesting(action, $rootScope.accessEmployee.WorkdayNO)){
+                        return true;
+                    }
+                    if(!betweenTime('2019-03-06 08:30', '2019-03-07 17:30')){
+                        return false;
+                    }
+                }                
+                break;
+                default:break;
+            }
             return actionVisitServices.canUseAction(action, $rootScope.accessEmployee.WorkdayNO);
+        };
+        $scope.checkActionUpdate = function (action) {
+            return actionVisitServices.checkUpdate(action);
         };
 
         $scope.isSouthCamp = isSouthCamp($scope.accessEmployee.Organization); 
@@ -87,7 +102,7 @@ angular.module('evaluationApp.businiess2Controllers', [])
 
         $scope.openSpecial = function (action) {
             switch (action) {
-                case '内训师2018':
+                case '园区38女王节有奖答题':
                     $state.go('researchTrainer');
                     break;
                 default: break;

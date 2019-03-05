@@ -903,6 +903,9 @@ angular.module('evaluationApp.businiessControllers', ['ngSanitize'])
         $scope.canUseAction = function (action) {
             return actionVisitServices.canUseAction(action, $rootScope.accessEmployee.WorkdayNO);
         };
+        $scope.checkActionUpdate = function (action) {
+            return actionVisitServices.checkUpdate(action);
+        };
 
         $scope.accessEmployee = JSON.parse(CacheFactory.get('accessEmployee'));
         $scope.isMechanical = isMech($scope.accessEmployee.Organization);
@@ -1066,10 +1069,7 @@ angular.module('evaluationApp.businiessControllers', ['ngSanitize'])
             return false;
         };
         $scope.checkOpenMech38 = function() {
-            var dtNow = new Date();
-            var dtBegin = new Date('2019-03-06 08:30');
-            var dtEnd = new Date('2019-03-07 17:00');
-            if(dtNow<dtBegin || dtNow>dtEnd){
+            if(!betweenTime('2019-03-06 08:30', '2019-03-07 17:00')){
                 alertService.showAlert("活动时间是2019年3月6日 8:30 ~ 2019年3月7日 17:00。");
                 return;
             }
@@ -1317,18 +1317,24 @@ angular.module('evaluationApp.businiessControllers', ['ngSanitize'])
                     CacheFactory, alertService, $state, $ionicHistory, commonServices, $location,
                     duplicateSubmitServices)
     {
-        //2018-08-27 内训师临时项目
+        //2019-03-01 园区38女王节有奖答题
 
         var url = commonServices.getUrl("EHSActService.ashx", "GetSingleActWithDetail");
-        var actID = 'bffc3900-413d-44af-95ab-cf05b8d1c9d0';
+        var actID = '98D2DF42-DDCA-417F-A328-E87B2DD188C9';
         var params = {
             ActID: actID,
-            SubmitGuid: duplicateSubmitServices.genGUID()
+            SubmitGuid: duplicateSubmitServices.genGUID(),
+            WorkdayNo: $rootScope.accessEmployee.WorkdayNO
         };
         commonServices.submit(params, url).then(function (resp) {
             if (!resp) {
                 alertService.showAlert("该活动还没有题目");
                 $state.transitionTo('researchList');
+                return;
+            }
+            if(!resp.success){
+                alertService.showAlert(resp.message);
+                $ionicHistory.goBack();
                 return;
             }
             var obj = resp.obj;
@@ -1349,6 +1355,7 @@ angular.module('evaluationApp.businiessControllers', ['ngSanitize'])
         }
 
         $scope.isSumbiting = false;
+
         $scope.Submit = function () {
             if ($scope.isSumbiting) { return; }
             $scope.isSumbiting = true;
@@ -1360,18 +1367,41 @@ angular.module('evaluationApp.businiessControllers', ['ngSanitize'])
 
             for (var i = 0; i < $scope.researchDetailList.length; i++) {
                 var item = $scope.researchDetailList[i];
-                var qChecks = $("input[name='Item" + item.Sort + "'" + "]:checked");
-                if (qChecks.length > 0) {
+                var stype = item.Items[0].Type;          
+                if ("radio" == stype) {
+                  var $rad = $("input[name='Rad" + item.Sort + "'" + "]:checked");
+                  if ($rad.length > 0) {
                     nDoItem++;
-                }
-                for (var j = 0; j < qChecks.length; j++) {
-                    var selVaule = $(qChecks[j]).val();
+                  }
+                  for (var j = 0; j < $rad.length; j++) {
+                    var selVaule = $($rad[j]).val();
                     if (typeof (selVaule) == 'undefined') {
-                        continue;
+                      continue;
                     }
-                    var sScore = selVaule.split("^")[1];
+                    var sScore = selVaule.split("^")[2];
                     sumScore += parseInt(sScore);
-                    SubmitList.push({ Item: item.Sort, ItemResult: selVaule });
+                    SubmitList.push({
+                      Item: item.Sort,
+                      ItemResult: selVaule
+                    });
+                  }
+                } else if ("checkbox" == stype) {
+                  var $chk = $("input[name='Chk" + item.Sort + "'" + "]:checked");
+                  if ($chk.length > 0) {
+                    nDoItem++;
+                  }
+                  for (var j = 0; j < $chk.length; j++) {
+                    var selVaule = $($chk[j]).val();
+                    if (typeof (selVaule) == 'undefined') {
+                      continue;
+                    }
+                    var sScore = selVaule.split("^")[2];
+                    sumScore += parseInt(sScore);
+                    SubmitList.push({
+                      Item: item.Sort,
+                      ItemResult: selVaule
+                    });
+                  }
                 }
             }
                         
@@ -1381,37 +1411,29 @@ angular.module('evaluationApp.businiessControllers', ['ngSanitize'])
                 return;
             }
             else {
-                var scoreRate = fullScore > 0 ? (sumScore / fullScore) : 0;
-                if (scoreRate >= 0.83) {
-                    /*10/12*/
-                    sTitle = '大神级';
-                    sContext = '恭喜你，作为培训师的绝对潜力股，你有希望成为学员崇拜的大神级老师，还犹豫什么，赶快报名成为一名兼职内训师吧，否则抱憾终生啊！';
-                } else if (scoreRate >= 0.5) {
-                    /*6/12*/
-                    sTitle = '黑马级';
-                    sContext = '恭喜你，作为培训界的扛把子，你的潜力爆表，明明可以靠颜吃饭，却偏偏靠实力吸粉，说的就是你，还犹豫什么，赶快参加TTT培训，成为一名真正的内训师吧！';
-                } else {
-                    sTitle = '宝马级';
-                    sContext = '目前的你如果成为培训师也许还需要一点点努力，可别小看了自己哦，抓住机会，努力学习，一步一步成为最好的自己！';
+                //var scoreRate = fullScore > 0 ? (sumScore / fullScore) : 0;
+                if(sumScore<10){
+                    alertService.showAlert("分数过低，仍需继续努力!");
+                    $scope.isSumbiting = false;
+                    return;
                 }
 
-                $rootScope.msgPopupPara = {
-                    msgTitle: sTitle,
-                    msgContext: sContext,
-                    msgPic: 'img/mygood.png',
-                };
-                $rootScope.msgPopup = $ionicPopup.show({
-                    cssClass: 'er-popup',
-                    templateUrl: 'templates/comm/msg_dlg.html',
-                    scope: $rootScope
-                });
-                $rootScope.msgPopup.then(function (res) {
-                    params.WorkdayNo = $rootScope.accessEmployee.WorkdayNO;
-                    params.ActID = actID;
-                    params.SumScore = sumScore;
-                    //params.SubmitResult = angular.toJson(SubmitList);
-                    DoChouJian();
-                });
+                // $rootScope.msgPopupPara = {
+                //     msgTitle: sTitle,
+                //     msgContext: sContext,
+                //     msgPic: 'img/mygood.png',
+                // };
+                // $rootScope.msgPopup = $ionicPopup.show({
+                //     cssClass: 'er-popup',
+                //     templateUrl: 'templates/comm/msg_dlg.html',
+                //     scope: $rootScope
+                // });
+                // $rootScope.msgPopup.then(function (res) {
+                //     params.SumScore = sumScore;
+                //     //params.SubmitResult = angular.toJson(SubmitList);
+                //     DoChouJian();
+                // });
+                DoChouJian();
             }
         };
 
@@ -1421,6 +1443,7 @@ angular.module('evaluationApp.businiessControllers', ['ngSanitize'])
                 commonServices.submit(params, url).then(function (data) {
                     if (data.success) {
                         $rootScope.money = '' + data.data;
+                        $rootScope.memo = '请于3月8日10:00 - 17:00 到B15中央饭堂B区领取奖品';
                         $rootScope.rebagPopup = $ionicPopup.show({
                             cssClass: 'my-custom-popup',
                             templateUrl: 'templates/comm/hongbaoChoujiang.html',

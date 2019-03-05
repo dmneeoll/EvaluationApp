@@ -48,10 +48,11 @@
             <div class="item" ng-click="openGeneralNotice(1, null, 'http://flexzhunion.mikecrm.com/QswMKjC');">
                 园区周边公共配套服务需求调查
             </div>
-            <!-- 2018-08-27 内训师临时项目 -->
-            <!-- <div class="item" ng-click="openSpecial('内训师2018');" ng-if="canUseAction('内训师2018')">
-                内训师潜力小测试活动
-            </div> -->
+            <!-- 2019-03-05 园区及地区共享资源3.8女王节 -->
+            <div class="item" ng-click="openSpecial('园区38女王节有奖答题');" ng-if="canUseAction('园区38女王节有奖答题')">
+                园区及地区共享资源3•8女王节有奖答题活动
+                <!-- <span style="font-size:10px" class="badge badge-assertive" ng-if="checkActionUpdate('园区38女王节有奖答题')">New</span> -->
+            </div>
             <div class="item" ng-repeat="resear in researchList" ng-click="open(resear)">
                 {{resear.ResearchName}}
             </div>

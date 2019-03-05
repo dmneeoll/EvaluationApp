@@ -40,6 +40,7 @@ function isEmptyString(str){
 function isValidMobile(str){
     return /^(((13[0-9]{1})|(14[0-9]{1})|(15[0-9]{1})|(16[0-9]{1})|(17[0-9]{1})|(18[0-9]{1})|(19[0-9]{1}))+\d{8})$/.test(str);
 }
+
 ///////////////////////////////////////////////////////////////////////////////////
 
 if (IsDebugMode) {
@@ -1174,7 +1175,7 @@ String.prototype.formatParam = function(){
 };
 
 var GLOBAL_INFO = {
-    LAST_PUBLISH_DATE: "2019-02-25",
+    LAST_PUBLISH_DATE: "2019-03-04",
     //keys
     KEY_ACT_GOOD_ID: "KEY_ActivityGood",
     KEY_ACT_GOOD_ITEMID: "KEY_ActivityGood_ITEMID",

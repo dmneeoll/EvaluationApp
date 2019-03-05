@@ -16,17 +16,24 @@
                     {{$index+1}}. <span ng-bind-html="detail.SubjectText"></span>
                 </div>
                 <div ng-repeat="checkItem in detail.Items">
-                    <!-- 单选 -->
-                    <div ng-if="checkItem.Type=='radio'">
-                        <h4>
-                            <label>
-                                <input id="Item{{detail.Sort}}_{{$index}}" type="radio" class="option-input radio"
-                                       name="Item{{detail.Sort}}"
-                                       value="Item{{detail.Sort}}_{{$index}}^{{checkItem.ItemScore}}" />
-                                <span>{{checkItem.ItemText}}&nbsp;&nbsp;&nbsp;&nbsp;</span>
-                            </label>
-                        </h4>
-                    </div>
+                <!-- 单选 -->
+                <div ng-if="checkItem.Type=='radio'">
+                    <h4>
+                        <label>
+                        <input type="radio" name="Rad{{detail.Sort}}" value="{{detail.Sort}}^{{$index}}^{{checkItem.ItemScore}}"/>
+                        {{checkItem.ItemText}}
+                        </label>
+                    </h4>
+                </div>
+                <!-- 多选 -->
+                <div ng-if="checkItem.Type=='checkbox'">
+                    <h4>
+                        <label>
+                        <input type="checkbox" name="Chk{{detail.Sort}}" value="{{detail.Sort}}^{{$index}}^{{checkItem.ItemScore}}"/>
+                        {{checkItem.ItemText}}
+                        </label>
+                    </h4>
+                </div>
                 </div>
             </fieldset>
         </div>

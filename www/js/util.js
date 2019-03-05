@@ -104,3 +104,10 @@ function ValidateEmail(smail)
 function fix(num, length) {
     return ('' + num).length < length ? ((new Array(length + 1)).join('0') + num).slice(-length) : '' + num;
 }
+
+function betweenTime(sdtBegin,sdtEnd){
+    var dtBegin = new Date(sdtBegin);
+    var dtEnd = new Date(sdtEnd);
+    var dtNow = new Date();
+    return (dtBegin<=dtNow && dtNow<=dtEnd);
+}
