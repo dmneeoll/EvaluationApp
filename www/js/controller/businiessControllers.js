@@ -2101,39 +2101,59 @@ angular.module('evaluationApp.businiessControllers', ['ngSanitize'])
 
     })
     .controller('Act2019SpringSubsidyCtrl', function ($scope, $rootScope, $state, $ionicHistory, $ionicPopup,
-        commonServices, alertService, duplicateSubmitServices) 
+        commonServices, alertService, duplicateSubmitServices,externalLinksService) 
     {
         //工会2019春节返程补贴
-        function InitInfo() {
-            var url = commonServices.getUrl("ApplySubmitService.ashx", "GetAct2019SpringSubsidy");
-            var paras = $.extend({}, commonServices.getBaseParas());
-            paras.SubmitGuid = duplicateSubmitServices.genGUID();
-            $scope.model = paras;
+        var paras = $.extend({}, commonServices.getBaseParas());
+        paras.ActID = '0BADD6A6-F030-4BD9-9569-283C03D47484';        
 
+        function InitInfo() {
+            paras.SubmitGuid = duplicateSubmitServices.genGUID();
+            var url = commonServices.getUrl("choujiangservicenew.ashx", "Choujiang_GameResult");            
+            $scope.model = paras;
             commonServices.submit(paras, url).then(function (resp) {
                 if (resp) {
-                    $scope.hasSubmit = resp.success;                    
-                    if (resp.success) {
-                        $scope.LastState = resp.obj;
-                    }
+                    $scope.hasSubmit = resp.success;
                 }
             });
         }
         InitInfo();
 
-        $scope.Submit = function() {
-            var url = commonServices.getUrl("ApplySubmitService.ashx", "SubmitAct2019SpringSubsidy");
-            var paras =  $scope.model;
-            commonServices.submit(paras, url).then(function (resp) {
-                if (resp) {
-                    if(resp.success){
-                        alertService.showAlert("提交成功，请留意后续发布的中奖结果！");
-                    }else{
-                        alertService.showAlert(resp.message);
+        $scope.openSubmitMat = function(){
+            try {
+                var url = "http://www.baidu.com"; //TODO
+                externalLinksService.openUr(url);
+            }
+            catch (ex) {
+                alertService.showAlert(ex.message);
+            }
+        };
+
+        function DoChouJian() {
+            var url = commonServices.getUrl("ChoujiangServiceNew.ashx", "Choujiang_Game");            
+            try {
+                commonServices.submit(paras, url).then(function (data) {
+                    if (data.success) {
+                        var smsg = '恭喜您！待核对不与斗门区总新春补助资格重复后即为中奖！如有疑问请电话咨询40010-99899';
+                        alertService.showAlert('提示', smsg);
                     }
-                }
-                $ionicHistory.goBack();
-            });
+                    else if(data.data == -2){
+                        var smsg = '感谢您对工会活动的支持！本次抽奖不成功！您已经成功申请斗门区总工会的新春返程补助，如已经递交资料，敬请留意到账情况。如有疑问请电话咨询40010-99899';
+                        alertService.showAlert('提示', smsg);
+                    }else{
+                        var smsg = '未抽中！感谢您支持工会活动！如有疑问请电话咨询40010-99899';
+                        alertService.showAlert('提示', smsg);
+                    }
+                    $ionicHistory.goBack();
+                });
+            }
+            catch (ex) {
+                var msg = '通讯异常，请稍候再试<br>' + ex.message;
+                alertService.showAlert('提示', msg);
+            }
+        }
+        $scope.Submit = function() {
+            DoChouJian();
         };
     })
     

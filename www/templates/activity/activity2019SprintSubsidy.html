@@ -4,16 +4,29 @@
 
         <div class="list card" >
             <div class="divOff lightRedBack">
-                <span class="text-left">{{Language.common.Explain}}：</span>
+                <span class="text-left">亲爱的各位同事，</span>                
                 <div class="divOff">
-                    <ol class="numOl">
-                        <li>
-                            如有未在斗门区总活动名单中中奖的员工，可以继续参加公司工会的春节返程补贴活动；
-                        </li>
-                        <li>
-                            名额有限，中奖结果将于活动结束后公布，可在Flex+查询到。
-                        </li>
-                    </ol>
+                <p>
+                    2月24日至28日，广大同事积极参与了斗门工会2019年春节外来务工人员交通返程补助活动。
+                    但因活动名额有限，仅有部分同事被抽中获得补助名额。关爱职工，伟创力联合工会暖心行动继续来袭！如果你是由原居住地或国内探亲地返程伟创力工作并是非珠海市户籍（以身份证信息为准）的人员，继续来抢新春交通返程补助名额吧！
+                </p>
+                <ol class="numOl">
+                    <li>
+                    <b>活动对象</b>：在我司就职的异地务工人员
+                    </li>
+                    <li>
+                    补助标准：省内150元/家庭；省外300元/家庭
+                    </li>
+                    <li>
+                    补助名额：300个（已成功获得斗门区总工会补贴名额者<b>不重复</b>参与本次活动）
+                    </li>
+                    <li>
+                    资料提交：中奖者在中奖页面<a href="#" class="myLink" ng-click="openSubmitMat()"> 点击此链接 </a>提交相关资料
+                    </li>
+                    <li>
+                    咨询电话：40010-99899转5
+                    </li>
+                </ol>
                 </div>
             </div>
 
@@ -28,33 +41,27 @@
                 <span class="input-label" style="width: 10px;color: red">*</span>
                 <input type="text" style="font-size:80%" readonly="readonly" ng-model="model.WorkdayNO" />
             </div>
-            <div class="item item-input">
+            <!-- <div class="item item-input">
                 <span class="input-label" style="width: 30px;font-size:80%">{{Language.like.department}}</span>
                 <span class="input-label" style="width: 10px;color: red">*</span>
                 <input type="text" style="font-size:80%" readonly="readonly" ng-model="model.Organization" />
-            </div>
-            <div class="item item-input">
+            </div> -->
+            <!-- <div class="item item-input">
                 <span class="input-label" style="width: 50px;font-size:80%">{{Language.shareCar.mobile}}</span>
                 <span class="input-label" style="width: 10px;color: red">*</span>
                 <input type="text" style="font-size:80%" placeholder="{{Language.shareCar.mobile}}" ng-model="model.MobileNo" />
-            </div>
+            </div> -->
             <div style="text-align: center">
                 <button class="button  button-positive" ng-click="Submit()">{{Language.menu.submit}}</button>
             </div>
             </div>
             <ion-list ng-if="hasSubmit">
-                    <ion-item class="item item-divider">您已提交过申请。</ion-item>
-                    <ion-item class="item">
-                        <div class="row">
-                            <div class="col">
-                                <h3 style="color:blue" class="ng-binding">{{LastState.ApplyResult}}</h3>
-                            </div>
-                            <div class="col">
-                                <h3 class="ng-binding">{{LastState.SubmitDate|date:"yyyy-MM-dd HH:mm"}}</h3>
-                            </div>
-                        </div>
-                    </ion-item>
-                </ion-list>
+                <ion-item class="item">
+                    <div style="white-space: normal;">
+                        <span style="color: red;font-weight: 800;">恭喜您！</span>待核对不与斗门区总新春补助资格重复后即为中奖！<br>如有疑问请电话咨询40010-99899
+                    </div>
+                </ion-item>
+            </ion-list>
         </div>
         <br/>
     </ion-content>
