@@ -2118,7 +2118,7 @@ angular.module('evaluationApp.businiessControllers', ['ngSanitize'])
                     //2019-03-05 特殊处理，空奖
                     if(resp.success){
                         if(resp.data && resp.data>0 && resp.data!=idNull){
-                            $scope.jpType = 1;                            
+                            $scope.jpType = 1;
                         }else{
                             $scope.jpType = 0;
                         } 
@@ -2143,17 +2143,20 @@ angular.module('evaluationApp.businiessControllers', ['ngSanitize'])
             try {
                 commonServices.submit(paras, url).then(function (data) {
                     if (data.success && data.data!=idNull) {
-                        var smsg = '恭喜您！待核对不与斗门区总新春补助资格重复后即为中奖！如有疑问请电话咨询40010-99899';
+                        var smsg = '恭喜您！待核对不与斗门区总新春补助资格重复后即为中奖，请及时提交相关资料！如有疑问请电话咨询40010-99899';
                         alertService.showAlert('提示', smsg);
+                        $scope.hasSubmit=true;
+                        $scope.jpType = 1;
                     }
                     else if(data.data == -2){
                         var smsg = '感谢您对工会活动的支持！本次抽奖不成功！您已经成功申请斗门区总工会的新春返程补助，如已经递交资料，敬请留意到账情况。如有疑问请电话咨询40010-99899';
                         alertService.showAlert('提示', smsg);
+                        $ionicHistory.goBack();
                     }else{
                         var smsg = '未抽中！感谢您支持工会活动！如有疑问请电话咨询40010-99899';
                         alertService.showAlert('提示', smsg);
-                    }
-                    $ionicHistory.goBack();
+                        $ionicHistory.goBack();
+                    }                    
                 });
             }
             catch (ex) {
