@@ -1069,10 +1069,10 @@ angular.module('evaluationApp.businiessControllers', ['ngSanitize'])
             return false;
         };
         $scope.checkOpenMech38 = function() {
-            if(!betweenTime('2019-03-06 08:30', '2019-03-07 17:00')){
-                alertService.showAlert("活动时间是2019年3月6日 8:30 ~ 2019年3月7日 17:00。");
-                return;
-            }
+            // if(!betweenTime('2019-03-06 08:30', '2019-03-07 17:00')){
+            //     alertService.showAlert("活动时间是2019年3月6日 8:30 ~ 2019年3月7日 17:00。");
+            //     return;
+            // }
             $scope.openOutLink('https://www.wjx.cn/jq/34994975.aspx');
         }
 
@@ -2106,6 +2106,7 @@ angular.module('evaluationApp.businiessControllers', ['ngSanitize'])
         //工会2019春节返程补贴
         var paras = $.extend({}, commonServices.getBaseParas());
         paras.ActID = '0BADD6A6-F030-4BD9-9569-283C03D47484';        
+        var idNull = 9999;
 
         function InitInfo() {
             paras.SubmitGuid = duplicateSubmitServices.genGUID();
@@ -2114,6 +2115,14 @@ angular.module('evaluationApp.businiessControllers', ['ngSanitize'])
             commonServices.submit(paras, url).then(function (resp) {
                 if (resp) {
                     $scope.hasSubmit = resp.success;
+                    //2019-03-05 特殊处理，空奖
+                    if(resp.success){
+                        if(resp.data && resp.data>0 && resp.data!=idNull){
+                            $scope.jpType = 1;                            
+                        }else{
+                            $scope.jpType = 0;
+                        } 
+                    }
                 }
             });
         }
@@ -2121,7 +2130,7 @@ angular.module('evaluationApp.businiessControllers', ['ngSanitize'])
 
         $scope.openSubmitMat = function(){
             try {
-                var url = "http://www.baidu.com"; //TODO
+                var url = "http://flexzhunion0756.mikecrm.com/juc1zbd";
                 externalLinksService.openUr(url);
             }
             catch (ex) {
@@ -2133,7 +2142,7 @@ angular.module('evaluationApp.businiessControllers', ['ngSanitize'])
             var url = commonServices.getUrl("ChoujiangServiceNew.ashx", "Choujiang_Game");            
             try {
                 commonServices.submit(paras, url).then(function (data) {
-                    if (data.success) {
+                    if (data.success && data.data!=idNull) {
                         var smsg = '恭喜您！待核对不与斗门区总新春补助资格重复后即为中奖！如有疑问请电话咨询40010-99899';
                         alertService.showAlert('提示', smsg);
                     }

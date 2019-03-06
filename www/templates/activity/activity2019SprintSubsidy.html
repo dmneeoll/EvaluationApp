@@ -7,21 +7,26 @@
                 <span class="text-left">亲爱的各位同事，</span>                
                 <div class="divOff">
                 <p>
-                    2月24日至28日，广大同事积极参与了斗门工会2019年春节外来务工人员交通返程补助活动。
-                    但因活动名额有限，仅有部分同事被抽中获得补助名额。关爱职工，伟创力联合工会暖心行动继续来袭！如果你是由原居住地或国内探亲地返程伟创力工作并是非珠海市户籍（以身份证信息为准）的人员，继续来抢新春交通返程补助名额吧！
+                    关爱职工，伟创力联合工会暖心行动继续来袭！如果你是由原居住地或国内探亲地返程伟创力工作并是非珠海市户籍（以身份证信息为准）的人员，继续来抢新春交通返程补助名额吧！
                 </p>
                 <ol class="numOl">
                     <li>
-                    <b>活动对象</b>：在我司就职的异地务工人员
+                    活动对象：在我司就职的异地务工人员
                     </li>
                     <li>
                     补助标准：省内150元/家庭；省外300元/家庭
                     </li>
                     <li>
-                    补助名额：300个（已成功获得斗门区总工会补贴名额者<b>不重复</b>参与本次活动）
+                        补助名额：300个（已成功获得斗门区总工会补贴名额者<b>不重复参与本次活动</b>）
                     </li>
                     <li>
-                    资料提交：中奖者在中奖页面<a href="#" class="myLink" ng-click="openSubmitMat()"> 点击此链接 </a>提交相关资料
+                        交通票有效期：2019年2月1日至2月28日（在这个时间段内返程珠海）
+                    </li>
+                    <li>
+                        有效交通方式：大巴、高铁、火车、飞机等公共交通工具（不含自驾、乘滴滴快车/嘀嗒出行、的士及朋友车等方式）
+                    </li>
+                    <li>
+                        资料提交：中奖者在中奖页面点击链接提交相关资料
                     </li>
                     <li>
                     咨询电话：40010-99899转5
@@ -57,8 +62,15 @@
             </div>
             <ion-list ng-if="hasSubmit">
                 <ion-item class="item">
-                    <div style="white-space: normal;">
+                    <div style="white-space: normal;" ng-if="jpType>0">
                         <span style="color: red;font-weight: 800;">恭喜您！</span>待核对不与斗门区总新春补助资格重复后即为中奖！<br>如有疑问请电话咨询40010-99899
+                        <br>请及时提交相关资料！
+                        <div style="text-align: center">
+                            <button class="button  button-positive" ng-click="openSubmitMat()">去提交资料</button>
+                        </div>
+                    </div>
+                    <div style="white-space: normal;" ng-if="jpType==0">
+                        <span style="color: blue;font-weight: 800;">未抽中！</span>感谢您支持工会活动！<br>如有疑问请电话咨询40010-99899
                     </div>
                 </ion-item>
             </ion-list>

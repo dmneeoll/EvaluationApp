@@ -13,9 +13,9 @@ angular.module('evaluationApp.businiess2Controllers', [])
                     if(actionVisitServices.isTesting(action, $rootScope.accessEmployee.WorkdayNO)){
                         return true;
                     }
-                    if(!betweenTime('2019-03-06 08:30', '2019-03-07 17:30')){
-                        return false;
-                    }
+                    // if(!betweenTime('2019-03-06 08:30', '2019-03-07 17:30')){
+                    //     return false;
+                    // }
                 }                
                 break;
                 default:break;
