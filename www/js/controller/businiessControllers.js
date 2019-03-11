@@ -2101,7 +2101,7 @@ angular.module('evaluationApp.businiessControllers', ['ngSanitize'])
 
     })
     .controller('Act2019SpringSubsidyCtrl', function ($scope, $rootScope, $state, $ionicHistory, $ionicPopup,
-        commonServices, alertService, duplicateSubmitServices,externalLinksService) 
+        commonServices, alertService, duplicateSubmitServices, UrlServices) 
     {
         //工会2019春节返程补贴
         var paras = $.extend({}, commonServices.getBaseParas());
@@ -2131,7 +2131,7 @@ angular.module('evaluationApp.businiessControllers', ['ngSanitize'])
         $scope.openSubmitMat = function(){
             try {
                 var url = "http://flexzhunion0756.mikecrm.com/juc1zbd";
-                externalLinksService.openUr(url);
+                UrlServices.openForeignUrl(url);
             }
             catch (ex) {
                 alertService.showAlert(ex.message);
@@ -2142,7 +2142,7 @@ angular.module('evaluationApp.businiessControllers', ['ngSanitize'])
             var url = commonServices.getUrl("ChoujiangServiceNew.ashx", "Choujiang_Game");            
             try {
                 commonServices.submit(paras, url).then(function (data) {
-                    if (data.success && data.data!=idNull) {
+                    if (data.success && data.data>0 && data.data!=idNull) {
                         var smsg = '恭喜您！待核对不与斗门区总新春补助资格重复后即为中奖，请及时提交相关资料！如有疑问请电话咨询40010-99899转5';
                         alertService.showAlert('提示', smsg);
                         $scope.hasSubmit=true;

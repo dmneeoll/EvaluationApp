@@ -35,7 +35,9 @@
                 <div>{{Language.admin.canteenMenu}}</div>
                 <span style="font-size:10px" class="badge badge-assertive" ng-if="checkActionUpdate('餐厅菜单')">New</span>
             </div>
-              <div class="col col-25 custom-bule1 light" style="Margin:1px" ng-click="open('EAdmin');" ng-if="accessEmployee.ADAccount">
+              <div class="col col-25 custom-bule1 light" style="Margin:1px" 
+                    ng-click="open('EAdmin');" 
+                    ng-if="canUseAction('EAdmin');">
                     <i style="font-size:50px;" class="ion-android-list"></i>
                     <div>EAdmin</div>
                 </div>
