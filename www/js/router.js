@@ -710,6 +710,36 @@ angular.module('evaluationApp.router', [])
                     templateUrl: 'templates/cser/cser-sumwinCamp.html',
                     controller: 'CSERSumwinCampCtrl'
                 })
+                .state('cser_activityCenter', {
+                    url: '/cser_activityCenter',
+                    templateUrl: 'templates/cser/cser_activityCenterList.html',
+                    controller: 'CSERActivityCenterCtrl'
+                })
+                    .state('cser_center_map', {
+                        url: '/cser_center_map',
+                        templateUrl: 'templates/cser/activityCenter/cser_activityCenterMap.html',
+                        controller: null
+                    })
+                    .state('cser_center_protocol', {
+                        url: '/cser_center_protocol',
+                        templateUrl: 'templates/cser/activityCenter/cser_activityCenterProtocol.html',
+                        controller: 'CSERActivityCenterProtocolCtrl'
+                    })
+                    .state('cser_center_faq', {
+                        url: '/cser_center_faq',
+                        templateUrl: 'templates/cser/activityCenter/cser_activityCenterFaq.html',
+                        controller: 'CSERActivityCenterFaqCtrl'
+                    })
+                    .state('cser_center_repair', {
+                        url: '/cser_center_repair',
+                        templateUrl: 'templates/cser/activityCenter/cser_activityCenterRepair.html',
+                        controller: 'CSERActivityCenterRepairCtrl'
+                    })
+                    .state('cser_center_suggest', {
+                        url: '/cser_center_suggest',
+                        templateUrl: 'templates/cser/activityCenter/cser_activityCenterSuggest.html',
+                        controller: 'CSERActivityCenterSuggestCtrl'
+                    })
             .state('activityEHS',{
                 url: '/activityEHS',
                 templateUrl: 'templates/ehs/activityEHS.html',

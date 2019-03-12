@@ -4,7 +4,7 @@
 
 //开关
 //是否本地开发调试
-var IsDebugMode = false; //false;
+var IsDebugMode = true; //false;
 
 //是否显示详细升级信息
 var IsShowUpdateDetial = false; //false;
@@ -486,6 +486,13 @@ var ZH_CN = {
         calender:"CSER日历",
         kidsCaring:"托管",
         sumwinCamp:"夏令营/冬令营",
+        activityCenter:'CSER员工娱乐中心',
+        activityCenterMap:'员工娱乐中心地图',
+        activityCenterProtocol:'娱乐中心使用须知',
+        activityCenterFAQ:'娱乐设施常见问题',
+        activityCenterRepair:'娱乐设施报修',
+        activityCenterSuggest:'建议箱',
+        
     },
     activityGood:{
         title:"南厂餐厅一楼档口风味满意度调查",
@@ -982,6 +989,7 @@ var ZH_US = {
         calender:"CSER Calendar",
         kidsCaring:"Kids Caring",
         sumwinCamp:"Summer/Winner Camp",
+        activityCenter:'CSER Activity Center',
     },    
     activityGood:{
         title:"PCBA-B11第二届球类竞技赛冠军队有奖竞猜",
