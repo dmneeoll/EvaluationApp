@@ -1,0 +1,26 @@
+<!-- CSER员工娱乐中心 -->
+<ion-view view-title="{{Language.CSER.activityCenter}}" cache-view="false">
+  <!-- <ion-nav-buttons side="left">
+            <button class="button button-clear button-icon ion-ios-arrow-back" ng-click="closePass()">{{Language.home.admin}}</button>
+        </ion-nav-buttons> -->
+
+  <ion-content scroll="true" overflow-scroll="true">
+    <div class="list list-inset">
+      <div class="item" ng-click="open('员工娱乐中心地图');">
+        {{Language.CSER.activityCenterMap}}
+      </div>
+      <div class="item" ng-click="open('娱乐中心使用须知');">
+        {{Language.CSER.activityCenterProtocol}}
+      </div>
+      <div class="item" ng-click="open('娱乐设施常见问题');">
+        {{Language.CSER.activityCenterFAQ}}
+      </div>
+      <div class="item" ng-click="open('娱乐设施报修');">
+        {{Language.CSER.activityCenterRepair}}
+      </div>
+      <div class="item" ng-click="open('建议箱');">
+        {{Language.CSER.activityCenterSuggest}}
+      </div>
+    </div>
+  </ion-content>
+</ion-view>
