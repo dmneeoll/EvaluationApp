@@ -5,6 +5,11 @@
         <h4>
             <label class="ng-binding">{{Language.dormManage.yourSuggest}}：</label>
         </h4>
+        <div class="item item-input">
+            <span class="input-label" style="width: 50px;font-size:80%">{{Language.dormManage.dormArea}}</span>
+            <span class="input-label" style="width: 10px;color: red">*</span>
+            <select class="button" ng-options='t.ID as t.Name for t in dormAreas' ng-model="model.DormArea"></select>
+        </div>
         <label class="item item-input">
             <textarea rows="6" ng-model="model.Suggest" class="ng-pristine ng-valid ng-touched"></textarea>
         </label>

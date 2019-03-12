@@ -1213,6 +1213,7 @@ angular.module('evaluationApp.adminControllers', [])
                     if (resp.success) {
                         $scope.hisSuggest = resp.list;
                     }
+                    $scope.dormAreas = JSON.parse(resp.data);
                 }
             });
         }
@@ -1223,7 +1224,8 @@ angular.module('evaluationApp.adminControllers', [])
             CName: baseInfo.CName,
             WorkdayNO: baseInfo.WorkdayNO,
             MobileNo: baseInfo.MobileNo,
-            Suggest: ""
+            Suggest: "",
+            DormArea:null
         };
         $scope.GetSuggest = function(){
             var txt = $.trim($scope.model.Suggest);
@@ -1233,6 +1235,11 @@ angular.module('evaluationApp.adminControllers', [])
         $scope.isSumbiting = false;
         $scope.Submit = function () {
             $scope.isSumbiting = true;
+            if (!$scope.model.DormArea) {
+                alertService.showAlert("请选择宿舍区!");
+                $scope.isSumbiting = false;
+                return;
+            }
             var sugg = $scope.GetSuggest();
             if (sugg.length<3) {
                 alertService.showAlert("请填写你的建议!");
