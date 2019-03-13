@@ -718,7 +718,7 @@ angular.module('evaluationApp.router', [])
                     .state('cser_center_map', {
                         url: '/cser_center_map',
                         templateUrl: 'templates/cser/activityCenter/cser_activityCenterMap.html',
-                        controller: null
+                        controller: 'CSERActivityCenterMapCtrl'
                     })
                     .state('cser_center_protocol', {
                         url: '/cser_center_protocol',

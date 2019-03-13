@@ -85,7 +85,7 @@ angular.module('evaluationApp.CSERControllers', [])
   .controller('CSERSumwinCampCtrl', function ($scope, $rootScope, $ionicPopup, $ionicModal,
     $state, $ionicHistory, commonServices, CacheFactory, alertService, UrlServices) 
 {
-    //MECH基金会活动报名
+    //CSER夏令营/冬令营
     var baseInfo = commonServices.getBaseParas();
 
     function InitInfo() {
@@ -249,13 +249,13 @@ angular.module('evaluationApp.CSERControllers', [])
     };
 
     $scope.open = function (action) {
-      actionVisitServices.visit(action); //save state
+      //actionVisitServices.visit(action); //save state
       switch (action) {
         case "员工娱乐中心地图":
           $state.go("cser_center_map");
           break;
         case "娱乐中心使用须知":
-          $state.go('cser_center_notice');
+          $state.go('cser_center_protocol');
           break;
         case "娱乐设施常见问题":
           $state.go('cser_center_faq');
@@ -279,6 +279,17 @@ angular.module('evaluationApp.CSERControllers', [])
     };
 
   })
+  .controller('CSERActivityCenterMapCtrl', function ($scope, $rootScope, $state, $ionicHistory) 
+  {
+      //员工娱乐中心地图
+      $("#auto-loop").lightGallery({
+          mobileSrc         : false, // If "data-responsive-src" attr. should be used for mobiles.
+          mobileSrcMaxWidth : 640,   // Max screen resolution for alternative images to be loaded for.
+          swipeThreshold    : 50,    // How far user must swipe for the next/prev image (in px).
+          hideControlOnEnd : false,
+          closable:false
+      });
+  })  
   .controller('CSERActivityCenterProtocolCtrl', 
     function ($scope, $rootScope, $state, $ionicHistory, $ionicPopup, commonServices) 
   {
@@ -288,6 +299,7 @@ angular.module('evaluationApp.CSERControllers', [])
     function InitInfo() {
       var url = commonServices.getUrl("CSERSevice.ashx", "AddProtocolRead");
       var paras = {
+        Token: baseInfo.Token,
         WorkdayNO: baseInfo.WorkdayNO,
         CName: baseInfo.CName,
       };
@@ -305,16 +317,17 @@ angular.module('evaluationApp.CSERControllers', [])
       function ($scope, $rootScope, $state, $ionicHistory, commonServices) 
   {
       //娱乐设施常见问题
-      function GetList(paras) {
-        AskAndAnswerService.getAskAndAnswer(paras).then(function (resp) {
-          if (resp.success) {
+      function InitInfo() {
+        var url = commonServices.getUrl("CSERSevice.ashx", "GetFaq");
+        var baseInfo = commonServices.getBaseParas();
+        commonServices.submit(baseInfo, url).then(function (resp) {
+          if (resp) {
             $scope.listAskAndAnswer = resp.list;
+            //$ionicHistory.goBack();
           }
         });
       }
-      var paras = commonServices.getBaseParas();
-      paras.keyword = "宿舍";
-      GetList(paras);
+      InitInfo();
   })
   .controller('CSERActivityCenterRepairCtrl', function ($scope, $rootScope, $state, $ionicHistory, $ionicPopup,
                                         commonServices, CacheFactory, alertService, duplicateSubmitServices,
@@ -322,49 +335,41 @@ angular.module('evaluationApp.CSERControllers', [])
   {
     //娱乐设施报修
     var baseInfo = commonServices.getBaseParas();
-    $scope.canSubmit = false;
     $scope.model = {
       SubmitGuid: duplicateSubmitServices.genGUID(),
+      Token: baseInfo.Token,
       CName: baseInfo.CName,
       WorkdayNO: baseInfo.WorkdayNO,
       MobileNo: baseInfo.MobileNo,
-      DormArea: null,
-      DormAddress: null,
-      RepairTime: moment().add(1, 'h').minute(0).toDate(),
+      ACArea: null,
+      ACPos: null,
+      FoundDate: moment().toDate(),
       DeviceType: null,
       RepairDesc: null
     };
 
     function InitInfo() {
-      var url = commonServices.getUrl("DormManageService.ashx", "GetDormCheckInInfo");
-      var paras = {
-        WorkdayNO: baseInfo.WorkdayNO,
-        Extra: "GetRepairType"
-      };
-      commonServices.submit(paras, url).then(function (resp) {
-        if (resp && resp.obj) {
-          var curCheckInfo = resp.obj;
-          if (!resp.success) {
-            /* 不作强制检查
-            alertService.showAlert("报修失败："+resp.message);
-            $ionicHistory.goBack();
-            */
-            $scope.model.DormAddress = '';
-            $scope.canSubmit = true;
-          } else {
-            var checkInInfo = curCheckInfo.CheckInfo;
-            $scope.model.DormArea = checkInInfo.DormAreaID;
-            $scope.model.DormAddress = checkInInfo.DormAddress;
-            $scope.canSubmit = true;
-          }
-          var arr = JSON.parse(resp.data);
-          $scope.deviceTypes = arr;
-          $scope.dormAreas = curCheckInfo.DormAreas;
-        } else {
-          alertService.showAlert("获取报修信息失败，请稍候再试!");
-          return;
-        }
-      });
+      $scope.acAreas=[
+        {name:'B7'},
+        {name:'B11'},
+        {name:'B13'},
+        {name:'B15'},
+        {name:'B17'},
+        {name:'South Campus'},
+      ];
+      $scope.deviceTypes=[
+        {name:'空调'},
+        {name:'热水器'},
+        {name:'跑步机'},
+        {name:'美腰机'},
+        {name:'桌球'},
+        {name:'乒乓球'},
+        {name:'游戏机'},
+        {name:'桌面足球'},
+        {name:'仰卧板'},
+        {name:'健身车'},
+        {name:'其它'},
+      ];
     }
     InitInfo();
 
@@ -394,26 +399,14 @@ angular.module('evaluationApp.CSERControllers', [])
         $scope.isSumbiting = false;
         return;
       }
-      if (!$scope.model.DormArea) {
-        alertService.showAlert("请选择宿舍区!");
+      if (!$scope.model.ACArea) {
+        alertService.showAlert("请选择娱乐中心区域!");
         $scope.isSumbiting = false;
         return;
-      }
-      sTemp = $.trim($scope.model.DormAddress);
+      }      
+      sTemp = $.trim($scope.model.FoundDate);
       if (isEmptyString(sTemp)) {
-        alertService.showAlert("请提供具体地址(例：北厂宿舍77栋A77房Z床)!");
-        $scope.isSumbiting = false;
-        return;
-      } else {
-        var sDormArea = $.trim($("#idDormArea option:selected").text());
-        if (0 != sTemp.indexOf(sDormArea)) {
-          sTemp = sDormArea + sTemp;
-        }
-        $scope.model.DormAddress = sTemp;
-      }
-      sTemp = $.trim($scope.model.RepairTime);
-      if (isEmptyString(sTemp)) {
-        alertService.showAlert("请填写维修时间!");
+        alertService.showAlert("请填写发现时间!");
         $scope.isSumbiting = false;
         return;
       }
@@ -441,7 +434,7 @@ angular.module('evaluationApp.CSERControllers', [])
       } else {
         alertService.showOperating('Processing...');
         var url = commonServices.getUrl("UploadService.ashx", "");
-        UrlServices.uploadImages('DormRepair', '宿舍报修', $scope.imgs, url, function (resp) {
+        UrlServices.uploadImages('CSERActivityCenterRepair', 'CSER活动中心', $scope.imgs, url, function (resp) {
             alertService.hideOperating();
             if (resp) {
               if (resp.success) {
@@ -466,10 +459,10 @@ angular.module('evaluationApp.CSERControllers', [])
     };
 
     function DoSubmit(paras) {
-      var url = commonServices.getUrl("DormManageService.ashx", "SubmitRepairDorm");
+      var url = commonServices.getUrl("CSERSevice.ashx", "SubmitRepairAC");
       commonServices.submit(paras, url).then(function (resp) {
         if (resp.success) {
-          var msg = $rootScope.Language.dormManage.repairDormSucc;
+          var msg = $rootScope.Language.CSER.activityCenterRepairSucc;
           alertService.showAlert(msg);
           $ionicHistory.goBack();
         } else {
@@ -479,7 +472,7 @@ angular.module('evaluationApp.CSERControllers', [])
       });
     }
   })
-  .controller('DormSuggestCtrl', function ($scope, $rootScope, $state, $ionicHistory, $ionicPopup,
+  .controller('CSERActivityCenterSuggestCtrl', function ($scope, $rootScope, $state, $ionicHistory, $ionicPopup,
     commonServices, CacheFactory, alertService, duplicateSubmitServices) 
   {
     //建议箱
@@ -487,16 +480,16 @@ angular.module('evaluationApp.CSERControllers', [])
     $scope.hisSuggest = [];
 
     function InitInfo() {
-      var url = commonServices.getUrl("DormManageService.ashx", "GetDormSuggest");
+      var url = commonServices.getUrl("CSERSevice.ashx", "GetSuggest");
       var paras = {
-        WorkdayNO: baseInfo.WorkdayNO
+        WorkdayNO: baseInfo.WorkdayNO,
+        Token: baseInfo.Token,
       };
       commonServices.submit(paras, url).then(function (resp) {
         if (resp) {
           if (resp.success) {
             $scope.hisSuggest = resp.list;
           }
-          $scope.dormAreas = JSON.parse(resp.data);
         }
       });
     }
@@ -504,11 +497,11 @@ angular.module('evaluationApp.CSERControllers', [])
 
     $scope.model = {
       SubmitGuid: duplicateSubmitServices.genGUID(),
+      Token: baseInfo.Token,
       CName: baseInfo.CName,
       WorkdayNO: baseInfo.WorkdayNO,
       MobileNo: baseInfo.MobileNo,
       Suggest: "",
-      DormArea: null
     };
     $scope.GetSuggest = function () {
       var txt = $.trim($scope.model.Suggest);
@@ -518,11 +511,6 @@ angular.module('evaluationApp.CSERControllers', [])
     $scope.isSumbiting = false;
     $scope.Submit = function () {
       $scope.isSumbiting = true;
-      if (!$scope.model.DormArea) {
-        alertService.showAlert("请选择宿舍区!");
-        $scope.isSumbiting = false;
-        return;
-      }
       var sugg = $scope.GetSuggest();
       if (sugg.length < 3) {
         alertService.showAlert("请填写你的建议!");
@@ -532,7 +520,7 @@ angular.module('evaluationApp.CSERControllers', [])
 
       $scope.model.Suggest = sugg;
       var paras = $scope.model;
-      var url = commonServices.getUrl("DormManageService.ashx", "SubmitDormSuggest");
+      var url = commonServices.getUrl("CSERSevice.ashx", "SubmitSuggest");
       try {
         commonServices.submit(paras, url).then(function (resp) {
           if (resp.success) {

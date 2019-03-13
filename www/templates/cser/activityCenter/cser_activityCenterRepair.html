@@ -1,1 +1,72 @@
 <!-- 娱乐设施报修 -->
+<ion-view view-title="{{Language.CSER.activityCenterRepair}}" cache-view="false" hide-tabs>
+  <ion-content style="background-color:lavender">
+    <style>
+    .button+.button {
+        margin-left: 5px;
+    }
+    </style>
+    <div class="list card">
+      <div class="item item-input">
+        <span class="input-label" style="width: 30px;font-size:80%">{{Language.like.name}}</span>
+        <span class="input-label" style="width: 10px;color: red">*</span>
+        <input type="text" style="font-size:80%" readonly="readonly" ng-model="model.CName" />
+      </div>
+      <div class="item item-input">
+        <span class="input-label" style="width:30px;font-size:80%">{{Language.like.employee_ID}}</span>
+        <span class="input-label" style="width: 10px;color: red">*</span>
+        <input type="text" style="font-size:80%" readonly="readonly" ng-model="model.WorkdayNO" />
+      </div>
+      <div class="item item-input">
+        <span class="input-label" style="width: 50px;font-size:80%">{{Language.shareCar.mobile}}</span>
+        <span class="input-label" style="width: 10px;color: red">*</span>
+        <input type="text" style="font-size:80%" placeholder="{{Language.shareCar.mobile}}" ng-model="model.MobileNo" />
+      </div>
+      <div class="item item-input">
+        <span class="input-label" style="width: 50px;font-size:80%">{{Language.CSER.activityCenterArea}}</span>
+        <span class="input-label" style="width: 10px;color: red">*</span>
+        <select class="button" id="idACArea" ng-options='t.name as t.name for t in acAreas' ng-model="model.ACArea"></select>
+      </div>
+      <div class="item item-input">
+        <span class="input-label" style="width: 50px;font-size:80%">{{Language.CSER.activityCenterPos}}</span>
+        <input type="text" style="font-size:80%" ng-model="model.ACPos" />
+      </div>
+      <div class="item item-input">
+        <span class="input-label" style="width: 30px;font-size:80%">{{Language.CSER.activityCenterFoundDate}}</span>
+        <span class="input-label" style="width: 10px;color: red">*</span>
+        <div ion-datetime-picker date ng-model="model.FoundDate" only-valid="{'before':'today', 'inclusive':true}"
+          style="width:280px;">
+          <i class="icon ion-ios-calendar positive" style="font-size:28px;"></i>
+          <strong>{{model.FoundDate| date: "yyyy-MM-dd"}}</strong>
+          &nbsp;&nbsp;
+        </div>
+      </div>
+      <div class="item item-input">
+        <span class="input-label" style="width: 50px;font-size:80%">{{Language.CSER.activityCenterDeviceType}}</span>
+        <span class="input-label" style="width: 10px;color: red">*</span>
+        <select class="button" ng-options='t.name as t.name for t in deviceTypes' ng-model="model.DeviceType"></select>
+      </div>
+      <div class="item item-input">
+        <div style="white-space:normal;">
+          <p>
+            <span class="input-label" style="width:50px;font-size:90%;display:inline-block;">{{Language.common.picture}}</span>
+            <button class="button button-calm button-small" ng-click="SelPic(false);">{{Language.common.selectPhoto}}</button>
+            <button class="button button-calm button-small" ng-click="SelPic(true);">{{Language.common.takePhoto}}</button>
+            <button class="button button-calm button-small" ng-if="imgs.length>0" ng-click="Reset();">{{Language.common.clear}}</button>
+          </p>
+          <p id="images" style="margin-top:10px;white-space:normal;" ng-if="imgs.length>0">
+            <img class='smallPic' src='{{item}}' ng-repeat='item in imgs'>
+          </p>
+        </div>
+      </div>
+      <div class="item item-input">
+        <span class="input-label" style="width: 30px;font-size:80%">{{Language.CSER.activityCenterRepairDesc}}</span>
+        <textarea rows="6" style="font-size:90%" class="ng-pristine ng-valid ng-touched" ng-model="model.RepairDesc"></textarea>
+      </div>
+    </div>
+
+    <div style="text-align: center">
+      <button class="button button-positive" ng-click="Submit()">{{Language.menu.submit}}</button>
+    </div>
+  </ion-content>
+</ion-view>

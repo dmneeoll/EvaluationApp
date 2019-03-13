@@ -1,1 +1,42 @@
 <!-- 建议箱 -->
+<ion-view view-title="{{Language.CSER.activityCenterSuggest}}" cache-view="false">
+  <ion-content class="padding" scroll="true" lazy-scroll>
+    <style>
+        .item, .item-body{
+            padding:10px;
+        }
+    </style>
+    <div>
+      <h4>
+        <label class="ng-binding">{{Language.dormManage.yourSuggest}}：</label>
+      </h4>
+      <label class="item item-input">
+        <textarea rows="6" ng-model="model.Suggest" class="ng-pristine ng-valid ng-touched"></textarea>
+      </label>
+    </div>
+
+    <div style="text-align:center;margin:10px;">
+      <button class="button button-positive" ng-disabled="0==GetSuggest().length" ng-click="Submit()">{{Language.menu.submit}}</button>
+    </div>
+
+    <div ng-if="hisSuggest.length>0">
+      <fieldset>
+        <h4 style="color: royalblue">{{Language.dormManage.hisSuggest}}</h4>
+        <div ng-repeat="sugg in hisSuggest">
+          <div class="item item-body">
+            <span>{{sugg.CreateDate| date: "yyyy-MM-dd HH:mm"}}&nbsp;</span>
+            <br>
+            <p style="white-space:normal;" ng-bind-html="sugg.Suggest"></p>
+          </div>
+          <div class="item item-body" ng-if="sugg.Response && sugg.Response.length>0">
+            <span>{{Language.dormManage.respSuggest}}:&nbsp;</span>
+            <br>
+            <p style="color:teal;white-space:normal;" ng-bind-html="sugg.Response"></p>
+          </div>
+          <br>
+        </div>
+      </fieldset>
+    </div>
+
+  </ion-content>
+</ion-view>
