@@ -4,7 +4,7 @@
 
 //开关
 //是否本地开发调试
-var IsDebugMode = true; //false;
+var IsDebugMode = false; //false;
 
 //是否显示详细升级信息
 var IsShowUpdateDetial = false; //false;
