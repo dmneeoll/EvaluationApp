@@ -1603,6 +1603,7 @@ angular.module('evaluationApp.businiessControllers', ['ngSanitize'])
                 }else{
                     alertService.showAlert('谢谢参与!');
                 }
+                $ionicHistory.goBack();
             }
           });
         } catch (ex) {
