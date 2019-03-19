@@ -90,9 +90,16 @@ angular.module('evaluationApp.businiess2Controllers', [])
 
         $scope.openSpecial = function (action) {
             switch (action) {
-                case '园区38女王节有奖答题':
-                    $state.go('researchTrainer');
-                    break;
+                // case '园区38女王节有奖答题':
+                //     $state.go('researchTrainer');
+                //     break;
+                case '2019宿舍问卷调查':{
+                    CacheFactory.remove(GLOBAL_INFO.KEY_RESEARCH_NEW_ID);
+                    CacheFactory.save(GLOBAL_INFO.KEY_RESEARCH_NEW_ID, '10E1B8C2-E0B1-4A12-8F3E-435998C06668');
+                    actionVisitServices.visit(action); //save state
+                    $state.go('researchNew');
+                }                    
+                break;
                 default: break;
             }
         };

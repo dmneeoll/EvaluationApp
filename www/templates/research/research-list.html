@@ -49,9 +49,9 @@
                 园区周边公共配套服务需求调查
             </div>
             <!-- 2019-03-05 园区及地区共享资源3.8女王节 -->
-            <div class="item" ng-click="openSpecial('园区38女王节有奖答题');" ng-if="false;">
-                园区及地区共享资源3•8女王节有奖答题活动
-                <!-- <span style="font-size:10px" class="badge badge-assertive" ng-if="checkActionUpdate('园区38女王节有奖答题')">New</span> -->
+            <div class="item" ng-click="openSpecial('2019宿舍问卷调查');" ng-if="canUseAction('2019宿舍问卷调查');">
+                2019宿舍问卷调查
+                <span style="font-size:10px" class="badge badge-assertive" ng-if="checkActionUpdate('2019宿舍问卷调查')">New</span>
             </div>
             <div class="item" ng-repeat="resear in researchList" ng-click="open(resear)">
                 {{resear.ResearchName}}

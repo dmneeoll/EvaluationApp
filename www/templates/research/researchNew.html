@@ -1,0 +1,61 @@
+<!-- 用于自定义活动 -->
+<ion-view cache-view="false">
+    <ion-nav-title>
+        {{ researchTitle }}
+    </ion-nav-title>
+    <ion-content scroll="true" lazy-scroll>
+        <style>
+            .myTab{
+                width:95%;
+                min-width: 400px;
+            }
+        </style>
+        <ion-slide-box does-continue="true" auto-play="false" show-pager="false" ng-if="imgUrl!=null">
+            <img ng-src="{{imgUrl}}">
+        </ion-slide-box>
+        <div class="divOff lightGrayBack" compile="htmlConent">
+        </div>
+
+        <div ng-if="!CanAttend">
+            <h3 style="color:blue; margin:10px 20px;">{{LastMsg}}</h3>
+        </div>
+        <div ng-repeat="detail in researchDetailList" ng-if="CanAttend">
+            <fieldset>
+            <div style="color: royalblue">
+                {{$index+1}}. 
+                <!-- <span ng-bind-html="detail.Title"></span> -->
+                <span compile="detail.Title"></span>
+            </div>
+            <div ng-repeat="checkItem in detail.Items">
+                <!-- 单选 -->
+                <div ng-if="detail.TitleType=='radio'">
+                <h4>
+                    <label>
+                    <input type="radio" name="Rad{{detail.Sort}}" value="{{$index+1}}" />
+                    {{checkItem.Item}}
+                    </label>
+                </h4>
+                </div>
+                <!-- 多选 -->
+                <div ng-if="detail.TitleType=='checkbox'">
+                <h4>
+                    <label>
+                    <input type="checkbox" name="Chk{{detail.Sort}}" value="{{$index+1}}" />
+                    {{checkItem.Item}}
+                    </label>
+                </h4>
+                </div>
+            </div>
+            <!-- 文本输入 -->
+            <div ng-if="detail.TitleType=='text'">
+                <!-- <div style="font-size:14px;color:deeppink;margin-top:10px;">{{checkItem.Item}}</div> -->
+                <textarea name="Text{{detail.Sort}}^{{$index}}" rows="5" style="width:98%;border-style:dashed; border-width:1px; border-color:pink"></textarea>
+            </div>
+            </fieldset>
+        </div>
+        <br>
+        <div style="text-align: center" ng-if="CanAttend">
+            <button class="button  button-positive" ng-click="Submit()">{{Language.menu.submit}}</button>
+        </div>
+    </ion-content>
+</ion-view>

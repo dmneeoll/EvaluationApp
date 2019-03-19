@@ -909,6 +909,12 @@ angular.module('evaluationApp.router', [])
                 templateUrl: 'templates/research/researchTrainer.html',
                 controller: 'ResearchTrainerCtrl'
             })
+            .state('researchNew', {
+                url: '/researchNew',
+                templateUrl: 'templates/research/researchNew.html',
+                controller: 'ResearchNewCtrl'
+            })
+            
         .state('dynpage', {
             url: '/dynpage',
             templateUrl: 'templates/generalNotice/dynPage.html',

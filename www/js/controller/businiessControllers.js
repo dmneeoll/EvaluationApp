@@ -1317,6 +1317,8 @@ angular.module('evaluationApp.businiessControllers', ['ngSanitize'])
                     CacheFactory, alertService, $state, $ionicHistory, commonServices, $location,
                     duplicateSubmitServices)
     {
+        //旧的活动答题，题目有分数
+        //支持单选、多选
         //2019-03-01 园区38女王节有奖答题
 
         var url = commonServices.getUrl("EHSActService.ashx", "GetSingleActWithDetail");
@@ -1466,7 +1468,153 @@ angular.module('evaluationApp.businiessControllers', ['ngSanitize'])
             }
         }
     })
-    .controller('ActivityHtmlCtrl', function($scope,CacheFactory,noticeService,alertService,$state,$ionicHistory,$location,commonServices) {
+    .controller('ResearchNewCtrl', function ($scope, $rootScope, $ionicPopup,
+                CacheFactory, alertService, $state, $ionicHistory, commonServices, $location,
+                duplicateSubmitServices) 
+    {
+      //2019 活动答题，题目没有分数，题目的选项最多可以有8项
+      //支持单选、多选、填空
+      var searchID = CacheFactory.get(GLOBAL_INFO.KEY_RESEARCH_NEW_ID);
+      var baseInfo = commonServices.getBaseParas();
+      var params = {
+        Token: baseInfo.Token,
+        SubmitGuid: duplicateSubmitServices.genGUID(),
+        WorkdayNO: baseInfo.WorkdayNO,
+        SearchID: searchID,        
+      };
+
+      function InitInfo(){
+        var url = commonServices.getUrl("ResearchNewService.ashx", "GetDetails");
+          commonServices.submit(params, url).then(function (resp) {
+            if (!resp) {
+              alertService.showAlert("该活动还没有题目");
+              $ionicHistory.goBack();
+              return;
+            }
+
+            $scope.CanAttend = resp.success;
+            $scope.LastMsg = resp.message;
+            var objResearch = JSON.parse(resp.data);
+            $scope.researchTitle = objResearch.ResearchName;
+            $scope.htmlConent = objResearch.ResearchConent;
+            $scope.researchDetailList = resp.list;
+          });
+      }
+      InitInfo();
+
+      $scope.isSumbiting = false;
+      $scope.Submit = function () {
+        if ($scope.isSumbiting) {
+          return;
+        }
+        $scope.isSumbiting = true;
+
+        $scope.SubmitList = [];
+        var bok = true;
+        for (var i = 0; i < $scope.researchDetailList.length; i++) {
+          var item = $scope.researchDetailList[i];
+          var stype = item.TitleType;          
+          if ("radio" == stype) {
+            var $rad = $("input[name='Rad" + item.Sort + "'" + "]:checked");
+            if (!$rad || !$rad.length) {
+              bok = false;
+              break;
+            }
+            var sel = $rad.val();
+            $scope.SubmitList.push({
+              ID: item.ID,
+              Type: stype,
+              Value: sel
+            });
+          } else if ("checkbox" == stype) {
+            var $chk = $("input[name='Chk" + item.Sort + "'" + "]:checked");
+            if (!$chk || !$chk.length) {
+              bok = false;
+              break;
+            }
+            var sel = "";
+            for(var j=0; j<$chk.length; j++){
+                sel += $chk[j].value +";";
+            }
+            $scope.SubmitList.push({
+              ID: item.ID,
+              Type: stype,
+              Value: sel
+            });
+          } else if ("text" == stype) {
+            var tRes = "";
+            for (var j = 0; j < 8; j++) {
+              var tval = $.trim($("textarea[name='Text" + item.Sort + "^" + j + "']").val());
+              if (!tval || !tval.length) {
+                continue;
+              }
+              tRes += "Item" + j + ":" + tval + ";";
+            }
+            $scope.SubmitList.push({
+              ID: item.ID,
+              Type: stype,
+              Value: tRes
+            });
+          }
+        }
+
+        if (!bok) {
+          alertService.showAlert("还有未选择的项目，请选择完成后再提交");
+          $scope.isSumbiting = false;
+          return;
+        }
+        else {
+          DoSubmit();
+        }
+      };
+
+      function DoSubmit() {
+        params.SubmitResult = angular.toJson($scope.SubmitList);
+        var url = commonServices.getUrl("ResearchNewService.ashx", "Submit");
+        try {
+          commonServices.submit(params, url).then(function (resp) {
+            if (!resp) {
+              var msg = $rootScope.Language.common.CommunicationErr;
+              alertService.showAlert(msg);
+              $scope.isSumbiting = false;
+              return;
+            } else if (!resp.success) {
+              var msg = resp.message;
+              alertService.showAlert(msg);
+              //$ionicHistory.goBack();
+              return;
+            }else if(resp.success){
+                var redenv=0.0;
+                try {
+                    redenv = parseFloat(resp.obj);
+                } catch (error) {
+                    console.dir(error);
+                }
+                if(redenv>0.0){
+                    $rootScope.money = '' + redenv+'元';
+                    //$rootScope.memo = '';
+                    $rootScope.rebagPopup = $ionicPopup.show({
+                        cssClass: 'my-custom-popup',
+                        templateUrl: 'templates/comm/hongbaoChoujiang.html',
+                        scope: $rootScope
+                    });
+                    $rootScope.rebagPopup.then(function (res) {
+                    });
+                }else{
+                    alertService.showAlert('谢谢参与!');
+                }
+            }
+          });
+        } catch (ex) {
+          var msg = '通讯异常，请稍候再试<br>' + ex.message;
+          alertService.showAlert('提示', msg);
+        } finally {
+          $scope.isSumbiting = false;
+        }
+      }
+    })
+    .controller('ActivityHtmlCtrl', function($scope,CacheFactory,noticeService,alertService,$state,$ionicHistory,$location,commonServices) 
+    {
 
         $scope.accessEmployee = JSON.parse(CacheFactory.get('accessEmployee'));
         var activityID=CacheFactory.get('activityID');

@@ -1,6 +1,20 @@
 <!-- 娱乐设施常见问题 -->
 <ion-view title="{{Language.CSER.activityCenterFAQ}}" cache-view="false">
   <ion-content class="padding" scroll="true" overflow-scroll="true">
+    <style>
+      .tdp3{
+        width:33.33%;
+      }
+      .tdp25{
+        width:25%;
+      }
+      .vertcent{
+        vertical-align: middle;
+      }
+      ul{
+        list-style: square inside;
+      }
+    </style>
     <div ng-repeat="info in listAskAndAnswer">
       <p style="font-size: 13px;color: blue">{{$index+1}}、{{info.Ask}}</p>
       <p style="font-size: 13px" ng-bind-html="info.Answer"></p>
