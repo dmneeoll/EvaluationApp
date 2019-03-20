@@ -1126,6 +1126,11 @@ angular.module('evaluationApp.router', [])
             templateUrl: 'templates/activity/activity2019SprintSubsidy.html',
             controller: 'Act2019SpringSubsidyCtrl'
         })
+        .state('act_PoetryContest', {
+            url: '/act_PoetryContest',
+            templateUrl: 'templates/activity/activityPoetryContest.html',
+            controller: 'ActPoetryContestCtrl'
+        })        
 
         
         $urlRouterProvider.otherwise('signin');

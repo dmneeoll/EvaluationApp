@@ -19,8 +19,8 @@
             <!--</ion-item>-->
         <!--</ion-list>-->
 
-        <!-- 放置外链 -->
-        <ion-item class="item item-thumbnail-left" 
+        <!-- 放置有限制的外链 -->
+        <!-- <ion-item class="item item-thumbnail-left" 
             ng-click="checkOpenMech38()"
             ng-if="canUseMech38();"
             >
@@ -28,7 +28,16 @@
         <br>
         <h2>MECH基层工会三八节有奖答题活动</h2>
         <br>
-        </ion-item>
+        </ion-item> -->
+
+        <!-- 2019诗词大赛 -->
+        <ion-list>
+            <ion-item class="item item-thumbnail-left" ng-click="openSpecial('伟创力诗词大赛')" ng-if="canUseAction('伟创力诗词大赛');">
+                <img src="img/shi.gif">
+                <br>
+                <h3>{{Language.activityGood.PoetryTitle}}</h3>
+            </ion-item>
+        </ion-list>
 
         <!--活动点赞-->
         <!-- johnsing 2019-02-27 -->

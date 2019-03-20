@@ -506,7 +506,11 @@ var ZH_CN = {
         department:"部门",
         designer:"作者",
         desc:"主要事迹",
-        designConcept: "设计理念"
+        designConcept: "设计理念",
+        PoetryTitle:"伟创力诗词大赛在线有奖答题",
+        StartButton:"开始答题",
+        RemainSec:"剩余时间",
+        OkNextButton:"答题",
     },
     ehsAct:{
         title:"EHS有奖答题"
@@ -1014,7 +1018,11 @@ var ZH_US = {
         department: "Department",
         designer:"Author",
         desc:"Describe",
-        designConcept: "Design Concept"
+        designConcept: "Design Concept",
+        PoetryTitle:"Flex Poetry Contest",
+        StartButton:"Start",
+        RemainSec:"Remaining",
+        OkNextButton:"Answer",
     },
     ehsAct:{
         title:"EHS online Activity"
