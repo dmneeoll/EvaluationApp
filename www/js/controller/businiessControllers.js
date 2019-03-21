@@ -1545,19 +1545,12 @@ angular.module('evaluationApp.businiessControllers', ['ngSanitize'])
               Value: sel
             });
           } else if ("text" == stype) {
-            var tRes = "";
-            for (var j = 0; j < 8; j++) {
-              var tval = $.trim($("textarea[name='Text" + item.Sort + "^" + j + "']").val());
-              if (!tval || !tval.length) {
-                continue;
-              }
-              tRes += "Item" + j + ":" + tval + ";";
-            }
-            $scope.SubmitList.push({
-              ID: item.ID,
-              Type: stype,
-              Value: tRes
-            });
+              var tval = $.trim($("textarea[name='Text" + item.Sort + "^" + i + "']").val());
+              $scope.SubmitList.push({
+                ID: item.ID,
+                Type: stype,
+                Value: tval
+              });
           }
         }
 

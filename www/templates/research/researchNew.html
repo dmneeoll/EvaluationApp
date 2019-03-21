@@ -13,7 +13,7 @@
         <ion-slide-box does-continue="true" auto-play="false" show-pager="false" ng-if="imgUrl!=null">
             <img ng-src="{{imgUrl}}">
         </ion-slide-box>
-        <div class="divOff lightGrayBack" compile="htmlConent">
+        <div class="divOff lightGrayBack" compile="htmlConent" style="font-size:18px;">
         </div>
 
         <div ng-if="!CanAttend">
@@ -49,7 +49,7 @@
             <!-- 文本输入 -->
             <div ng-if="detail.TitleType=='text'">
                 <!-- <div style="font-size:14px;color:deeppink;margin-top:10px;">{{checkItem.Item}}</div> -->
-                <textarea name="Text{{detail.Sort}}^{{$index}}" rows="5" style="width:98%;border-style:dashed; border-width:1px; border-color:pink"></textarea>
+                <textarea name="Text{{detail.Sort}}^{{$index}}" rows="6" style="width:98%;border-style:dashed; border-width:1px; border-color:pink"></textarea>
             </div>
             </fieldset>
         </div>
