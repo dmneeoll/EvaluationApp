@@ -14,7 +14,7 @@
         </div>
         
         <div ng-if="!CanAttend">
-            <h3 style="color:blue; margin:10px 20px;">{{LastMsg}}</h3>
+            <h3 style="color:blue; margin:10px 20px;" compile="LastMsg"></h3>
         </div>
         <div ng-if="CanAns && curQuest" style="margin-top:20px;">
             <fieldset>
