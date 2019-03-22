@@ -12,6 +12,8 @@ var IsShowUpdateDetial = false; //false;
 //是否显示升级安装失败信息
 var IsShowUpdateInstalledErr = true;
 
+var LAST_PUBLISH_DATE = "2019-03-21 18:26";
+
 //新的测试页面控制，与 actionVisitServices, ESE_ACTION_UPDATE表配合使用
 //  $scope.canUseAction = function (action) {
 //     return actionVisitServices.canUseAction(action, $rootScope.accessEmployee.WorkdayNO);
@@ -166,6 +168,7 @@ var SETTING = {
 
 //语言
 var ZH_CN = {
+    LAST_PUBLISH_DATE:LAST_PUBLISH_DATE,
     common:{
         memo:"备注",
         Explain:"说明",
@@ -252,7 +255,8 @@ var ZH_CN = {
         changePassword: '修改密码',
         cancellation: '注销',
         signOut:'退出',
-        version:"软件版本："
+        version:"软件版本",
+        lastUpdate:"上次发布",
     },
     realName: {
         title: "请进行实名制认证",
@@ -545,7 +549,7 @@ var ZH_CN = {
         noFeeRecord:"没有扣费记录",
         dormMap:"宿舍地图",
         dormNotice:"宿舍公告",
-        dormNoticeProtocol:"入住需知",
+        dormNoticeProtocol:"入住须知",
         repairDorm:"宿舍报修",
         reissueKey:"补办钥匙",
         dormAddress:"具体地址",
@@ -680,6 +684,7 @@ var ZH_CN = {
 };
 
 var ZH_US = {
+    LAST_PUBLISH_DATE:LAST_PUBLISH_DATE,
     common:{
         memo:"memo",
         Explain:"explain",
@@ -766,7 +771,8 @@ var ZH_US = {
         changePassword: 'Change Password',
         cancellation: 'Log Out',
         signOut:'Sigh Out',
-        version: "Software Version："
+        version: "Software Version",
+        lastUpdate:"Last Publish",    
     },
     realName: {
         title: "Please finish the real-name authentication ",
@@ -1206,8 +1212,7 @@ String.prototype.formatParam = function(){
     return string;
 };
 
-var GLOBAL_INFO = {
-    LAST_PUBLISH_DATE: "2019-03-18",
+var GLOBAL_INFO = {    
     //keys
     KEY_ACT_GOOD_ID: "KEY_ActivityGood",
     KEY_ACT_GOOD_ITEMID: "KEY_ActivityGood_ITEMID",

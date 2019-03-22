@@ -517,7 +517,7 @@ angular.module('evaluationApp.adminControllers', [])
                 case "住房津贴":
                     $state.go('housingAllowance');
                     break;
-                case "入住需知":
+                case "入住须知":
                     $state.go('dormNoticeProtocol');
                     break;                    
                 case "宿舍申请":
