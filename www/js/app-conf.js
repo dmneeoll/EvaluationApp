@@ -12,7 +12,7 @@ var IsShowUpdateDetial = false; //false;
 //是否显示升级安装失败信息
 var IsShowUpdateInstalledErr = true;
 
-var LAST_PUBLISH_DATE = "2019-03-21 18:26";
+var LAST_PUBLISH_DATE = "2019-03-25 17:26";
 
 //新的测试页面控制，与 actionVisitServices, ESE_ACTION_UPDATE表配合使用
 //  $scope.canUseAction = function (action) {
@@ -560,7 +560,7 @@ var ZH_CN = {
         repairDormSucc:"您的报修申请成功！<br>请保持手机通讯畅通，以便联系",
         reissueKeySucc:"您的补办钥匙申请已经提交到宿舍管理组，后续请留意“我的信息”，查收最新进度通知",
         totalMoney:"总金额",
-        freeDormWifi:"免费WIFI申请",
+        freeDormWifi:"免费WIFI使用指引",
         dormAskAndAns:"宿舍常见问题",
         dormSuggest:"建议箱",
         yourSuggest:"您的建议",

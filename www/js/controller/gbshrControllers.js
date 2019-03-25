@@ -173,10 +173,10 @@ angular.module('evaluationApp.gbshrControllers', [])
     {
         //厂牌补办
         $scope.title = $rootScope.Language.certificate.reissueWorkingCard;
-        $scope.listReason = [
-            { name: "厂牌丢失（扣款10元/次）", value: "厂牌丢失" },
-            { name: "自然损坏", value: "自然损坏" }
-        ];
+        // $scope.listReason = [
+        //     { name: "厂牌丢失（扣款10元/次）", value: "厂牌丢失" },
+        //     { name: "自然损坏", value: "自然损坏" }
+        // ];
 
         var action = "CP";
         var paras = commonServices.getBaseParas();
@@ -186,17 +186,23 @@ angular.module('evaluationApp.gbshrControllers', [])
             CName: paras.CName,
             MobileNo: paras.MobileNo,
             Organization: paras.Organization,
-            Use: null
+            Use: '厂牌丢失'
         };
 
+        $scope.protocol = {
+            IsAggree:0
+        };
         $scope.Submit = function () {
-            if (!$scope.apply.Use || $scope.apply.Use == "") {
-                alertService.showAlert('请填写原因');
-                return;
-            }
-
+            // if (!$scope.apply.Use || $scope.apply.Use == "") {
+            //     alertService.showAlert('请填写原因');
+            //     return;
+            // }
             if ("" == $.trim($scope.apply.MobileNo)) {
                 alertService.showAlert('请填写联系电话');
+                return;
+            }
+            if (!$scope.protocol.IsAggree) {
+                alertService.showAlert('请先勾选捐款说明');
                 return;
             }
 

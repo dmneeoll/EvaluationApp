@@ -539,7 +539,7 @@ angular.module('evaluationApp.adminControllers', [])
                 case "补办钥匙":
                     $state.go('reissueKey');
                     break;
-                case "免费WIFI申请":
+                case "免费WIFI使用指引":
                     $state.go('freeDormWifi');
                     break;
                 case "宿舍常见问题":
@@ -1160,7 +1160,7 @@ angular.module('evaluationApp.adminControllers', [])
     .controller('FreeDormWifiCtrl', function ($scope, $rootScope, $state, $ionicHistory, $ionicPopup,
         commonServices, CacheFactory, alertService,externalLinksService) 
     {
-        //免费Wifi
+        //免费WIFI使用指引
         $scope.open = function (action) {
             switch (action) {
                 case "wifi_ios":

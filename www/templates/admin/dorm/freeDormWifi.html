@@ -1,4 +1,4 @@
-<!-- 免费WIFI申请 -->
+<!-- 免费WIFI使用指引 -->
 <ion-view view-title="{{Language.dormManage.freeDormWifi}}" cache-view="true" >
     <ion-content class="padding" scroll="true" overflow-scroll="true">
 
@@ -11,7 +11,7 @@
     </section>
     <p style="text-align: center;">
         <span style="font-size: 15px;">
-            <strong>伟创力厂区免费WIFI 帐号申请指南</strong>
+            <strong>伟创力厂区免费WIFI使用指引</strong>
         </span>
     </p>
     <p>
@@ -41,12 +41,12 @@
         <br/>
     </p>
     <p>
-        <a class="padding" href="#" style="font-size:16px" ng-click="open('wifi_android')">
+        <a class="padding" href="#" style="font-size:16px" ng-click="$event.preventDefault();open('wifi_android')">
             安卓(Android)系统使用指南
         </a>
     </p>
     <p>
-        <a class="padding" href="#" style="font-size:16px" ng-click="open('wifi_ios')">
+        <a class="padding" href="#" style="font-size:16px" ng-click="$event.preventDefault();open('wifi_ios')">
             苹果(ios)系统使用指南
         </a>
     </p>
