@@ -16,21 +16,20 @@
         </ion-slide-box>
         </div>
 
-        <div class="row" style="height:110px;text-align: center" ng-if="isSouthCamp">
-            <div id="yjzp" class="col col-25  positive-bg light " style="Margin:1px" ng-click="open('自评');">
+        <div class="row" style="height:110px;text-align: center">
+            <div id="yjzp" class="col col-25 mycard cardEval" style="Margin:1px" ng-click="open('自评');">
                 <div ng-if="accessEmployee.Segment_ID=='EF922594-5FB1-409E-A3D8-F7BC940AACD9'">        
-                    <ion-slide-box delegate-handle="slideImg" does-continue="true" auto-play="true" slide-interval="3500" show-pager="false">
+                    <!-- <ion-slide-box delegate-handle="slideImg" does-continue="true" auto-play="true" slide-interval="3500" show-pager="false">
                         <ion-slide>
                             <i style="font-size:50px;" class="ion-social-yen"></i>
                         </ion-slide>
                         <ion-slide>
                             <i style="font-size:50px;" class="icon ion-thumbsup"></i>
                         </ion-slide>
-                    </ion-slide-box>
+                    </ion-slide-box> -->
                     <div>{{Language.home.evaluation1}}</div>
                 </div>
                 <div ng-if="accessEmployee.Segment_ID!='EF922594-5FB1-409E-A3D8-F7BC940AACD9'">
-                    <i style="font-size:50px;" class="ion-document-text"></i>
                     <div>{{Language.home.evaluation}}</div>
                 </div>
             </div>
@@ -40,190 +39,101 @@
             <!--<div>园区春晚<span style="font-size: 10px" class="badge badge-assertive" style="font-size:10px;"  >中奖名单</span></div>-->
             <!--</div>-->
         
-            <div id="jdj" class="col col-25  balanced-bg light" style="Margin:1px" ng-click="open('金点子');">
-                <i style="font-size:50px;" class="ion-android-bulb"></i>
+            <div id="jdj" class="col col-25 mycard cardIdea" style="Margin:1px" ng-click="open('金点子');">
                 <div>{{Language.home.goldenidea}}</div>
             </div>
-            <div id="wtdz" class="col-25 calm-bg light " style="Margin:1px" ng-click="open('为TA点赞');">
-        
-                <i style="font-size:50px;" class="icon ion-thumbsup"></i>
+            <div id="wtdz" class="col-25 mycard cardThumb" style="Margin:1px" ng-click="open('为TA点赞');">
                 <div>{{Language.home.like}}</div>
             </div>
-            <div id="wyqz" class="col col calm-bg light" style="Margin:1px;" ng-click="open('我要求助');">
-        
-                <i style="font-size:50px;" class="ion-alert-circled"></i>
+            <div id="wyqz" class="col col mycard cardHelp" style="Margin:1px;" ng-click="open('我要求助');">        
                 <div>{{Language.home.help}} </div>
             </div>
         </div>
         <div class="row" style="height:110px;text-align: center">
-            <div id="kqcx" class="col col-25 calm-bg light"  style="Margin:1px" ng-click="open('考勤查询');">
-
-                <i style="font-size:50px;" class="icon ion-ios-time"></i>
+            <div id="kqcx" class="col col-25 mycard cardKqcx"  style="Margin:1px" ng-click="open('考勤查询');">
                 <div>{{Language.home.kqcx}}</div>
             </div>
-            <div id="xfcx" class="col col-25 positive-bg light" style="Margin:1px" ng-click="open('消费查询');">
-                <i style="font-size:50px;" class="icon ion-card" ></i>
+            <div id="xfcx" class="col col-25 mycard cardXfcx" style="Margin:1px" ng-click="open('消费查询');">
                 <div >{{Language.home.xfcx}} </div>
             </div>
             
-            <div class="col col-25 custom-og light" style="Margin:1px" ng-click="open('admin');">
-                    <i style="font-size:50px;" class="ion-ios-calendar"></i>
-                    <div>{{Language.home.admin}}
-                        <span STYLE="font-size: 10px" class="badge badge-assertive" ng-if="checkActionUpdate('admin')">New</span>
-                    </div>
-                    <div ng-if="isChineseLang">吃、住、行</div>
+            <div class="col col-25 mycard cardAdmin" style="Margin:1px" ng-click="open('admin');">
+                <div>{{Language.home.admin}}<br>
+                    <span ng-if="isChineseLang">吃、住、行</span>
+                    <span STYLE="font-size: 10px" class="badge badge-assertive" ng-if="checkActionUpdate('admin')">New</span>
+                </div>                    
             </div>
-            <div id="rxdh" class="col royal-bg light" style="Margin:1px" ng-click="open('热线电话');">
-
-                <i class="icon ion-ios-telephone" style="font-size:50px;"></i>
+            <div id="rxdh" class="col mycard cardHotline" style="Margin:1px" ng-click="open('热线电话');">
                 <div>{{Language.home.rexian}}</div>
             </div>
         </div>
         <div class="row" style="height:110px;text-align: center">
-            <div   class="col col-25 positive-bg light"  style="Margin:1px" ng-click="open('GBS');">
-                <i style="font-size:50px;" class="ion-android-list"></i>
+            <div   class="col col-25 mycard cardGBS"  style="Margin:1px" ng-click="open('GBS');">
                 <div>
                     {{Language.home.GBS}}
                     <span STYLE="font-size: 10px" class="badge badge-assertive" ng-if="checkActionUpdate('GBS')">New</span>
                 </div>
             </div>
 
-            <div class="col col-25 balanced-bg light" style="Margin:1px" ng-click="open('工会之窗');">            
-                <i style="font-size:50px;" class="icon ion-android-contacts"></i>
+            <div class="col col-25 mycard cardUnion" style="Margin:1px" ng-click="open('工会之窗');">            
                 <div>
                     {{Language.home.union}}
                     <span style="font-size: 10px" class="badge badge-assertive" ng-if="checkActionUpdate('工会之窗')">New</span>
                 </div>
             </div>
-            <div id="tzgg" class="col col-25 energized-bg light" style="Margin:1px" ng-click="open('园区公告');">            
-                <i style="font-size:50px;" class="icon ion-calendar"></i>
+            <div id="tzgg" class="col col-25 mycard cardNotice" style="Margin:1px" ng-click="open('园区公告');">            
                 <div>
-                    <p style="font-size:13px;">{{Language.home.gonggao}}</p>
+                    <span style="font-size:13px;">{{Language.home.gonggao}}</span><br>
                     <span class="badge badge-assertive">{{NoticeCount}}</span>
                 </div>
             </div>
 
-            <div class="col custom-bule1 light" style="Margin:1px;" ng-click="open('活动');">
-                <i style="font-size:50px;" class="icon ion-ios-people"></i>
+            <div class="col mycard cardActivity" style="Margin:1px;" ng-click="open('活动');">
                 <div>{{Language.home.activity}}
                     <span style="font-size: 10px" class="badge badge-assertive" ng-if="checkActionUpdate('活动')">New</span>
                     <span style="font-size: 10px" class="badge badge-assertive" ng-if="!checkActionUpdate('活动') && (activityUpdateCount>0)">{{activityUpdateCount}}</span>
                 </div>
             </div>
-
-            <!--<div id="B11Workshop"  class="col  positive-bg light"  style=";Margin-left:1px" ng-click="open('B11Workshop');">-->
-
-            <!--<div>B11 Workshop</div>-->
-            <!--<i style="font-size:50px;" class="ion-ios-bookmarks"></i>-->
-            <!--</div>-->
         </div>
         <div class="row" style="height:110px;text-align: center">
-            <div   class="col-25  calm-bg light"  style="Margin:1px" ng-click="open('shareCar');">
-                <i style="font-size:50px;" class="ion-model-s"></i>
+            <div   class="col-25 mycard cardShareCar"  style="Margin:1px" ng-click="open('shareCar');">
                 <div>{{Language.home.shareCar}}</div>
             </div>
 
-            <div  class="col col-25 positive-bg light"  style="Margin:1px" ng-click="open('失物招领');">
-                <i style="font-size:50px;" class="ion-ios-paw"></i>
+            <div  class="col col-25 mycard cardLostFound"  style="Margin:1px" ng-click="open('失物招领');">
                 <div>{{Language.GBSHR.LostFound}}</div>
             </div>
 
-            <div  class="col col-25 royal-bg light"  style="Margin:1px" ng-click="open('问卷调查');">
-                <i style="font-size:50px;" class="ion-clipboard"></i>
+            <div  class="col col-25 mycard cardResearch"  style="Margin:1px" ng-click="open('问卷调查');">
                 <div >{{Language.home.survey}}
                     <span STYLE="font-size: 10px" class="badge badge-assertive" ng-if="checkActionUpdate('问卷调查')">New</span>
                 </div>
             </div>
 
-            <div class="col positive-bg light"  style="Margin:1px" ng-click="open('MECH基金会');">
-                <i style="font-size:50px;" class="ion-heart"></i>
+            <div class="col mycard cardVolunteer"  style="Margin:1px" ng-click="open('MECH基金会');">
                 <div>{{Language.home.mechCharity}}</div>
             </div>
-
-            <!--<div  class="col-33  positive-bg light"  style=";Margin:1px" ng-click="open('B11Workshop');">-->
-
-            <!--<div>Workshop</div>-->
-            <!--<i style="font-size:50px;" class="ion-ios-bookmarks"></i>-->
-            <!--</div>-->
-
         </div>
         <div class="row" style="height:110px;text-align: center">
-            <div class="col col-25 custom-og light"  style="Margin:1px" ng-click="open('E-gate');">
-                <i style="font-size:50px;" class="ion-filing"></i>
-                <div>{{Language.home.egate}}</div>
-            </div>
-            <div class="col col-25 custom-bule1 light"  style="Margin:1px" ng-click="open('CSER');">
-                <i style="font-size:50px;" class="ion-leaf"></i>
+            <div class="col col-25 mycard cardCSER"  style="Margin:1px" ng-click="open('CSER');">
                 <div style="font-size:12px;">{{Language.home.CSER}}</div>
             </div>
-
-            <!--<div  class="col col-25 custom-bule1 light"  style=";Margin:1px" ng-click="open('报名');">-->
-
-                <!--<i style="font-size:50px;" class="ion-person-add"></i>-->
-                <!--<div >{{Language.home.apply}}</div>-->
-            <!--</div>-->
-
-            <div id="nbzp" class="col col-25  balanced-bg light" style="Margin:1px;" ng-click="open('内部招聘');">
-
-                <i style="font-size:50px;" class="icon ion-ios-paper"></i>
+            <div id="nbzp" class="col col-25 mycard cardZhaoping" style="Margin:1px;" ng-click="open('内部招聘');">
                 <div>{{Language.home.zhaoping}}</div>
-                <!--<div><img ng-src="img/nbzp.jpg" style="position:absolute;left:0px;top:0px;width:100%;height:100%; "></div>-->
-                <!--<img ng-src="img/nbzp.jpg" class="Size" >-->
             </div>
-            <div id="wyd" class="col custom-bule1 light" style="Margin:1px;" ng-click="open('问与答');">
-                <i style="font-size:50px;" class="icon ion-help-circled"></i>
+            <div id="wyd" class="col col-25 mycard cardFAQ" style="Margin:1px;" ng-click="open('问与答');">
                 <div>问与答</div>
             </div>
-
-            <!--<div class="col col custom-bule1 light"  style=";Margin:1px" ng-click="open('CSERCal');">-->
-
-                <!--<i style="font-size:50px;" class="ion-person-add"></i>-->
-                <!--<div>{{Language.CSER.title}}</div>-->
-            <!--</div>-->
-            <!--<div  class="col positive-bg light light"  style=";Margin:1px" ng-click="open('earthday');">-->
-
-                <!--<i style="font-size:50px;" class="ion-android-globe"></i>-->
-                <!--<div >{{Language.home.earthday}}<span style="font-size: 11px" class="badge badge-energized">New</span></div>-->
-            <!--</div>-->
-            <!--<div   class="col positive-bg light"  style="Margin:1px" ng-click="open('GBS');">-->
-                <!--<i style="font-size:50px;" class="ion-android-list"></i>-->
-                <!--<div>{{Language.home.GBS}}</div>-->
-            <!--</div>-->
-
-            <!--<div  class="col col custom-bule1 light"  style=";Margin:1px" ng-click="open('choujiang');">-->
-
-            <!--<i style="font-size:50px;" class="ion-person-add"></i>-->
-            <!--<div >抽奖</div>-->
-            <!--</div>-->            
-
+            <div class="col mycard cardContinue"  style="Margin:1px">
+                <div>{{Language.home.egate}}</div>
+            </div>
         </div>
 
         <div class="row" style="height:110px;text-align: center">
-        <div class="col col-25 custom-og light" style="Margin:1px" ng-if="canUseAction('testPage')" ng-click="open('testPage')">
+        <div class="col col-25 positive-bg light" style="Margin:1px" ng-if="canUseAction('testPage')" ng-click="open('testPage')">
             <i style="font-size:50px;" class="ion-android-bus"></i>
             <div>my test page</div>
         </div>
         </div>
-
-        <div class="row" style="height:110px;text-align: center;display: none" ng-if="Power">
-            <div  class="col col-25 assertive-bg light"  style="Margin:1px" ng-click="open('choujiang');">
-
-            <i style="font-size:50px;" class="ion-social-usd"></i>
-            <div >抽奖</div>
-            </div>
-            <div id="lts" class="col  custom-og light" style="Margin-left:2px;display: none" ng-click="open('拍照');">
-            <div>拍照</div>
-            <i style="font-size:40px;" class="icon ion-android-bus"></i>
-            </div>
-        </div>
-
-        <!--<div class="row" style="height:110px">-->
-
-        <!--<div id="lts" class="col  custom-og light" style="Margin-left:2px;" ng-click="open('灯光控制');">-->
-        <!--<div>灯光控制</div>-->
-        <!--<i style="font-size:40px;" class="icon ion-android-bus"></i>-->
-        <!--</div>-->
-        <!--</div>-->
-
     </ion-content>
 </ion-view>

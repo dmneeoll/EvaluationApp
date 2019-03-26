@@ -386,3 +386,78 @@ ul{
     opacity: 0.5;
     background: #CCC;
   }
+
+.mycard{
+    background-position-x: center;
+    background-position-y: 20%;
+    background-size: 45%;
+    background-repeat: no-repeat;    
+    border-bottom: #D9E2F3 1px inset;
+    border-right: #D9E2F3 1px inset;
+}
+.mycard > div{
+    margin-top: 62%;
+    font-size: 13px;
+}
+
+.cardEval {
+  background-image: url(../img/card/cardEval.png);
+}
+.cardIdea {
+  background-image: url(../img/card/cardIdea.png);
+}
+.cardThumb {
+  background-image: url(../img/card/cardThumb.png);
+}
+.cardHelp {
+  background-image: url(../img/card/cardHelp.png);
+}
+.cardKqcx {
+  background-image: url(../img/card/cardKqcx.png);
+}
+.cardXfcx {
+  background-image: url(../img/card/cardXfcx.png);
+}
+.cardAdmin {
+  background-image: url(../img/card/cardAdmin.png);
+}
+.cardHotline {
+  background-image: url(../img/card/cardHotline.png);
+}
+.cardGBS {
+  background-image: url(../img/card/cardGBS.png);
+}
+.cardUnion {
+  background-image: url(../img/card/cardUnion.png);
+}
+.cardNotice {
+  background-image: url(../img/card/cardNotice.png);
+}
+.cardActivity {
+  background-image: url(../img/card/cardActivity.png);
+}
+.cardShareCar {
+  background-image: url(../img/card/cardShareCar.png);
+}
+.cardLostFound {
+  background-image: url(../img/card/cardLostFound.png);
+}
+.cardResearch {
+  background-image: url(../img/card/cardResearch.png);
+}
+.cardVolunteer {
+  background-image: url(../img/card/cardVolunteer.png);
+}
+.cardCSER {
+  background-image: url(../img/card/cardCSER.png);
+}
+.cardZhaoping {
+  background-image: url(../img/card/cardZhaoping.png);
+}
+.cardFAQ {
+  background-image: url(../img/card/cardFAQ.png);
+}
+.cardContinue {
+  background-image: url(../img/card/cardContinue.png);
+}
+
