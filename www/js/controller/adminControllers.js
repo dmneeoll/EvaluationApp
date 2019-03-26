@@ -565,6 +565,7 @@ angular.module('evaluationApp.adminControllers', [])
         //住房津贴
         var paras= commonServices.getBaseParas();
         $scope.canSubmit=false;
+        $scope.hasAllowance=false;
         $scope.model = {
             SubmitGuid: duplicateSubmitServices.genGUID(),
             CName: paras.CName,
@@ -582,13 +583,19 @@ angular.module('evaluationApp.adminControllers', [])
             {name:"住宿", value:1},
             {name:"退宿", value:-1},
         ];
-        function GetEmpDate() {
+        function InitInfo() {
             var url = commonServices.getUrl("DormManageService.ashx", "GetEmpDate");
             commonServices.submit(paras, url).then(function (resp) {
                 if (resp) {
                     if(!resp.success){
-                        alertService.showAlert(resp.message);
-                        $ionicHistory.goBack();
+                        var his = JSON.parse(resp.data);
+                        if(his.HasAllowance>0){
+                            $scope.hasAllowance=true;
+                            $scope.EffDate=his.EffDate;
+                        }else{
+                            alertService.showAlert(resp.message);
+                            $ionicHistory.goBack();
+                        }
                     }else{                        
                         $scope.model.hiredDate = resp.obj.HireDate;
                         $scope.model.EmployeeType = resp.obj.EmployeeType;
@@ -597,13 +604,12 @@ angular.module('evaluationApp.adminControllers', [])
                             $scope.model.checkOutDate = resp.obj.CheckOutDate;
                         }
                         $scope.model.checkInState = checkInState;
-
                         $scope.canSubmit=true;
                     }
                 }
             });
         }
-        GetEmpDate();
+        InitInfo();
 
         $scope.isSumbiting = false;
         $scope.Submit = function () {
