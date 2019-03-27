@@ -1,139 +1,163 @@
-<ion-view view-title="{{Language.home.home}}" cache-view="false" >
-    <!--<ion-nav-buttons side="right">-->
-        <!--<button class="button button-clear button-icon ion-qr-scanner" ng-click="Scan()">扫一扫</button>-->
-    <!--</ion-nav-buttons>-->
-    <ion-content scroll="true" overflow-scroll="true">
+<ion-view view-title="{{Language.home.home}}" cache-view="false">
+  <!--<ion-nav-buttons side="right">-->
+  <!--<button class="button button-clear button-icon ion-qr-scanner" ng-click="Scan()">扫一扫</button>-->
+  <!--</ion-nav-buttons>-->
+  <ion-content scroll="true" overflow-scroll="true">
 
-        <ion-slide-box delegate-handle="homeSlide"  does-continue="true" auto-play="true" slide-interval="7000" show-pager="true" >
-            <ion-slide ng-repeat="img in homeSlideImg" ng-click="openNotice(img)">
-                <div style="position:relative;">
-                    <img  ng-src="{{img.imgUrl}}" >
-                   <div style="position:absolute; left:10px; top:135px"><span style="font-size: 12px;color:floralwhite;font-weight:bold">
-                       {{img.NoticeTitle}}</span></div>
-                </div>
-
-            </ion-slide>
-        </ion-slide-box>
+    <ion-slide-box delegate-handle="homeSlide" does-continue="true" auto-play="true" slide-interval="7000"
+      show-pager="true">
+      <ion-slide ng-repeat="img in homeSlideImg" ng-click="openNotice(img)">
+        <div style="position:relative;">
+          <img ng-src="{{img.imgUrl}}">
+          <div style="position:absolute; left:10px; top:135px"><span
+              style="font-size: 12px;color:floralwhite;font-weight:bold">
+              {{img.NoticeTitle}}</span></div>
         </div>
 
-        <div class="row" style="height:110px;text-align: center">
-            <div id="yjzp" class="col col-25 mycard cardEval" style="Margin:1px" ng-click="open('自评');">
-                <div ng-if="accessEmployee.Segment_ID=='EF922594-5FB1-409E-A3D8-F7BC940AACD9'">        
-                    <!-- <ion-slide-box delegate-handle="slideImg" does-continue="true" auto-play="true" slide-interval="3500" show-pager="false">
-                        <ion-slide>
-                            <i style="font-size:50px;" class="ion-social-yen"></i>
-                        </ion-slide>
-                        <ion-slide>
-                            <i style="font-size:50px;" class="icon ion-thumbsup"></i>
-                        </ion-slide>
-                    </ion-slide-box> -->
-                    <div>{{Language.home.evaluation1}}</div>
-                </div>
-                <div ng-if="accessEmployee.Segment_ID!='EF922594-5FB1-409E-A3D8-F7BC940AACD9'">
-                    <div>{{Language.home.evaluation}}</div>
-                </div>
-            </div>
-        
-            <!--<div  class="col col-25   assertive-bg light" style="Margin:1px;" ng-click="open('chunwan');">-->
-            <!--<i style="font-size:35px;" class="ion-easel"></i>-->
-            <!--<div>园区春晚<span style="font-size: 10px" class="badge badge-assertive" style="font-size:10px;"  >中奖名单</span></div>-->
-            <!--</div>-->
-        
-            <div id="jdj" class="col col-25 mycard cardIdea" style="Margin:1px" ng-click="open('金点子');">
-                <div>{{Language.home.goldenidea}}</div>
-            </div>
-            <div id="wtdz" class="col-25 mycard cardThumb" style="Margin:1px" ng-click="open('为TA点赞');">
-                <div>{{Language.home.like}}</div>
-            </div>
-            <div id="wyqz" class="col col mycard cardHelp" style="Margin:1px;" ng-click="open('我要求助');">        
-                <div>{{Language.home.help}} </div>
-            </div>
-        </div>
-        <div class="row" style="height:110px;text-align: center">
-            <div id="kqcx" class="col col-25 mycard cardKqcx"  style="Margin:1px" ng-click="open('考勤查询');">
-                <div>{{Language.home.kqcx}}</div>
-            </div>
-            <div id="xfcx" class="col col-25 mycard cardXfcx" style="Margin:1px" ng-click="open('消费查询');">
-                <div >{{Language.home.xfcx}} </div>
-            </div>
-            
-            <div class="col col-25 mycard cardAdmin" style="Margin:1px" ng-click="open('admin');">
-                <div>{{Language.home.admin}}<br>
-                    <span ng-if="isChineseLang">吃、住、行</span>
-                    <span STYLE="font-size: 10px" class="badge badge-assertive" ng-if="checkActionUpdate('admin')">New</span>
-                </div>                    
-            </div>
-            <div id="rxdh" class="col mycard cardHotline" style="Margin:1px" ng-click="open('热线电话');">
-                <div>{{Language.home.rexian}}</div>
-            </div>
-        </div>
-        <div class="row" style="height:110px;text-align: center">
-            <div   class="col col-25 mycard cardGBS"  style="Margin:1px" ng-click="open('GBS');">
-                <div>
-                    {{Language.home.GBS}}
-                    <span STYLE="font-size: 10px" class="badge badge-assertive" ng-if="checkActionUpdate('GBS')">New</span>
-                </div>
-            </div>
+      </ion-slide>
+    </ion-slide-box>
+    </div>
 
-            <div class="col col-25 mycard cardUnion" style="Margin:1px" ng-click="open('工会之窗');">            
-                <div>
-                    {{Language.home.union}}
-                    <span style="font-size: 10px" class="badge badge-assertive" ng-if="checkActionUpdate('工会之窗')">New</span>
-                </div>
-            </div>
-            <div id="tzgg" class="col col-25 mycard cardNotice" style="Margin:1px" ng-click="open('园区公告');">            
-                <div>
-                    <span style="font-size:13px;">{{Language.home.gonggao}}</span><br>
-                    <span class="badge badge-assertive">{{NoticeCount}}</span>
-                </div>
-            </div>
-
-            <div class="col mycard cardActivity" style="Margin:1px;" ng-click="open('活动');">
-                <div>{{Language.home.activity}}
-                    <span style="font-size: 10px" class="badge badge-assertive" ng-if="checkActionUpdate('活动')">New</span>
-                    <span style="font-size: 10px" class="badge badge-assertive" ng-if="!checkActionUpdate('活动') && (activityUpdateCount>0)">{{activityUpdateCount}}</span>
-                </div>
-            </div>
+    <div class="row" style="height:110px;text-align: center">
+      <div id="yjzp" class="col col-25 mycard" style="Margin:1px" ng-click="open('自评');">
+        <img src="../img/card/cardEval.png" />
+        <div ng-if="accessEmployee.Segment_ID=='EF922594-5FB1-409E-A3D8-F7BC940AACD9'">
+          <!-- <ion-slide-box delegate-handle="slideImg" does-continue="true" auto-play="true" slide-interval="3500" show-pager="false">
+                    <ion-slide>
+                        <i style="font-size:50px;" class="ion-social-yen"></i>
+                    </ion-slide>
+                    <ion-slide>
+                        <i style="font-size:50px;" class="icon ion-thumbsup"></i>
+                    </ion-slide>
+                </ion-slide-box> -->
+          <div>{{Language.home.evaluation1}}</div>
         </div>
-        <div class="row" style="height:110px;text-align: center">
-            <div   class="col-25 mycard cardShareCar"  style="Margin:1px" ng-click="open('shareCar');">
-                <div>{{Language.home.shareCar}}</div>
-            </div>
-
-            <div  class="col col-25 mycard cardLostFound"  style="Margin:1px" ng-click="open('失物招领');">
-                <div>{{Language.GBSHR.LostFound}}</div>
-            </div>
-
-            <div  class="col col-25 mycard cardResearch"  style="Margin:1px" ng-click="open('问卷调查');">
-                <div >{{Language.home.survey}}
-                    <span STYLE="font-size: 10px" class="badge badge-assertive" ng-if="checkActionUpdate('问卷调查')">New</span>
-                </div>
-            </div>
-
-            <div class="col mycard cardVolunteer"  style="Margin:1px" ng-click="open('MECH基金会');">
-                <div>{{Language.home.mechCharity}}</div>
-            </div>
+        <div ng-if="accessEmployee.Segment_ID!='EF922594-5FB1-409E-A3D8-F7BC940AACD9'">
+          <div>{{Language.home.evaluation}}</div>
         </div>
-        <div class="row" style="height:110px;text-align: center">
-            <div class="col col-25 mycard cardCSER"  style="Margin:1px" ng-click="open('CSER');">
-                <div style="font-size:12px;">{{Language.home.CSER}}</div>
-            </div>
-            <div id="nbzp" class="col col-25 mycard cardZhaoping" style="Margin:1px;" ng-click="open('内部招聘');">
-                <div>{{Language.home.zhaoping}}</div>
-            </div>
-            <div id="wyd" class="col col-25 mycard cardFAQ" style="Margin:1px;" ng-click="open('问与答');">
-                <div>问与答</div>
-            </div>
-            <div class="col mycard cardContinue"  style="Margin:1px">
-                <div>{{Language.home.egate}}</div>
-            </div>
-        </div>
+      </div>
 
-        <div class="row" style="height:110px;text-align: center">
-        <div class="col col-25 positive-bg light" style="Margin:1px" ng-if="canUseAction('testPage')" ng-click="open('testPage')">
-            <i style="font-size:50px;" class="ion-android-bus"></i>
-            <div>my test page</div>
+      <!--<div  class="col col-25   assertive-bg light" style="Margin:1px;" ng-click="open('chunwan');">-->
+      <!--<i style="font-size:35px;" class="ion-easel"></i>-->
+      <!--<div>园区春晚<span style="font-size: 10px" class="badge badge-assertive" style="font-size:10px;"  >中奖名单</span></div>-->
+      <!--</div>-->
+
+      <div id="jdj" class="col col-25 mycard" style="Margin:1px" ng-click="open('金点子');">
+        <img src="../img/card/cardIdea.png" />
+        <div>{{Language.home.goldenidea}}</div>
+      </div>
+      <div id="wtdz" class="col col-25 mycard" style="Margin:1px" ng-click="open('为TA点赞');">
+        <img src="../img/card/cardThumb.png" />
+        <div>{{Language.home.like}}</div>
+      </div>
+      <div id="wyqz" class="col mycard" style="Margin:1px;" ng-click="open('我要求助');">
+        <img src="../img/card/cardHelp.png" />
+        <div>{{Language.home.help}} </div>
+      </div>
+    </div>
+    <div class="row" style="height:110px;text-align: center">
+      <div id="kqcx" class="col col-25 mycard" style="Margin:1px" ng-click="open('考勤查询');">
+        <img src="../img/card/cardKqcx.png" />
+        <div>{{Language.home.kqcx}}</div>
+      </div>
+      <div id="xfcx" class="col col-25 mycard" style="Margin:1px" ng-click="open('消费查询');">
+        <img src="../img/card/cardXfcx.png" />
+        <div>{{Language.home.xfcx}} </div>
+      </div>
+
+      <div class="col col-25 mycard" style="Margin:1px" ng-click="open('admin');">
+        <img src="../img/card/cardAdmin.png" />
+        <div>{{Language.home.admin}}<br>
+          <span ng-if="isChineseLang">吃、住、行</span>
+          <span STYLE="font-size: 10px" class="badge badge-assertive" ng-if="checkActionUpdate('admin')">New</span>
         </div>
+      </div>
+      <div id="rxdh" class="col mycard" style="Margin:1px" ng-click="open('热线电话');">
+        <img src="../img/card/cardHotline.png" />
+        <div>{{Language.home.rexian}}</div>
+      </div>
+    </div>
+    <div class="row" style="height:110px;text-align: center">
+      <div class="col col-25 mycard" style="Margin:1px" ng-click="open('GBS');">
+        <img src="../img/card/cardGBS.png" />
+        <div>
+          {{Language.home.GBS}}
+          <span STYLE="font-size: 10px" class="badge badge-assertive" ng-if="checkActionUpdate('GBS')">New</span>
         </div>
-    </ion-content>
+      </div>
+
+      <div class="col col-25 mycard" style="Margin:1px" ng-click="open('工会之窗');">
+        <img src="../img/card/cardUnion.png" />
+        <div>
+          {{Language.home.union}}
+          <span style="font-size: 10px" class="badge badge-assertive" ng-if="checkActionUpdate('工会之窗')">New</span>
+        </div>
+      </div>
+      <div id="tzgg" class="col col-25 mycard" style="Margin:1px" ng-click="open('园区公告');">
+        <img src="../img/card/cardNotice.png" />
+        <div>
+          <span style="font-size:13px;">{{Language.home.gonggao}}</span><br>
+          <span class="badge badge-assertive">{{NoticeCount}}</span>
+        </div>
+      </div>
+
+      <div class="col mycard" style="Margin:1px;" ng-click="open('活动');">
+        <img src="../img/card/cardActivity.png" />
+        <div>{{Language.home.activity}}
+          <span style="font-size: 10px" class="badge badge-assertive" ng-if="checkActionUpdate('活动')">New</span>
+          <span style="font-size: 10px" class="badge badge-assertive"
+            ng-if="!checkActionUpdate('活动') && (activityUpdateCount>0)">{{activityUpdateCount}}</span>
+        </div>
+      </div>
+    </div>
+    <div class="row" style="height:110px;text-align: center">      
+      <div class="col col-25 mycard" style="Margin:1px" ng-click="open('shareCar');">
+            <img src="../img/card/cardShareCar.png" />
+        <div>{{Language.home.shareCar}}</div>
+      </div>
+
+      <div class="col col-25 mycard" style="Margin:1px" ng-click="open('失物招领');">
+        <img src="../img/card/cardLostFound.png" />
+        <div>{{Language.GBSHR.LostFound}}</div>
+      </div>
+
+      <div class="col col-25 mycard" style="Margin:1px" ng-click="open('问卷调查');">
+        <img src="../img/card/cardResearch.png" />
+        <div>{{Language.home.survey}}
+          <span STYLE="font-size: 10px" class="badge badge-assertive" ng-if="checkActionUpdate('问卷调查')">New</span>
+        </div>
+      </div>
+
+      <div class="col mycard" style="Margin:1px" ng-click="open('MECH基金会');">
+        <img src="../img/card/cardVolunteer.png" />
+        <div>{{Language.home.mechCharity}}</div>
+      </div>
+    </div>
+    <div class="row" style="height:110px;text-align: center">
+      <div class="col col-25 mycard" style="Margin:1px" ng-click="open('CSER');">
+        <img src="../img/card/cardCSER.png" />
+        <div style="font-size:12px;">{{Language.home.CSER}}</div>
+      </div>
+      <div id="nbzp" class="col col-25 mycard" style="Margin:1px;" ng-click="open('内部招聘');">
+        <img src="../img/card/cardZhaoping.png" />
+        <div>{{Language.home.zhaoping}}</div>
+      </div>
+      <div id="wyd" class="col col-25 mycard" style="Margin:1px;" ng-click="open('问与答');">
+        <img src="../img/card/cardFAQ.png" />
+        <div>问与答</div>
+      </div>
+      <div class="col mycard" style="Margin:1px">
+        <img src="../img/card/cardContinue.png" />
+        <div>{{Language.home.continue}}</div>
+      </div>
+    </div>
+
+    <div class="row" style="height:110px;text-align: center">
+      <div class="col col-25 positive-bg light" style="Margin:1px" ng-if="canUseAction('testPage')"
+        ng-click="open('testPage')">
+        <i style="font-size:50px;" class="ion-android-bus"></i>
+        <div>my test page</div>
+      </div>
+    </div>
+  </ion-content>
 </ion-view>

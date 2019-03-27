@@ -517,7 +517,7 @@ angular.module('evaluationApp.adminControllers', [])
                 case "住房津贴":
                     $state.go('housingAllowance');
                     break;
-                case "入住需知":
+                case "入住须知":
                     $state.go('dormNoticeProtocol');
                     break;                    
                 case "宿舍申请":
@@ -539,7 +539,7 @@ angular.module('evaluationApp.adminControllers', [])
                 case "补办钥匙":
                     $state.go('reissueKey');
                     break;
-                case "免费WIFI申请":
+                case "免费WIFI使用指引":
                     $state.go('freeDormWifi');
                     break;
                 case "宿舍常见问题":
@@ -565,6 +565,7 @@ angular.module('evaluationApp.adminControllers', [])
         //住房津贴
         var paras= commonServices.getBaseParas();
         $scope.canSubmit=false;
+        $scope.hasAllowance=false;
         $scope.model = {
             SubmitGuid: duplicateSubmitServices.genGUID(),
             CName: paras.CName,
@@ -582,13 +583,19 @@ angular.module('evaluationApp.adminControllers', [])
             {name:"住宿", value:1},
             {name:"退宿", value:-1},
         ];
-        function GetEmpDate() {
+        function InitInfo() {
             var url = commonServices.getUrl("DormManageService.ashx", "GetEmpDate");
             commonServices.submit(paras, url).then(function (resp) {
                 if (resp) {
                     if(!resp.success){
-                        alertService.showAlert(resp.message);
-                        $ionicHistory.goBack();
+                        var his = JSON.parse(resp.data);
+                        if(his && his.HasAllowance>0){
+                            $scope.hasAllowance=true;
+                            $scope.EffDate=his.EffDate;
+                        }else{
+                            alertService.showAlert(resp.message);
+                            $ionicHistory.goBack();
+                        }
                     }else{                        
                         $scope.model.hiredDate = resp.obj.HireDate;
                         $scope.model.EmployeeType = resp.obj.EmployeeType;
@@ -597,13 +604,12 @@ angular.module('evaluationApp.adminControllers', [])
                             $scope.model.checkOutDate = resp.obj.CheckOutDate;
                         }
                         $scope.model.checkInState = checkInState;
-
                         $scope.canSubmit=true;
                     }
                 }
             });
         }
-        GetEmpDate();
+        InitInfo();
 
         $scope.isSumbiting = false;
         $scope.Submit = function () {
@@ -1160,7 +1166,7 @@ angular.module('evaluationApp.adminControllers', [])
     .controller('FreeDormWifiCtrl', function ($scope, $rootScope, $state, $ionicHistory, $ionicPopup,
         commonServices, CacheFactory, alertService,externalLinksService) 
     {
-        //免费Wifi
+        //免费WIFI使用指引
         $scope.open = function (action) {
             switch (action) {
                 case "wifi_ios":
@@ -1213,6 +1219,7 @@ angular.module('evaluationApp.adminControllers', [])
                     if (resp.success) {
                         $scope.hisSuggest = resp.list;
                     }
+                    $scope.dormAreas = JSON.parse(resp.data);
                 }
             });
         }
@@ -1223,7 +1230,8 @@ angular.module('evaluationApp.adminControllers', [])
             CName: baseInfo.CName,
             WorkdayNO: baseInfo.WorkdayNO,
             MobileNo: baseInfo.MobileNo,
-            Suggest: ""
+            Suggest: "",
+            DormArea:null
         };
         $scope.GetSuggest = function(){
             var txt = $.trim($scope.model.Suggest);
@@ -1233,6 +1241,11 @@ angular.module('evaluationApp.adminControllers', [])
         $scope.isSumbiting = false;
         $scope.Submit = function () {
             $scope.isSumbiting = true;
+            if (!$scope.model.DormArea) {
+                alertService.showAlert("请选择宿舍区!");
+                $scope.isSumbiting = false;
+                return;
+            }
             var sugg = $scope.GetSuggest();
             if (sugg.length<3) {
                 alertService.showAlert("请填写你的建议!");

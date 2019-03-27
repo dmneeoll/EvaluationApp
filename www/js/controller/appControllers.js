@@ -82,9 +82,8 @@ angular.module('evaluationApp.appControllers', [])
         $scope.checkWorkday = '23328424565765889534562582566117';
         $scope.isSouthCamp = isSouthCamp($rootScope.accessEmployee.Organization);
         $scope.isChineseLang = isChineseLang($rootScope);
-    console.log(parameter);
-//
-//
+        console.log(parameter);
+
        $rootScope.Power=$scope.checkWorkday.indexOf( $rootScope.accessEmployee.WorkdayNO)!=-1;
 
 //        var url=commonServices.getUrl("MsgService.ashx","GetIsIn38ActivityName");
@@ -223,6 +222,8 @@ angular.module('evaluationApp.appControllers', [])
             };
 
             $rootScope.updateMsgCount();
+
+            $rootScope.NoticeCount=''; //TODO
 
             $rootScope.updateSlideBox=function(){
                 $ionicSlideBoxDelegate.$getByHandle("homeSlide").next();
@@ -499,7 +500,6 @@ angular.module('evaluationApp.appControllers', [])
                     alertService.showAlert('请输入工号');
                 else
                     alertService.showAlert('Please enter the employeeid');
-
                 return false;
             };
             if(isEmptyString(passmodels.CName)) {

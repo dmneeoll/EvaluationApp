@@ -244,6 +244,15 @@ angular.module('evaluationApp.router', [])
                     }
                 }
             })
+            .state('tab.noticeList', {
+                url: '/noticeList',
+                views: {
+                    'noticeList': {
+                        templateUrl: 'templates/notice/notice-list.html',
+                        controller: 'NoticeListCtrl'
+                    }
+                }
+            })
 
             .state('tab.404', {
                 url: '/404',

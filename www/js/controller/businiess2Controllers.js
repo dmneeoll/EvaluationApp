@@ -10,6 +10,9 @@ angular.module('evaluationApp.businiess2Controllers', [])
         $scope.canUseAction = function (action) {
             return actionVisitServices.canUseAction(action, $rootScope.accessEmployee.WorkdayNO);
         };
+        $scope.checkActionUpdate = function (action) {
+            return actionVisitServices.checkUpdate(action);
+        };
 
         $scope.isSouthCamp = isSouthCamp($scope.accessEmployee.Organization); 
         $scope.openActivityGood = function(actID){

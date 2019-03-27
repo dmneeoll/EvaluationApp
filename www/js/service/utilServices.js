@@ -5,7 +5,7 @@
 angular.module('evaluationApp.utilServices', ['ionic.native'])
   .service('UrlServices', function ($state, alertService, CacheFactory) 
   {
-    //打开外链
+    //调用浏览器打开外链
     var openForeignUrl = function (url) {
       url = url.toLocaleLowerCase();
       if (0 != url.indexOf("http")) {

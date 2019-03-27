@@ -657,14 +657,31 @@ angular.module('evaluationApp.appServices', [])
                 }
             });
         };
+        var isTesting = function(actName, workNo) {
+            var serUpdate = FindByActName(self.serverUpdate, actName);
+            if (!serUpdate || !workNo) {
+                return false;
+            } 
+            if(serUpdate.IsTesting && serUpdate.TestingAccount) {
+                for(var i=0; i<serUpdate.TestingAccount.length; i++){
+                    if (workNo == serUpdate.TestingAccount[i]) {
+                        return true;
+                    }
+                }
+                return false;
+            }
+            return false;
+        }
         var canUseAction = function(actName, workNo) {
             var serUpdate = FindByActName(self.serverUpdate, actName);
             if (!serUpdate || !workNo) {
                 return false;
-            } else if (serUpdate.IsTesting && serUpdate.TestingAccount) {
-                for(var i=0; i<serUpdate.TestingAccount.length; i++){
-                    if (workNo == serUpdate.TestingAccount[i]) {
-                        return true;
+            } else if (serUpdate.IsTesting) {
+                if(serUpdate.TestingAccount){
+                    for(var i=0; i<serUpdate.TestingAccount.length; i++){
+                        if (workNo == serUpdate.TestingAccount[i]) {
+                            return true;
+                        }
                     }
                 }
                 return false;
@@ -679,7 +696,8 @@ angular.module('evaluationApp.appServices', [])
             loadServerUpdate: loadServerUpdate,
             getActivityUpdateCount: getActivityUpdateCount,
             getOutDateActivity: getOutDateActivity,
-            canUseAction: canUseAction
+            canUseAction: canUseAction,
+            isTesting: isTesting,
         };
     })
     .service('duplicateSubmitServices', function () {

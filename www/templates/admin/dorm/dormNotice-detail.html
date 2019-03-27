@@ -1,9 +1,10 @@
 <!-- 宿舍公告 详情 -->
-<ion-view view-title="" cache-view="false">
-
+<ion-view cache-view="false">
+    <ion-nav-title>
+        {{curNotice.NoticeTitle}}
+    </ion-nav-title>    
     <ion-content class="padding" scroll="true" overflow-scroll="true">
-        <h3>{{curNotice.NoticeTitle}}</h3>
-        <br>
+        <!-- <h3>{{curNotice.NoticeTitle}}</h3><br> -->
         <div id="div_html"></div>
         <br>
         <div class="row">

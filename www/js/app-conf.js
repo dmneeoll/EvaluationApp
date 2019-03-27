@@ -12,6 +12,8 @@ var IsShowUpdateDetial = false; //false;
 //是否显示升级安装失败信息
 var IsShowUpdateInstalledErr = true;
 
+var LAST_PUBLISH_DATE = "2019-03-27 15:00";
+
 //新的测试页面控制，与 actionVisitServices, ESE_ACTION_UPDATE表配合使用
 //  $scope.canUseAction = function (action) {
 //     return actionVisitServices.canUseAction(action, $rootScope.accessEmployee.WorkdayNO);
@@ -165,6 +167,7 @@ var SETTING = {
 
 //语言
 var ZH_CN = {
+    LAST_PUBLISH_DATE:LAST_PUBLISH_DATE,
     common:{
         memo:"备注",
         Explain:"说明",
@@ -210,14 +213,14 @@ var ZH_CN = {
     },
     tab:{
         home:"首页",
-        myMsg:"我的消息",
-        myFlex:"我的Flex+",
+        notice:"通知",
+        myMsg:"消息",
+        myFlex:"我的",
         msgTitle:"通知消息"
-
     },
     home: {
         home:"首页",
-        evaluation:"自 评",
+        evaluation:"有奖自评",
         evaluation1:"有奖自评",
         goldenidea:"金点子",
         like:"为TA点赞",
@@ -239,9 +242,10 @@ var ZH_CN = {
         admin:"行政",
         earthday:"地球周",
         dormManage:"宿舍管理",
-        union:"工会之窗",
-        mechCharity:"MECH基金会",
+        union:"员工之家", //工会
+        mechCharity:"志愿者",
         CSER:"CSER企业社会环境责任",
+        continue:"敬请期待...",
     },
     myFlex:{
         employee_ID: "工号",
@@ -251,7 +255,8 @@ var ZH_CN = {
         changePassword: '修改密码',
         cancellation: '注销',
         signOut:'退出',
-        version:"软件版本："
+        version:"软件版本",
+        lastUpdate:"上次发布",
     },
     realName: {
         title: "请进行实名制认证",
@@ -528,7 +533,7 @@ var ZH_CN = {
         noFeeRecord:"没有扣费记录",
         dormMap:"宿舍地图",
         dormNotice:"宿舍公告",
-        dormNoticeProtocol:"入住需知",
+        dormNoticeProtocol:"入住须知",
         repairDorm:"宿舍报修",
         reissueKey:"补办钥匙",
         dormAddress:"具体地址",
@@ -539,7 +544,7 @@ var ZH_CN = {
         repairDormSucc:"您的报修申请成功！<br>请保持手机通讯畅通，以便联系",
         reissueKeySucc:"您的补办钥匙申请已经提交到宿舍管理组，后续请留意“我的信息”，查收最新进度通知",
         totalMoney:"总金额",
-        freeDormWifi:"免费WIFI申请",
+        freeDormWifi:"免费WIFI使用指引",
         dormAskAndAns:"宿舍常见问题",
         dormSuggest:"建议箱",
         yourSuggest:"您的建议",
@@ -663,6 +668,7 @@ var ZH_CN = {
 };
 
 var ZH_US = {
+    LAST_PUBLISH_DATE:LAST_PUBLISH_DATE,
     common:{
         memo:"memo",
         Explain:"explain",
@@ -708,14 +714,14 @@ var ZH_US = {
     },
     tab:{
         home:"Home Page",
-        myMsg:"My Information",
-        myFlex:"My Flex+",
+        notice:"Notice",
+        myMsg:"Message",
+        myFlex:"My",
         msgTitle:"Announcement"
-
     },
     home: {
         home:"Home Page",
-        evaluation:"Self- Evaluate",
+        evaluation:"Self-Evaluate",
         evaluation1:" Self-Appraisal ",
         goldenidea:"Golden Idea",
         like:" Thumb Up for “Him/Her” ",
@@ -738,8 +744,9 @@ var ZH_US = {
         earthday:"Earth Week",
         dormManage:"Dormitory Management",
         union:"Flex Union",
-        mechCharity:"MECH Charity",
+        mechCharity:"Volunteer",
         CSER:"CSER",
+        continue:"Building...",
     },
     myFlex:{
         employee_ID: "Employee ID",
@@ -749,7 +756,8 @@ var ZH_US = {
         changePassword: 'Change Password',
         cancellation: 'Log Out',
         signOut:'Sigh Out',
-        version: "Software Version："
+        version: "Software Version",
+        lastUpdate:"Last Publish",    
     },
     realName: {
         title: "Please finish the real-name authentication ",
@@ -1173,8 +1181,7 @@ String.prototype.formatParam = function(){
     return string;
 };
 
-var GLOBAL_INFO = {
-    LAST_PUBLISH_DATE: "2019-02-11",
+var GLOBAL_INFO = {    
     //keys
     KEY_ACT_GOOD_ID: "KEY_ActivityGood",
     KEY_ACT_GOOD_ITEMID: "KEY_ActivityGood_ITEMID",
