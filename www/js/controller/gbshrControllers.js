@@ -202,7 +202,7 @@ angular.module('evaluationApp.gbshrControllers', [])
                 return;
             }
             if (!$scope.protocol.IsAggree) {
-                alertService.showAlert('请先勾选捐款说明');
+                alertService.showAlert('请先勾选扣款说明');
                 return;
             }
 

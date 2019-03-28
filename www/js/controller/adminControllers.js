@@ -589,7 +589,7 @@ angular.module('evaluationApp.adminControllers', [])
                 if (resp) {
                     if(!resp.success){
                         var his = JSON.parse(resp.data);
-                        if(his.HasAllowance>0){
+                        if(his && his.HasAllowance>0){
                             $scope.hasAllowance=true;
                             $scope.EffDate=his.EffDate;
                         }else{
