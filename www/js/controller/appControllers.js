@@ -484,8 +484,8 @@ angular.module('evaluationApp.appControllers', [])
         else
             $scope.btnText='Get the verifying code';
 
-        $scope.getSecurityCode=function(passmodels){
-
+        $scope.getSecurityCode=function(passmodels, event){
+            event.preventDefault();
             if(!isValidMobile(passmodels.mobile)) {
                 if($rootScope.Language==ZH_CN)
                     alertService.showAlert('请输入正确的手机号');
@@ -509,12 +509,10 @@ angular.module('evaluationApp.appControllers', [])
                 return false;
             };
 
-
+            $scope.isSending=true;
             commonServices.getSecurityCode({WorkdayNo:passmodels.workdayNo,CName:passmodels.CName,Mobile:passmodels.mobile}).then(function (response) {
-
+                
                 if (response.success) {
-                    var oBtn = document.getElementById('btnSecurity');
-                    oBtn.disabled = 'disabled';
                     var i=60;
                     $ionicLoading.show({ template: '验证码已发送', noBackdrop: true, duration: 2000 });
                     var id= setInterval(function(){
@@ -525,15 +523,15 @@ angular.module('evaluationApp.appControllers', [])
                         if(i==0){
                             $scope.$apply(function(){
                                 $scope.btnText='获取验证码';
+                                $scope.isSending=false;
                             });
-                            oBtn.disabled=false;
                             clearInterval(id);
                         };
                     },1000);//1000为1秒钟
-
                 }
                 else  {
                     alertService.showAlert( response.message);
+                    $scope.isSending=false;
                 }
             });
         };
@@ -617,7 +615,6 @@ angular.module('evaluationApp.appControllers', [])
     })
     .controller('ForgetPswCtrl',  function($scope,$location,$ionicLoading,alertService,commonServices) {
 
-
         $scope.passmodels = {
             workdayNo:null,
             mobile: null,
@@ -631,12 +628,11 @@ angular.module('evaluationApp.appControllers', [])
             $location.path('signin');
         };
 
-        $scope.getSecurityCode=function(passmodels){
-
+        $scope.getSecurityCode=function(passmodels, event){
+            event.preventDefault();
+            $scope.isSending=true;
             commonServices.getForgetPswSecurityCode({WorkdayNo:passmodels.workdayNo,Mobile:passmodels.mobile}).then(function (response) {
                 if (response.success) {
-                    var oBtn = document.getElementById('btnSecurity');
-                    oBtn.disabled=true;
                     var i=60;
                     $ionicLoading.show({ template: '已发送验证码到登记的手机号码上！', noBackdrop: true, duration: 2000 });
                     var id= setInterval(function(){
@@ -648,14 +644,15 @@ angular.module('evaluationApp.appControllers', [])
                         if(i==0){
                             $scope.$apply(function(){
                                 $scope.btnText='获取验证码';
+                                $scope.isSending=false;
                             });
-                            oBtn.disabled=false;
                             clearInterval(id);
                         };
                     },1000);//1000为1秒钟
                 }
                 else  {
                     alertService.showAlert(  response.message);
+                    $scope.isSending=false;
                 }
             });
         };
@@ -729,7 +726,9 @@ angular.module('evaluationApp.appControllers', [])
             $location.path('signin');
         };
 
-        $scope.getSecurityCode = function() {
+        $scope.getSecurityCode = function(event) {
+            event.preventDefault();
+            $scope.isSending=true;
             var workdayNo = $.trim($scope.rebindModels.workdayNo);
             var mobile = $.trim($scope.rebindModels.mobile)
             $scope.rebindModels.workdayNo = workdayNo;
@@ -737,8 +736,6 @@ angular.module('evaluationApp.appControllers', [])
 
             commonServices.getPhoneSecurityCode({WorkdayNo:workdayNo, Mobile:mobile}).then(function (response) {
                 if (response.success) {
-                    var oBtn = document.getElementById('btnSecurity');
-                    oBtn.disabled = true;
                     var i = 60;
                     $ionicLoading.show({ template: '已发送验证码到指定的手机号码上！', noBackdrop: true, duration: 2000 });
                     var id = setInterval(function () {
@@ -750,14 +747,15 @@ angular.module('evaluationApp.appControllers', [])
                         if (i == 0) {
                             $scope.$apply(function () {
                                 $scope.btnText = '获取验证码';
-                            });
-                            oBtn.disabled = false;
+                                $scope.isSending=false;
+                            });                            
                             clearInterval(id);
                         };
                     }, 1000);//1000为1秒钟
                 }
                 else {
                     alertService.showAlert(response.message);
+                    $scope.isSending=false;
                 }
             });
         };

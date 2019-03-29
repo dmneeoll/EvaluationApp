@@ -19,7 +19,8 @@
                 </label>
                 <div class="item item-button-right item-input">
                     <input type="text" placeholder="{{Language.register.mobile}}" ng-model="passmodels.mobile"/>
-                    <button id="btnSecurity" class="button button-calm" ng-click="getSecurityCode(passmodels)"> {{btnText}} </button>
+                    <button id="btnSecurity" class="button button-calm" ng-disabled="isSending"
+                        ng-click="getSecurityCode(passmodels, $event)"> {{btnText}} </button>
                 </div>
 
                 <label class="item item-input ">
