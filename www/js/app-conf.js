@@ -12,7 +12,7 @@ var IsShowUpdateDetial = false; //false;
 //是否显示升级安装失败信息
 var IsShowUpdateInstalledErr = true;
 
-var LAST_PUBLISH_DATE = "2019-03-29 15:01";
+var LAST_PUBLISH_DATE = "2019-04-02 19:50";
 
 //新的测试页面控制，与 actionVisitServices, ESE_ACTION_UPDATE表配合使用
 //  $scope.canUseAction = function (action) {
@@ -511,7 +511,7 @@ var ZH_CN = {
         designer:"作者",
         desc:"主要事迹",
         designConcept: "设计理念",
-        PoetryTitle:"伟创力诗词大赛在线有奖答题",
+        PoetryTitle:"地球周环保知识竞赛有奖答题",
         StartButton:"开始答题",
         RemainSec:"剩余时间",
         OkNextButton:"答题",
@@ -1025,7 +1025,7 @@ var ZH_US = {
         designer:"Author",
         desc:"Describe",
         designConcept: "Design Concept",
-        PoetryTitle:"Flex Poetry Contest",
+        PoetryTitle:"Earth Day Environmental knowledge contest",
         StartButton:"Start",
         RemainSec:"Remaining",
         OkNextButton:"Answer",
