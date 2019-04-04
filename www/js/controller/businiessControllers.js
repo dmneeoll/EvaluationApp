@@ -2335,7 +2335,7 @@ angular.module('evaluationApp.businiessControllers', ['ngSanitize'])
                     if(resp.success){
                         $scope.CanAttend=true;
                         $scope.SubActID=resp.data;
-                        $scope.htmlConent = "<h3>欢迎参加地球周环保知识竞赛在线答题</h3><br>一共10道题，<span style='color:red'>每题答题限时15秒</span>。"
+                        $scope.htmlConent = "<h3>欢迎参加地球周环保知识竞赛在线答题</h3><br>一共10道题，<span style='color:red'>每题答题限时20秒</span>。"
                                             +"<br>每答对一题奖励红包0.5元，一起来瓜分4000元吧，你准备好了吗？"
                                             +"<br>备注：红包奖金将于活动结束之后，统一充值到一卡通帐号，后续请留意Flex+“我的消息”的消息。";
                         $scope.showStartButton=true;
@@ -2367,7 +2367,7 @@ angular.module('evaluationApp.businiessControllers', ['ngSanitize'])
             });
         };
 
-        var MAX_TIMEOUT=(15+0)*1000; //limit
+        var MAX_TIMEOUT=(20+0)*1000; //limit
         $scope.curIndex = -1;
         var idTim=null;
         var idRemain=null;
