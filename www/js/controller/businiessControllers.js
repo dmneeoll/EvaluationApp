@@ -1056,7 +1056,7 @@ angular.module('evaluationApp.businiessControllers', ['ngSanitize'])
             case "Flex工会2019春节返程补贴":
               $state.go("act_2019SpringSubsidy");
               break;
-            case "地球周环保知识竞赛":
+            case "B11地球周线上环保知识有奖问答":
               $state.go("act_PoetryContest");
               break;
             default:
@@ -1064,6 +1064,21 @@ angular.module('evaluationApp.businiessControllers', ['ngSanitize'])
           }
         };
         
+        $scope.canUseSpecial=function(action){
+            switch (action) {
+                case "B11地球周线上环保知识有奖问答":
+                    if (actionVisitServices.isTesting(action, $rootScope.accessEmployee.WorkdayNO)) {
+                        return true;
+                    }
+                    if (!$scope.isB11) {
+                        return false;
+                    }
+                  break;
+                default:
+                  break;
+              }
+            return $scope.canUseAction(action);
+        };
         $scope.canUseMech38 = function() {
             if($scope.isMechanical){                
                 //todo check gender
@@ -2316,7 +2331,7 @@ angular.module('evaluationApp.businiessControllers', ['ngSanitize'])
     .controller('ActPoetryContestCtrl', function ($scope, $rootScope, $state, $ionicHistory, $ionicPopup,
         commonServices, alertService, duplicateSubmitServices, UrlServices) 
     {
-        //地球周环保知识竞赛
+        //B11地球周线上环保知识有奖问答
         var baseInfo = commonServices.getBaseParas();
         var SubmitGuid = duplicateSubmitServices.genGUID();
         $scope.SubActID=null;
@@ -2325,7 +2340,7 @@ angular.module('evaluationApp.businiessControllers', ['ngSanitize'])
         function InitInfo() {
             var paras = {
                 Token: baseInfo.Token,
-                ActID:'AF8F0BFC-F53F-488C-9E61-3BF223846CC7',
+                ActID:'BBA39AF3-C63A-422A-9F4E-EC5FF56DEF1F',
                 WorkdayNo: baseInfo.WorkdayNO,
             };
             //paras.SubmitGuid = duplicateSubmitServices.genGUID();
@@ -2335,9 +2350,9 @@ angular.module('evaluationApp.businiessControllers', ['ngSanitize'])
                     if(resp.success){
                         $scope.CanAttend=true;
                         $scope.SubActID=resp.data;
-                        $scope.htmlConent = "<h3>欢迎参加地球周环保知识竞赛在线答题</h3><br>一共10道题，<span style='color:red'>每题答题限时20秒</span>。"
-                                            +"<br>每答对一题奖励红包0.5元，一起来瓜分4000元吧，你准备好了吗？"
-                                            +"<br>备注：红包奖金将于活动结束之后，统一充值到一卡通帐号，后续请留意Flex+“我的消息”的消息。";
+                        $scope.htmlConent = "<h3>欢迎参加PCBA-B11 地球周“线上环保知识有奖问答”在线答题</h3><br>一共5道题，<span style='color:red'>每题答题限时20秒</span>。"
+                                            +"<br>5道题全部答对，就有机会赢取一份环保礼品。你准备好了吗？"
+                                            +"<br>备注：获奖礼品将于活动结束之后公开，后续请留意本活动项或邮件通知。";
                         $scope.showStartButton=true;
                     }else{
                         $scope.CanAttend=false;
@@ -2509,6 +2524,203 @@ angular.module('evaluationApp.businiessControllers', ['ngSanitize'])
             });
         }
 
-    })    
+    })     
+    // .controller('ActPoetryContestCtrl', function ($scope, $rootScope, $state, $ionicHistory, $ionicPopup,
+    //     commonServices, alertService, duplicateSubmitServices, UrlServices) 
+    // {
+    //     //地球周环保知识竞赛
+    //     var baseInfo = commonServices.getBaseParas();
+    //     var SubmitGuid = duplicateSubmitServices.genGUID();
+    //     $scope.SubActID=null;
+    //     $scope.CanAns=false;
+
+    //     function InitInfo() {
+    //         var paras = {
+    //             Token: baseInfo.Token,
+    //             ActID:'AF8F0BFC-F53F-488C-9E61-3BF223846CC7',
+    //             WorkdayNo: baseInfo.WorkdayNO,
+    //         };
+    //         //paras.SubmitGuid = duplicateSubmitServices.genGUID();
+    //         var url = commonServices.getUrl("ActivityService.ashx", "GetInitRand");            
+    //         commonServices.submit(paras, url).then(function (resp) {
+    //             if (resp) {
+    //                 if(resp.success){
+    //                     $scope.CanAttend=true;
+    //                     $scope.SubActID=resp.data;
+    //                     $scope.htmlConent = "<h3>欢迎参加地球周环保知识竞赛在线答题</h3><br>一共10道题，<span style='color:red'>每题答题限时20秒</span>。"
+    //                                         +"<br>每答对一题奖励红包0.5元，一起来瓜分4000元吧，你准备好了吗？"
+    //                                         +"<br>备注：红包奖金将于活动结束之后，统一充值到一卡通帐号，后续请留意Flex+“我的消息”的消息。";
+    //                     $scope.showStartButton=true;
+    //                 }else{
+    //                     $scope.CanAttend=false;
+    //                     $scope.LastMsg = resp.message;
+    //                 }
+    //             }
+    //         });
+    //     }
+    //     InitInfo();
+
+    //     var questsions = null;        
+    //     $scope.curQuest = null;
+    //     $scope.StartAns = function() {
+    //         var url = commonServices.getUrl("EHSActService.ashx", "GetEHSActDetails");
+    //         var paras = { ActID: $scope.SubActID};
+    //         commonServices.submit(paras, url).then(function (resp) {
+    //             if (resp) {
+    //                 if(resp.success){
+    //                     questsions = resp.list;
+    //                     $scope.CanAns = (resp.list && resp.list.length>0);
+    //                     UserStartAns();
+    //                 }else{
+    //                     alertService.showAlert("该活动还没有题目");
+    //                     $ionicHistory.goBack();
+    //                 }
+    //             }
+    //         });
+    //     };
+
+    //     var MAX_TIMEOUT=(20+0)*1000; //limit
+    //     $scope.curIndex = -1;
+    //     var idTim=null;
+    //     var idRemain=null;
+    //     var fullScore=100;
+    //     var sumScore=0; //实际分数
+
+    //     function KillIDTim(){
+    //         if(idTim){
+    //             clearInterval(idTim);
+    //             idTim=null;
+    //         }
+    //     }
+    //     function KillIDRemain(){
+    //         if(idRemain){
+    //             clearInterval(idRemain);
+    //             idRemain=null;
+    //         }
+    //     }
+    //     function SwitchQues(){
+    //         KillIDRemain();
+    //         $scope.curIndex++;
+    //         $scope.curQuest = questsions[$scope.curIndex];
+    //         var nsec=MAX_TIMEOUT;
+    //         idRemain = setInterval(function(){
+    //             $scope.$apply(function(){
+    //                 $scope.remainSec = nsec/1000;
+    //             });                
+    //             nsec-=1000;
+    //             if(nsec<=0){
+    //                 KillIDRemain();
+    //             }
+    //         }, 1000);
+    //     }
+    //     function CalcFullScore(items) {
+    //         var fullScore = 0;
+    //         for (var i = 0; i < items.length; i++) {
+    //             var item = items[i];
+    //             for (var j = 0; j < item.Items.length; j++) {
+    //                 fullScore += item.Items[j].ItemScore;
+    //             }
+    //         }
+    //         return fullScore;
+    //     }
+    //     function UserStartAns(){
+    //         fullScore = CalcFullScore(questsions);
+    //         AutoSwitch();
+    //     }
+    //     function AutoSwitch(){
+    //         KillIDTim();
+    //         if(!$scope.hasMore()){
+    //             TriggerFinal();
+    //             return;
+    //         }
+    //         SwitchQues();
+    //         idTim=setInterval(function(){
+    //              if(!$scope.hasMore()){
+    //                 KillIDTim();
+    //                 TriggerFinal();
+    //             }else{
+    //                 KillIDRemain();            
+    //                 sumScore += CalcAnsScore();
+    //                 SwitchQues();
+    //             }
+    //         },MAX_TIMEOUT);
+    //     }
+    //     $scope.AnsQues = function(){
+    //         KillIDTim();
+    //         KillIDRemain();
+    //         var score = CalcAnsScore();
+    //         sumScore += score;
+    //         if($scope.curIndex==questsions.length-1){                
+    //             KillIDTim();                
+    //             TriggerFinal();
+    //         }else{
+    //             AutoSwitch();
+    //         }            
+    //     }
+    //     $scope.hasMore=function(){
+    //         return questsions && $scope.curIndex<questsions.length;
+    //     }
+
+    //     function CalcAnsScore() {
+    //       var item = $scope.curQuest;
+    //       var score = 0;
+    //       //只支持单选
+    //       var $rad = $("input[name='Rad" + item.Sort + "'" + "]:checked");
+    //       for (var j = 0; j < $rad.length; j++) {
+    //         var selVaule = $($rad[j]).val();
+    //         if (typeof (selVaule) == 'undefined') {
+    //           continue;
+    //         }
+    //         var sScore = selVaule.split("^")[2];
+    //         score += parseInt(sScore);
+    //         //SubmitList.push({ Item: item.Sort, ItemResult: selVaule });
+    //       }
+    //       return score;
+    //     }
+
+    //     $scope.ansDone=false;
+    //     //最终分数提交
+    //     function TriggerFinal(){
+    //         $scope.ansDone=true;
+    //         $scope.CanAns=false;
+    //         $scope.CanAttend=false;
+    //         var paras = {
+    //             Token: baseInfo.Token,
+    //             SubmitGuid: SubmitGuid,
+    //             ActID: $scope.SubActID,
+    //             WorkdayNo: baseInfo.WorkdayNO,
+    //             SumScore: sumScore,
+    //             SubmitResult:""//not use
+    //         };
+
+    //         var url = commonServices.getUrl("ActivityService.ashx", "SubmitActResult");
+    //         commonServices.submit(paras, url).then(function (resp) {
+    //           if (resp.success) {
+    //             var x = parseFloat(resp.data)
+    //             if (x > 0) {
+    //               $rootScope.money = '红包金额:' + resp.data + '元';
+    //               $rootScope.rebagPopup = $ionicPopup.show({
+    //                 cssClass: 'er-popup',
+    //                 templateUrl: 'templates/comm/hongbao.html',
+    //                 scope: $rootScope
+    //               });
+    //               $rootScope.rebagPopup.then(function (res) {
+    //                 //$state.go('activityList');
+    //                 //$state.go('myAccountMoney');
+    //                 $ionicHistory.goBack();
+    //               });
+    //             } else {
+    //               alertService.showAlert('谢谢你的参与!');
+    //               $ionicHistory.goBack();
+    //               $rootScope.updateSlideBox();
+    //             }
+    //           } else {
+    //             alertService.showAlert(resp.message);
+    //             $ionicHistory.goBack();
+    //           }
+    //         });
+    //     }
+
+    // })    
 ////////////////////////////////////////////////    
 ;

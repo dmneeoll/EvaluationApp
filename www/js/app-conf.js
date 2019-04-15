@@ -4,7 +4,7 @@
 
 //开关
 //是否本地开发调试
-var IsDebugMode = false; //false;
+var IsDebugMode = true; //false;
 
 //是否显示详细升级信息
 var IsShowUpdateDetial = false; //false;
@@ -12,7 +12,7 @@ var IsShowUpdateDetial = false; //false;
 //是否显示升级安装失败信息
 var IsShowUpdateInstalledErr = true;
 
-var LAST_PUBLISH_DATE = "2019-04-04 11:35";
+var LAST_PUBLISH_DATE = "2019-04-15 09:13";
 
 //新的测试页面控制，与 actionVisitServices, ESE_ACTION_UPDATE表配合使用
 //  $scope.canUseAction = function (action) {
@@ -511,7 +511,7 @@ var ZH_CN = {
         designer:"作者",
         desc:"主要事迹",
         designConcept: "设计理念",
-        PoetryTitle:"地球周环保知识竞赛有奖答题",
+        PoetryTitle:"B11地球周线上环保知识有奖问答",
         StartButton:"开始答题",
         RemainSec:"剩余时间",
         OkNextButton:"答题",
@@ -1025,7 +1025,7 @@ var ZH_US = {
         designer:"Author",
         desc:"Describe",
         designConcept: "Design Concept",
-        PoetryTitle:"Earth Day Environmental knowledge contest",
+        PoetryTitle:"B11 Earth Day Environmental knowledge contest",
         StartButton:"Start",
         RemainSec:"Remaining",
         OkNextButton:"Answer",
