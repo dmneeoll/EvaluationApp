@@ -1053,9 +1053,9 @@ angular.module('evaluationApp.businiessControllers', ['ngSanitize'])
             case "补贴申请结果查询":
               $state.go("union_welfare_applyResult");
               break;
-            case "Flex工会2019春节返程补贴":
-              $state.go("act_2019SpringSubsidy");
-              break;
+            // case "Flex工会2019春节返程补贴":
+            //   $state.go("act_2019SpringSubsidy");
+            //   break;
             case "B11地球周线上环保知识有奖问答":
               $state.go("act_PoetryContest");
               break;
