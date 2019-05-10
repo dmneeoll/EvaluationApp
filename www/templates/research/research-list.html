@@ -40,19 +40,20 @@
 
         <div class="list list-inset">
             <!-- 2018-11-12 南厂餐厅一楼档口风味满意度调查-->
-            <div class="item" ng-click="openActivityGood(9000+3)" ng-if="isSouthCamp">
+            <!-- <div class="item" ng-click="openActivityGood(9000+3)" ng-if="isSouthCamp">
                 {{Language.activityGood.title}}
-            </div>
+            </div> -->
 
             <!-- 2018-10-22 园区周边公共配套服务需求调查 -->
-            <div class="item" ng-click="openGeneralNotice(1, null, 'http://flexzhunion.mikecrm.com/QswMKjC');">
+            <!-- <div class="item" ng-click="openGeneralNotice(1, null, 'http://flexzhunion.mikecrm.com/QswMKjC');">
                 园区周边公共配套服务需求调查
-            </div>
+            </div> -->
+
             <!-- 2019-03-05 园区及地区共享资源3.8女王节 -->
-            <div class="item" ng-click="openSpecial('2019宿舍问卷调查');" ng-if="canUseAction('2019宿舍问卷调查');">
+            <!-- <div class="item" ng-click="openSpecial('2019宿舍问卷调查');" ng-if="canUseAction('2019宿舍问卷调查');">
                 2019宿舍问卷调查
                 <span style="font-size:10px" class="badge badge-assertive" ng-if="checkActionUpdate('2019宿舍问卷调查')">New</span>
-            </div>
+            </div> -->
             <div class="item" ng-repeat="resear in researchList" ng-click="open(resear)">
                 {{resear.ResearchName}}
             </div>
