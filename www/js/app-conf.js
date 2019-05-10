@@ -4,7 +4,7 @@
 
 //开关
 //是否本地开发调试
-var IsDebugMode = false; //false;
+var IsDebugMode = true; //false;
 
 //是否显示详细升级信息
 var IsShowUpdateDetial = false; //false;
@@ -12,7 +12,7 @@ var IsShowUpdateDetial = false; //false;
 //是否显示升级安装失败信息
 var IsShowUpdateInstalledErr = true;
 
-var LAST_PUBLISH_DATE = "2019-05-08 13:35";
+var LAST_PUBLISH_DATE = "2019-05-10 21:55";
 
 //新的测试页面控制，与 actionVisitServices, ESE_ACTION_UPDATE表配合使用
 //  $scope.canUseAction = function (action) {
@@ -387,6 +387,9 @@ var ZH_CN = {
         Done: '办结',
         Required: '待办',
         LostFound: '失物招领',
+        newEmployeeIntro:'入职文件',
+        newEmployeeIntroDL:'DL入职声明正文',
+        newEmployeeIntroIDL:'职员入职声明正文',
     },
     xfcx:{
         title:"消费查询",
@@ -903,6 +906,9 @@ var ZH_US = {
         Done: 'Done',
         Required: 'Required',
         LostFound: 'Lost & Found',
+        newEmployeeIntro:'入职文件',
+        newEmployeeIntroDL:'DL入职声明正文',
+        newEmployeeIntroIDL:'职员入职声明正文',
     },
     xfcx:{
         title:" Consume Inquiry ",
@@ -1228,4 +1234,8 @@ var GLOBAL_INFO = {
     KEY_EADMIN_DORMAPP_TYPE: "KEY_EADMIN_DORMAPP_TYPE",
     KEY_EADMIN_DORM: "KEY_EADMIN_DORM",
     KEY_RESEARCH_NEW_ID: "KEY_RESEARCH_NEW_ID",
+    KEY_HANDBOOK_L0: "KEY_HANDBOOK_L0",
+    KEY_HANDBOOK_L1: "KEY_HANDBOOK_L1",
+    KEY_HANDBOOK_L2: "KEY_HANDBOOK_L2",
+    KEY_HANDBOOK_L3: "KEY_HANDBOOK_L3",
 };

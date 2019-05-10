@@ -32,8 +32,8 @@ angular.module('evaluationApp.gbshrControllers', [])
                 case "保险":
                     $state.go("insurance");
                     break;                    
-                case "菜鸟手册":
-                    $state.go("basicGuide");
+                case "入职文件":
+                    $state.go("newEmployeeIntro");
                     break;
                 case "社会保险":
                 case "公积金信息":
@@ -368,12 +368,12 @@ angular.module('evaluationApp.gbshrControllers', [])
         }
 
     })
-    .controller('Handbook_lgCtrl', function($scope,CacheFactory,noticeService,alertService,$state,$ionicHistory,commonServices) {
-
+    .controller('Handbook_lgCtrl', function($scope,CacheFactory,noticeService,alertService,$state,$ionicHistory,commonServices) 
+    {
         var paras= commonServices.getBaseParas();
+        paras.kind=1;
         var url=commonServices.getUrl("HandBookService.ashx","GetLgList");
         commonServices.getDataList(paras,url).then(function(data){
-
             if(data=="Token is TimeOut"){
                 alertService.showAlert("登录失效，请重新登录");
                 $state.transitionTo('signin');
@@ -381,11 +381,12 @@ angular.module('evaluationApp.gbshrControllers', [])
             $scope.handBookList=data;
         });
 
-
         $scope.open=function(info){
-            CacheFactory.remove('ItemLanguage');
-            CacheFactory.save('ItemLanguage',info.Language);
-
+            CacheFactory.remove(GLOBAL_INFO.KEY_HANDBOOK_L0);
+            CacheFactory.save(GLOBAL_INFO.KEY_HANDBOOK_L0, JSON.stringify({
+                'kind':1,
+                'ItemLanguage':info.Language,                 
+            }));            
             $state.go('HandbookItemOne');
         };
 
@@ -397,16 +398,17 @@ angular.module('evaluationApp.gbshrControllers', [])
             $state.go('tab.home');
         }
     })
-    .controller('HandbookItemOneCtrl', function($scope,CacheFactory,noticeService,alertService,$state,$ionicHistory,commonServices) {
-
-        $scope.ItemLanguage=CacheFactory.get('ItemLanguage');
+    .controller('HandbookItemOneCtrl', function($scope,CacheFactory,noticeService,alertService,$state,$ionicHistory,commonServices) 
+    {
+        var objL0 = JSON.parse(CacheFactory.get(GLOBAL_INFO.KEY_HANDBOOK_L0));
+        $scope.ItemLanguage=objL0.ItemLanguage;
         var paras= commonServices.getBaseParas();
+        paras.kind=objL0.kind;
         paras.where=" and Language=N'"+$scope.ItemLanguage+"'";
         paras.item="Item1";
 
         var url=commonServices.getUrl("HandBookService.ashx","GetItemList");
         commonServices.getDataList(paras,url).then(function(data){
-
             if(data=="Token is TimeOut"){
                 alertService.showAlert("登录失效，请重新登录");
                 $state.transitionTo('signin');
@@ -415,23 +417,27 @@ angular.module('evaluationApp.gbshrControllers', [])
             $scope.handBookItem1List=data;
         });
 
-
         $scope.open=function(info){
-            CacheFactory.remove('Item1');
-            CacheFactory.save('Item1',info.Item1);
+            if(info.NextItemCnt<=0){return;}
+            CacheFactory.remove(GLOBAL_INFO.KEY_HANDBOOK_L1);
+            CacheFactory.save(GLOBAL_INFO.KEY_HANDBOOK_L1, JSON.stringify({
+                'kind': objL0.kind,
+                'item': info.Item1
+            }));  
 
             $state.go('handbookitemTwo');
         };
 
     })
-    .controller('HandbookItemTwoCtrl', function($scope,CacheFactory,noticeService,alertService,$state,$ionicHistory,commonServices,$location) {
-        var Item1=CacheFactory.get('Item1');
+    .controller('HandbookItemTwoCtrl', function($scope,CacheFactory,noticeService,alertService,$state,$ionicHistory,commonServices,$location) 
+    {
+        var objL1 = JSON.parse(CacheFactory.get(GLOBAL_INFO.KEY_HANDBOOK_L1));
         var paras= commonServices.getBaseParas();
-        paras.where=" and Item1=N'"+Item1+"'";
+        paras.kind=objL1.kind;
+        paras.where=" and Item1=N'"+objL1.item+"'";
         paras.item="Item2";
         var url=commonServices.getUrl("HandBookService.ashx","GetItemList");
         commonServices.getDataList(paras,url).then(function(data){
-
             if(data=="Token is TimeOut"){
                 alertService.showAlert("登录失效，请重新登录");
                 $state.transitionTo('signin');
@@ -439,50 +445,56 @@ angular.module('evaluationApp.gbshrControllers', [])
             $scope.handBookItem2List=data;
         });
 
-
-        $scope.open=function(activity){
-            CacheFactory.remove('Item2');
-            CacheFactory.save('Item2',activity.Item2);
+        $scope.open=function(info){
+            if(info.NextItemCnt<=0){return;}
+            CacheFactory.remove(GLOBAL_INFO.KEY_HANDBOOK_L2);
+            CacheFactory.save(GLOBAL_INFO.KEY_HANDBOOK_L2, JSON.stringify({
+                'kind': objL1.kind,
+                'item': info.Item2
+            }));  
 
             $state.go('handbookitemThree');
         };
 
     })
-    .controller('HandbookItemThreeCtrl', function($scope,CacheFactory,noticeService,alertService,$state,$ionicHistory,commonServices,$location) {
-        var Item2=CacheFactory.get('Item2');
+    .controller('HandbookItemThreeCtrl', function($scope,CacheFactory,noticeService,alertService,$state,$ionicHistory,commonServices,$location) 
+    {
+        var objL2 = JSON.parse(CacheFactory.get(GLOBAL_INFO.KEY_HANDBOOK_L2));
         var paras= commonServices.getBaseParas();
-        paras.where=" and Item2=N'"+Item2+"'";
+        paras.kind=objL2.kind;
+        paras.where=" and Item2=N'"+objL2.item+"'";
         paras.item="Item3";
         var url=commonServices.getUrl("HandBookService.ashx","GetItemList");
         commonServices.getDataList(paras,url).then(function(data){
-
             if(data=="Token is TimeOut"){
                 alertService.showAlert("登录失效，请重新登录");
                 $state.transitionTo('signin');
             }
             $scope.DataList=data;
            $scope.handBookItem3List=$scope.DataList;
-//            if($scope.DataList.length==1)  $('#Item_html').html($scope.DataList[0].Item3);
-//            if($scope.DataList.length>1) $scope.handBookItem3List=$scope.DataList;
         });
 
 
-        $scope.open=function(activity){
-            CacheFactory.remove('Item3');
-            CacheFactory.save('Item3',activity.Item3);
+        $scope.open=function(info){
+            if(info.NextItemCnt<=0){return;}
+            CacheFactory.remove(GLOBAL_INFO.KEY_HANDBOOK_L3);
+            CacheFactory.save(GLOBAL_INFO.KEY_HANDBOOK_L3, JSON.stringify({
+                'kind': objL2.kind,
+                'item': info.Item3
+            })); 
 
             $state.go('handbookitemFour');
         };
-
     })
-    .controller('HandbookItemFourCtrl', function($scope,CacheFactory,noticeService,alertService,$state,$ionicHistory,commonServices,$location) {
-        var Item3=CacheFactory.get('Item3');
+    .controller('HandbookItemFourCtrl', function($scope,CacheFactory,noticeService,alertService,$state,$ionicHistory,commonServices,$location) 
+    {
+        var objL3 = JSON.parse(CacheFactory.get(GLOBAL_INFO.KEY_HANDBOOK_L3));
         var paras= commonServices.getBaseParas();
-        paras.where=" and Item3=N'"+Item3+"'";
+        paras.kind=objL3.kind;
+        paras.where=" and Item3=N'"+objL3.item+"'";
         paras.item="Item4";
         var url=commonServices.getUrl("HandBookService.ashx","GetItemList");
         commonServices.getDataList(paras,url).then(function(data){
-
             if(data=="Token is TimeOut"){
                 alertService.showAlert("登录失效，请重新登录");
                 $state.transitionTo('signin');
@@ -490,11 +502,39 @@ angular.module('evaluationApp.gbshrControllers', [])
             $scope.DataList=data;
 
             $('#Item4_html').html($scope.DataList[0].Item4);
-
-            console.log($scope.DataList[0].Item4);
+            //console.log($scope.DataList[0].Item4);
         });
 
     })
+    .controller('NewEmployeeIntroCtrl',function($scope,$rootScope,$state,$ionicHistory,commonServices,CacheFactory,alertService,$ionicPopup)
+    {
+        //入职文件
+        $scope.open = function (action) {
+            switch (action) {
+                case "DL入职声明正文页":{
+                        CacheFactory.remove(GLOBAL_INFO.KEY_HANDBOOK_L1);
+                        CacheFactory.save(GLOBAL_INFO.KEY_HANDBOOK_L1, JSON.stringify({
+                            'kind':10,
+                            'item':'DL入职声明',                 
+                        }));            
+                        $state.go('handbookitemTwo');
+                    }
+                    break;
+                case "职员入职声明正文":{
+                        CacheFactory.remove(GLOBAL_INFO.KEY_HANDBOOK_L0);
+                        CacheFactory.save(GLOBAL_INFO.KEY_HANDBOOK_L0, JSON.stringify({
+                            'kind':11,
+                            'item':'职员入职声明',                 
+                        }));            
+                        $state.go('handbookitemTwo');
+                    }
+                    break;
+                case "菜鸟手册":
+                    $state.go("basicGuide");
+                    break;
+            }
+        };
+    }) 
     .controller('BasicGuideCtrl',function($scope,$rootScope,$state,$ionicHistory,commonServices,CacheFactory,alertService,$ionicPopup)
     {
         //菜鸟手册

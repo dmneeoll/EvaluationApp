@@ -529,6 +529,21 @@ angular.module('evaluationApp.router', [])
                 templateUrl: 'templates/handBook/handbook_lg.html',
                 controller: 'Handbook_lgCtrl'
             })
+            .state('newEmployeeIntro', {
+                url: '/newEmployeeIntro',
+                templateUrl: 'templates/GBS/newEmployeeIntro/newEmployeeIntroList.html',
+                controller: 'NewEmployeeIntroCtrl'
+            })
+            .state('newEmployeeIntroDL', {
+                url: '/newEmployeeIntroDL',
+                templateUrl: 'templates/GBS/newEmployeeIntro/newEmployeeIntro2List.html',
+                controller: 'NewEmployeeIntroDLCtrl'
+            })
+            .state('newEmployeeIntroIDL', {
+                url: '/newEmployeeIntroIDL',
+                templateUrl: 'templates/GBS/newEmployeeIntro/newEmployeeIntro2List.html',
+                controller: 'NewEmployeeIntroIDLCtrl'
+            })               
             .state('HandbookItemOne', {
                 url: '/HandbookItemOne',
                 templateUrl: 'templates/handBook/handbookItemOne.html',

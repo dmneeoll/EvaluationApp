@@ -1,19 +1,24 @@
 <!-- 人事综合 -->
-<ion-view view-title="{{Language.home.GBS}}" cache-view="false" >
+<ion-view view-title="{{Language.home.GBS}}" cache-view="false">
     <ion-nav-buttons side="left">
-        <button class="button button-clear button-icon ion-ios-arrow-back" ng-click="closePass()">{{Language.menu.homePage}}</button>
+        <button class="button button-clear button-icon ion-ios-arrow-back"
+            ng-click="closePass()">{{Language.menu.homePage}}</button>
     </ion-nav-buttons>
-    <ion-content scroll="true" overflow-scroll="true" >
+    <ion-content scroll="true" overflow-scroll="true">
         <div class="row" style="height:110px;text-align: center">
-            <div  class="col col-25 positive-bg light"  style="Margin:1px" ng-click="open('员工手册');">
+            <div class="col col-25 custom-og light" style="Margin:1px" ng-click="open('入职文件');">
+                <i style="font-size:50px;" class="ion-ios-calendar"></i>
+                <div>{{Language.GBSHR.newEmployeeIntro}}</div>
+            </div>
+            <div class="col col-25 positive-bg light" style="Margin:1px" ng-click="open('员工手册');">
                 <i style="font-size:50px;" class="ion-ios-bookmarks"></i>
-                <div >{{Language.home.handbook}}</div>
+                <div>{{Language.home.handbook}}</div>
             </div>
             <!--<div   class="col col-25 positive-bg light"  style="Margin:1px" ng-click="open('KQAbnormal');">-->
-                <!--<i style="font-size:50px;" class="ion-alert-circled"></i>-->
-                <!--<div>{{Language.kqcx.tabAbnormal}}</div>-->
+            <!--<i style="font-size:50px;" class="ion-alert-circled"></i>-->
+            <!--<div>{{Language.kqcx.tabAbnormal}}</div>-->
             <!--</div>-->
-            <div  class="col col-25 calm-bg light"  style="Margin:1px" ng-click="open('Certificate');">
+            <div class="col col-25 calm-bg light" style="Margin:1px" ng-click="open('Certificate');">
                 <i style="font-size:50px;" class="ion-android-document"></i>
                 <div>{{Language.certificate.title}}</div>
             </div>
@@ -21,10 +26,6 @@
                 <i style="font-size:50px;" class="ion-unlocked"></i>
                 <div>{{Language.GBSHR.LTP}}</div>
             </div> -->
-            <div class="col col-25 custom-og light" style="Margin:1px" ng-click="open('菜鸟手册');">
-                <i style="font-size:50px;" class="ion-ios-calendar"></i>
-                <div>{{Language.GBSHR.basicGuide}}</div>
-            </div>
             <div class="col positive-bg light" style="Margin:1px" ng-click="open('离职须知');">
                 <i style="font-size:50px;" class="ion-ios-calendar"></i>
                 <div>{{Language.GBSHR.EmployeeDismiss}}</div>
@@ -44,8 +45,8 @@
                 <div>{{Language.GBSHR.HousingFund}}</div>
             </div>
             <div class="col custom-og light" style="Margin:1px" ng-click="open('train');">
-                    <i style="font-size:50px;" class="ion-ios-body"></i>
-                    <div>{{Language.home.train}}</div>
+                <i style="font-size:50px;" class="ion-ios-body"></i>
+                <div>{{Language.home.train}}</div>
             </div>
         </div>
 
