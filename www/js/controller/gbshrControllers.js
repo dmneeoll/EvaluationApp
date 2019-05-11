@@ -432,6 +432,7 @@ angular.module('evaluationApp.gbshrControllers', [])
     .controller('HandbookItemTwoCtrl', function($scope,CacheFactory,noticeService,alertService,$state,$ionicHistory,commonServices,$location) 
     {
         var objL1 = JSON.parse(CacheFactory.get(GLOBAL_INFO.KEY_HANDBOOK_L1));
+        $scope.title = objL1.item;
         var paras= commonServices.getBaseParas();
         paras.kind=objL1.kind;
         paras.where=" and Item1=N'"+objL1.item+"'";
@@ -460,6 +461,7 @@ angular.module('evaluationApp.gbshrControllers', [])
     .controller('HandbookItemThreeCtrl', function($scope,CacheFactory,noticeService,alertService,$state,$ionicHistory,commonServices,$location) 
     {
         var objL2 = JSON.parse(CacheFactory.get(GLOBAL_INFO.KEY_HANDBOOK_L2));
+        $scope.title = objL2.item;
         var paras= commonServices.getBaseParas();
         paras.kind=objL2.kind;
         paras.where=" and Item2=N'"+objL2.item+"'";
@@ -489,6 +491,7 @@ angular.module('evaluationApp.gbshrControllers', [])
     .controller('HandbookItemFourCtrl', function($scope,CacheFactory,noticeService,alertService,$state,$ionicHistory,commonServices,$location) 
     {
         var objL3 = JSON.parse(CacheFactory.get(GLOBAL_INFO.KEY_HANDBOOK_L3));
+        $scope.title = objL3.item;
         var paras= commonServices.getBaseParas();
         paras.kind=objL3.kind;
         paras.where=" and Item3=N'"+objL3.item+"'";
@@ -521,8 +524,8 @@ angular.module('evaluationApp.gbshrControllers', [])
                     }
                     break;
                 case "职员入职声明正文":{
-                        CacheFactory.remove(GLOBAL_INFO.KEY_HANDBOOK_L0);
-                        CacheFactory.save(GLOBAL_INFO.KEY_HANDBOOK_L0, JSON.stringify({
+                        CacheFactory.remove(GLOBAL_INFO.KEY_HANDBOOK_L1);
+                        CacheFactory.save(GLOBAL_INFO.KEY_HANDBOOK_L1, JSON.stringify({
                             'kind':11,
                             'item':'职员入职声明',                 
                         }));            

@@ -1,18 +1,16 @@
-<ion-view view-title="{{Language.handbook.title1}}" cache-view="false" >
-    <ion-nav-buttons side="left">
-        <!--<button class="button button-clear button-icon ion-ios-arrow-back" ng-click="closePass()">首页</button>-->
-    </ion-nav-buttons>
-    <ion-content scroll="true" overflow-scroll="true" >
-
-        <div  class="list list-inset">
-
-            <div class="item item-body" ng-repeat="item in handBookItem3List" ng-click="open(item)">
-                {{item.Item3}}
+<ion-view cache-view="false">
+    <ion-nav-title>
+        {{title}}
+    </ion-nav-title>
+    <ion-content scroll="true" overflow-scroll="true">
+        <div class="list list-inset">
+            <div class="item item-body" ng-repeat="item in handBookItem3List">
+                <div ng-if="item.NextItemCnt>0" ng-click="open(item)">
+                    {{item.Item3}}
+                </div>
+                <div ng-if="item.NextItemCnt<=0" ng-bind-html="item.Item3" style="margin:-10px">
+                </div>
             </div>
-
         </div>
-
-        <div  id="Item_html"></div>
-
     </ion-content>
 </ion-view>

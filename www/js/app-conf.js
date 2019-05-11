@@ -4,7 +4,7 @@
 
 //开关
 //是否本地开发调试
-var IsDebugMode = true; //false;
+var IsDebugMode = false; //false;
 
 //是否显示详细升级信息
 var IsShowUpdateDetial = false; //false;
@@ -12,7 +12,7 @@ var IsShowUpdateDetial = false; //false;
 //是否显示升级安装失败信息
 var IsShowUpdateInstalledErr = true;
 
-var LAST_PUBLISH_DATE = "2019-05-10 21:55";
+var LAST_PUBLISH_DATE = "2019-05-11 14:35";
 
 //新的测试页面控制，与 actionVisitServices, ESE_ACTION_UPDATE表配合使用
 //  $scope.canUseAction = function (action) {
@@ -388,8 +388,8 @@ var ZH_CN = {
         Required: '待办',
         LostFound: '失物招领',
         newEmployeeIntro:'入职文件',
-        newEmployeeIntroDL:'DL入职声明正文',
-        newEmployeeIntroIDL:'职员入职声明正文',
+        newEmployeeIntroDL:'DL入职声明正文页',
+        newEmployeeIntroIDL:'职员入职声明正文页',
     },
     xfcx:{
         title:"消费查询",
