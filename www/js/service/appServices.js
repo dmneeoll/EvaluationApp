@@ -550,7 +550,7 @@ angular.module('evaluationApp.appServices', [])
         var self=this;
         self.actionVisit = loadCacheVisit();
         self.serverUpdate = [];//ActName,UpdateTime,IsTesting,TestingAccount
-        var DEF_UPDATE_VAL = new Date(GLOBAL_INFO.LAST_PUBLISH_DATE);
+        var DEF_UPDATE_VAL = new Date(LAST_PUBLISH_DATE);
 
         var loadServerUpdate = function(){
             var url = commonServices.getUrl("ActionVisitService.ashx", "LoadServerUpdate");

@@ -254,7 +254,8 @@ ul{
 }
 
 .myTab {
-    border-collapse: collapse;        
+    width: 99%;
+    border-collapse: collapse;
 }
 .myTab th{
     background: blue;
@@ -386,3 +387,4 @@ ul{
     opacity: 0.5;
     background: #CCC;
   }
+

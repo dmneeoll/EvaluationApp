@@ -9,8 +9,12 @@ angular.module('evaluationApp.gbshrControllers', [])
         $scope.canUseAction = function (action) {
             return actionVisitServices.canUseAction(action, $rootScope.accessEmployee.WorkdayNO);
         };
+        $scope.checkActionUpdate = function (action) {
+            return actionVisitServices.checkUpdate(action);
+        };
 
         $scope.open = function (action) {
+            actionVisitServices.visit(action); //save state
             switch (action) {
                 case "KQAbnormal":
                     $state.go('kqyc');

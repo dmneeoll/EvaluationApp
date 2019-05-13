@@ -6,11 +6,13 @@
     </ion-nav-buttons>
     <ion-content scroll="true" overflow-scroll="true">
         <div class="row" style="height:110px;text-align: center">
-            <div class="col col-25 custom-og light" style="Margin:1px" ng-click="open('入职文件');">
-                <i style="font-size:50px;" class="ion-ios-calendar"></i>
-                <div>{{Language.GBSHR.newEmployeeIntro}}</div>
+            <div class="col col-25 positive-bg light" style="Margin:1px" ng-click="open('入职文件');">
+                <i style="font-size:50px;" class="icon ion-ios-paper"></i>
+                <div>{{Language.GBSHR.newEmployeeIntro}}
+                    <span STYLE="font-size: 10px" class="badge badge-assertive" ng-if="checkActionUpdate('入职文件')">New</span>
+                </div>
             </div>
-            <div class="col col-25 positive-bg light" style="Margin:1px" ng-click="open('员工手册');">
+            <div class="col col-25 custom-og light" style="Margin:1px" ng-click="open('员工手册');">
                 <i style="font-size:50px;" class="ion-ios-bookmarks"></i>
                 <div>{{Language.home.handbook}}</div>
             </div>
