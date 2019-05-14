@@ -7,7 +7,7 @@
     <ion-content scroll="true" overflow-scroll="true">
         <div class="row" style="height:110px;text-align: center">
             <div class="col col-25 positive-bg light" style="Margin:1px" ng-click="open('入职文件');">
-                <i style="font-size:50px;" class="icon ion-ios-paper"></i>
+                <i style="font-size:50px;" class="icon ion-android-list"></i>
                 <div>{{Language.GBSHR.newEmployeeIntro}}
                     <span STYLE="font-size: 10px" class="badge badge-assertive" ng-if="checkActionUpdate('入职文件')">New</span>
                 </div>
@@ -49,6 +49,12 @@
             <div class="col custom-og light" style="Margin:1px" ng-click="open('train');">
                 <i style="font-size:50px;" class="ion-ios-body"></i>
                 <div>{{Language.home.train}}</div>
+            </div>
+        </div>
+        <div class="row" style="height:110px;text-align: center">
+            <div class="col col-25 royal-bg light" style="Margin:1px" ng-click="open('LTP培训资料');">
+                <i style="font-size:50px;" class="ion-card"></i>
+                <div>{{Language.GBSHR.LTPTraining}}</div>
             </div>
         </div>
 

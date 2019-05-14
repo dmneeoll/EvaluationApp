@@ -12,7 +12,7 @@ var IsShowUpdateDetial = false; //false;
 //是否显示升级安装失败信息
 var IsShowUpdateInstalledErr = true;
 
-var LAST_PUBLISH_DATE = "2019-05-13 11:35";
+var LAST_PUBLISH_DATE = "2019-05-14 10:50";
 
 //新的测试页面控制，与 actionVisitServices, ESE_ACTION_UPDATE表配合使用
 //  $scope.canUseAction = function (action) {
@@ -390,6 +390,7 @@ var ZH_CN = {
         newEmployeeIntro:'入职文件',
         newEmployeeIntroDL:'DL入职声明正文页',
         newEmployeeIntroIDL:'职员入职声明正文页',
+        LTPTraining:'LTP培训资料',
     },
     xfcx:{
         title:"消费查询",
@@ -909,6 +910,7 @@ var ZH_US = {
         newEmployeeIntro:'入职文件',
         newEmployeeIntroDL:'DL入职声明正文',
         newEmployeeIntroIDL:'职员入职声明正文',
+        LTPTraining:'LTP training',
     },
     xfcx:{
         title:" Consume Inquiry ",

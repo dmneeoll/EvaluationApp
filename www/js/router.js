@@ -764,6 +764,11 @@ angular.module('evaluationApp.router', [])
                 url: '/basicGuide',
                 templateUrl: 'templates/GBS/basicGuide.html',
                 controller: 'BasicGuideCtrl'
+            })
+            .state('ltpTraining',{
+                url: '/ltpTraining',
+                templateUrl: 'templates/GBS/ltpTraining.html',
+                controller: null
             })            
             .state('admin',{
                 url: '/admin',
