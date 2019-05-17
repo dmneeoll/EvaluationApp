@@ -787,6 +787,11 @@ angular.module('evaluationApp.router', [])
                 controller: 'DormManageCtrl'
             })
                 /*sub of dormManage*/
+                .state('dormHotline',{
+                    url: '/dormHotline',
+                    templateUrl: 'templates/admin/dorm/dormHotline.html',
+                    controller: 'DormHotlineCtrl'
+                })
                 .state('housingAllowance',{
                     url: '/housingAllowance',
                     templateUrl: 'templates/admin/dorm/housingAllowance.html',

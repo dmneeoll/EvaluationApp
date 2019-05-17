@@ -1,0 +1,31 @@
+<!-- 宿舍热线 -->
+<ion-view cache-view="true">
+    <ion-nav-title>
+        {{Language.dormManage.hotline}}
+    </ion-nav-title>
+
+    <ion-content>
+        <style>
+            table.myTab tr{
+                line-height: 40px;
+            }
+        </style>
+        <div style="margin:5px; font-size:1.2em;">
+            <table class="myTab" style="margin:0 4px 0 2px;">
+                <thead>
+                    <tr>
+                        <th style="min-width:120px">宿舍区</th>
+                        <th>联系电话</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="item in contacts">
+                        <td>{{item.dormArea}}</td>
+                        <td class="tdCenter"><a class="myLink" href="tel:{{item.basePhone}}">{{item.basePhone}}</a></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <br><br><br>
+    </ion-content>
+</ion-view>

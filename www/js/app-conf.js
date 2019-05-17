@@ -12,7 +12,7 @@ var IsShowUpdateDetial = false; //false;
 //是否显示升级安装失败信息
 var IsShowUpdateInstalledErr = true;
 
-var LAST_PUBLISH_DATE = "2019-05-14 10:50";
+var LAST_PUBLISH_DATE = "2019-05-17 17:07";
 
 //新的测试页面控制，与 actionVisitServices, ESE_ACTION_UPDATE表配合使用
 //  $scope.canUseAction = function (action) {
@@ -390,7 +390,7 @@ var ZH_CN = {
         newEmployeeIntro:'入职文件',
         newEmployeeIntroDL:'DL入职声明正文页',
         newEmployeeIntroIDL:'职员入职声明正文页',
-        LTPTraining:'LTP培训资料',
+        LTPTraining:'LTP假单证明无纸化培训材料',
     },
     xfcx:{
         title:"消费查询",
@@ -537,6 +537,7 @@ var ZH_CN = {
         canteenMenu:'餐厅菜单',
     },
     dormManage:{
+        hotline:"宿舍热线",
         housingAllowance:"住房津贴",
         checkInState:"是否住宿",
         checkOutDate:"退房日期",
@@ -910,7 +911,7 @@ var ZH_US = {
         newEmployeeIntro:'入职文件',
         newEmployeeIntroDL:'DL入职声明正文',
         newEmployeeIntroIDL:'职员入职声明正文',
-        LTPTraining:'LTP training',
+        LTPTraining:'LTP假单证明无纸化培训材料',
     },
     xfcx:{
         title:" Consume Inquiry ",
@@ -1055,6 +1056,7 @@ var ZH_US = {
         canteenMenu:'Cafeteria Menu',
     },
     dormManage:{
+        hotline:"Dormitory Hotline",
         housingAllowance:"Housing Allowance",
         checkInState:"Checked in",
         checkOutDate:"Check out date",
@@ -1208,7 +1210,7 @@ var ZH_US = {
 var ERROR = {
     WRONG_ACCESSTOKEN: 'wrong accessToken',
     IS_NOT_EXISTS: 'is not exists',
-    TIME_OUT: 120000
+    TIME_OUT: 60*1000, /*http请求超时值*/
 };
 
 

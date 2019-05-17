@@ -514,6 +514,9 @@ angular.module('evaluationApp.adminControllers', [])
         $scope.open=function(action){
             actionVisitServices.visit(action); //save state
             switch (action) {
+                case "宿舍热线":
+                    $state.go('dormHotline');
+                    break;
                 case "住房津贴":
                     $state.go('housingAllowance');
                     break;
@@ -558,6 +561,25 @@ angular.module('evaluationApp.adminControllers', [])
         //     });
         //     $state.go('tab.home');
         // };
+    })
+    .controller('DormHotlineCtrl', function ($scope, $state, $ionicHistory, commonServices) {
+        $scope.contacts = [{
+            dormArea: "北厂宿舍",
+            basePhone: "18926985305"
+          },
+          {
+            dormArea: "南厂宿舍",
+            basePhone: "18926980025" 
+          },
+          {
+            dormArea: "三洲本土宿舍",
+            basePhone: "18926980019" 
+          },
+          {
+            dormArea: "山水豪苑（别墅区）",
+            basePhone: "18926980027" 
+          }
+        ];
     })
     .controller('HousingAllowanceCtrl', function ($scope, $rootScope, $state, $ionicHistory, $ionicPopup,
         commonServices, CacheFactory, alertService, duplicateSubmitServices) 
