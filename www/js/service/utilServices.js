@@ -45,8 +45,43 @@ angular.module('evaluationApp.utilServices', ['ionic.native'])
       });
     }
 
+    function KeepFormData() {
+      if (window.FormData){
+        return;
+      }        
+
+      function FormData() {
+        this.fake = true;
+        this.boundary = "--------FormData" + Math.random();
+        this._fields = [];
+      }
+      FormData.prototype.append = function (key, value) {
+        this._fields.push([key, value]);
+      }
+      FormData.prototype.toString = function () {
+        var boundary = this.boundary;
+        var body = "";
+        this._fields.forEach(function (field) {
+          body += "--" + boundary + "\r\n";
+          // file upload
+          if (field[1].name) {
+            var file = field[1];
+            body += "Content-Disposition: form-data; name=\"" + field[0] + "\"; filename=\"" + file.name + "\"\r\n";
+            body += "Content-Type: " + file.type + "\r\n\r\n";
+            body += file.getAsBinary() + "\r\n";
+          } else {
+            body += "Content-Disposition: form-data; name=\"" + field[0] + "\";\r\n\r\n";
+            body += field[1] + "\r\n";
+          }
+        });
+        body += "--" + boundary + "--";
+        return body;
+      }
+      window.FormData=FormData;
+    }
     var uploadImages = function (kind, batchName, images, url, cbSuccess, cbFailed) {
-        var defs = [];	
+        var defs = [];
+        KeepFormData();
         var fd = new FormData();
         fd.append('kind', kind||'unknown');
         fd.append('batchName', batchName||'');

@@ -769,7 +769,22 @@ angular.module('evaluationApp.router', [])
                 url: '/ltpTraining',
                 templateUrl: 'templates/GBS/ltpTraining.html',
                 controller: null
-            })            
+            })
+            .state('hrGuide',{
+                url: '/hrGuide',
+                templateUrl: 'templates/GBS/hrGuide/hrGuideList.html',
+                controller: 'HrGuideListCtrl'
+            })
+                .state('contractGuide',{
+                    url: '/contractGuide',
+                    templateUrl: 'templates/GBS/hrGuide/contractGuide.html',
+                    controller: null
+                })
+                .state('updateIDInfoGuide',{
+                    url: '/updateIDInfoGuide',
+                    templateUrl: 'templates/GBS/hrGuide/updateIDInfoGuide.html',
+                    controller: null
+                })
             .state('admin',{
                 url: '/admin',
                 templateUrl: 'templates/admin/admin-list.html',

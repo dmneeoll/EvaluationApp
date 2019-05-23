@@ -17,47 +17,50 @@ angular.module('evaluationApp.gbshrControllers', [])
       switch (action) {
         case 'KQAbnormal':
           $state.go('kqyc')
-          break
+          break;
         case 'Certificate':
           $state.go('certificate')
-          break
+          break;
         case '员工手册':
           $state.go('handbook_lg')
-          break
+          break;
         case 'LTP':
           try {
             externalLinksService.openUr('https://appcenter.flextronics.com/GMIS/Template/LTPPasswordReset_Mobile.html')
           } catch (ex) {
             alertService.showAlert(ex.message)
           }
-          break
+          break;
         case '保险':
           $state.go('insurance')
-          break
+          break;
         case '入职文件':
           $state.go('newEmployeeIntro')
-          break
+          break;
         case '社会保险':
         case '公积金信息':
           CacheFactory.remove('gnAction')
-          CacheFactory.save('gnAction', action)
-          $state.go('generalNotice')
-          break
+          CacheFactory.save('gnAction', action);
+          $state.go('generalNotice');
+          break;
         case '离职须知':
-          $state.go('employeeDismiss')
-          break
+          $state.go('employeeDismiss');
+          break;
         case 'train':
           try {
             externalLinksService.openUr('https://zhmobile.flextronics.com/EvaluationApp/course/course/1.html')
           } catch (ex) {
-            alertService.showAlert(ex.message)
+            alertService.showAlert(ex.message);
           }
-          break
+          break;
         case 'LTP培训资料':
-            $state.go('ltpTraining')
-            break
+          $state.go('ltpTraining');
+          break;
+        case '人事指南':
+          $state.go('hrGuide');
+          break;
         default:
-          break
+          break;
       }
     }
     $scope.closePass = function () {
@@ -72,15 +75,16 @@ angular.module('evaluationApp.gbshrControllers', [])
     var accessEmployee = $rootScope.accessEmployee
     // var bTestAccount = IsTestAccount(accessEmployee.WorkdayNO)
     // 屏蔽multek
-// var bIsNotMultek = accessEmployee.Organization.toLowerCase().indexOf("multek")<0
-$scope.isMultek = isMultek(accessEmployee.Organization)
+    // var bIsNotMultek = accessEmployee.Organization.toLowerCase().indexOf("multek")<0
+    $scope.isMultek = isMultek(accessEmployee.Organization)
 
     $scope.open = function (action) {
       switch (action) {
         case 'visaApply':
           $state.go('visaApply')
           break
-        case 'CP': /*厂牌补办*/
+        case 'CP':
+          /*厂牌补办*/
           $state.go('reissueWorkingCard')
           break
         default:
@@ -93,28 +97,58 @@ $scope.isMultek = isMultek(accessEmployee.Organization)
     var action = CacheFactory.get('action')
     if (action == 'SR') {
       $scope.title = $rootScope.Language.certificate.incomeCertificate
-      $scope.listUse = [
-        { name: '购房', value: '购房' },
-        { name: '购车', value: '购车' },
-        { name: '贷款装修', value: '贷款装修' },
-        { name: '保险理赔', value: '保险理赔' },
-        { name: '申请补助', value: '申请补助' },
-        { name: '司法诉讼', value: '司法诉讼' }
+      $scope.listUse = [{
+        name: '购房',
+        value: '购房'
+      },
+        {
+          name: '购车',
+          value: '购车'
+        },
+        {
+          name: '贷款装修',
+          value: '贷款装修'
+        },
+        {
+          name: '保险理赔',
+          value: '保险理赔'
+        },
+        {
+          name: '申请补助',
+          value: '申请补助'
+        },
+        {
+          name: '司法诉讼',
+          value: '司法诉讼'
+        }
       ]
     }
     if (action == 'ZZ') {
       $scope.title = $rootScope.Language.certificate.certificateOfEmployment
-      $scope.listUse = [
-        { name: 'Visa申请', value: 'Visa申请' },
-        { name: '资格考试', value: '资格考试' },
-        { name: '居住证', value: '居住证' },
-        { name: '子女入学', value: '子女入学' }
+      $scope.listUse = [{
+        name: 'Visa申请',
+        value: 'Visa申请'
+      },
+        {
+          name: '资格考试',
+          value: '资格考试'
+        },
+        {
+          name: '居住证',
+          value: '居住证'
+        },
+        {
+          name: '子女入学',
+          value: '子女入学'
+        }
       ]
     }
     if (action == 'XJ') {
       $scope.title = $rootScope.Language.certificate.certificateOfTakingLeave
-      $scope.listUse = [
-        { name: '商业保险申报', value: '商业保险申报' }
+      $scope.listUse = [{
+        name: '商业保险申报',
+        value: '商业保险申报'
+      }
 
       ]
     }
@@ -155,7 +189,7 @@ $scope.isMultek = isMultek(accessEmployee.Organization)
             if (data.success) {
               alertService.showAlert('您的申请已提交，请注意在“我的信息”查收最新进度通知，谢谢！')
               $ionicHistory.goBack()
-            }else {
+            } else {
               alertService.showAlert(data.message)
             }
           })
@@ -222,7 +256,7 @@ $scope.isMultek = isMultek(accessEmployee.Organization)
             if (data.success) {
               alertService.showAlert('您的申请已提交，请注意在“我的信息”查收最新进度通知，谢谢！')
               $ionicHistory.goBack()
-            }else {
+            } else {
               alertService.showAlert(data.message)
             }
           })
@@ -239,15 +273,31 @@ $scope.isMultek = isMultek(accessEmployee.Organization)
     }
   })
   .controller('VisaApplyCtrl', function ($scope, $rootScope, $state, $ionicHistory, commonServices, CacheFactory, alertService, $ionicPopup) {
-    $scope.listVisaType = [
-      { name: '1 Year Multiple Entries', value: '1 Year Multiple Entries' },
-      { name: '6 Months Double Entries', value: '6 Months Double Entries' },
-      { name: '3 Months Single Entry', value: '3 Months Single Entry' },
-      { name: '10 Years Multiple Entries', value: '10 Years Multiple Entries' }
+    $scope.listVisaType = [{
+      name: '1 Year Multiple Entries',
+      value: '1 Year Multiple Entries'
+    },
+      {
+        name: '6 Months Double Entries',
+        value: '6 Months Double Entries'
+      },
+      {
+        name: '3 Months Single Entry',
+        value: '3 Months Single Entry'
+      },
+      {
+        name: '10 Years Multiple Entries',
+        value: '10 Years Multiple Entries'
+      }
     ]
-    $scope.Gender = [
-      { name: 'Male', value: 'Male' },
-      { name: 'Female', value: 'Female' }
+    $scope.Gender = [{
+      name: 'Male',
+      value: 'Male'
+    },
+      {
+        name: 'Female',
+        value: 'Female'
+      }
     ]
 
     setTimeout(function () {
@@ -262,6 +312,7 @@ $scope.isMultek = isMultek(accessEmployee.Organization)
       $('#ChinaArrivalDate').val(str)
       $('#DepartureDateFromChina').val(str)
     }, 500)
+
     function fix (num, length) {
       return ('' + num).length < length ? ((new Array(length + 1)).join('0') + num).slice(-length) : '' + num
     }
@@ -330,7 +381,7 @@ $scope.isMultek = isMultek(accessEmployee.Organization)
             if (data.success) {
               alertService.showAlert('Your application has been submitted, please pay attention to "my information", check the latest progress notice, thank you.')
               $ionicHistory.goBack()
-            }else {
+            } else {
               alertService.showAlert(data.message)
             }
           })
@@ -407,7 +458,9 @@ $scope.isMultek = isMultek(accessEmployee.Organization)
     })
 
     $scope.open = function (info) {
-      if (info.NextItemCnt <= 0) {return;}
+      if (info.NextItemCnt <= 0) {
+        return
+      }
       CacheFactory.remove(GLOBAL_INFO.KEY_HANDBOOK_L1)
       CacheFactory.save(GLOBAL_INFO.KEY_HANDBOOK_L1, JSON.stringify({
         'kind': objL0.kind,
@@ -434,7 +487,9 @@ $scope.isMultek = isMultek(accessEmployee.Organization)
     })
 
     $scope.open = function (info) {
-      if (info.NextItemCnt <= 0) {return;}
+      if (info.NextItemCnt <= 0) {
+        return
+      }
       CacheFactory.remove(GLOBAL_INFO.KEY_HANDBOOK_L2)
       CacheFactory.save(GLOBAL_INFO.KEY_HANDBOOK_L2, JSON.stringify({
         'kind': objL1.kind,
@@ -462,7 +517,9 @@ $scope.isMultek = isMultek(accessEmployee.Organization)
     })
 
     $scope.open = function (info) {
-      if (info.NextItemCnt <= 0) {return;}
+      if (info.NextItemCnt <= 0) {
+        return
+      }
       CacheFactory.remove(GLOBAL_INFO.KEY_HANDBOOK_L3)
       CacheFactory.save(GLOBAL_INFO.KEY_HANDBOOK_L3, JSON.stringify({
         'kind': objL2.kind,
@@ -570,7 +627,7 @@ $scope.isMultek = isMultek(accessEmployee.Organization)
         } catch (ex) {
           alertService.showAlert(ex.message)
         }
-      }else {
+      } else {
         CacheFactory.remove('gnID')
         CacheFactory.save('gnID', id)
         $state.go('generalNoticeDetail')
@@ -720,26 +777,25 @@ $scope.isMultek = isMultek(accessEmployee.Organization)
     $scope.protocol = {
       IsAggree: 0
     }
+
     function PromptProtocol () {
       $ionicPopup.show({
         title: '失物招领使用承诺书',
         cssClass: 'my-custom-popup-Alter',
         templateUrl: 'templates/GBS/lostFound/protocolLostFound.html',
         scope: $scope,
-        buttons: [
-          {
-            text: '<b>确定</b>',
-            type: 'button-positive',
-            onTap: function (e) {
-              if (!$scope.protocol.IsAggree) {
-                alertService.showLoading('请接受承诺书！')
-                e.preventDefault()
-              }else {
-                return
-              }
+        buttons: [{
+          text: '<b>确定</b>',
+          type: 'button-positive',
+          onTap: function (e) {
+            if (!$scope.protocol.IsAggree) {
+              alertService.showLoading('请接受承诺书！')
+              e.preventDefault()
+            } else {
+              return
             }
           }
-        ]
+        }]
       })
     }
 
@@ -813,6 +869,7 @@ $scope.isMultek = isMultek(accessEmployee.Organization)
     $scope.Reset()
 
     var swMap = null
+
     function HasSensWord (txt) {
       if (!swMap) {
         swMap = sw_buildMap()
@@ -915,6 +972,7 @@ $scope.isMultek = isMultek(accessEmployee.Organization)
     }
 
     var lostID = CacheFactory.get(GLOBAL_INFO.KEY_LOSTFOUND_ID)
+
     function InitInfo () {
       var paras = baseInfo
       paras.LostID = lostID
@@ -924,8 +982,7 @@ $scope.isMultek = isMultek(accessEmployee.Organization)
         if (resp == 'Token is TimeOut') {
           alertService.showAlert('登录失效，请重新登录')
           $state.transitionTo('signin')
-        }
-        else if (resp.success && resp.obj) {
+        } else if (resp.success && resp.obj) {
           $scope.item = resp.obj.item
           $scope.imgs = resp.obj.imgs
           $scope.replyList = resp.obj.replyList
@@ -933,7 +990,7 @@ $scope.isMultek = isMultek(accessEmployee.Organization)
             // 图片缩放
             InitPhotoScale()
           }, 1500)
-        }else {
+        } else {
           $scope.item = {}
           $scope.imgs = []
           $scope.replyList = []
@@ -944,6 +1001,7 @@ $scope.isMultek = isMultek(accessEmployee.Organization)
     InitInfo()
 
     var swMap = null
+
     function HasSensWord (txt) {
       if (!swMap) {
         swMap = sw_buildMap()
@@ -967,7 +1025,6 @@ $scope.isMultek = isMultek(accessEmployee.Organization)
       $scope.ReplyContent = ''
     }
 
-
     function doSubmitReply (sRep, chatID) {
       var paras = {
         LostID: lostID,
@@ -983,7 +1040,7 @@ $scope.isMultek = isMultek(accessEmployee.Organization)
           InitInfo()
           alertService.showLoading('提交成功')
           $ionicScrollDelegate.scrollBottom()
-        }else {
+        } else {
           alertService.showAlert(resp.message)
         }
       })
@@ -996,8 +1053,9 @@ $scope.isMultek = isMultek(accessEmployee.Organization)
         template: '<textarea rows="5" style="font-size:80%" placeholder="发表回复"  ng-model="FollowReply.ReplyPerson"></textarea>',
         title: '回复',
         scope: $scope,
-        buttons: [
-          { text: 'Cancel' },
+        buttons: [{
+          text: 'Cancel'
+        },
           {
             text: '<b>Save</b>',
             type: 'button-positive',
@@ -1185,5 +1243,22 @@ $scope.isMultek = isMultek(accessEmployee.Organization)
 
     InitInfo()
   })
-// /////////////////////////////////////////////    
-
+  .controller('HrGuideListCtrl', function ($scope, $rootScope, $state, $ionicHistory, $ionicPopup, 
+                                          actionVisitServices) 
+  {
+    // 人事指南
+    $scope.open = function (action) {
+      switch (action) {
+        case '合同签核提示':
+          $state.go('contractGuide');
+          break;
+        case '身份证资料更新提示':
+          $state.go('updateIDInfoGuide');
+          break;
+        default:
+          break;
+      }
+    }
+  })
+  
+  // /////////////////////////////////////////////    

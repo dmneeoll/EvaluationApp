@@ -1,0 +1,35 @@
+<!-- 合同签核提示 -->
+<ion-view view-title="合同签核提示" cache-view="true">
+    <ion-content scroll="true">
+        <ul class="lightgallery">
+            <li data-src="https://zhmobile.flextronics.com/EvaluationApp/Upload/GBS/hrguide/ltp1.png" />
+            <a href="#">
+                <img style="max-width:98%;" src="https://zhmobile.flextronics.com/EvaluationApp/Upload/GBS/hrguide/ltp1.png" />
+            </a>
+            </li>
+            <li data-src="https://zhmobile.flextronics.com/EvaluationApp/Upload/GBS/hrguide/ltp2.png" />
+            <a href="#">
+                <img style="max-width:98%;" src="https://zhmobile.flextronics.com/EvaluationApp/Upload/GBS/hrguide/ltp2.png" />
+            </a>
+            </li>
+            <li data-src="https://zhmobile.flextronics.com/EvaluationApp/Upload/GBS/hrguide/ltp3.png" />
+            <a href="#">
+                <img style="max-width:98%;" src="https://zhmobile.flextronics.com/EvaluationApp/Upload/GBS/hrguide/ltp3.png" />
+            </a>
+            </li>
+        </ul>
+        <p style="float:right;">[End]</p>
+    </ion-content>
+    <script>
+        setTimeout(function () {
+            //图片缩放
+            $(".lightgallery").lightGallery({
+                mobileSrc: false,
+                mobileSrcMaxWidth: 640,
+                swipeThreshold: 50,
+                hideControlOnEnd: false,
+                closable: false
+            });
+        }, 1000);
+    </script>
+</ion-view>
