@@ -4,13 +4,16 @@
  */
 angular.module('evaluationApp.gbshrControllers', [])
   .controller('GBSListCtrl', function ($scope, $rootScope, $state, $ionicHistory,
-    commonServices, CacheFactory, alertService, externalLinksService, actionVisitServices) {
+    commonServices, CacheFactory, alertService, externalLinksService, actionVisitServices, UrlServices) {
     $scope.canUseAction = function (action) {
-      return actionVisitServices.canUseAction(action, $rootScope.accessEmployee.WorkdayNO)
-    }
+      return actionVisitServices.canUseAction(action, $rootScope.accessEmployee.WorkdayNO);
+    };
     $scope.checkActionUpdate = function (action) {
-      return actionVisitServices.checkUpdate(action)
-    }
+      return actionVisitServices.checkUpdate(action);
+    };
+    $scope.openGeneralNotice = function (isUrlHtml, id, html) {
+      UrlServices.openGeneralNotice(isUrlHtml, id, html);
+    };
 
     $scope.open = function (action) {
       actionVisitServices.visit(action) // save state
@@ -58,6 +61,12 @@ angular.module('evaluationApp.gbshrControllers', [])
           break;
         case '人事指南':
           $state.go('hrGuide');
+          break;
+        case '人权政策':
+          $scope.openGeneralNotice(0, '79BAF6EB-15B3-435D-A06E-24F468DF97D2');
+          break;
+        case '道德热线':
+          $scope.openGeneralNotice(0, '79BAF6EB-15B3-435D-A06E-24F468DF97D3');
           break;
         default:
           break;

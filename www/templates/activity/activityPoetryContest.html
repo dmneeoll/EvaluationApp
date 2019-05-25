@@ -1,4 +1,4 @@
-<!-- 诗词大赛 -->
+<!-- 有奖答题2019 -->
 <ion-view cache-view="false">
     <ion-nav-title>
         {{Language.activityGood.PoetryTitle}}
@@ -10,48 +10,96 @@
         <div class="divOff lightGrayBack" compile="htmlConent" ng-if="!CanAns">
         </div>
         <div class="divOff lightGrayBack" ng-if="ansDone">
-        <h3 style="color:blue">答题结束，谢谢您的参与！</h3>
+            <h3 style="color:blue">答题结束，谢谢您的参与！</h3>
         </div>
-        
+
+        <!-- 上一次的中奖信息 -->
         <div ng-if="!CanAttend">
             <h3 style="color:blue; margin:10px 20px;" compile="LastMsg"></h3>
         </div>
-        <div ng-if="CanAns && curQuest" style="margin-top:20px;">
-            <fieldset style="border:0;">
-            <div style="color: royalblue">
-                {{curIndex+1}}. 
-                <span compile="curQuest.SubjectText"></span>
+
+        <div ng-if="bOnebyoneLimitTime && CanAns">
+            <!-- 一次显示一道题，每一题有限时 -->
+            <div ng-if="curQuest" style="margin-top:20px;">
+                <fieldset style="border:0;">
+                    <div style="color: royalblue">
+                        {{curIndex+1}}.
+                        <span compile="curQuest.SubjectText"></span>
+                    </div>
+                    <div ng-repeat="checkItem in curQuest.Items">
+                        <!-- 单选 -->
+                        <div ng-if="checkItem.Type=='radio'">
+                            <h4>
+                                <label>
+                                    <input type="radio" name="Rad{{curQuest.Sort}}"
+                                        value="{{curQuest.Sort}}^{{$index}}^{{checkItem.ItemScore}}" />
+                                    {{checkItem.ItemText}}
+                                </label>
+                            </h4>
+                        </div>
+                        <!-- 多选 -->
+                        <div ng-if="checkItem.Type=='checkbox'">
+                            <h4>
+                                <label>
+                                    <input type="checkbox" name="Chk{{curQuest.Sort}}"
+                                        value="{{curQuest.Sort}}^{{$index}}^{{checkItem.ItemScore}}" />
+                                    {{checkItem.ItemText}}
+                                </label>
+                            </h4>
+                        </div>
+                    </div>
+                </fieldset>
             </div>
-            <div ng-repeat="checkItem in curQuest.Items">
-                <!-- 单选 -->
-                <div ng-if="checkItem.Type=='radio'">
-                <h4>
-                    <label>
-                    <input type="radio" name="Rad{{curQuest.Sort}}" value="{{curQuest.Sort}}^{{$index}}^{{checkItem.ItemScore}}"/>
-                    {{checkItem.ItemText}}
-                    </label>
-                </h4>
-                </div>
-                <!-- 多选 -->
-                <div ng-if="checkItem.Type=='checkbox'">
-                <h4>
-                    <label>
-                    <input type="checkbox" name="Chk{{curQuest.Sort}}" value="{{curQuest.Sort}}^{{$index}}^{{checkItem.ItemScore}}"/>
-                    {{checkItem.ItemText}}
-                    </label>
-                </h4>
-                </div>
+            <br>
+            <div style="text-align: center" ng-if="hasMore()">
+                <button class="button button-positive" ng-click="AnsQues()">
+                    {{Language.activityGood.OkNextButton}}&nbsp;<span
+                        style="color:red;font-weight:800;">{{remainSec}}</span>
+                </button>
             </div>
-            </fieldset>
         </div>
-        <br>
+
+        <div ng-if="!bOnebyoneLimitTime && CanAns">
+            <!-- 一次显示所有题，无限时 -->
+            <div ng-repeat="ques in questsions">
+                <fieldset>
+                    <div style="color: royalblue">
+                        {{$index+1}}.
+                        <span compile="ques.SubjectText"></span>
+                    </div>
+                    <div ng-repeat="checkItem in ques.Items">
+                        <!-- 单选 -->
+                        <div ng-if="checkItem.Type=='radio'">
+                            <h4>
+                                <label>
+                                    <input type="radio" name="Rad{{curQuest.Sort}}"
+                                        value="{{curQuest.Sort}}^{{$index}}^{{checkItem.ItemScore}}" />
+                                    {{checkItem.ItemText}}
+                                </label>
+                            </h4>
+                        </div>
+                        <!-- 多选 -->
+                        <div ng-if="checkItem.Type=='checkbox'">
+                            <h4>
+                                <label>
+                                    <input type="checkbox" name="Chk{{curQuest.Sort}}"
+                                        value="{{curQuest.Sort}}^{{$index}}^{{checkItem.ItemScore}}" />
+                                    {{checkItem.ItemText}}
+                                </label>
+                            </h4>
+                        </div>
+                    </div>
+                </fieldset>
+            </div>
+            <br>
+            <div style="text-align:center">
+                <button class="button button-positive" ng-click="Submit()">{{Language.menu.submit}}</button>
+            </div>
+        </div>
+
+        <!-- 开始答题按钮 -->
         <div style="text-align: center" ng-if="CanAttend && !CanAns">
             <button class="button button-positive" ng-click="StartAns()">{{Language.activityGood.StartButton}}</button>
-        </div>
-        <div style="text-align: center" ng-if="CanAns && hasMore()">
-            <button class="button button-positive" ng-click="AnsQues()">
-                {{Language.activityGood.OkNextButton}}&nbsp;<span style="color:red;font-weight:800;">{{remainSec}}</span>
-            </button>
         </div>
     </ion-content>
 </ion-view>

@@ -4,7 +4,7 @@
 
 //开关
 //是否本地开发调试
-var IsDebugMode = false; //false;
+var IsDebugMode = true; //false;
 
 //是否显示详细升级信息
 var IsShowUpdateDetial = false; //false;
@@ -12,7 +12,7 @@ var IsShowUpdateDetial = false; //false;
 //是否显示升级安装失败信息
 var IsShowUpdateInstalledErr = true;
 
-var LAST_PUBLISH_DATE = "2019-05-17 17:07";
+var LAST_PUBLISH_DATE = "2019-05-23 19:37";
 
 //新的测试页面控制，与 actionVisitServices, ESE_ACTION_UPDATE表配合使用
 //  $scope.canUseAction = function (action) {
@@ -391,6 +391,8 @@ var ZH_CN = {
         newEmployeeIntroDL:'DL入职声明正文页',
         newEmployeeIntroIDL:'职员入职声明正文页',
         LTPTraining:'LTP假单证明无纸化培训材料',
+        HumanRightsPolicy:'人权政策',
+        Ethicshotline:'道德热线',
     },
     xfcx:{
         title:"消费查询",
@@ -515,7 +517,7 @@ var ZH_CN = {
         designer:"作者",
         desc:"主要事迹",
         designConcept: "设计理念",
-        PoetryTitle:"B11地球周线上环保知识有奖问答",
+        PoetryTitle:"物流安全操作知识有奖问答",
         StartButton:"开始答题",
         RemainSec:"剩余时间",
         OkNextButton:"答题",
@@ -912,6 +914,8 @@ var ZH_US = {
         newEmployeeIntroDL:'DL入职声明正文',
         newEmployeeIntroIDL:'职员入职声明正文',
         LTPTraining:'LTP假单证明无纸化培训材料',
+        HumanRightsPolicy:'Human Rights Policy',
+        Ethicshotline:'Ethics hotline',
     },
     xfcx:{
         title:" Consume Inquiry ",
@@ -1034,7 +1038,7 @@ var ZH_US = {
         designer:"Author",
         desc:"Describe",
         designConcept: "Design Concept",
-        PoetryTitle:"B11 Earth Day Environmental knowledge contest",
+        PoetryTitle:"物流安全操作知识有奖问答",
         StartButton:"Start",
         RemainSec:"Remaining",
         OkNextButton:"Answer",
@@ -1242,4 +1246,5 @@ var GLOBAL_INFO = {
     KEY_HANDBOOK_L1: "KEY_HANDBOOK_L1",
     KEY_HANDBOOK_L2: "KEY_HANDBOOK_L2",
     KEY_HANDBOOK_L3: "KEY_HANDBOOK_L3",
+    KEY_CONTEST_2019:"KEY_CONTEST_2019",
 };
