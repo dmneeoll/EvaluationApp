@@ -72,8 +72,8 @@
                         <div ng-if="checkItem.Type=='radio'">
                             <h4>
                                 <label>
-                                    <input type="radio" name="Rad{{curQuest.Sort}}"
-                                        value="{{curQuest.Sort}}^{{$index}}^{{checkItem.ItemScore}}" />
+                                    <input type="radio" name="Rad{{ques.Sort}}"
+                                        value="{{ques.Sort}}^{{$index}}^{{checkItem.ItemScore}}" />
                                     {{checkItem.ItemText}}
                                 </label>
                             </h4>
@@ -82,8 +82,8 @@
                         <div ng-if="checkItem.Type=='checkbox'">
                             <h4>
                                 <label>
-                                    <input type="checkbox" name="Chk{{curQuest.Sort}}"
-                                        value="{{curQuest.Sort}}^{{$index}}^{{checkItem.ItemScore}}" />
+                                    <input type="checkbox" name="Chk{{ques.Sort}}"
+                                        value="{{ques.Sort}}^{{$index}}^{{checkItem.ItemScore}}" />
                                     {{checkItem.ItemText}}
                                 </label>
                             </h4>

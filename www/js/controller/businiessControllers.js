@@ -2358,7 +2358,7 @@ angular.module('evaluationApp.businiessControllers', ['ngSanitize'])
                         $scope.SubActID=resp.data;
                         $scope.htmlConent = "<h3>欢迎参加园区物流部“安全操作知识有奖问答”线上答题活动</h3><br>一共15道题，答对9题即可得到精美礼品一份。"
                                             +"<br>奖品有限（200份）先到先得，你准备好了吗？"
-                                            +"<br>获奖发放时间及地点：5月30日 B9物流大堂";
+                                            +"<br>奖品发放时间及地点：<b>5月30日 B9物流大堂</b>";
                     }else{
                         $scope.CanAttend=false;
                         $scope.LastMsg = resp.message;
@@ -2373,6 +2373,7 @@ angular.module('evaluationApp.businiessControllers', ['ngSanitize'])
             var url = commonServices.getUrl("EHSActService.ashx", "GetEHSActDetails");
             var paras = { 
                 ActID: $scope.SubActID,
+                WorkdayNo: baseInfo.WorkdayNO,
                 Rand: true /*rand shuffle*/
             };
             commonServices.submit(paras, url).then(function (resp) {
@@ -2381,7 +2382,7 @@ angular.module('evaluationApp.businiessControllers', ['ngSanitize'])
                         $scope.questsions = resp.list;      
                         UserStartAns();                  
                     }else{
-                        alertService.showAlert("该活动还没有题目");
+                        alertService.showAlert(resp.message);
                         $ionicHistory.goBack();
                     }
                 }
@@ -2410,10 +2411,10 @@ angular.module('evaluationApp.businiessControllers', ['ngSanitize'])
             //var SubmitList = [];
             var sumScore = 0;
             var nDoItem = 0;
-            var fullScore = CalcFullScore($scope.researchDetailList);
+            var fullScore = CalcFullScore($scope.questsions);
 
-            for (var i = 0; i < $scope.researchDetailList.length; i++) {
-                var item = $scope.researchDetailList[i];
+            for (var i = 0; i < $scope.questsions.length; i++) {
+                var item = $scope.questsions[i];
                 var stype = item.Items[0].Type;          
                 if ("radio" == stype) {
                   var $rad = $("input[name='Rad" + item.Sort + "'" + "]:checked");
@@ -2451,7 +2452,7 @@ angular.module('evaluationApp.businiessControllers', ['ngSanitize'])
             // }
 
             if (nDoItem != $scope.questsions.length) {
-                alertService.showAlert("还有未选择的项目，请选择完成后再提交");
+                alertService.showAlert("还有未选择的题目，请选择完成后再提交");
                 $scope.isSumbiting = false;
                 return;
             }
@@ -2541,6 +2542,7 @@ angular.module('evaluationApp.businiessControllers', ['ngSanitize'])
     //         var url = commonServices.getUrl("EHSActService.ashx", "GetEHSActDetails");
     //         var paras = { 
     //             ActID: $scope.SubActID,
+    //             WorkdayNo: baseInfo.WorkdayNO,
     //             Rand: true /*rand shuffle*/
     //         };
     //         commonServices.submit(paras, url).then(function (resp) {
