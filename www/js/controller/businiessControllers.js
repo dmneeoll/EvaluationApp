@@ -2357,7 +2357,7 @@ angular.module('evaluationApp.businiessControllers', ['ngSanitize'])
                         $scope.CanAttend=true;
                         $scope.SubActID=resp.data;
                         $scope.htmlConent = "<h3>欢迎参加园区物流部“安全操作知识有奖问答”线上答题活动</h3><br>一共15道题，答对9题即可得到精美礼品一份。"
-                                            +"<br>奖品有限（200份）先到先得，你准备好了吗？"
+                                            +"<br>奖品有限，先到先得，你准备好了吗？"
                                             +"<br>奖品发放时间及地点：<b>5月30日 B9物流大堂</b>";
                     }else{
                         $scope.CanAttend=false;

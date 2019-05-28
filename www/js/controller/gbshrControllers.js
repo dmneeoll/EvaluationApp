@@ -68,6 +68,9 @@ angular.module('evaluationApp.gbshrControllers', [])
         case '道德热线':
           $scope.openGeneralNotice(0, '79BAF6EB-15B3-435D-A06E-24F468DF97D3');
           break;
+        case '银行卡号自助变更培训':
+          $scope.openGeneralNotice(0, '23955A71-4D92-4322-A25E-6128CCC65B69');
+          break;
         default:
           break;
       }
@@ -643,8 +646,8 @@ angular.module('evaluationApp.gbshrControllers', [])
       }
     }
   })
-  .controller('generalNoticeDetailCtrl', function ($scope, $rootScope, $state, $ionicHistory,
-    commonServices, CacheFactory, alertService, $ionicPopup) {
+  .controller('generalNoticeDetailCtrl', function ($scope, $rootScope, $state, $ionicHistory, $ionicPopup,
+    commonServices, CacheFactory, alertService, UrlServices) {
     // GeneralNotice 详细
     var baseInfo = commonServices.getBaseParas()
     var gnID = CacheFactory.get('gnID')
@@ -671,7 +674,9 @@ angular.module('evaluationApp.gbshrControllers', [])
         }
       })
     }
-    InitInfo()
+    InitInfo();
+
+    $scope.openGeneralNotice=UrlServices.openGeneralNotice;
   })
   .controller('EmployeeDismissCtrl', function ($scope, $rootScope, $state, $ionicHistory, $ionicPopup,
     commonServices, CacheFactory, alertService, actionVisitServices) {
