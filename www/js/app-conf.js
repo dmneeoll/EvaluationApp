@@ -12,7 +12,7 @@ var IsShowUpdateDetial = false; //false;
 //是否显示升级安装失败信息
 var IsShowUpdateInstalledErr = true;
 
-var LAST_PUBLISH_DATE = "2019-06-25 11:50";
+var LAST_PUBLISH_DATE = "2019-07-02 13:50";
 
 //新的测试页面控制，与 actionVisitServices, ESE_ACTION_UPDATE表配合使用
 //  $scope.canUseAction = function (action) {
@@ -246,6 +246,7 @@ var ZH_CN = {
         union:"工会之窗",
         mechCharity:"MECH基金会",
         CSER:"CSER企业社会环境责任",
+        ProtectionSecurity:"安全部",
     },
     myFlex:{
         employee_ID: "工号",
@@ -769,6 +770,7 @@ var ZH_US = {
         union:"Flex Union",
         mechCharity:"MECH Charity",
         CSER:"CSER",
+        ProtectionSecurity:"Brand Protection & Security",
     },
     myFlex:{
         employee_ID: "Employee ID",

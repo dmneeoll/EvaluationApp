@@ -414,7 +414,9 @@ angular.module('evaluationApp.appControllers', [])
             }
             else if(action=="问与答"){
                 $location.path("askAndAnswer");
-
+            }
+            else if(action=="安全部"){
+                $location.path("protectionSecurity");
             }
             else if(action=="灯光控制"){
                 $location.path("lightPower");

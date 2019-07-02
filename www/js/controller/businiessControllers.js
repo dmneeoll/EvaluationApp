@@ -2701,5 +2701,31 @@ angular.module('evaluationApp.businiessControllers', ['ngSanitize'])
     //         });
     //     }
     // })
+    .controller('ProtectionSecurityCtrl', function($scope,$rootScope,CacheFactory,eHSActService,
+                                            $state,$ionicHistory,commonServices,$location,actionVisitServices) 
+    {
+        //安全部
+        $scope.closePass=function(){
+            $ionicHistory.nextViewOptions({
+                disableAnimate: true,
+                disableBack: true
+            });
+            $state.go('tab.home');
+        }
+
+        $scope.open = function (action) {
+            switch (action) {
+              case "补贴申请结果查询":
+                $state.go("union_welfare_applyResult");
+                break;
+            case 'CP':
+                /*厂牌补办*/
+                $state.go('reissueWorkingCard');
+                break;
+              default:
+                break;
+            }
+          };
+    })
 ////////////////////////////////////////////////    
 ;

@@ -170,39 +170,23 @@
                 <!--<div><img ng-src="img/nbzp.jpg" style="position:absolute;left:0px;top:0px;width:100%;height:100%; "></div>-->
                 <!--<img ng-src="img/nbzp.jpg" class="Size" >-->
             </div>
-            <div id="wyd" class="col custom-bule1 light" style="Margin:1px;" ng-click="open('问与答');">
+            <div id="wyd" class="col custom-og light" style="Margin:1px;" ng-click="open('安全部');">
+                <i style="font-size:50px;" class="icon ion-checkmark-circled"></i>
+                <div>{{Language.home.ProtectionSecurity}}</div>
+            </div>
+        </div>
+        <div class="row" style="height:110px;text-align: center">
+            <div class="col col-25 custom-bule1 light" id="wyd" style="Margin:1px;" ng-click="open('问与答');">
                 <i style="font-size:50px;" class="icon ion-help-circled"></i>
                 <div>问与答</div>
             </div>
-
-            <!--<div class="col col custom-bule1 light"  style=";Margin:1px" ng-click="open('CSERCal');">-->
-
-                <!--<i style="font-size:50px;" class="ion-person-add"></i>-->
-                <!--<div>{{Language.CSER.title}}</div>-->
-            <!--</div>-->
-            <!--<div  class="col positive-bg light light"  style=";Margin:1px" ng-click="open('earthday');">-->
-
-                <!--<i style="font-size:50px;" class="ion-android-globe"></i>-->
-                <!--<div >{{Language.home.earthday}}<span style="font-size: 11px" class="badge badge-energized">New</span></div>-->
-            <!--</div>-->
-            <!--<div   class="col positive-bg light"  style="Margin:1px" ng-click="open('GBS');">-->
-                <!--<i style="font-size:50px;" class="ion-android-list"></i>-->
-                <!--<div>{{Language.home.GBS}}</div>-->
-            <!--</div>-->
-
-            <!--<div  class="col col custom-bule1 light"  style=";Margin:1px" ng-click="open('choujiang');">-->
-
-            <!--<i style="font-size:50px;" class="ion-person-add"></i>-->
-            <!--<div >抽奖</div>-->
-            <!--</div>-->            
-
         </div>
-
         <div class="row" style="height:110px;text-align: center">
-        <div class="col col-25 custom-og light" style="Margin:1px" ng-if="canUseAction('testPage')" ng-click="open('testPage')">
-            <i style="font-size:50px;" class="ion-android-bus"></i>
-            <div>my test page</div>
-        </div>
+            <div class="col col-25 custom-og light" style="Margin:1px" ng-if="canUseAction('testPage')"
+                ng-click="open('testPage')">
+                <i style="font-size:50px;" class="ion-android-bus"></i>
+                <div>my test page</div>
+            </div>
         </div>
 
         <div class="row" style="height:110px;text-align: center;display: none" ng-if="Power">

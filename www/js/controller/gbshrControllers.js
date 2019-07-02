@@ -6,73 +6,73 @@ angular.module('evaluationApp.gbshrControllers', [])
   .controller('GBSListCtrl', function ($scope, $rootScope, $state, $ionicHistory,
     commonServices, CacheFactory, alertService, externalLinksService, actionVisitServices, UrlServices) {
     $scope.canUseAction = function (action) {
-      return actionVisitServices.canUseAction(action, $rootScope.accessEmployee.WorkdayNO);
-    };
+      return actionVisitServices.canUseAction(action, $rootScope.accessEmployee.WorkdayNO)
+    }
     $scope.checkActionUpdate = function (action) {
-      return actionVisitServices.checkUpdate(action);
-    };
+      return actionVisitServices.checkUpdate(action)
+    }
     $scope.openGeneralNotice = function (isUrlHtml, id, html) {
-      UrlServices.openGeneralNotice(isUrlHtml, id, html);
-    };
+      UrlServices.openGeneralNotice(isUrlHtml, id, html)
+    }
 
     $scope.open = function (action) {
       actionVisitServices.visit(action) // save state
       switch (action) {
         case 'KQAbnormal':
           $state.go('kqyc')
-          break;
+          break
         case 'Certificate':
           $state.go('certificate')
-          break;
+          break
         case '员工手册':
           $state.go('handbook_lg')
-          break;
+          break
         case 'LTP':
           try {
             externalLinksService.openUr('https://appcenter.flextronics.com/GMIS/Template/LTPPasswordReset_Mobile.html')
           } catch (ex) {
             alertService.showAlert(ex.message)
           }
-          break;
+          break
         case '保险':
           $state.go('insurance')
-          break;
+          break
         case '入职文件':
           $state.go('newEmployeeIntro')
-          break;
+          break
         case '社会保险':
         case '公积金信息':
           CacheFactory.remove('gnAction')
-          CacheFactory.save('gnAction', action);
-          $state.go('generalNotice');
-          break;
+          CacheFactory.save('gnAction', action)
+          $state.go('generalNotice')
+          break
         case '离职须知':
-          $state.go('employeeDismiss');
-          break;
+          $state.go('employeeDismiss')
+          break
         case 'train':
           try {
             externalLinksService.openUr('https://zhmobile.flextronics.com/EvaluationApp/course/course/1.html')
           } catch (ex) {
-            alertService.showAlert(ex.message);
+            alertService.showAlert(ex.message)
           }
-          break;
+          break
         case 'LTP培训资料':
-          $state.go('ltpTraining');
-          break;
+          $state.go('ltpTraining')
+          break
         case '人事指南':
-          $state.go('hrGuide');
-          break;
+          $state.go('hrGuide')
+          break
         case '人权政策':
-          $scope.openGeneralNotice(0, '79BAF6EB-15B3-435D-A06E-24F468DF97D2');
-          break;
+          $scope.openGeneralNotice(0, '79BAF6EB-15B3-435D-A06E-24F468DF97D2')
+          break
         case '道德热线':
-          $scope.openGeneralNotice(0, '79BAF6EB-15B3-435D-A06E-24F468DF97D3');
-          break;
+          $scope.openGeneralNotice(0, '79BAF6EB-15B3-435D-A06E-24F468DF97D3')
+          break
         case '银行卡号自助变更培训':
-          $scope.openGeneralNotice(0, '23955A71-4D92-4322-A25E-6128CCC65B69');
-          break;
+          $scope.openGeneralNotice(0, '23955A71-4D92-4322-A25E-6128CCC65B69')
+          break
         default:
-          break;
+          break
       }
     }
     $scope.closePass = function () {
@@ -94,10 +94,6 @@ angular.module('evaluationApp.gbshrControllers', [])
       switch (action) {
         case 'visaApply':
           $state.go('visaApply')
-          break
-        case 'CP':
-          /*厂牌补办*/
-          $state.go('reissueWorkingCard')
           break
         default:
           CacheFactory.save('action', action)
@@ -225,8 +221,8 @@ angular.module('evaluationApp.gbshrControllers', [])
     //     { name: "自然损坏", value: "自然损坏" }
     // ]
 
-    var action = 'CP'
-    var paras = commonServices.getBaseParas()
+    var action = 'CP';
+    var paras = commonServices.getBaseParas();
 
     $scope.apply = {
       WorkdayNO: paras.WorkdayNO,
@@ -234,7 +230,7 @@ angular.module('evaluationApp.gbshrControllers', [])
       MobileNo: paras.MobileNo,
       Organization: paras.Organization,
       Use: '厂牌丢失'
-    }
+    };
 
     $scope.protocol = {
       IsAggree: 0
@@ -674,9 +670,9 @@ angular.module('evaluationApp.gbshrControllers', [])
         }
       })
     }
-    InitInfo();
+    InitInfo()
 
-    $scope.openGeneralNotice=UrlServices.openGeneralNotice;
+    $scope.openGeneralNotice = UrlServices.openGeneralNotice
   })
   .controller('EmployeeDismissCtrl', function ($scope, $rootScope, $state, $ionicHistory, $ionicPopup,
     commonServices, CacheFactory, alertService, actionVisitServices) {
@@ -1257,22 +1253,21 @@ angular.module('evaluationApp.gbshrControllers', [])
 
     InitInfo()
   })
-  .controller('HrGuideListCtrl', function ($scope, $rootScope, $state, $ionicHistory, $ionicPopup, 
-                                          actionVisitServices) 
-  {
+  .controller('HrGuideListCtrl', function ($scope, $rootScope, $state, $ionicHistory, $ionicPopup,
+    actionVisitServices) {
     // 人事指南
     $scope.open = function (action) {
       switch (action) {
         case '合同签核提示':
-          $state.go('contractGuide');
-          break;
+          $state.go('contractGuide')
+          break
         case '身份证资料更新提示':
-          $state.go('updateIDInfoGuide');
-          break;
+          $state.go('updateIDInfoGuide')
+          break
         default:
-          break;
+          break
       }
     }
   })
-  
+
   // /////////////////////////////////////////////    

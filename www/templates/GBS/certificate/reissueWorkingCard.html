@@ -1,34 +1,34 @@
 <!-- 厂牌补办 -->
-<ion-view cache-view="false"  hide-tabs >
+<ion-view cache-view="false" hide-tabs>
     <ion-nav-title>
         {{title}}
     </ion-nav-title>
     <ion-content style="background-color:lavender">
 
-        <div class="list card" >
-                <div class="divOff lightRedBack">
-                        <span class="text-left">{{Language.certificate.Explain}}：</span>
-                        <div class="divOff">
-                            <ol class="numOl">
-                                <li>
-                                    厂牌补办收费10元，将在申办当月工资中扣费；
-                                </li>
-                                <li>
-                                    如需撤消厂牌补办申请，请于申请当天<b>16:00前</b>（16点以后申请为次日16:00前）联系工作人员；
-                                </li>
-                                <li>
-                                    提交申请后请根据工作人员的反馈携带个人证件到GBSHR领取。
-                                </li>
-                            </ol>
-                        </div>
-                    </div>
+        <div class="list card">
+            <div class="divOff lightRedBack">
+                <span class="text-left">{{Language.certificate.Explain}}：</span>
+                <div class="divOff">
+                    <ol class="numOl">
+                        <li>
+                            厂牌补办收费10元，将在申办当月工资中扣费；
+                        </li>
+                        <li>
+                            如需撤消厂牌补办申请，请于申请当天<b>16:00前</b>（16点以后申请为次日16:00前）联系工作人员；
+                        </li>
+                        <li>
+                            提交申请后请根据工作人员的反馈携带个人证件到安全部领取。
+                        </li>
+                    </ol>
+                </div>
+            </div>
 
             <div class="item item-input">
                 <span class="input-label" style="width: 30px;font-size:80%">{{Language.like.name}}</span>
                 <span class="input-label" style="width: 10px;color: red">*</span>
                 <input type="text" style="font-size:80%" readonly="readonly" ng-model="apply.CName" />
             </div>
-            
+
             <div class="item item-input">
                 <span class="input-label" style="width:30px;font-size:80%">{{Language.like.employee_ID}}</span>
                 <span class="input-label" style="width: 10px;color: red">*</span>
@@ -42,7 +42,8 @@
             <div class="item item-input">
                 <span class="input-label" style="width: 50px;font-size:80%">{{Language.shareCar.mobile}}</span>
                 <span class="input-label" style="width: 10px;color: red">*</span>
-                <input type="text" style="font-size:80%" placeholder="{{Language.shareCar.mobile}}" ng-model="apply.MobileNo" />
+                <input type="text" style="font-size:80%" placeholder="{{Language.shareCar.mobile}}"
+                    ng-model="apply.MobileNo" />
             </div>
             <!-- <div class="item item-input">
                 <span class="input-label" style="width: 30px;font-size:80%">{{Language.certificate.Reason}}</span>
@@ -50,15 +51,16 @@
                 <select class="button" ng-options='t.name for t in listReason' ng-model="apply.Use"></select>
             </div> -->
             <div>
-                <ion-checkbox name="chkKeyType" color="dark"
-                    checked="false" value="1" ng-model="protocol.IsAggree">
-                    <span style="color:blue;white-space:normal;"><span style="color: red">*</span>我已知悉申请厂牌补办需扣款10元/次</span>
+                <ion-checkbox name="chkKeyType" color="dark" checked="false" value="1" ng-model="protocol.IsAggree">
+                    <span style="color:blue;white-space:normal;"><span
+                            style="color: red">*</span>我已知悉申请厂牌补办需扣款10元/次</span>
                 </ion-checkbox>
             </div>
         </div>
 
-        <div style="text-align: center"><button  class="button  button-positive" ng-click="Submit()">{{Language.menu.submit}}</button></div>
-        <br/>
+        <div style="text-align: center"><button class="button  button-positive"
+                ng-click="Submit()">{{Language.menu.submit}}</button></div>
+        <br />
     </ion-content>
 
 </ion-view>

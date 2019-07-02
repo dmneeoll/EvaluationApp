@@ -355,6 +355,11 @@ angular.module('evaluationApp.router', [])
                 templateUrl: 'templates/chartRoom/tab-chartRoom.html',
                 controller: 'ChartRoomCtrl'
             })
+            .state('protectionSecurity', {
+                url: '/protectionSecurity',
+                templateUrl: 'templates/protectionSecurity/protectSecList.html',
+                controller: 'ProtectionSecurityCtrl'
+            })
             .state('askAndAnswer', {
                 url: '/askAndAnswer',
                 templateUrl: 'templates/askAndAnswer/askAndAnswerList.html',
