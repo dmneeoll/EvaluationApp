@@ -536,6 +536,9 @@ angular.module('evaluationApp.adminControllers', [])
                     //$state.go('dormMap');
                     $scope.openGeneralNotice(0, '671705D6-DEAE-4B19-9969-ABED6400F251');
                     break;
+                case "臭虫防治须知":
+                    $scope.openGeneralNotice(0, 'D71A0AE7-5C4C-4573-9F78-A6FD82F76BCA');
+                    break;
                 case "宿舍报修":
                     $state.go('repairDorm');
                     break;

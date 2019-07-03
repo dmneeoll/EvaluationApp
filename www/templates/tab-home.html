@@ -172,7 +172,9 @@
             </div>
             <div id="wyd" class="col custom-og light" style="Margin:1px;" ng-click="open('安全部');">
                 <i style="font-size:50px;" class="icon ion-checkmark-circled"></i>
-                <div>{{Language.home.ProtectionSecurity}}</div>
+                <div>{{Language.home.ProtectionSecurity}}
+                    <span style="font-size: 10px" class="badge badge-assertive" ng-if="checkActionUpdate('安全部')">New</span>
+                </div>
             </div>
         </div>
         <div class="row" style="height:110px;text-align: center">
