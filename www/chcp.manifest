@@ -1,5 +1,9 @@
 [
   {
+    "file": ".vscode/launch.json",
+    "hash": "17a06f256032d5cf2faaaf399f62b9bb"
+  },
+  {
     "file": "css/animate.min.css",
     "hash": "8f639b916ea1d3736d948ba423ef8ea6"
   },
@@ -9,7 +13,7 @@
   },
   {
     "file": "css/style.css",
-    "hash": "047b8d3508be39d1b282b9a3968964e6"
+    "hash": "0205ca41fffef8ed4c43e0f3f4f4b2bf"
   },
   {
     "file": "fonts/Slide-icons.dev.svg",
@@ -45,7 +49,7 @@
   },
   {
     "file": "img/B15Phone2.jpg",
-    "hash": "48c73dc51fc1824e482f51005ce26610"
+    "hash": "7fb737cb639920cde9f28df9de755dae"
   },
   {
     "file": "img/back_pressed.png",
@@ -66,82 +70,6 @@
   {
     "file": "img/car.png",
     "hash": "106ed35264a7ce1da14bba64663404b3"
-  },
-  {
-    "file": "img/CarImg/Slide1_1.JPG",
-    "hash": "0a36ec3f82eb9924bdb9c435f8952fba"
-  },
-  {
-    "file": "img/CarImg/Slide1.JPG",
-    "hash": "031f834d8b4180d3c2d0207530e25ed0"
-  },
-  {
-    "file": "img/CarImg/Slide10.JPG",
-    "hash": "ceef48414a19dd0a311847f159456301"
-  },
-  {
-    "file": "img/CarImg/Slide11.JPG",
-    "hash": "7f30244b60fa29b8f1edc41df99180fd"
-  },
-  {
-    "file": "img/CarImg/Slide12.JPG",
-    "hash": "e9fb990693683acf3d48343805498c76"
-  },
-  {
-    "file": "img/CarImg/Slide13.JPG",
-    "hash": "57ec56a2d25deba8658298c136ed43b5"
-  },
-  {
-    "file": "img/CarImg/Slide14.JPG",
-    "hash": "448224519276dc251263d86760b62e21"
-  },
-  {
-    "file": "img/CarImg/Slide15.JPG",
-    "hash": "0feebe85614de0d1090499e189a3fe43"
-  },
-  {
-    "file": "img/CarImg/Slide16.JPG",
-    "hash": "ad313d2f0e457dd6e0e8e2c84b041e8a"
-  },
-  {
-    "file": "img/CarImg/Slide17.JPG",
-    "hash": "9856d0b63ab5b8145c60d318b34eb906"
-  },
-  {
-    "file": "img/CarImg/Slide18.JPG",
-    "hash": "b11f4bf8fc138ed5c791134663435426"
-  },
-  {
-    "file": "img/CarImg/Slide2.JPG",
-    "hash": "2cb36272fd213cfc005da8594861b5ce"
-  },
-  {
-    "file": "img/CarImg/Slide3.JPG",
-    "hash": "ba07babbab69f4ab72037c2f77c07001"
-  },
-  {
-    "file": "img/CarImg/Slide4.JPG",
-    "hash": "b73271b1c16ebc1d1fec09c660af1fde"
-  },
-  {
-    "file": "img/CarImg/Slide5.JPG",
-    "hash": "35e99cd6f4f0bc7c72e5c35c966fbf48"
-  },
-  {
-    "file": "img/CarImg/Slide6.JPG",
-    "hash": "85c96d78beaf2ae52e9d2ed801a3cfa0"
-  },
-  {
-    "file": "img/CarImg/Slide7.JPG",
-    "hash": "4078075815117e3955e02bce2a02aae3"
-  },
-  {
-    "file": "img/CarImg/Slide8.JPG",
-    "hash": "16f74611fb3c75f986e324b71c20b38a"
-  },
-  {
-    "file": "img/CarImg/Slide9.JPG",
-    "hash": "265b73381ab0a948a829e701b7bd8190"
   },
   {
     "file": "img/choujiang.jpg",
@@ -176,6 +104,10 @@
     "hash": "461b2c4b7ea04109f261e99c55b9e676"
   },
   {
+    "file": "img/earth.png",
+    "hash": "bf8b9c0ed3d8f52dfc010c71b3292544"
+  },
+  {
     "file": "img/gh.JPG",
     "hash": "f45e46b1e36bd3594f47258c326cc66f"
   },
@@ -200,6 +132,14 @@
     "hash": "6aee7332ac108ed3d91a07c9fab36c27"
   },
   {
+    "file": "img/mechCharity/archAll.png",
+    "hash": "0060539b56aae28b6a9d4dd6b87b979b"
+  },
+  {
+    "file": "img/mechCharity/projArch.png",
+    "hash": "8cf560abcc3e8d20617285b5ddfcfd6a"
+  },
+  {
     "file": "img/msg.jpg",
     "hash": "f05ba55b7a75853b162d1df4b826e9fa"
   },
@@ -208,12 +148,40 @@
     "hash": "1134590754850e7b5e310e5cd699500c"
   },
   {
+    "file": "img/other/AnnualTick2019.PNG",
+    "hash": "5aa120100f7b8272a2ff51c66c2c9ae2"
+  },
+  {
+    "file": "img/other/cserAbility.png",
+    "hash": "540256a308dbe1df16734b91c3e84b1b"
+  },
+  {
     "file": "img/other/diversity.jpg",
     "hash": "d4dd9a2c99423f7e7f7edb7c03e7d14a"
   },
   {
+    "file": "img/other/found.png",
+    "hash": "4c32c0b65274b075535a341be8bd4553"
+  },
+  {
     "file": "img/other/handSign.png",
     "hash": "be638136907cfa58820f7f1e4a5f6b81"
+  },
+  {
+    "file": "img/other/LogoTuoguan.png",
+    "hash": "80ab4a33619463ba5c07454b186b5306"
+  },
+  {
+    "file": "img/other/lost.png",
+    "hash": "89cce6533da73abd31943ee25b24c431"
+  },
+  {
+    "file": "img/other/shufaIcon.png",
+    "hash": "bf9f46aa9bfd94b7072bc9d52d6de5f0"
+  },
+  {
+    "file": "img/other/shufaTitle.jpg",
+    "hash": "e33038c21c49d2f0f6da2c8ca28d74e5"
   },
   {
     "file": "img/point1.jpg",
@@ -248,6 +216,26 @@
     "hash": "a8482c22f173df5b602496ef7c902f1d"
   },
   {
+    "file": "img/union/festTitleBg.png",
+    "hash": "d754f611ee9338c0a6991c36afbafc26"
+  },
+  {
+    "file": "img/union/hotline.png",
+    "hash": "5241c0a345568447747e8bf3caa856e5"
+  },
+  {
+    "file": "img/union/unionArti.png",
+    "hash": "2ca37ffeb64d956e54f5f69a0824b58f"
+  },
+  {
+    "file": "img/union/unionArti2.jpg",
+    "hash": "57943e47d31ef8b0a44d571b368fe514"
+  },
+  {
+    "file": "img/union/unionArti3.jpg",
+    "hash": "ce626f00ef51f0092f7525cb6f1b9f39"
+  },
+  {
     "file": "img/user-100.png",
     "hash": "890a3bc313599392dd8a13ccefc55e69"
   },
@@ -257,23 +245,23 @@
   },
   {
     "file": "index.html",
-    "hash": "e6b1a37c07f67d477ee1235c9865d337"
+    "hash": "4e4e87f464ce248704c86f0dc6f4fa00"
   },
   {
     "file": "js/app-conf.js",
-    "hash": "d91803b331d73b0712f71fc66c024750"
+    "hash": "cfd459ea87a43fff15d3886921ad924c"
   },
   {
     "file": "js/app.js",
-    "hash": "12d246f40ec26d95db16955a34334975"
+    "hash": "19c1ca1913f701a8827af127e131404d"
   },
   {
     "file": "js/controller/adminControllers.js",
-    "hash": "c486d52da4d452210899a5f692708997"
+    "hash": "6942aab026523f764129d1d3833ff5ad"
   },
   {
     "file": "js/controller/appControllers.js",
-    "hash": "690df2879279b1c5d2115d3f69b57cc2"
+    "hash": "f3039a46c26d475049d1a688082d3e14"
   },
   {
     "file": "js/controller/B11WorkShopController.js",
@@ -281,15 +269,23 @@
   },
   {
     "file": "js/controller/businiess2Controllers.js",
-    "hash": "9e76ab030a1738ce958ac42d77e48045"
+    "hash": "1ed05c4a36b9ff264a40f8cbfd70edb1"
   },
   {
     "file": "js/controller/businiessControllers.js",
-    "hash": "433aadb3a73816b7a85405e8db5e9d20"
+    "hash": "e2df4633730fbec20390496beca0d5f0"
+  },
+  {
+    "file": "js/controller/CSERControllers.js",
+    "hash": "f65de774b52c615ca0056ca03eb22067"
   },
   {
     "file": "js/controller/gbshrControllers.js",
-    "hash": "83d34e9c0ac1ed2cf6be8421b9ecd572"
+    "hash": "264f5a0235a1679063b48c05e8623519"
+  },
+  {
+    "file": "js/controller/MechCharityControllers.js",
+    "hash": "3781f7e8f40992e4c1424940a73d3163"
   },
   {
     "file": "js/controller/pointsControllers.js",
@@ -298,6 +294,14 @@
   {
     "file": "js/controller/sharCarController.js",
     "hash": "38e9fc8e49c572c87c91c55b28431f84"
+  },
+  {
+    "file": "js/controller/testControllers.js",
+    "hash": "4ea5378e7a78da1f67945b31dfc6d139"
+  },
+  {
+    "file": "js/controller/unionControllers.js",
+    "hash": "cc2f638670e558c7f10b7101f1a0af58"
   },
   {
     "file": "js/coordtransform/.gitattributes",
@@ -325,19 +329,23 @@
   },
   {
     "file": "js/coordtransform/test/index.html",
-    "hash": "b2a73e3b76e7602a1872bf480e0b0b41"
+    "hash": "1cb491083897601d4fb130e0d244d595"
   },
   {
     "file": "js/directive.js",
     "hash": "136ca924c9bbae41613256f92224e313"
   },
   {
-    "file": "js/index.js",
-    "hash": "ef97146cc56b9b3bc896cf592ca3269d"
+    "file": "js/filter.js",
+    "hash": "8ecfdee66b0813c5f7fde0ab74b2d343"
   },
   {
-    "file": "js/jquery-2.2.2.min.js",
-    "hash": "1d35678c5edbb639ab7aa5cce0856f57"
+    "file": "js/index.js",
+    "hash": "75b1bd8f56b564d951a26f7098fb9354"
+  },
+  {
+    "file": "js/jquery-3.3.1.min.js",
+    "hash": "a09e13ee94d51c524b7e2a728c7d4039"
   },
   {
     "file": "js/lightGallery/css/lightgallery.min.css",
@@ -413,19 +421,23 @@
   },
   {
     "file": "js/router.js",
-    "hash": "5613184d02048e7455705fde165baec1"
+    "hash": "0be1e1cd59c31f4c031798d26de88545"
   },
   {
     "file": "js/service/appServices.js",
-    "hash": "f94d5350dc03aa84829f4fdf79e41dfa"
+    "hash": "38574caae525bd929b54a78bb8e0b517"
   },
   {
     "file": "js/service/businessServices.js",
-    "hash": "b8125e61ec1510aaf2356600d9012c67"
+    "hash": "25129355b40fef9f587b05cce350f22a"
   },
   {
     "file": "js/service/pointsServices.js",
     "hash": "0eacea1f52062f13eaa6daba069c2755"
+  },
+  {
+    "file": "js/service/utilServices.js",
+    "hash": "fcd36feed82f5d1fc0dba7005dc1886a"
   },
   {
     "file": "js/timeLine/css/style.css",
@@ -445,55 +457,7 @@
   },
   {
     "file": "js/util.js",
-    "hash": "9afb2a4ed74cc6c330c58c91b685cbc6"
-  },
-  {
-    "file": "lib/angular-animate/.bower.json",
-    "hash": "010b867dbb2c1b49a5a9cb0c76d49f57"
-  },
-  {
-    "file": "lib/angular-animate/angular-animate.min.js",
-    "hash": "aaf1ba9258e668a19657f3abdfc34934"
-  },
-  {
-    "file": "lib/angular-animate/angular-animate.min.js.map",
-    "hash": "74e55d013380f71c07963279659b9439"
-  },
-  {
-    "file": "lib/angular-animate/bower.json",
-    "hash": "99f3d881eb7d15c0164d4d770e20234b"
-  },
-  {
-    "file": "lib/angular-animate/index.js",
-    "hash": "1bcc4e661ab8ddc751d1a9a8942b370b"
-  },
-  {
-    "file": "lib/angular-animate/README.md",
-    "hash": "58710557c21dbca7678a772110df57fd"
-  },
-  {
-    "file": "lib/angular-sanitize/.bower.json",
-    "hash": "f8c204ac6e58f1f7f0fb7938e065ada4"
-  },
-  {
-    "file": "lib/angular-sanitize/angular-sanitize.min.js",
-    "hash": "0839c9b8fa725970d0d02022feeb3969"
-  },
-  {
-    "file": "lib/angular-sanitize/angular-sanitize.min.js.map",
-    "hash": "aa406c67c713af72a1cf857c56740308"
-  },
-  {
-    "file": "lib/angular-sanitize/bower.json",
-    "hash": "72782671a28b37fae23b0afe3a54fcbd"
-  },
-  {
-    "file": "lib/angular-sanitize/index.js",
-    "hash": "349b703c665246d4f1919931c6c3fb54"
-  },
-  {
-    "file": "lib/angular-sanitize/README.md",
-    "hash": "0393eb3f95cb21bf3463828d73d897de"
+    "hash": "2fd8b785bb4b2070885cdb7c37aa934f"
   },
   {
     "file": "lib/angular-timeline/dist/angular-timeline-animations.css",
@@ -516,118 +480,6 @@
     "hash": "53721f01e2dfd5e95450b1cfd5601021"
   },
   {
-    "file": "lib/angular-ui-router/.bower.json",
-    "hash": "1944660830eb287a439e9b64493680b8"
-  },
-  {
-    "file": "lib/angular-ui-router/api/angular-ui-router.d.ts",
-    "hash": "c06948a70fbce386351b5e86e26b1e34"
-  },
-  {
-    "file": "lib/angular-ui-router/bower.json",
-    "hash": "0e375aa5429ed49e31819d44bc1a28e9"
-  },
-  {
-    "file": "lib/angular-ui-router/CHANGELOG.md",
-    "hash": "9b835ba94bdb9bed629c1ff48b4c5a59"
-  },
-  {
-    "file": "lib/angular-ui-router/CONTRIBUTING.md",
-    "hash": "5aae5da7663eca1ed79d21b150c609c7"
-  },
-  {
-    "file": "lib/angular-ui-router/LICENSE",
-    "hash": "a15eea38307d9c2119d5a9e16211f29a"
-  },
-  {
-    "file": "lib/angular-ui-router/README.md",
-    "hash": "956d62926dce204f4659b0d619f2c0c1"
-  },
-  {
-    "file": "lib/angular-ui-router/release/angular-ui-router.js",
-    "hash": "749a18f80f375e3049975f190a7bfc4e"
-  },
-  {
-    "file": "lib/angular-ui-router/release/angular-ui-router.min.js",
-    "hash": "04c594b762aba521277ee747b28745d5"
-  },
-  {
-    "file": "lib/angular-ui-router/src/common.js",
-    "hash": "7cef018108cb4f4571f22b00d9324b82"
-  },
-  {
-    "file": "lib/angular-ui-router/src/resolve.js",
-    "hash": "8b3e76a8e9242408f366a840cd202105"
-  },
-  {
-    "file": "lib/angular-ui-router/src/state.js",
-    "hash": "3de988c7a35995b2c910258776d8d086"
-  },
-  {
-    "file": "lib/angular-ui-router/src/stateDirectives.js",
-    "hash": "9827d4eb264a7fb3d05f1b910b1391f3"
-  },
-  {
-    "file": "lib/angular-ui-router/src/stateFilters.js",
-    "hash": "84bba4f51e00086d8fe2f93fa1efbf15"
-  },
-  {
-    "file": "lib/angular-ui-router/src/templateFactory.js",
-    "hash": "8299e97e32fcfd3cc983df3085cc1369"
-  },
-  {
-    "file": "lib/angular-ui-router/src/urlMatcherFactory.js",
-    "hash": "f93993b00aa676ee329141ef294488e6"
-  },
-  {
-    "file": "lib/angular-ui-router/src/urlRouter.js",
-    "hash": "34193659b7b21f4f451f20a2878c00c0"
-  },
-  {
-    "file": "lib/angular-ui-router/src/view.js",
-    "hash": "64214a63924fc3eb6588ed7726485d2b"
-  },
-  {
-    "file": "lib/angular-ui-router/src/viewDirective.js",
-    "hash": "83174466bc2791816e67939b0243ed28"
-  },
-  {
-    "file": "lib/angular-ui-router/src/viewScroll.js",
-    "hash": "a899f6b7b01fe905406c4373a0603a23"
-  },
-  {
-    "file": "lib/angular/.bower.json",
-    "hash": "b95a8fb43f8e4d490f759f705cdd4df6"
-  },
-  {
-    "file": "lib/angular/angular-csp.css",
-    "hash": "3c6496d2475bec5850eec95eb066944a"
-  },
-  {
-    "file": "lib/angular/angular.min.js",
-    "hash": "f363ad9d29fbebc0f5f4c96a23e577cd"
-  },
-  {
-    "file": "lib/angular/angular.min.js.gzip",
-    "hash": "790eb99faad383550550eca0fb24b57f"
-  },
-  {
-    "file": "lib/angular/angular.min.js.map",
-    "hash": "c24bff63ea8a613ee3c0efe50cd5feb0"
-  },
-  {
-    "file": "lib/angular/bower.json",
-    "hash": "7cdb3fe2b03ebf26021e376c0a3046bc"
-  },
-  {
-    "file": "lib/angular/index.js",
-    "hash": "4a6b945464e73d96c4eddaff73a45417"
-  },
-  {
-    "file": "lib/angular/README.md",
-    "hash": "1875d8cc22054116d6aadb363f501fbf"
-  },
-  {
     "file": "lib/Chart/angular-chart.min.css",
     "hash": "91556ca1a3ae31529e0790b5836e7822"
   },
@@ -640,6 +492,10 @@
     "hash": "e02de81495e042046f7203722cc20603"
   },
   {
+    "file": "lib/code/JsBarcode.all.min.js",
+    "hash": "e3bf9c2c19157339034a24c3998ff100"
+  },
+  {
     "file": "lib/ion-datetime-picker/ion-datetime-picker.min.css",
     "hash": "4ea89a33255a5c7a6d1abb60ed55cfce"
   },
@@ -648,12 +504,16 @@
     "hash": "51f6fc2dfda898036aac8a976e15ef60"
   },
   {
+    "file": "lib/ionic-native/ionic.native.min.js",
+    "hash": "92d1bce1db72ad8ab9422d86780f1d17"
+  },
+  {
     "file": "lib/ionic/css/ionic.css",
     "hash": "d056702978129c3b643eaffe291aff95"
   },
   {
     "file": "lib/ionic/css/ionic.min.css",
-    "hash": "69b6aba4f6d47c03b5be1fbd5aed153b"
+    "hash": "ffa90f96b7cbdf2e2fc3ec1a51ff10f2"
   },
   {
     "file": "lib/ionic/fonts/ionicons.eot",
@@ -672,200 +532,16 @@
     "hash": "05acfdb568b3df49ad31355b19495d4a"
   },
   {
-    "file": "lib/ionic/js/angular-ui/angular-ui-router.min.js",
-    "hash": "83f32131b638a8686a43510fbd645b1b"
-  },
-  {
-    "file": "lib/ionic/js/angular/angular-animate.min.js",
-    "hash": "abf4748a7ef6bb5b610ecb5ab749afae"
-  },
-  {
-    "file": "lib/ionic/js/angular/angular-resource.min.js",
-    "hash": "97796a250538882e4d26ddf37e05f208"
-  },
-  {
-    "file": "lib/ionic/js/angular/angular-sanitize.min.js",
-    "hash": "bacfe60d661bf26faa119cebc50c6518"
-  },
-  {
-    "file": "lib/ionic/js/angular/angular.min.js",
-    "hash": "d2342622316f832ef1333c74e41354ca"
-  },
-  {
     "file": "lib/ionic/js/ionic-angular.min.js",
-    "hash": "c81f119bbecf436bfaa17c28ff3ef095"
+    "hash": "e63ee83f3262768139a0ce6a25e05ac4"
   },
   {
     "file": "lib/ionic/js/ionic.bundle.min.js",
-    "hash": "e0cc14dc4c94a45d368932afd38c0614"
+    "hash": "a71d94d192b8ce85174c21bc84315521"
   },
   {
     "file": "lib/ionic/js/ionic.min.js",
-    "hash": "bbf477571ff58642f262d70a93694f6d"
-  },
-  {
-    "file": "lib/ionic/scss/_action-sheet.scss",
-    "hash": "d0c6449f31db02323aa6e7f56ef55e67"
-  },
-  {
-    "file": "lib/ionic/scss/_animations.scss",
-    "hash": "5596f74cb1ee03f9faf453ad4ee11807"
-  },
-  {
-    "file": "lib/ionic/scss/_backdrop.scss",
-    "hash": "7ff048e091b39f6615db62ee136ef040"
-  },
-  {
-    "file": "lib/ionic/scss/_badge.scss",
-    "hash": "c7b1b0e3049754fc22b45730e6c560fa"
-  },
-  {
-    "file": "lib/ionic/scss/_bar.scss",
-    "hash": "aac5621aef2e18ec8b1357dbab753000"
-  },
-  {
-    "file": "lib/ionic/scss/_button-bar.scss",
-    "hash": "797376c7cc46dbec7589be9ecacd6689"
-  },
-  {
-    "file": "lib/ionic/scss/_button.scss",
-    "hash": "78ec8db7cd9d771f011dcff61e8f81fd"
-  },
-  {
-    "file": "lib/ionic/scss/_checkbox.scss",
-    "hash": "89a0987dd24210f16863d7ba2c7312bd"
-  },
-  {
-    "file": "lib/ionic/scss/_form.scss",
-    "hash": "169f7a6e449aa9e1bed20a1f30887c97"
-  },
-  {
-    "file": "lib/ionic/scss/_grid.scss",
-    "hash": "9a87c565e397bb73b7f467726a63e01c"
-  },
-  {
-    "file": "lib/ionic/scss/_items.scss",
-    "hash": "e4c46d2f4ba12769d254cc066cd27989"
-  },
-  {
-    "file": "lib/ionic/scss/_list.scss",
-    "hash": "0ab8daf57764aac25bf68aa0b0e6c776"
-  },
-  {
-    "file": "lib/ionic/scss/_loading.scss",
-    "hash": "9f23e266d43a432bbf07a8677d1d1592"
-  },
-  {
-    "file": "lib/ionic/scss/_menu.scss",
-    "hash": "c12d33c8bea78495b2571665e35cb192"
-  },
-  {
-    "file": "lib/ionic/scss/_mixins.scss",
-    "hash": "2f2cd7b2b96f1af3142c30138b2f2b0c"
-  },
-  {
-    "file": "lib/ionic/scss/_modal.scss",
-    "hash": "38e8624ef28a495e7a01341915516bd1"
-  },
-  {
-    "file": "lib/ionic/scss/_platform.scss",
-    "hash": "db73214ac171e89a966c24d5320fe096"
-  },
-  {
-    "file": "lib/ionic/scss/_popover.scss",
-    "hash": "924a0474d4e58b3280e7d1ebf1938a55"
-  },
-  {
-    "file": "lib/ionic/scss/_popup.scss",
-    "hash": "988126e645408f1e5a270934520c20ac"
-  },
-  {
-    "file": "lib/ionic/scss/_progress.scss",
-    "hash": "19a19537d8e9483db7bde8a7febd43f6"
-  },
-  {
-    "file": "lib/ionic/scss/_radio.scss",
-    "hash": "9e5544332590f92c25ea065140610b03"
-  },
-  {
-    "file": "lib/ionic/scss/_range.scss",
-    "hash": "ae2eb0fc86bdcef56346885dcb76370f"
-  },
-  {
-    "file": "lib/ionic/scss/_refresher.scss",
-    "hash": "23c7b98a85caf376b414f4ed5a713831"
-  },
-  {
-    "file": "lib/ionic/scss/_reset.scss",
-    "hash": "319f0fb2d58da7fc89222752c5e527a4"
-  },
-  {
-    "file": "lib/ionic/scss/_scaffolding.scss",
-    "hash": "9bb74fc2540444de042fd9949101762f"
-  },
-  {
-    "file": "lib/ionic/scss/_select.scss",
-    "hash": "7b40e394e01f33ebc89fcfc89f826410"
-  },
-  {
-    "file": "lib/ionic/scss/_slide-box.scss",
-    "hash": "ae10f39144dc0f6b5b24fb6e811e992a"
-  },
-  {
-    "file": "lib/ionic/scss/_slides.scss",
-    "hash": "504700ae567875f003c7fd1571a482e1"
-  },
-  {
-    "file": "lib/ionic/scss/_spinner.scss",
-    "hash": "472ae7eb35a68c22078b1d56b10f35be"
-  },
-  {
-    "file": "lib/ionic/scss/_tabs.scss",
-    "hash": "5d92af59a2653b035857d6a77e606520"
-  },
-  {
-    "file": "lib/ionic/scss/_toggle.scss",
-    "hash": "09146009f139820a34375ec3dc70c5a0"
-  },
-  {
-    "file": "lib/ionic/scss/_transitions.scss",
-    "hash": "c060678db2049bbca8833bf769d65dd1"
-  },
-  {
-    "file": "lib/ionic/scss/_type.scss",
-    "hash": "db602af625137bdc4d95b262d77a15c1"
-  },
-  {
-    "file": "lib/ionic/scss/_util.scss",
-    "hash": "c7af3ffdcc728e1c6f44061ed6120c15"
-  },
-  {
-    "file": "lib/ionic/scss/_variables.scss",
-    "hash": "92a9250ee7fe39133f561297266b180e"
-  },
-  {
-    "file": "lib/ionic/scss/ionic.scss",
-    "hash": "a102a720475b3304d099fc3c94e7f619"
-  },
-  {
-    "file": "lib/ionic/scss/ionicons/_ionicons-font.scss",
-    "hash": "9a1734051fa60f52fdbdd74001b0f0e0"
-  },
-  {
-    "file": "lib/ionic/scss/ionicons/_ionicons-icons.scss",
-    "hash": "fcdab55027fe7da71f277ee58fad686a"
-  },
-  {
-    "file": "lib/ionic/scss/ionicons/_ionicons-variables.scss",
-    "hash": "0af49648c5756e4a96eb1eb70f016ee3"
-  },
-  {
-    "file": "lib/ionic/scss/ionicons/ionicons.scss",
-    "hash": "37204d759a9eb7bfc074034fd1bf95fb"
-  },
-  {
-    "file": "lib/ionic/version.json",
-    "hash": "2230fb053b68d338caf012e86feff1f5"
+    "hash": "4a95759a6ca441d04b50737ab97c1cd3"
   },
   {
     "file": "lib/ng-bindonce/bindonce.min.js",
@@ -877,47 +553,19 @@
   },
   {
     "file": "lib/ng-moment/angular-moment.min.js",
-    "hash": "fcb4adcb12f47ff5cd86d1eaea1119fd"
+    "hash": "5071a15982de1c5954351de2a5f1f6aa"
   },
   {
     "file": "lib/ng-moment/angular-moment.min.js.map",
-    "hash": "0f7f164d914b798c7ce9a77739e8059d"
+    "hash": "6a076b138e833631b8eef8cb0d3b546b"
   },
   {
     "file": "lib/ng-moment/moment.min.js",
-    "hash": "8c2def395d7e125976ea5faf56596aa9"
+    "hash": "de82f2f2bd52ead2e0dbe58983236395"
   },
   {
     "file": "lib/ng-moment/zh-cn.js",
-    "hash": "9bcdee01cab05ac230540fe6afecf685"
-  },
-  {
-    "file": "lib/ngCordova/.bower.json",
-    "hash": "1e05ae338f0039064ec47910080fb4f3"
-  },
-  {
-    "file": "lib/ngCordova/bower.json",
-    "hash": "cc32572d0b43b2b477c20f062625eabb"
-  },
-  {
-    "file": "lib/ngCordova/CHANGELOG.md",
-    "hash": "319d415151c9ffaa470f0a2d11150949"
-  },
-  {
-    "file": "lib/ngCordova/dist/ng-cordova-mocks.min.js",
-    "hash": "a58ec142076fec7665f85beb4a447d6a"
-  },
-  {
-    "file": "lib/ngCordova/dist/ng-cordova.min.js",
-    "hash": "9dc74ba14b6c4d8bb10150c2f9b8208e"
-  },
-  {
-    "file": "lib/ngCordova/LICENSE",
-    "hash": "ab7dad271bdb3c7354537ee825775294"
-  },
-  {
-    "file": "lib/ngCordova/README.md",
-    "hash": "38bcf699c7f8f7eb1c0a86429f8573d0"
+    "hash": "658df8a5bb1a3a211c227dab0c4203af"
   },
   {
     "file": "templates/404.html",
@@ -925,11 +573,11 @@
   },
   {
     "file": "templates/account/account_forgetPassword.html",
-    "hash": "ad12f52786ec17611de87564badb8871"
+    "hash": "19f88c189b9a6bd8312fcf6d29bc5209"
   },
   {
     "file": "templates/account/account_forgetPasswordNoMobile.html",
-    "hash": "571b93fa1c70624082e4022abed67c83"
+    "hash": "67dabb49e43c1c541caddf167dafa236"
   },
   {
     "file": "templates/account/account_password.html",
@@ -937,11 +585,11 @@
   },
   {
     "file": "templates/account/account_rebindPhone.html",
-    "hash": "e02ebfe9176d36fd20e2979c4088a82f"
+    "hash": "8df9438acd728ab5c6e2ec82c822c01d"
   },
   {
     "file": "templates/account/account_register.html",
-    "hash": "38b3bd720803f6c3f6999a84af4a267e"
+    "hash": "73cce2d53790be9e42e8196695d02a6d"
   },
   {
     "file": "templates/account/myAccountMoney.html",
@@ -949,19 +597,35 @@
   },
   {
     "file": "templates/activity/activity-list.html",
-    "hash": "c476407152221582e45024c16375b019"
+    "hash": "f544df477006dca3f67565fd18ef6a76"
+  },
+  {
+    "file": "templates/activity/activity2019SprintSubsidy.html",
+    "hash": "e112f066f785e03ebca7d360cd3b76e9"
   },
   {
     "file": "templates/activity/activityGood.html",
-    "hash": "cac14ce7e715da58ceebde7d25d3953b"
+    "hash": "a41c78674af6735a988d57d3a79c1e4f"
   },
   {
     "file": "templates/activity/activityHtml.html",
     "hash": "e5426da845a09f90d49d8686d35e7739"
   },
   {
+    "file": "templates/activity/activityPoetryContest.html",
+    "hash": "d6b5ccfe6809518e32e451b589097c45"
+  },
+  {
+    "file": "templates/activity/annualPartyTicket2019.html",
+    "hash": "831ad8e7f8aa1ce3cc8d2461149119e5"
+  },
+  {
     "file": "templates/admin/admin-list.html",
-    "hash": "cba078dfe9cf16e490ca101e55cec4bc"
+    "hash": "1f30b9b2b83ff6013722271a97e471fe"
+  },
+  {
+    "file": "templates/admin/canteen-list.html",
+    "hash": "610b7477a5be56f6129595a1fb850276"
   },
   {
     "file": "templates/admin/dorm/applyDorm.html",
@@ -976,12 +640,16 @@
     "hash": "471d331da81cb88f30422e0b8596159a"
   },
   {
+    "file": "templates/admin/dorm/dormHotline.html",
+    "hash": "432d6c6b025da3085df93bb4a2d05a1d"
+  },
+  {
     "file": "templates/admin/dorm/dormMap.html",
     "hash": "937f8b4fff440c54e623ea4c6a4c6a13"
   },
   {
     "file": "templates/admin/dorm/dormNotice-detail.html",
-    "hash": "d4c20bb35bd799e10f811e0653af72a1"
+    "hash": "bf25c9be81bd721b75f51530e1475b15"
   },
   {
     "file": "templates/admin/dorm/dormNotice-list.html",
@@ -989,11 +657,11 @@
   },
   {
     "file": "templates/admin/dorm/dormSuggest.html",
-    "hash": "998d8c3e3c4d24d873ec3e3f91c1d1df"
+    "hash": "2835e724ff8f6898993ace5fb3982b52"
   },
   {
     "file": "templates/admin/dorm/freeDormWifi_android.html",
-    "hash": "11293821ba2cd64eee605a681c883539"
+    "hash": "d4c5db88b3c58ace0ea448bccc7bab5e"
   },
   {
     "file": "templates/admin/dorm/freeDormWifi_ios.html",
@@ -1001,15 +669,19 @@
   },
   {
     "file": "templates/admin/dorm/freeDormWifi.html",
-    "hash": "516a852a6ba835cdfe1a5d388d9c82c3"
+    "hash": "ebcd8daeba9db94f0af87a71e8086657"
   },
   {
     "file": "templates/admin/dorm/housingAllowance.html",
-    "hash": "28f92cd92dfe8c72120c2aaa29d90935"
+    "hash": "48ad61e0f5daa7355ecd938427013ac7"
   },
   {
     "file": "templates/admin/dorm/protocolDorm.html",
-    "hash": "642a37c1b12f8fbbe43f5f3717929ec5"
+    "hash": "16200cec53d0971e932e572d219d8626"
+  },
+  {
+    "file": "templates/admin/dorm/protocolDormPage.html",
+    "hash": "55c33303480e065650441d25c84f0ad3"
   },
   {
     "file": "templates/admin/dorm/reissueKey.html",
@@ -1017,11 +689,47 @@
   },
   {
     "file": "templates/admin/dorm/repairDorm.html",
-    "hash": "48f3d36cffa862f2c25f9dfbf855018e"
+    "hash": "e36e8681f3ce6c4493154f749700f772"
   },
   {
     "file": "templates/admin/dormManage-list.html",
-    "hash": "a56c85a302d82395e1f52a4928a9e615"
+    "hash": "443d5406f5507916906f1f9a7640a409"
+  },
+  {
+    "file": "templates/admin/EAdmin/DormHousingSubsidy-Detail.html",
+    "hash": "15c74a5a178a50ad8529a98d088445a0"
+  },
+  {
+    "file": "templates/admin/EAdmin/DormHousingSubsidy-List.html",
+    "hash": "5066cb1be75cc735c2dbb21b65063b99"
+  },
+  {
+    "file": "templates/admin/EAdmin/DormMngApplication-Detail.html",
+    "hash": "63c5485c25e48d9f71a6757653b89a58"
+  },
+  {
+    "file": "templates/admin/EAdmin/DormMngApplication-List.html",
+    "hash": "c8ccfd3671361fb3cbe0f0dffb955805"
+  },
+  {
+    "file": "templates/admin/EAdmin/DormVisitorApplication-Detail.html",
+    "hash": "b3e4723730043e6317c12a2fc24259a4"
+  },
+  {
+    "file": "templates/admin/EAdmin/DormVisitorApplication-List.html",
+    "hash": "15d0d1af87895a40504b08a6ad513467"
+  },
+  {
+    "file": "templates/admin/EAdmin/eAdmin-List.html",
+    "hash": "2fc2f0162e7a7b423035eefc9d9e7fb7"
+  },
+  {
+    "file": "templates/admin/EAdmin/eCarApproveList-List.html",
+    "hash": "b47db9e8268a3c4c44365c7207679e30"
+  },
+  {
+    "file": "templates/admin/EAdmin/eCarApprover_Details.html",
+    "hash": "2271c9eb3f5e59e7b5d473aec4e43bc7"
   },
   {
     "file": "templates/admin/icCardLost.html",
@@ -1033,11 +741,11 @@
   },
   {
     "file": "templates/applySubmit/apply-list.html",
-    "hash": "03ab91d645e87d52a877b772fe389773"
+    "hash": "53a5e6ec2f62ea3258f1062ac1626b6f"
   },
   {
     "file": "templates/applySubmit/applyTicket.html",
-    "hash": "2bed19ca44bde86700d699fcf0aaf982"
+    "hash": "0c97c73e672502bcff8987154fe77af1"
   },
   {
     "file": "templates/applySubmit/ticketProtocolHtml.html",
@@ -1068,10 +776,6 @@
     "hash": "3ec5123dc25ed7777f9f9f698186acfc"
   },
   {
-    "file": "templates/carGps/tab-carBusTime.html",
-    "hash": "40d92d7cc4fe2850f861d8e47e86491e"
-  },
-  {
     "file": "templates/carGps/tab-carList.html",
     "hash": "729c24f8e036830f6b485eba0f8b4472"
   },
@@ -1089,19 +793,59 @@
   },
   {
     "file": "templates/comm/hongbao.html",
-    "hash": "a056ef2331a2db11c444fc9a1f2beed0"
+    "hash": "643556c8992960638a1a305f29593062"
   },
   {
     "file": "templates/comm/hongbaoChoujiang.html",
-    "hash": "9110885ed3bb5a2f3105fbb4ecff13c5"
+    "hash": "f10b430e2e66b17008903085f87c26f7"
   },
   {
     "file": "templates/comm/msg_dlg.html",
-    "hash": "d5824cc3992ad4e5f872c6d6ec2cae35"
+    "hash": "49788916e0b81ced22112f9f4bc75fce"
+  },
+  {
+    "file": "templates/cser/activityCenter/cser_activityCenterFaq.html",
+    "hash": "5e5c3e1cd6323008c18e5b56a83686e1"
+  },
+  {
+    "file": "templates/cser/activityCenter/cser_activityCenterList.html",
+    "hash": "9901e448a261e23e6099cfa1b9313535"
+  },
+  {
+    "file": "templates/cser/activityCenter/cser_activityCenterMap.html",
+    "hash": "b1c5afadfcb9e8234e77efa256c0b19b"
+  },
+  {
+    "file": "templates/cser/activityCenter/cser_activityCenterProtocol.html",
+    "hash": "4155dcb2bc918a5f07fd37e2bffa3229"
+  },
+  {
+    "file": "templates/cser/activityCenter/cser_activityCenterRepair.html",
+    "hash": "5adaccd98d9ea73041e3b1248d71414f"
+  },
+  {
+    "file": "templates/cser/activityCenter/cser_activityCenterSuggest.html",
+    "hash": "8bb091fd6839de4740729f65395d9617"
+  },
+  {
+    "file": "templates/cser/cser_activityCenterList.html",
+    "hash": "44daf20400b4c37bf58533e8d1594f84"
   },
   {
     "file": "templates/cser/cser-Date.html",
-    "hash": "9926aa2396d65ca867104e1fc2fdeb5c"
+    "hash": "420e0756e180480c755373cb1a5508bc"
+  },
+  {
+    "file": "templates/cser/cser-kidsCaring.html",
+    "hash": "89e7ad6a9eecf26d39c0113f2fd631a5"
+  },
+  {
+    "file": "templates/cser/cser-list.html",
+    "hash": "fbfd0a6fa3325217196ab680602d8859"
+  },
+  {
+    "file": "templates/cser/cser-sumwinCamp.html",
+    "hash": "77f0d9a5810a6b36ccc06d06c80885fb"
   },
   {
     "file": "templates/cust/tab-cust.html",
@@ -1125,7 +869,7 @@
   },
   {
     "file": "templates/GBS/certificate/certificate-list.html",
-    "hash": "a9973df87262e54e6c19437c0c19ad85"
+    "hash": "b54f83c2955c7fbaaea9ca5b29d555b8"
   },
   {
     "file": "templates/GBS/certificate/certificate-submit.html",
@@ -1133,7 +877,7 @@
   },
   {
     "file": "templates/GBS/certificate/reissueWorkingCard.html",
-    "hash": "8a009ae62c8d62a398a92f99c7174f95"
+    "hash": "89cd8cb40f33e0ed4b3c05f0147b7c44"
   },
   {
     "file": "templates/GBS/certificate/visaApply.html",
@@ -1149,15 +893,63 @@
   },
   {
     "file": "templates/GBS/employeeDismiss/dismissStatus.html",
-    "hash": "4d9edb4cb1e00ad796a4e84d5fdf836e"
+    "hash": "499a25bca41b57329ede14d9e29d657e"
   },
   {
     "file": "templates/GBS/gbs-list.html",
-    "hash": "8ee4c4980ba84d1898be4aa08cfdf4ad"
+    "hash": "d8381315b1e1fd9b839eb47b60929d81"
   },
   {
-    "file": "templates/generalNotice/generalNoticeDetial.html",
-    "hash": "ca854030cba1beb765735dcaa2e174d1"
+    "file": "templates/GBS/hrGuide/contractGuide.html",
+    "hash": "8afab6b1a33e9aac08f129bbeca0dc25"
+  },
+  {
+    "file": "templates/GBS/hrGuide/hrGuideList.html",
+    "hash": "a8ba432d0d9b031e6f11852a02fc6ed2"
+  },
+  {
+    "file": "templates/GBS/hrGuide/updateIDInfoGuide.html",
+    "hash": "5678fe01fd14bd839320b5676b038a66"
+  },
+  {
+    "file": "templates/GBS/lostFound/lostFound_detail.html",
+    "hash": "d47f2d3c461916d03e36d0600b81a9ba"
+  },
+  {
+    "file": "templates/GBS/lostFound/lostFound_list.html",
+    "hash": "50b2666dae4843beaa680262d0109a67"
+  },
+  {
+    "file": "templates/GBS/lostFound/lostFound_my.html",
+    "hash": "f45852193cbeb6bc2358e83be8667121"
+  },
+  {
+    "file": "templates/GBS/lostFound/lostFound_public.html",
+    "hash": "bfd5e200a2c1bbe360884e91e340f055"
+  },
+  {
+    "file": "templates/GBS/lostFound/lostFound.html",
+    "hash": "6d43102e09da8e53461e4cc2b293f7db"
+  },
+  {
+    "file": "templates/GBS/lostFound/protocolLostFound.html",
+    "hash": "d07132b49fba51d78268506ca02fc4fa"
+  },
+  {
+    "file": "templates/GBS/ltpTraining.html",
+    "hash": "00735e3ba7cdd2d8687ab00ad471d266"
+  },
+  {
+    "file": "templates/GBS/newEmployeeIntro/newEmployeeIntroList.html",
+    "hash": "326b9de91c860d8e1398a155186ee93a"
+  },
+  {
+    "file": "templates/generalNotice/dynPage.html",
+    "hash": "c66225572f4077c8e3a7bfd591bfadd4"
+  },
+  {
+    "file": "templates/generalNotice/generalNoticeDetail.html",
+    "hash": "bfd101e241b0495f52f93bd183424f96"
   },
   {
     "file": "templates/generalNotice/generalNoticeList.html",
@@ -1185,19 +977,19 @@
   },
   {
     "file": "templates/handBook/handbookitemFour.html",
-    "hash": "d86f61584df0d47e7c091b5d75cfffd2"
+    "hash": "13a39a9077404e566a6f51f281fbd943"
   },
   {
     "file": "templates/handBook/handbookItemOne.html",
-    "hash": "fd672120b3f225b72d5223a5dc045bd1"
+    "hash": "7fa332f326665bc16de4ebe0dc0e80cd"
   },
   {
     "file": "templates/handBook/handbookitemThree.html",
-    "hash": "925ae9426e02d30f622bb39f61e41f94"
+    "hash": "3fb18c8cf650a3658b024424f7b1c827"
   },
   {
     "file": "templates/handBook/handbookitemTwo.html",
-    "hash": "79fc70bfce0d57a3509d926225a3e5b2"
+    "hash": "b410606258e2f34e2e9c2346056b0585"
   },
   {
     "file": "templates/HomeNotice.html",
@@ -1209,11 +1001,11 @@
   },
   {
     "file": "templates/hotPhone/tab-B15hotPhone.html",
-    "hash": "3f60750062beecf495beea094c20062e"
+    "hash": "ae0b8713a84ec06535dabd839bb59f5e"
   },
   {
     "file": "templates/hotPhone/tab-hotPhone.html",
-    "hash": "b203196b45552a85e6426551dab20b8a"
+    "hash": "4ef660a0a20b3a472c22e9122fca0da2"
   },
   {
     "file": "templates/insurance/insurance-Html.html",
@@ -1245,7 +1037,7 @@
   },
   {
     "file": "templates/mealOrder/tab-mealList.html",
-    "hash": "915f11444a2cc89d783a355963960ce2"
+    "hash": "4810b2b16cd613fe9c70e7011a37b25e"
   },
   {
     "file": "templates/mealOrder/tab-myOrder.html",
@@ -1254,6 +1046,62 @@
   {
     "file": "templates/mealOrder/tabMealOrder.html",
     "hash": "98f6b7ba6c5455ce2ef26333c664357b"
+  },
+  {
+    "file": "templates/mechCharity/mech-accountingPublic.html",
+    "hash": "651e0815c26175de58563d386b9fbf7c"
+  },
+  {
+    "file": "templates/mechCharity/mech-accountingPublicMaterial.html",
+    "hash": "faec37ffb536e47fbd2ff18a42e58ce4"
+  },
+  {
+    "file": "templates/mechCharity/mech-accountingPublicMoney.html",
+    "hash": "374462f8bc4fd7b0518a193860a36a50"
+  },
+  {
+    "file": "templates/mechCharity/mech-accountingPublicYear.html",
+    "hash": "1fddc02ef138e8cc27285569fb26c960"
+  },
+  {
+    "file": "templates/mechCharity/mech-activity.html",
+    "hash": "1d84ac5e4d0f50b509127a07cc10b8ef"
+  },
+  {
+    "file": "templates/mechCharity/mech-introArch.html",
+    "hash": "f2e73e3e2e9a2340e823c61e3107151f"
+  },
+  {
+    "file": "templates/mechCharity/mech-introDetail.html",
+    "hash": "bd5f78e281004306f45b32d8f6289bd9"
+  },
+  {
+    "file": "templates/mechCharity/mech-introduce.html",
+    "hash": "23b55828f30f3f0b380ac32360d4ede6"
+  },
+  {
+    "file": "templates/mechCharity/mech-introProj.html",
+    "hash": "1af2508ca171444c9c9f8b0be6807bf0"
+  },
+  {
+    "file": "templates/mechCharity/mech-list.html",
+    "hash": "101e038340c30bae226b0e718db17e5c"
+  },
+  {
+    "file": "templates/mechCharity/mech-researchDetail.html",
+    "hash": "645b28e5922ec0d374f0ef560677c3fd"
+  },
+  {
+    "file": "templates/mechCharity/mech-researchList.html",
+    "hash": "ab211befa47da158581503156811ee32"
+  },
+  {
+    "file": "templates/mechCharity/mech-wonderfulMoment.html",
+    "hash": "90b0f8d0ea608103284c24d19cd668ee"
+  },
+  {
+    "file": "templates/mechCharity/mech-wonderfulMomentDetail.html",
+    "hash": "467efe74526ebe3475a3bdc3f6da94bd"
   },
   {
     "file": "templates/menu.html",
@@ -1296,20 +1144,28 @@
     "hash": "1def74018a0a2d720cf4412aeb9bfc6a"
   },
   {
+    "file": "templates/protectionSecurity/protectSecList.html",
+    "hash": "8b0c7bbec6e604f664b0a5c0f81a45c1"
+  },
+  {
     "file": "templates/realNameRegistration/IDNOFilling.html",
     "hash": "5444321e9e5d6c7323e5690ac952ab63"
   },
   {
     "file": "templates/research/research-list.html",
-    "hash": "a625a84ea52e06a12d6c8ee031ce92f7"
+    "hash": "9b12f0b48591fabd4fdb01d3c571a84d"
   },
   {
     "file": "templates/research/researchHtml.html",
-    "hash": "91e16685a0127e73f0e1ed1b5e71a068"
+    "hash": "a59ff1f273b9e98ecd947edf99f8b31a"
+  },
+  {
+    "file": "templates/research/researchNew.html",
+    "hash": "0a23ea52c923bb1b5a4389d090548404"
   },
   {
     "file": "templates/research/researchTrainer.html",
-    "hash": "5336f308256f4778cced1d9b51211c63"
+    "hash": "92b8a48fc336fb0c0a9e254ffa82ac72"
   },
   {
     "file": "templates/shareCar/protocolHtml.html",
@@ -1333,7 +1189,7 @@
   },
   {
     "file": "templates/tab-account.html",
-    "hash": "00c1dd37ebf0dba0d4b256b339935162"
+    "hash": "3547ca5b5fe998afcbc4ff9d923f8cb2"
   },
   {
     "file": "templates/tab-goodJob.html",
@@ -1341,7 +1197,7 @@
   },
   {
     "file": "templates/tab-home.html",
-    "hash": "52a8b5c99edd0542a471563d1b5a8c2f"
+    "hash": "c06f899599ec00d940ca231ca6c1b7b6"
   },
   {
     "file": "templates/tab-kqjl.html",
@@ -1358,5 +1214,101 @@
   {
     "file": "templates/tabs.html",
     "hash": "172d332c20d3d20a8e66cf8e3d0e9f93"
+  },
+  {
+    "file": "templates/test/testPage.html",
+    "hash": "ca0e2f7eddecc0d640b71860c3d9ca94"
+  },
+  {
+    "file": "templates/union/commu_hotline.html",
+    "hash": "8ffba355ace0bd71d965a249ce43ad07"
+  },
+  {
+    "file": "templates/union/commu_other.html",
+    "hash": "15f62123de638453867b673f716ecf27"
+  },
+  {
+    "file": "templates/union/communicate.html",
+    "hash": "30091b8941d896119fc148cbc0af095b"
+  },
+  {
+    "file": "templates/union/helpSupport.html",
+    "hash": "2323aee686b512612ed75f55ee26b3ba"
+  },
+  {
+    "file": "templates/union/helpSupportContact.html",
+    "hash": "2009dd35c5bec40036dc7f225d1204ec"
+  },
+  {
+    "file": "templates/union/helpSupportGuide.html",
+    "hash": "689bdffbc8ec2dcf2f0b15fc0b4ccc20"
+  },
+  {
+    "file": "templates/union/suggest_my.html",
+    "hash": "b4a54eb702b1909575b88fafad0bc10f"
+  },
+  {
+    "file": "templates/union/suggest_open.html",
+    "hash": "2d48f42668497d77b522a143d392cea6"
+  },
+  {
+    "file": "templates/union/suggest_openDetail.html",
+    "hash": "f98e47fb9def3fe3af2922efa451429d"
+  },
+  {
+    "file": "templates/union/suggest.html",
+    "hash": "5b2b2b839a42b17613a0ed9db6d12539"
+  },
+  {
+    "file": "templates/union/union-activity.html",
+    "hash": "4cb2858ec1fba2d9e2239c4531960907"
+  },
+  {
+    "file": "templates/union/union-list.html",
+    "hash": "915be747c8062fe241605d5137815ab5"
+  },
+  {
+    "file": "templates/union/welfare_applyResult.html",
+    "hash": "c67bdcf32442cb8d071123fe237ccd4e"
+  },
+  {
+    "file": "templates/union/welfare_dm_guide.html",
+    "hash": "a6e919240414ca80187dbc9af8c21a6a"
+  },
+  {
+    "file": "templates/union/welfare_dm_history.html",
+    "hash": "41be9c0e0d04825dfda9ab4297077d89"
+  },
+  {
+    "file": "templates/union/welfare_dmUnion.html",
+    "hash": "dadb9b768b980122d2fcb5baf4738d0d"
+  },
+  {
+    "file": "templates/union/welfare_fest.html",
+    "hash": "b21eadd276071bbbe45cce33a0c7b2d5"
+  },
+  {
+    "file": "templates/union/welfare_notice.html",
+    "hash": "5d4ea24ccbb151eb3f2b6de98f87c108"
+  },
+  {
+    "file": "templates/union/welfare_Old.html",
+    "hash": "dc96cd2ca4750616e89c5d526db44d75"
+  },
+  {
+    "file": "templates/union/welfare_union.html",
+    "hash": "da5c79571af06ee7df75a105a8702bbd"
+  },
+  {
+    "file": "templates/union/welfare.html",
+    "hash": "7834d2f485cf04f4d37edea4d77251d5"
+  },
+  {
+    "file": "templates/union/wonderfulMoment.html",
+    "hash": "2a7e7c8f09c7333205cc25038a914b3f"
+  },
+  {
+    "file": "templates/union/wonderfulMomentDetail.html",
+    "hash": "2cab2c424830c18777d99e2fab75daee"
   }
 ]

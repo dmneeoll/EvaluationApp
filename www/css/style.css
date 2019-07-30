@@ -388,3 +388,7 @@ ul{
     background: #CCC;
   }
 
+  .badge{
+      z-index: 10;
+  }
+  
