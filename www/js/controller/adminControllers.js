@@ -4,7 +4,8 @@
  */
 angular.module('evaluationApp.adminControllers', [])
     .controller('AdminCtrl', function ($scope, $rootScope, $state, $ionicHistory,$ionicPopup,
-        commonServices, CacheFactory, alertService, actionVisitServices, externalLinksService) 
+        commonServices, CacheFactory, alertService, actionVisitServices, externalLinksService
+        ) 
     {
         $scope.canUseAction = function (action) {
           return actionVisitServices.canUseAction(action, $rootScope.accessEmployee.WorkdayNO);
@@ -18,6 +19,17 @@ angular.module('evaluationApp.adminControllers', [])
             switch (action) {
                 case "班车信息":
                     $state.go("Carlist");
+                    break;
+                case "班车信息new":
+                    {
+                        var sUrl = 'https://wx.zhchuangyi.com/flex/wx/index/line_area';
+                        //$scope.openGeneralNotice(true, 0, sUrl);
+                        try {
+                            externalLinksService.openUrNoTitle(sUrl);
+                          } catch (ex) {
+                            alertService.showAlert(ex.message);
+                          }
+                    }
                     break;
                 case "点餐":
                     {
@@ -1013,7 +1025,7 @@ angular.module('evaluationApp.adminControllers', [])
             }
             sTemp = $.trim($scope.model.DeviceType);
             if (isEmptyString(sTemp)) {
-                alertService.showAlert("请要维修的设备类型!");
+                alertService.showAlert("请选择要维修的设备类型!");
                 $scope.isSumbiting = false;
                 return;
             }           
@@ -1437,32 +1449,25 @@ angular.module('evaluationApp.adminControllers', [])
 .controller('ECarApproveListCtrl', function ($scope, $rootScope, $state, $ionicHistory, $ionicPopup,
                 commonServices, CacheFactory, alertService, externalLinksService) {
     //EAdmin
-
-    var params = commonServices.getBaseParas();
-  
+    var params = commonServices.getBaseParas();  
     var url = commonServices.getUrl("AdminService.ashx", "eAdmin_eCar_GetApproveBill");
 
-    $scope.eCarApproverList;
+    $scope.eCarApproverList=null;
     commonServices.getDataList(params, url).then(function (data) {
-
         if (data == "Token is TimeOut") {
             alertService.showAlert("登录失效，请重新登录");
             $state.transitionTo('signin');
         }
-        $scope.eCarApproverList = data;
-       
+        $scope.eCarApproverList = data;       
     });
 
     $scope.open = function (eCar) {
         CacheFactory.remove('eCar');
-        CacheFactory.save('eCar', eCar);
-      
+        CacheFactory.save('eCar', eCar);      
         $state.go('eCarApproveDetail');
-
     };
   
 })
-
 .controller('ECarApproveDetailsCtrl', function ($scope, $rootScope, $state, $ionicHistory, $ionicPopup,
                 commonServices, CacheFactory, alertService, externalLinksService) {
     //EAdmin
@@ -1484,11 +1489,9 @@ angular.module('evaluationApp.adminControllers', [])
                 $scope.eCar.CarFrom = 3;
                 break;
         }
-    };
-   
+    };   
 
-    $scope.Submit = function () {
-      
+    $scope.Submit = function () {      
         var confirmPopup = $ionicPopup.confirm({
             title: 'Approve',
             template: 'Confirm Approve?'
@@ -1498,7 +1501,7 @@ angular.module('evaluationApp.adminControllers', [])
                 var eCar = $scope.eCar;
                 params.OrderNumber = eCar.OrderNumber;
                 params.Status = eCar.Status == 1000 ? 3000 : 5000;
-                params.CarFrom = eCar.CarFrom == "" ? eCar.CarFrom = 2 : eCar.CarFrom;
+                params.CarFrom = (!eCar.CarFrom ||eCar.CarFrom=="") ? (eCar.CarFrom = 2) : eCar.CarFrom;
                 params.IsApprove ='Yes';
                 var url = commonServices.getUrl("AdminService.ashx", "eAdmin_eCar_Approve");
                 commonServices.submit(params, url).then(function (data) {
@@ -1513,13 +1516,10 @@ angular.module('evaluationApp.adminControllers', [])
             } else {
                 return;
             }
-        });
-          
+        });          
     };
 
-
-    $scope.Reject = 
-           { Reson: "" };
+    $scope.Reject = { Reson: "" };
    
     $scope.Reject = function () {
        

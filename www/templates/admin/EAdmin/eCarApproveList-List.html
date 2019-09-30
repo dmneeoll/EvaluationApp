@@ -4,14 +4,11 @@
         <button class="button button-clear button-icon ion-ios-arrow-back" ng-click="closePass()">{{Language.home.admin}}</button>
     </ion-nav-buttons> -->
 
-    <ion-content scroll="true" overflow-scroll="true" >
-    
+    <ion-content scroll="true" overflow-scroll="true" >    
         <ion-list>
-
             <ion-item ng-if="eCarApproverList" ng-repeat="eCar in eCarApproverList" class="item" ng-click="open(eCar)">
                 <div class="row">
-                    <div class="col"><p style="color:green">单号：{{eCar.OrderNumber}}</p></div>
-                  
+                    <div class="col"><p style="color:green">单号：{{eCar.OrderNumber}}</p></div>                  
                 </div>
                 <div class="row">
                     <div class="col"> <p> 提单人：{{eCar.UserName}}</p></div>
@@ -19,8 +16,10 @@
                 </div>
                 <div class="row">
                     <div class="col"> <p> {{eCar.StatusNameChinese}}</p></div>
-                </div>
-             
+                </div>             
+            </ion-item>
+            <ion-item ng-if="!eCarApproverList || !eCarApproverList.length">
+                <h4 style="color:red">{{Language.common.NoData}}</h4>
             </ion-item>
         </ion-list>
     </ion-content>

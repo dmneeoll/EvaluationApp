@@ -1,17 +1,17 @@
 <!--活动点赞 2018-05-23-->
-<style>
-  .headpic {
-    margin-left: auto;
-    margin-right: auto;
-    max-width: 96%;
-  }
-</style>
 <ion-view view-title="{{Language.activityGood.title}}" cache-view="true">
   <ion-content style="background-color:lavender">
     <!-- 标题图，有的话 -->
     <ion-slide-box does-continue="true" auto-play="false" show-pager="false" ng-if="titleImgUrl">
       <img ng-src="{{titleImgUrl}}">
     </ion-slide-box>
+    <style>
+        .headpic {
+          margin-left: auto;
+          margin-right: auto;
+          max-width: 98%;
+        }
+    </style>
     <!-- 标题描述，有的话 -->
     <div class="divOff lightRedBack" ng-if="actDesc">
       <div class="divOff" style="font-size:14px;" ng-bind-html="actDesc">
@@ -23,21 +23,21 @@
         <ion-item ng-repeat="act in Activities">
           <div class="item item-avatar">
             <!-- <img ng-src="{{activityGoodIcon}}"> -->
-            <h3>{{act.Name}}</h3>
+            <span style="font-size:1.1em;">{{act.Name}}</span>
             <!-- <h3>{{act.Designer}}</h3> -->
             <!-- <h3>{{Language.activityGood.employee_ID}}：{{act.Designer}}</h3> -->
             <!-- <h3 ng-if="act.BU">{{Language.activityGood.department}}：{{act.BU}}</h3> -->
           </div>
 
           <div class="item item-body">
-            <!-- <img class="headpic" ng-src="{{act.ImgPath}}"> -->
-            <ul class="lightgallery">
+            <img class="headpic" ng-src="{{act.ImgPath}}">
+            <!-- <ul class="lightgallery">
               <li data-src="{{act.ImgPath}}">
                 <a href="#">
                   <img class="full-image" src="{{act.ImgPath}}" />
                 </a>
               </li>
-            </ul>
+            </ul> -->
 
             <div ng-if="act.Describe" style="margin-top:10px;">
               <!-- <p class="text-left small">{{Language.activityGood.desc}}：</p> -->
@@ -45,7 +45,7 @@
               <div compile="act.Describe"></div>
             </div>
             <p ng-if="act.Like>0">
-              <a href="#" class="subdued">{{act.Like}} 票</a>
+              <a href="#" class="subdued">{{act.Like}} 人支持</a>
             </p>
           </div>
 
@@ -57,7 +57,7 @@
             <div style="margin:auto;margin-top: 10px;">
               <button class="button button-balanced button-small" style="text-align:center" ng-click="like(act)">
                 <i class="icon ion-thumbsup"></i>
-                投一票
+                支持
               </button>
             </div>
           </div>

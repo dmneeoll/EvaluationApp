@@ -760,6 +760,16 @@ angular.module('evaluationApp.router', [])
                         templateUrl: 'templates/cser/activityCenter/cser_activityCenterSuggest.html',
                         controller: 'CSERActivityCenterSuggestCtrl'
                     })
+            .state('FE', {
+                url: '/FE',
+                templateUrl: 'templates/FE/FE-list.html',
+                controller: 'FECtrl'
+            })
+                .state('FE_repair', {
+                    url: '/FE_repair',
+                    templateUrl: 'templates/FE/FE_Repair.html',
+                    controller: 'FERepairCtrl'
+                })
             .state('activityEHS',{
                 url: '/activityEHS',
                 templateUrl: 'templates/ehs/activityEHS.html',

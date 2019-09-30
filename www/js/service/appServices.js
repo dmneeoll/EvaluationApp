@@ -498,6 +498,7 @@ angular.module('evaluationApp.appServices', [])
       }
     }])
     .service('externalLinksService',function () {
+        //在app内打开页面
         return {
             openUr: function (url) {
                 cordova.ThemeableBrowser.open(url, '_blank', {
@@ -540,7 +541,39 @@ angular.module('evaluationApp.appServices', [])
                 }).addEventListener(cordova.ThemeableBrowser.EVT_WRN, function(e) {
                    // console.log(e.message);
                 });
-            }
+            },
+            openUrNoTitle: function (url) {
+                cordova.ThemeableBrowser.open(url, '_blank', {
+                    statusbar: {
+                        color: '#0099FF'
+                    },
+                    toolbar: {
+                        height: 40,
+                        color: '#0099FF'
+                    },
+                    title: {
+                        color: '#FFFFFF',
+                        showPageTitle: false,
+                    },
+                    backButton: {
+                        wwwImage: 'img/back_pressed.png',
+                        wwwImagePressed: 'img/back_pressed.png',
+                        align: 'left',
+                        event: 'backPressed'
+                    },
+                    closeButton: {
+                        wwwImage: 'img/close_pressed.png',
+                        wwwImagePressed: 'img/close_pressed.png',
+                        align: 'right',
+                        event: 'closePressed'
+                    },
+                    backButtonCanClose: true
+                }).addEventListener('backPressed', function(e) {
+                }).addEventListener('sharePressed', function(e) {
+                }).addEventListener(cordova.ThemeableBrowser.EVT_ERR, function(e) {
+                }).addEventListener(cordova.ThemeableBrowser.EVT_WRN, function(e) {
+                });
+            },
         }
     })
     .service('actionVisitServices', function (commonServices,CacheFactory) {

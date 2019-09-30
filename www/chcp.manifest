@@ -168,6 +168,10 @@
     "hash": "be638136907cfa58820f7f1e4a5f6b81"
   },
   {
+    "file": "img/other/jiang.png",
+    "hash": "5297d277346514d511e1f01fa83cd594"
+  },
+  {
     "file": "img/other/LogoTuoguan.png",
     "hash": "80ab4a33619463ba5c07454b186b5306"
   },
@@ -249,7 +253,7 @@
   },
   {
     "file": "js/app-conf.js",
-    "hash": "cfd459ea87a43fff15d3886921ad924c"
+    "hash": "d265da89ae51beee815b1005dc7259fb"
   },
   {
     "file": "js/app.js",
@@ -257,11 +261,11 @@
   },
   {
     "file": "js/controller/adminControllers.js",
-    "hash": "6942aab026523f764129d1d3833ff5ad"
+    "hash": "8304c501ca4af7007a3605c09f205009"
   },
   {
     "file": "js/controller/appControllers.js",
-    "hash": "f3039a46c26d475049d1a688082d3e14"
+    "hash": "b7d016ab6d0dfcb2b0ba81bac187b477"
   },
   {
     "file": "js/controller/B11WorkShopController.js",
@@ -273,15 +277,15 @@
   },
   {
     "file": "js/controller/businiessControllers.js",
-    "hash": "e2df4633730fbec20390496beca0d5f0"
+    "hash": "b4c967277541bbde27076bbc491e9648"
   },
   {
     "file": "js/controller/CSERControllers.js",
-    "hash": "f65de774b52c615ca0056ca03eb22067"
+    "hash": "b3601f3de9e5bf5e8c352af2b994c8cf"
   },
   {
     "file": "js/controller/gbshrControllers.js",
-    "hash": "264f5a0235a1679063b48c05e8623519"
+    "hash": "8fdbe4923a3c7063307be31416ccfd6c"
   },
   {
     "file": "js/controller/MechCharityControllers.js",
@@ -421,11 +425,11 @@
   },
   {
     "file": "js/router.js",
-    "hash": "0be1e1cd59c31f4c031798d26de88545"
+    "hash": "11e57128b3e1ddfc3b00b3d54c0c37cd"
   },
   {
     "file": "js/service/appServices.js",
-    "hash": "38574caae525bd929b54a78bb8e0b517"
+    "hash": "3d794e7c529bbb5701c7f400a1dfa060"
   },
   {
     "file": "js/service/businessServices.js",
@@ -597,7 +601,7 @@
   },
   {
     "file": "templates/activity/activity-list.html",
-    "hash": "f544df477006dca3f67565fd18ef6a76"
+    "hash": "44fb29775a88d2abad6a8fd25af76531"
   },
   {
     "file": "templates/activity/activity2019SprintSubsidy.html",
@@ -605,7 +609,7 @@
   },
   {
     "file": "templates/activity/activityGood.html",
-    "hash": "a41c78674af6735a988d57d3a79c1e4f"
+    "hash": "5956e926e3c9429f4146602aaae596e1"
   },
   {
     "file": "templates/activity/activityHtml.html",
@@ -621,7 +625,7 @@
   },
   {
     "file": "templates/admin/admin-list.html",
-    "hash": "1f30b9b2b83ff6013722271a97e471fe"
+    "hash": "6a50bb1510814dd90b06a77096c2f29b"
   },
   {
     "file": "templates/admin/canteen-list.html",
@@ -725,7 +729,7 @@
   },
   {
     "file": "templates/admin/EAdmin/eCarApproveList-List.html",
-    "hash": "b47db9e8268a3c4c44365c7207679e30"
+    "hash": "00f1f1bea9da2e463eaa90da3466271e"
   },
   {
     "file": "templates/admin/EAdmin/eCarApprover_Details.html",
@@ -864,6 +868,14 @@
     "hash": "58b82d586501b32d11323d28854b3d91"
   },
   {
+    "file": "templates/FE/FE_Repair.html",
+    "hash": "806ccf2c527ba357733171906b7dd646"
+  },
+  {
+    "file": "templates/FE/FE-list.html",
+    "hash": "e202a74d50ebb1682c20cec2d1de2f1f"
+  },
+  {
     "file": "templates/GBS/basicGuide.html",
     "hash": "d654da2c9f9c09fa9f66012e0ecdd925"
   },
@@ -897,7 +909,7 @@
   },
   {
     "file": "templates/GBS/gbs-list.html",
-    "hash": "d8381315b1e1fd9b839eb47b60929d81"
+    "hash": "871be9e47b9c2eb60f8644830cd09ffc"
   },
   {
     "file": "templates/GBS/hrGuide/contractGuide.html",
@@ -1197,7 +1209,7 @@
   },
   {
     "file": "templates/tab-home.html",
-    "hash": "c06f899599ec00d940ca231ca6c1b7b6"
+    "hash": "712dbb1e80077eaddb103006741ad2eb"
   },
   {
     "file": "templates/tab-kqjl.html",

@@ -12,7 +12,7 @@ var IsShowUpdateDetial = false; //false;
 //是否显示升级安装失败信息
 var IsShowUpdateInstalledErr = true;
 
-var LAST_PUBLISH_DATE = "2019-07-17 11:53";
+var LAST_PUBLISH_DATE = "2019-09-30 14:01";
 
 //新的测试页面控制，与 actionVisitServices, ESE_ACTION_UPDATE表配合使用
 //  $scope.canUseAction = function (action) {
@@ -148,8 +148,6 @@ var API = {
 
     //EHS activity
     GetEHSActList: API_HOST + '/EHSActService.ashx?action=GetEHSActList'
-
-
 };
 
 var SETTING = {
@@ -247,6 +245,7 @@ var ZH_CN = {
         mechCharity:"MECH基金会",
         CSER:"CSER企业社会环境责任",
         ProtectionSecurity:"安全部",
+        FE:"FE公用设施部",
     },
     myFlex:{
         employee_ID: "工号",
@@ -510,15 +509,23 @@ var ZH_CN = {
         activityCenterRepairDesc:'报修内容描述',
         activityCenterRepairSucc:'报修成功，感谢你的支持！',
     },
+    FE:{
+        repair:'公用设施报修',
+        repairArea:'所在区域',
+        position:'具体位置',
+        foundDate:'报修时间',
+        deviceType:'待维修设施设备',
+        repairDesc:'备注',
+    },
     activityGood:{
-        title:"南厂餐厅一楼档口风味满意度调查",
+        title:"PCBA-B11第二届球类竞技赛冠军队有奖竞猜",
         name:"姓名",
         employee_ID:"工号",
         department:"部门",
         designer:"作者",
         desc:"主要事迹",
         designConcept: "设计理念",
-        PoetryTitle:"CSER残障意识活动周有奖问答",
+        PoetryTitle:"教师节知识线上有奖答题",
         StartButton:"开始答题",
         RemainSec:"剩余时间",
         OkNextButton:"答题",
@@ -771,6 +778,7 @@ var ZH_US = {
         mechCharity:"MECH Charity",
         CSER:"CSER",
         ProtectionSecurity:"Brand Protection & Security",
+        FE:"Zhuhai Facility",
     },
     myFlex:{
         employee_ID: "Employee ID",
@@ -1031,7 +1039,15 @@ var ZH_US = {
         activityCenterDeviceType:'Device Type',
         activityCenterRepairDesc:'Description of Repair',
         activityCenterRepairSucc:'Your report was commited, thank you!',
-    },    
+    },
+    FE:{
+        repair:'Repair',
+        repairArea:'Area',
+        position:'Detail Position',
+        foundDate:'Found Date',
+        deviceType:'Device Type',
+        repairDesc:'Memo',
+    },
     activityGood:{
         title:"PCBA-B11第二届球类竞技赛冠军队有奖竞猜",
         name: "Name",
@@ -1040,7 +1056,7 @@ var ZH_US = {
         designer:"Author",
         desc:"Describe",
         designConcept: "Design Concept",
-        PoetryTitle:"CSER Disability Awareness Week Contest",
+        PoetryTitle:"教师节知识线上有奖答题",
         StartButton:"Start",
         RemainSec:"Remaining",
         OkNextButton:"Answer",

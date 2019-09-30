@@ -312,6 +312,9 @@ angular.module('evaluationApp.appControllers', [])
                 case "MECH基金会":
                     $state.go("mechCharity");
                     break;
+                case "FE":
+                    $state.go("FE");
+                    break;                    
             }
             
             if(action=='自评'){
@@ -341,8 +344,6 @@ angular.module('evaluationApp.appControllers', [])
 //                catch (ex) {
 //                    alertService.showAlert(ex.message);
 //                }
-
-
 
                 var timestamp = Date.parse(new Date());
                 externalLinksService.openUr('https://zhmobile.flextronics.com/InterHiringApp/www/interhr.html?workdayNo='+$scope.accessEmployee.WorkdayNO+'&timestamp='+timestamp);
@@ -381,7 +382,6 @@ angular.module('evaluationApp.appControllers', [])
 
             }
             else if(action=="活动"){
-
 
 //                if($rootScope.accessEmployee.Segment_ID=='EF922594-5FB1-409E-A3D8-F7BC940AACD9'){
 //                    $state.go("luckyGame");
@@ -539,24 +539,22 @@ angular.module('evaluationApp.appControllers', [])
         };
 
         $scope.checkSecurityCode=function(passmodels){
-
             try{
                 if($rootScope.Language==ZH_CN){
-                    if($scope.passmodels.IDNO ==null){
+                    var idno = $.trim($scope.passmodels.IDNO);
+                    if (isEmptyString(idno) || idno.length!=18) {
                         alertService.showAlert("身份证号码必须是18位")
                         return;
-                    }
-                    if(typeof ($scope.passmodels.IDNO) == 'undefined'){
-                        alertService.showAlert("身份证号码必须是18位")
-                        return;
-                    }
-
-                    if($scope.passmodels.IDNO.length!=18){
-                        alertService.showAlert("身份证号码必须是18位")
-                        return;;
+                    }else{
+                        //严格检查身份证号
+                        /*
+                        if (!CheckIdCard(idno)) {
+                            alertService.showAlert("身份证号码有误，请更正!");
+                            return;
+                        }
+                        */
                     }
                 }
-
 
                 commonServices.checkSecurityCode({WorkdayNo:passmodels.workdayNo,Mobile:passmodels.mobile,SecurityCode:passmodels.securityCode}).then(function (response) {
                     if (response.success) {
@@ -567,30 +565,22 @@ angular.module('evaluationApp.appControllers', [])
                         alertService.showAlert( response.message);
                     }
                 });
-
-
             }catch(e)
             {
-
+                alertService.showAlert('Unknown error:'+e.message);
             }
-
-
         }
 
         $scope.register=function(passmodels){
-
             try{
                 if(passmodels.newPassword==null){
                     alertService.showAlert( '密码不能为空！');
-
                     return;
                 }
-
                 if(passmodels.newPassword.replace(""," ").length==0){
                     alertService.showAlert( '密码不能为空！');
                     return;
                 }
-
                 if(passmodels.newPassword!=passmodels.newPasswordAgain){
                     alertService.showAlert( '两次密码不一致！');
                     return;
@@ -599,7 +589,6 @@ angular.module('evaluationApp.appControllers', [])
                 commonServices.register({WorkdayNo:passmodels.workdayNo,IDNO:passmodels.IDNO,Password:passmodels.newPassword}).then(function (response) {
                     if (response.success) {
                         alertService.showAlert( '注册成功，请重新登录！');
-
                         $location.path('signin');
                     }
                     else  {
@@ -608,9 +597,8 @@ angular.module('evaluationApp.appControllers', [])
                 });
             }catch(e)
             {
-
+                alertService.showAlert('Unknown error:'+e.message);
             }
-
 
         };
 

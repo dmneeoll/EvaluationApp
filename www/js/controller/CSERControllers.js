@@ -412,7 +412,7 @@ angular.module('evaluationApp.CSERControllers', [])
       }
       sTemp = $.trim($scope.model.DeviceType);
       if (isEmptyString(sTemp)) {
-        alertService.showAlert("请要维修的设备类型!");
+        alertService.showAlert("请选择要维修的设备类型!");
         $scope.isSumbiting = false;
         return;
       }

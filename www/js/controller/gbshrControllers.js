@@ -45,34 +45,37 @@ angular.module('evaluationApp.gbshrControllers', [])
           CacheFactory.remove('gnAction')
           CacheFactory.save('gnAction', action)
           $state.go('generalNotice')
-          break
+          break;
         case '离职须知':
-          $state.go('employeeDismiss')
-          break
+          $state.go('employeeDismiss');
+          break;
         case 'train':
           try {
             externalLinksService.openUr('https://zhmobile.flextronics.com/EvaluationApp/course/course/1.html')
           } catch (ex) {
             alertService.showAlert(ex.message)
           }
-          break
+          break;
         case 'LTP培训资料':
-          $state.go('ltpTraining')
-          break
+          $state.go('ltpTraining');
+          break;
         case '人事指南':
-          $state.go('hrGuide')
-          break
+          $state.go('hrGuide');
+          break;
         case '人权政策':
-          $scope.openGeneralNotice(0, '79BAF6EB-15B3-435D-A06E-24F468DF97D2')
-          break
+          $scope.openGeneralNotice(0, '79BAF6EB-15B3-435D-A06E-24F468DF97D2');
+          break;
         case '道德热线':
-          $scope.openGeneralNotice(0, '79BAF6EB-15B3-435D-A06E-24F468DF97D3')
-          break
+          $scope.openGeneralNotice(0, '79BAF6EB-15B3-435D-A06E-24F468DF97D3');
+          break;
         case '银行卡号自助变更培训':
-          $scope.openGeneralNotice(0, '23955A71-4D92-4322-A25E-6128CCC65B69')
-          break
+          $scope.openGeneralNotice(0, '23955A71-4D92-4322-A25E-6128CCC65B69');
+          break;
+        case '非邮箱用户如何重设Okta密码':
+          $scope.openGeneralNotice(0, 'A24389B0-C4E0-47B2-8033-5AAE849B62E8');
+          break;
         default:
-          break
+          break;
       }
     }
     $scope.closePass = function () {
@@ -670,9 +673,9 @@ angular.module('evaluationApp.gbshrControllers', [])
         }
       })
     }
-    InitInfo()
+    InitInfo();
 
-    $scope.openGeneralNotice = UrlServices.openGeneralNotice
+    $scope.openGeneralNotice = UrlServices.openGeneralNotice;
   })
   .controller('EmployeeDismissCtrl', function ($scope, $rootScope, $state, $ionicHistory, $ionicPopup,
     commonServices, CacheFactory, alertService, actionVisitServices) {
