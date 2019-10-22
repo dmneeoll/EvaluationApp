@@ -1,0 +1,56 @@
+<!-- 车辆点检记录 -->
+<ion-view view-title="{{Language.admin.carCheckRecord}}" cache-view="false">
+
+    <ion-content class="padding5" style="border:1px;">
+        <style>
+            .red-text {
+                color: red;
+                font-weight: 700;
+            }
+
+            .green-text {
+                color: blue;
+                font-weight: 400;
+            }
+        </style>
+        <div class="item item-input searchHead">
+            <span class="input-label" style="width:30px;font-size:80%">{{Language.common.date}}</span>
+            <div ion-datetime-picker date ng-model="model.SelDate" only-valid="{'before':'today', 'inclusive':true}"
+                style="width:280px;" ng-change="ChangeDate()">
+                <i class="icon ion-ios-calendar positive" style="font-size:28px;"></i>
+                <strong>{{model.SelDate| date: "yyyy-MM-dd"}}</strong>
+                &nbsp;&nbsp;
+            </div>
+            <!-- <button class="button button-icon" style="margin-left:10px" ng-click="LoadData();">
+                <i class="ion-android-search positive" style="font-size:32px;"></i>&nbsp;&nbsp;&nbsp;&nbsp;
+            </button> -->
+        </div>
+
+        <div ng-if="items.length>0">
+            <table class="myTab" style="margin:0 4px 0 2px;width:100%">
+                <thead>
+                    <tr>
+                        <th style="width:78px">车牌</th>
+                        <th style="width:54px">检查者</th>
+                        <th style="width:38px">状态</th>
+                        <th style="width:52px">结果</th>
+                        <th style="min-width:68px">不合格原因</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="item in items">
+                        <td>{{item.CarName}}</td>
+                        <td>{{item.CheckerName}}</td>
+                        <td>{{item.Status}}</td>
+                        <td ng-class="{'green-text': item.Result=='合格', 'red-text': item.Result!='合格'}">{{item.Result}}
+                        </td>
+                        <td>{{item.FailedReason}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div ng-if="items.length==0">
+            <h4 style="color:red">{{Language.common.NoData}}</h4>
+        </div>
+    </ion-content>
+</ion-view>

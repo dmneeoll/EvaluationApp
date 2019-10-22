@@ -1,6 +1,3 @@
-/* Empty. Add your own CSS if you like */
-
-
 ion-slide{
     height:600px;
     text-align:center;
@@ -26,7 +23,7 @@ ion-slide img{
 }
 
 
-/*/班车信息/*/
+/*班车信息*/
 ul{
     list-style: none outside none;
     padding-left: 0;
@@ -390,5 +387,11 @@ ul{
 
   .badge{
       z-index: 10;
+  }
+  
+  .memo-border{
+    border-style:dashed; 
+    border-width:1px; 
+    border-color:pink
   }
   

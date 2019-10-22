@@ -933,6 +933,16 @@ angular.module('evaluationApp.router', [])
                     templateUrl: 'templates/admin/EAdmin/DormHousingSubsidy-Detail.html',
                     controller: 'DormHousingSubsidyDetailCtrl'
                 })
+            .state('carCheck',{
+                url: '/CarCheck',
+                templateUrl: 'templates/admin/CarCheck/CarCheck.html',
+                controller: 'CarCheckCtrl'
+            })
+            .state('carCheckRecord',{
+                url: '/CarCheckRecord',
+                templateUrl: 'templates/admin/CarCheck/CarCheckRecord.html',
+                controller: 'CarCheckRecordCtrl'
+            })
             /*sub of GBSHR*/
             .state('generalNotice', {
                 url: '/generalNotice',

@@ -1,50 +1,61 @@
-<ion-view view-title="{{Language.home.admin}}" cache-view="false" >
+<ion-view view-title="{{Language.home.admin}}" cache-view="false">
     <ion-nav-buttons side="left">
-        <button class="button button-clear button-icon ion-ios-arrow-back" ng-click="closePass()">{{Language.menu.homePage}}</button>
+        <button class="button button-clear button-icon ion-ios-arrow-back"
+            ng-click="closePass()">{{Language.menu.homePage}}</button>
     </ion-nav-buttons>
-    <ion-content scroll="true" overflow-scroll="true" >
+    <ion-content scroll="true" overflow-scroll="true">
         <div class="row" style="height:110px;text-align: center">
-                <div class="col col-25  custom-og light" style="Margin:1px;" ng-click="open('班车信息');">
-                    <i style="font-size:50px;" class="icon ion-android-bus"></i>
-                    <div>{{Language.admin.bus}}</div>
-                </div>                
-                <div class="col col-25 calm-bg light" style="Margin:1px" ng-click="open('点餐');">                
-                    <i style="font-size:50px;" class="ion-android-restaurant"></i>
-                    <div>{{Language.admin.meal}}</div>
-                </div>
-                
-                <div class="col col-25 positive-bg light" style="Margin:1px" ng-click="open('挂失IC卡');">
-                    <i style="font-size:50px;" class="ion-card"></i>
-                    <div>{{Language.admin.icCardLost}}</div>
-                </div>
-                <div class="col royal-bg light" style="Margin:1px" ng-click="open('dormManage');">
-                    <i style="font-size:50px;" class="ion-ios-home"></i>
-                    <div>{{Language.admin.dorm}}</div>
-                    <span style="font-size:10px" class="badge badge-assertive" ng-if="checkActionUpdate('dormManage')">New</span>
-                </div>
+            <div class="col col-25  custom-og light" style="Margin:1px;" ng-click="open('班车信息');">
+                <i style="font-size:50px;" class="icon ion-android-bus"></i>
+                <div>{{Language.admin.bus}}</div>
+            </div>
+            <div class="col col-25 calm-bg light" style="Margin:1px" ng-click="open('点餐');">
+                <i style="font-size:50px;" class="ion-android-restaurant"></i>
+                <div>{{Language.admin.meal}}</div>
+            </div>
+
+            <div class="col col-25 positive-bg light" style="Margin:1px" ng-click="open('挂失IC卡');">
+                <i style="font-size:50px;" class="ion-card"></i>
+                <div>{{Language.admin.icCardLost}}</div>
+            </div>
+            <div class="col royal-bg light" style="Margin:1px" ng-click="open('dormManage');">
+                <i style="font-size:50px;" class="ion-ios-home"></i>
+                <div>{{Language.admin.dorm}}</div>
+                <span style="font-size:10px" class="badge badge-assertive"
+                    ng-if="checkActionUpdate('dormManage')">New</span>
+            </div>
 
             <!--<div   class="col col-25 positive-bg light"  style="Margin:1px" ng-click="open('KQAbnormal');">-->
             <!--<i style="font-size:50px;" class="ion-alert-circled"></i>-->
             <!--<div>{{Language.kqcx.tabAbnormal}}</div>-->
             <!--</div>-->
-         </div>
+        </div>
 
-         <div class="row" style="height:110px;text-align: center">
+        <div class="row" style="height:110px;text-align: center">
             <div class="col col-25 positive-bg light" style="Margin:1px;" ng-click="open('餐厅菜单');">
                 <i style="font-size:50px;" class="icon ion-android-restaurant"></i>
                 <div>{{Language.admin.canteenMenu}}</div>
                 <span style="font-size:10px" class="badge badge-assertive" ng-if="checkActionUpdate('餐厅菜单')">New</span>
             </div>
-              <div class="col col-25 custom-bule1 light" style="Margin:1px" 
-                    ng-click="open('EAdmin');" 
-                    ng-if="canUseAction('EAdmin');">
-                    <i style="font-size:50px;" class="ion-android-list"></i>
-                    <div>EAdmin</div>
-                </div>
-                <div class="col col-25 energized-bg light" style="Margin:1px;" ng-click="open('班车信息new');">
-                    <i style="font-size:50px;" class="icon ion-android-bus"></i>
-                    <div>班车实时站点查询(测试)</div>
-                </div>    
-         </div>
+            <div class="col col-25 custom-bule1 light" style="Margin:1px" ng-click="open('EAdmin');"
+                ng-if="canUseAction('EAdmin');">
+                <i style="font-size:50px;" class="ion-android-list"></i>
+                <div>EAdmin</div>
+            </div>
+            <div class="col col-25 energized-bg light" style="Margin:1px;" ng-click="open('班车信息new');">
+                <i style="font-size:50px;" class="icon ion-android-bus"></i>
+                <div>班车实时站点查询(测试)</div>
+            </div>
+            <div class="col positive-bg light" style="Margin:1px" ng-click="open('车辆点检');" ng-if="isCanCarCheck">
+                <i style="font-size:50px;" class="icon ion-wrench"></i>
+                <div>{{Language.admin.carCheck}}</div>
+            </div>
+        </div>
+        <div class="row" style="height:110px;text-align: center">
+            <div class="col col-25 balanced-bg light" style="Margin:1px" ng-click="open('车辆点检记录');" ng-if="isCanCarCheck">
+                <i style="font-size:50px;" class="icon ion-clipboard"></i>
+                <div>{{Language.admin.carCheckRecord}}</div>
+            </div>
+        </div>
     </ion-content>
 </ion-view>

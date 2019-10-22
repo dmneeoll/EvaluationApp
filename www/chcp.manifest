@@ -1,9 +1,5 @@
 [
   {
-    "file": ".vscode/launch.json",
-    "hash": "17a06f256032d5cf2faaaf399f62b9bb"
-  },
-  {
     "file": "css/animate.min.css",
     "hash": "8f639b916ea1d3736d948ba423ef8ea6"
   },
@@ -13,7 +9,7 @@
   },
   {
     "file": "css/style.css",
-    "hash": "0205ca41fffef8ed4c43e0f3f4f4b2bf"
+    "hash": "3076045f57b36a9ebbfb074451902fc6"
   },
   {
     "file": "fonts/Slide-icons.dev.svg",
@@ -253,7 +249,7 @@
   },
   {
     "file": "js/app-conf.js",
-    "hash": "d265da89ae51beee815b1005dc7259fb"
+    "hash": "20bf9acb40bdb36664cb37a9a46768ee"
   },
   {
     "file": "js/app.js",
@@ -261,11 +257,11 @@
   },
   {
     "file": "js/controller/adminControllers.js",
-    "hash": "8304c501ca4af7007a3605c09f205009"
+    "hash": "6c1f39b3c803822cba00dee069fe8772"
   },
   {
     "file": "js/controller/appControllers.js",
-    "hash": "b7d016ab6d0dfcb2b0ba81bac187b477"
+    "hash": "7853cc125e28c28d1c20df5166be8634"
   },
   {
     "file": "js/controller/B11WorkShopController.js",
@@ -277,7 +273,7 @@
   },
   {
     "file": "js/controller/businiessControllers.js",
-    "hash": "b4c967277541bbde27076bbc491e9648"
+    "hash": "678f91f7fd8e7e659776d51064df147e"
   },
   {
     "file": "js/controller/CSERControllers.js",
@@ -425,11 +421,11 @@
   },
   {
     "file": "js/router.js",
-    "hash": "11e57128b3e1ddfc3b00b3d54c0c37cd"
+    "hash": "06dcb6ef77375a9aac7451d61cff11eb"
   },
   {
     "file": "js/service/appServices.js",
-    "hash": "3d794e7c529bbb5701c7f400a1dfa060"
+    "hash": "b01badf27df9d77c6eb2b428549fb161"
   },
   {
     "file": "js/service/businessServices.js",
@@ -625,11 +621,19 @@
   },
   {
     "file": "templates/admin/admin-list.html",
-    "hash": "6a50bb1510814dd90b06a77096c2f29b"
+    "hash": "d5375a40b9746767237a675c5d311080"
   },
   {
     "file": "templates/admin/canteen-list.html",
     "hash": "610b7477a5be56f6129595a1fb850276"
+  },
+  {
+    "file": "templates/admin/CarCheck/CarCheck.html",
+    "hash": "1cb17acc8781774fc0921ed7119cf97f"
+  },
+  {
+    "file": "templates/admin/CarCheck/CarCheckRecord.html",
+    "hash": "2d7b94317aaec0113faf2a990831836c"
   },
   {
     "file": "templates/admin/dorm/applyDorm.html",
@@ -781,7 +785,7 @@
   },
   {
     "file": "templates/carGps/tab-carList.html",
-    "hash": "729c24f8e036830f6b485eba0f8b4472"
+    "hash": "2dfd906cf8529d00a58e55a01aa841d2"
   },
   {
     "file": "templates/carGps/tab-map.html",

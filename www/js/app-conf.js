@@ -12,7 +12,7 @@ var IsShowUpdateDetial = false; //false;
 //是否显示升级安装失败信息
 var IsShowUpdateInstalledErr = true;
 
-var LAST_PUBLISH_DATE = "2019-09-30 14:01";
+var LAST_PUBLISH_DATE = "2019-10-22 09:05";
 
 //新的测试页面控制，与 actionVisitServices, ESE_ACTION_UPDATE表配合使用
 //  $scope.canUseAction = function (action) {
@@ -42,7 +42,9 @@ function isEmptyString(str){
 function isValidMobile(str){
     return /^(((13[0-9]{1})|(14[0-9]{1})|(15[0-9]{1})|(16[0-9]{1})|(17[0-9]{1})|(18[0-9]{1})|(19[0-9]{1}))+\d{8})$/.test(str);
 }
-
+function isValidArray(arr){
+    return arr && arr.length>0;
+}
 ///////////////////////////////////////////////////////////////////////////////////
 
 if (IsDebugMode) {
@@ -188,6 +190,7 @@ var ZH_CN = {
         sexFeMale:"女",
         month:"月份",
         year:"年份",
+        date:"日期",
         workdayNO:"工号",
         name:"姓名",
         income:"收入",
@@ -525,7 +528,7 @@ var ZH_CN = {
         designer:"作者",
         desc:"主要事迹",
         designConcept: "设计理念",
-        PoetryTitle:"教师节知识线上有奖答题",
+        PoetryTitle:"残障平等意识周线上有奖答题",
         StartButton:"开始答题",
         RemainSec:"剩余时间",
         OkNextButton:"答题",
@@ -545,6 +548,8 @@ var ZH_CN = {
         lastRequest:"最近一次申请",
         submitSucc:'您的挂失申请已提交，正在等待一卡通后台处理，谢谢！',
         canteenMenu:'餐厅菜单',
+        carCheck:'车辆点检',
+        carCheckRecord:'车辆点检记录',
     },
     dormManage:{
         hotline:"宿舍热线",
@@ -695,6 +700,12 @@ var ZH_CN = {
         LiveInDorm:'是否住宿',
         FilledbyDormGroup:'宿舍组更新信息',
         SubsidyEffDate:'津贴生效日期',
+    },
+    carCheck:{
+        checkDate:'点检日期',
+        failedReason:'不合格项原因',
+        allCars:'点检车辆',
+        cleanTimes:'手动清洁车辆次数',
     }
 };
 
@@ -721,6 +732,7 @@ var ZH_US = {
         sexFeMale:"Female",
         month:"month",
         year:"year",
+        date:"Date",
         workdayNO:"WorkdayNo",
         name:"Name",
         income:"Income",
@@ -1056,7 +1068,7 @@ var ZH_US = {
         designer:"Author",
         desc:"Describe",
         designConcept: "Design Concept",
-        PoetryTitle:"教师节知识线上有奖答题",
+        PoetryTitle:"残障平等意识周线上有奖答题",
         StartButton:"Start",
         RemainSec:"Remaining",
         OkNextButton:"Answer",
@@ -1076,6 +1088,8 @@ var ZH_US = {
         lastRequest:"Last Request",
         submitSucc:'Your report loss was commited, thank you!',
         canteenMenu:'Cafeteria Menu',
+        carCheck:'Shuttle Bus Check',
+        carCheckRecord:'Shuttle Bus Checked Car Record',
     },
     dormManage:{
         hotline:"Dormitory Hotline",
@@ -1226,6 +1240,12 @@ var ZH_US = {
         LiveInDorm:'Is accommodation',
         FilledbyDormGroup:'Filled by Dorm group',
         SubsidyEffDate:'Subsidy effective date',
+    },
+    carCheck:{
+        checkDate:'Check Date',
+        failedReason:'Failed Reason',
+        allCars:'Cars',
+        cleanTimes:'clean times',        
     }
 };
 
@@ -1265,4 +1285,8 @@ var GLOBAL_INFO = {
     KEY_HANDBOOK_L2: "KEY_HANDBOOK_L2",
     KEY_HANDBOOK_L3: "KEY_HANDBOOK_L3",
     KEY_CONTEST_2019:"KEY_CONTEST_2019",
+
+    //Limit use
+    LIMIT_USE_CARCHECK: "AdminCarCheck",
 };
+

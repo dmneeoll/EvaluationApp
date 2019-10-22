@@ -960,7 +960,7 @@ angular.module('evaluationApp.businiessControllers', ['ngSanitize'])
         //   $state.go("act_2019SpringSubsidy")
         //   break
         case '有奖答题2019':
-          CacheFactory.save(GLOBAL_INFO.KEY_CONTEST_2019, '1F050138-9FC5-4458-8B01-5911ADD6A0B1')
+          CacheFactory.save(GLOBAL_INFO.KEY_CONTEST_2019, 'EAC722EC-3230-478C-BC41-8C3921EF486D')
           $state.go('act_PoetryContest')
           break
         default:
@@ -2233,7 +2233,7 @@ angular.module('evaluationApp.businiessControllers', ['ngSanitize'])
       $scope.SubActID=null
       $scope.CanAttend=false; //是否可参加
       $scope.CanAns=false;    //是否显示题目
-      $scope.bOnebyoneLimitTime=false; //是否一题来，限时？
+      $scope.bOnebyoneLimitTime=false; //是否一题题来，限时？
       $scope.ansDone=false;   //是否已答题完成
       var actID = CacheFactory.get(GLOBAL_INFO.KEY_CONTEST_2019)
 
@@ -2250,10 +2250,10 @@ angular.module('evaluationApp.businiessControllers', ['ngSanitize'])
                   if(resp.success){
                       $scope.CanAttend=true;
                       $scope.SubActID=resp.data;
-                      $scope.htmlConent = "<h3>第四届园丁奖“九月念师恩”系列活动 | 博古通今之教师节知识线上有奖问答</h3>"
-                                          +"<br>一共十道题，答对可参与幸运红包抽奖。"
+                      $scope.htmlConent = "<h3>欢迎参加“残障平等意识周自由做自己”线上有奖答题活动</h3>"
+                                          +"<br>一共五道题，答对可参与幸运红包抽奖。"
                                           +"<br>红包有限，先到先得，你准备好了吗？"
-                                          +"<p>备注：获奖红包将于活动结束两天之后，充值到IC卡(饭卡)，届时可自行通过IC卡中心的领款机刷卡领取。</p>"
+                                          +"<p>备注：获奖红包将于活动结束两天之后，统一充值到IC卡(饭卡)，届时可自行通过IC卡中心的领款机刷卡领取。</p>"
                                           ;
                   }else{
                       $scope.CanAttend=false;
@@ -2270,7 +2270,7 @@ angular.module('evaluationApp.businiessControllers', ['ngSanitize'])
           var paras = { 
               ActID: $scope.SubActID,
               WorkdayNo: baseInfo.WorkdayNO,
-              Rand: true /*rand shuffle*/
+              Rand: false /*rand shuffle*/
           }
           commonServices.submit(paras, url).then(function (resp) {
               if (resp) {
@@ -2307,6 +2307,7 @@ angular.module('evaluationApp.businiessControllers', ['ngSanitize'])
           //var SubmitList = [];
           var sumScore = 0;
           var nDoItem = 0;
+          var nRight = 0;
           var fullScore = CalcFullScore($scope.questsions);
 
           for (var i = 0; i < $scope.questsions.length; i++) {
@@ -2317,26 +2318,46 @@ angular.module('evaluationApp.businiessControllers', ['ngSanitize'])
                 if ($rad.length > 0) {
                   nDoItem++;
                 }
+                var nScore = 0;
                 for (var j = 0; j < $rad.length; j++) {
-                  var selVaule = $($rad[j]).val();
-                  if (typeof (selVaule) == 'undefined') {
+                  var sval = $($rad[j]).val();
+                  if (typeof (sval) == 'undefined') {
                     continue;
-                  }
-                  var sScore = selVaule.split("^")[2]
-                  sumScore += parseInt(sScore);
+                  }                  
+                  try {
+                    nScore = parseInt(sval.split("^")[2]);
+                  } catch(e){ };
+                  sumScore += nScore;
                 }
+                if (nScore > 0) { nRight++; }
               } else if ("checkbox" == stype) {
-                var $chk = $("input[name='Chk" + item.Sort + "'" + "]:checked")
-                if ($chk.length > 0) {
-                  nDoItem++;
-                }
-                for (var j = 0; j < $chk.length; j++) {
-                  var selVaule = $($chk[j]).val();
-                  if (typeof (selVaule) == 'undefined') {
+                //calc check sum
+                var sumChk=0;
+                var sumCorrect=0;
+                var bDoItem=false;
+                var $chk = $("input[name='Chk" + item.Sort + "'" + "]");
+                for(var k=0; k<$chk.length; k++){
+                  var sval = $($chk[k]).val();
+                  if (typeof(sval) == 'undefined') {
                     continue;
                   }
-                  var sScore = selVaule.split("^")[2];
-                  sumScore += parseInt(sScore);
+                  var nScore = 0;
+                  try{
+                    nScore = parseInt(sval.split("^")[2]);
+                  }catch(e){};                  
+                  sumChk += nScore;
+                  if($($chk[k]).is(':checked')){
+                    sumCorrect += nScore;
+                    if(!bDoItem){bDoItem=true;}
+                  }
+                }
+
+                if(sumCorrect==sumChk){
+                  sumScore += sumCorrect;
+                  nRight++;
+                }
+                if (bDoItem) {
+                  nDoItem++;
                 }
               }
           }
@@ -2348,27 +2369,29 @@ angular.module('evaluationApp.businiessControllers', ['ngSanitize'])
           // }
 
           if (nDoItem != $scope.questsions.length) {
-              alertService.showAlert("还有未选择的题目，请选择完成后再提交")
+              alertService.showAlert("还有未选择的题目，请做完所有题目后再提交")
               $scope.isSumbiting = false;
               return;
           }
           else {
-              $scope.CanAns=false
-              $scope.CanAttend=false
+              $scope.CanAns = false;
+              $scope.CanAttend = false;
               var paras = {
-                  Token: baseInfo.Token,
-                  SubmitGuid: SubmitGuid,
-                  ActID: $scope.SubActID,
-                  WorkdayNo: baseInfo.WorkdayNO,
-                  SumScore: sumScore/fullScore,
-                  SubmitResult:""//not use
-              }
+                Token: baseInfo.Token,
+                SubmitGuid: SubmitGuid,
+                ActID: $scope.SubActID,
+                WorkdayNo: baseInfo.WorkdayNO,
+                SumScore: sumScore / fullScore,
+                SubmitResult: nRight //答对的题数
+              };
 
-              var url = commonServices.getUrl("ActivityService.ashx", "SubmitActResult")
+              var url = commonServices.getUrl("ActivityService.ashx", "SubmitActResult");
               commonServices.submit(paras, url).then(function (resp) {
                   if (resp.success) {
-                    var sgift = resp.data
-                    if (sgift) {
+                    var sgift = resp.data;
+                    //if (sgift) { //for gift only
+                    var x = parseFloat(resp.data)
+                    if (x > 0) {
                       $rootScope.money = '恭喜中奖: ' + sgift + '元'
                       $rootScope.rebagPopup = $ionicPopup.show({
                         cssClass: 'er-popup',

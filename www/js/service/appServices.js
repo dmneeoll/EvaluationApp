@@ -31,6 +31,7 @@ angular.module('evaluationApp.appServices', [])
                 }).success(function (response) {
                     if (response.success) {
                         CacheFactory.save('accessUser', user);
+                        //保存登录信息
                         CacheFactory.save('accessEmployee', response.obj);
                         result.success=true;
                         result.msg='登录成功';
@@ -218,6 +219,9 @@ angular.module('evaluationApp.appServices', [])
                 };
                 return parameter;
             },
+            getCurrentWorkdayNo:function(){
+                return $rootScope.accessEmployee.WorkdayNO;
+            },
             getLoginServerTime:function(){
                 var accessEmployee = $rootScope.accessEmployee;
                 return new Date(accessEmployee.LoginServerTime);
@@ -316,6 +320,20 @@ angular.module('evaluationApp.appServices', [])
                     deferred.reject(response);   // 声明执行失败，即服务器返回错误
                 });
                 return deferred.promise;
+            },
+            CanLimitUse:function(moduleName){
+                var accessEmployee = $rootScope.accessEmployee;
+                var lst = accessEmployee.LimitUse;
+                //var rexp = new RegExp(moduleName, 'i');
+                var bFound=false;
+                angular.forEach(lst, function(value, key) {
+                    if(!bFound){
+                        if(moduleName.toUpperCase() == value.toUpperCase()){
+                            bFound=true;
+                        }
+                    }
+                });
+                return bFound;
             }
         }
     })

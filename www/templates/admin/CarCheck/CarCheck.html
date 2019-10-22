@@ -1,0 +1,55 @@
+<!-- 行政车辆点检 -->
+<ion-view view-title="{{Language.admin.carCheck}}" cache-view="false" hide-tabs>
+    <ion-content style="background-color:lavender">
+        <div class="list card">
+            <div class="item item-input">
+                    <span class="input-label" style="width:30px;font-size:80%">{{Language.like.employee_ID}}</span>
+                    <span class="input-label" style="width: 10px;color: red">*</span>
+                    <input type="text" style="font-size:80%" readonly="readonly" ng-model="model.WorkdayNO" />
+                </div>            
+            <div class="item item-input">
+                <span class="input-label" style="width: 30px;font-size:80%">{{Language.like.name}}</span>
+                <span class="input-label" style="width: 10px;color: red">*</span>
+                <input type="text" style="font-size:80%" readonly="readonly" ng-model="model.CName" />
+            </div>
+            <div class="item item-input">
+                <span class="input-label" style="width: 30px;font-size:80%">{{Language.carCheck.checkDate}}</span>
+                <span class="input-label" style="width: 10px;color: red">*</span>
+                <input type="text" style="font-size:90%;font-weight:600;" readonly="readonly" ng-model="model.CheckDate" />
+            </div>
+            <div class="item item-input">
+                <span class="input-label" style="width: 50px;font-size:80%">{{Language.carCheck.allCars}}</span>
+                <span class="input-label" style="width: 10px;color: red">*</span>
+                <select class="button" ng-options='t.ID as t.name for t in carList'
+                    ng-model="model.SelCarID"></select>
+            </div>
+            <div class="item item-input">
+                <span class="input-label" style="width: 50px;font-size:80%">{{Language.carCheck.cleanTimes}}</span>
+                <span class="input-label" style="width: 10px;color: red">*</span>
+                <select class="button" ng-options='t.ID as t.name for t in cleanTimes'
+                    ng-model="model.SelClearTimeID"></select>
+            </div>            
+            <div class="item item-input" ng-repeat="checkopt in checkOpts">
+                <span class="input-label" style="font-size:90%;width:230px;max-width:240px;white-space:normal">
+                    【{{$index+1}}】{{checkopt.name}}
+                    <span class="input-label" style="display:inline;color:red">*</span>
+                </span>
+                <select class="button"
+                    ng-model="SelectedOpt['CheckOpt'+checkopt.ID]"
+                    >
+                    <option value="0" selected>合格</option>
+                    <option value="1">不合格</option>
+                </select>
+            </div>
+            <div class="item item-input">
+                <span class="input-label" style="width:30px;font-size:80%">{{Language.carCheck.failedReason}}</span>
+                <textarea rows="6" style="font-size:90%;margin-right:3px" class="ng-pristine ng-valid ng-touched memo-border"
+                    ng-model="model.FailedReson"></textarea>
+            </div>
+        </div>
+
+        <div style="text-align: center" ng-if="canSubmit">
+            <button class="button button-positive" ng-click="Submit()">{{Language.menu.submit}}</button>
+        </div>
+    </ion-content>
+</ion-view>

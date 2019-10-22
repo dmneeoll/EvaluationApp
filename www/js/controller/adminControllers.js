@@ -8,12 +8,14 @@ angular.module('evaluationApp.adminControllers', [])
         ) 
     {
         $scope.canUseAction = function (action) {
-          return actionVisitServices.canUseAction(action, $rootScope.accessEmployee.WorkdayNO);
+          return actionVisitServices.canUseAction(action, commonServices.getCurrentWorkdayNo());
         };
         $scope.checkActionUpdate = function (action) {
           return actionVisitServices.checkUpdate(action);
         };
 
+        $scope.isCanCarCheck = commonServices.CanLimitUse(GLOBAL_INFO.LIMIT_USE_CARCHECK);
+        //===================================
         $scope.open = function (action) {
             actionVisitServices.visit(action); //save state
             switch (action) {
@@ -48,6 +50,12 @@ angular.module('evaluationApp.adminControllers', [])
                     break;   
                 case "EAdmin":
                      $state.go('EAdminList');
+                    break;
+                case "车辆点检":
+                    $state.go('carCheck');
+                    break;
+                case "车辆点检记录":
+                    $state.go('carCheckRecord');
                     break;
                 default: break;
             }
@@ -1974,8 +1982,179 @@ angular.module('evaluationApp.adminControllers', [])
       });
     };
   })
+  .controller('CarCheckCtrl',
+    function ($scope, $rootScope, $state, $ionicHistory, $ionicPopup, commonServices, CacheFactory, 
+        alertService, duplicateSubmitServices) 
+  {
+    // 车辆点检
+    var baseInfo = commonServices.getBaseParas();
+    // $scope.updateCheckOpt = function(selOpt){
+    //     var sid = selOpt.ID.toString();
+    //     var idOpt = 'idCheckOpt'+sid;
+    //     var sval = $('select[name=' +idOpt+ ']').val();
+    //     $scope.model["CheckOpt"+sid] = sval;
+    // };
 
+    function InitInfo() {
+      var url = commonServices.getUrl("AdminService.ashx", "GetCarCheckInfo");
+      var paras = {
+        WorkdayNO: baseInfo.WorkdayNO,
+      };
+      commonServices.submit(paras, url).then(function (resp) {
+        if (resp) {
+          if (resp.success) {
+            var obj = resp.data;
+            $scope.carList = obj.CarList;
+            $scope.checkOpts = obj.CheckOpts;
+            $scope.cleanTimes = obj.CleanTimes;
 
+            $scope.canSubmit = isValidArray(obj.CarList);
+            //init select
+            $scope.SelectedOpt={};
+            angular.forEach($scope.checkOpts, function(value, key) {
+                var it = value;
+                $scope.SelectedOpt['CheckOpt'+it.ID] = '0';
+            });            
+            $scope.model.SelClearTimeID = '0';
+          }
+        }
+      });
+    }
+    InitInfo();
+
+    $scope.canSubmit = false;
+    $scope.model = {
+        SubmitGuid: duplicateSubmitServices.genGUID(),
+        CName: baseInfo.CName,
+        WorkdayNO: baseInfo.WorkdayNO,
+        MobileNo: baseInfo.MobileNo,
+        //Token: baseInfo.Token,
+        CheckDate: moment().format('YYYY-MM-DD'),
+        SelCarID: -1,
+        SelClearTimeID: 0,
+        OptResults: null,
+        FailedReson:null,
+    };
+    
+    function CheckValid() {
+        var sTemp = $.trim($scope.model.MobileNo);
+        $scope.model.MobileNo = sTemp;
+        if (!sTemp || sTemp.length < 5) {
+            alertService.showAlert("请提供联系电话!");
+            return false;
+        }
+        sTemp = $.trim($scope.model.CheckDate);
+        $scope.model.CheckDate = sTemp;
+        if (isEmptyString(sTemp)) {
+            alertService.showAlert("请提供日期!");
+            return false;
+        }
+        if ($scope.model.SelCarID < 0) {
+            alertService.showAlert("请选择车牌号!");
+            $scope.isSumbiting = false;
+            return false;
+        }
+        if($scope.model.SelClearTimeID<=0){
+            alertService.showAlert("请选择清洁次数!");
+            $scope.isSumbiting = false;
+            return false;
+        }
+
+        //检查项
+        var bNeedReason = false;
+        var opts = $scope.SelectedOpt;
+        for (var field in opts) {
+            if (opts.hasOwnProperty(field)) {
+                var val = opts[field];
+                if ('0' != val) {
+                    bNeedReason = true;
+                    break;
+                }
+            }
+        }
+
+        sTemp = $.trim($scope.model.FailedReson);
+        $scope.model.FailedReson = sTemp;
+        if (bNeedReason && isEmptyString(sTemp)) {
+            alertService.showAlert("请填写不合格项原因!");
+            return false;
+        }
+        return true;
+    }
+    function PackageParas(){
+        var opts = $scope.SelectedOpt;
+        var arrOpt=[];
+        for (var field in opts) {
+            if (opts.hasOwnProperty(field)) {
+                var val = opts[field];
+                var sid = field.match(/CheckOpt(\d+)/);
+                if(sid){
+                    arrOpt.push({
+                        'ID': sid[1],
+                        'Res': val
+                    });
+                }
+            }
+        }
+        $scope.model.OptResults = JSON.stringify(arrOpt);
+        return $scope.model;
+    }
+
+    $scope.Submit = function () {
+      if(!CheckValid()){
+          return;
+      }
+      var url = commonServices.getUrl("AdminService.ashx", "SubmitCarCheck");
+      var paras = PackageParas();
+      commonServices.submit(paras, url).then(function(resp) {
+        if (resp) {
+          if (resp.success) {
+            alertService.showAlert('提交成功');
+            $ionicHistory.goBack();
+          } else {
+            alertService.showAlert(resp.message);
+            //$ionicHistory.goBack();
+          }
+        }
+      });
+    };
+  })
+  .controller('CarCheckRecordCtrl',
+    function ($scope, $rootScope, $state, $ionicHistory, $ionicPopup, commonServices, CacheFactory, 
+              alertService) 
+  {
+    // 车辆点检记录  
+      $scope.model = {
+        SelDate:moment().format('YYYY-MM-DD'),
+      };
+      $scope.LoadData = function(){
+        if(isEmptyString($scope.model.SelDate)){
+          alertService.showAlert('请选择日期');
+          return;
+        }
+        var url = commonServices.getUrl("AdminService.ashx", "GetCarCheckRecord");
+        var paras = {
+          "SelDate": moment($scope.model.SelDate).format('YYYY-MM-DD')
+        };
+        alertService.showOperating('Processing...');
+        commonServices.submit(paras, url).then(function (resp) {
+          alertService.hideOperating();
+          if (resp) {
+            if (!resp.success) {
+              var msg = resp.message;
+              alertService.showAlert(msg);
+            } else {
+              $scope.items = resp.data;
+            }
+          }
+        });
+      };
+
+      $scope.ChangeDate = function(){
+        $scope.LoadData();
+      };
+      $scope.LoadData(); //init load
+  })
   
 ///////////////////////////////////////////////////////    
 ;
