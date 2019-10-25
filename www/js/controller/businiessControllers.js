@@ -2667,9 +2667,6 @@ angular.module('evaluationApp.businiessControllers', ['ngSanitize'])
 
     $scope.open = function (action) {
       switch (action) {
-        case '补贴申请结果查询':
-          $state.go('union_welfare_applyResult')
-          break
         case 'CP':
           /*厂牌补办*/
           $state.go('reissueWorkingCard')

@@ -629,7 +629,7 @@ angular.module('evaluationApp.adminControllers', [])
             {name:"退宿", value:-1},
         ];
         function InitInfo() {
-            var url = commonServices.getUrl("DormManageService.ashx", "GetEmpDate");
+            var url = commonServices.getUrl("DormManageService.ashx", "InitDormAllowance");
             commonServices.submit(paras, url).then(function (resp) {
                 if (resp) {
                     if(!resp.success){

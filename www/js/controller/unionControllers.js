@@ -469,21 +469,26 @@ angular.module('evaluationApp.unionControllers', [])
       "detail": "子女就读、托管、兴趣班优惠"
     }];
   })    
-  .controller('UnionWelfareApplyResultCtrl', function ($scope, $state, $ionicHistory,
-    commonServices, CacheFactory, UrlServices) {
+  .controller('UnionWelfareApplyResultCtrl', 
+    function ($scope, $state, $ionicHistory, commonServices, CacheFactory, UrlServices) 
+  {
     //补贴申请结果查询
     var baseInfo = commonServices.getBaseParas();
+    $scope.model={
+      WorkdayNO: baseInfo.WorkdayNO
+    };
 
-    function InitInfo() {
+    $scope.LoadData = function () {
       var url = commonServices.getUrl("UnionService.ashx", "GetWelfareApplyResult");
       var paras = {
-        WorkdayNo: baseInfo.WorkdayNO
+        WorkdayNo: $scope.model.WorkdayNO
       };
       commonServices.submit(paras, url).then(function (resp) {
         if (resp) {
           if (resp.success) {
             $scope.items = resp.list;
           } else {
+            $scope.items=null;
             $scope.errMessage = resp.message;
           }
         } else {
@@ -492,7 +497,7 @@ angular.module('evaluationApp.unionControllers', [])
         }
       });
     }
-    InitInfo();
+    $scope.LoadData();
   })
   .controller('UnionHelpSupportCtrl', function ($scope, $state, $ionicHistory, commonServices, CacheFactory) {
     //员工帮扶

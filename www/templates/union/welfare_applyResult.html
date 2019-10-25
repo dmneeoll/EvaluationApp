@@ -1,42 +1,39 @@
 <!-- 补贴申请结果查询 -->
-<ion-view view-title="" cache-view="false">
-  <ion-content class="myPadding" scroll="true" lazy-scroll>
-  <style>
-    .failed-text {
-      color: black;
+<ion-view view-title="补贴申请结果查询" cache-view="false">
+  <ion-content class="padding5" style="border:1px;">
+    <style>
+      .failed-text{
+        color: brown;
+      }
+    .success-text{
+      color: royalblue;
+      font-size: 1.1em;
+      font-weight: 500;
     }
-    .success-text {
-      color: red;
-      font-weight: 700;
-    }
-    .myPadding {
-      padding: 0 5px 0 5px;
-    }
-    .myDivBorder {
-      border-style: solid;
-      border-width: 1px;
-      border-color: #ddd;
-    }
-    .myDivBorder p {
-      margin-bottom: 2px;
-    }
-  </style>
+    </style>
+    <div class="item item-input searchHead">
+      <span class="input-label" style="width:30px;font-size:80%">{{Language.common.workdayNO}}</span>
+      <input type="text" style="font-weight:600;" ng-model="model.WorkdayNO" />
+      <button class="button button-icon" style="margin-left:20px" ng-click="LoadData();">
+        <i class="ion-android-search positive" style="font-size:32px;"></i>&nbsp;&nbsp;&nbsp;&nbsp;
+      </button>
+    </div>
+
     <div ng-if="items.length>0">
-        <!-- <h4 style="color: royalblue">{{Language.union.welfare_applyResult}}</h4> -->
-        <h4 style="color: royalblue">“异地务工人员暑期亲子团聚关爱”补贴结果查询</h4>
-        <div ng-repeat="item in items">
-          <div class="myDivBorder">（{{$index+1}}）&nbsp;
-            <span style="white-space:normal;" ng-bind-html="item.WelfareName"></span>
-          </div>
-          <div class="myDivBorder">
-            <p ng-class="{'success-text': item.Has>0, 'failed-text': !item.Has}" 
-                ng-bind-html="item.WelfareResult"></p>
-          </div>
-          <br>
+      <!-- <h4 style="color: royalblue">{{Language.union.welfare_applyResult}}</h4> -->
+      <div ng-repeat="item in items">
+        <div class="myDivBorder">（{{$index+1}}）&nbsp;
+          <span style="white-space:normal;" ng-bind-html="item.WelfareName"></span>
         </div>
+        <div class="myDivBorder">
+          <p style="margin-top: 5px;"
+            ng-class="{'success-text': item.Has>0, 'failed-text': !item.Has}" ng-bind-html="item.WelfareResult"></p>
+        </div>
+        <br>
+      </div>
     </div>
     <div ng-if="!items || !items.length">
-      <h4 style="color:red">{{errMessage}}</h4>
+      <h4 class="failed-text">{{errMessage}}</h4>
     </div>
   </ion-content>
 </ion-view>
