@@ -1,18 +1,50 @@
 <!-- 工惠福利汇 -->
-<style>
-.myTab {
-    width: 99.5%;
-}
-td.vertMiddle{
-  vertical-align: middle;
-}
-</style>
 <ion-view cache-view="true">
   <ion-nav-title>
     {{Language.union.welfare_union}}
   </ion-nav-title>
   <ion-content scroll="true" overflow-scroll="true">
-    <div>
+    <style>
+      .myTab {
+        width: 99.5%;
+      }    
+      td.vertMiddle {
+        vertical-align: middle;
+      }
+    </style>
+    <div ng-if="OldItems && OldItems.length>0">
+      <section class="welTitle" style="margin: 10px auto;text-align: center;">
+        <section class="welTitle bg">
+          <section class="welTitle" style="margin-right: 20px;height: 25px;overflow: hidden;">
+            <p class="welTitle" style="max-width:100%;min-height:1em;font-size: 18px;color:#ffffff;">
+              工惠福利汇∙往期福利
+            </p>
+          </section>
+        </section>
+      </section>
+      <table class="myTab">
+        <thead>
+          <tr>
+            <th style="width:20px">#</th>
+            <th style="width:70px;">时间</th>
+            <th style="width:40px">类型</th>
+            <th style="width:60px">商家</th>
+            <th>介绍</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="item in OldItems">
+            <td class="tdCenter">{{$index+1}}</td>
+            <td>{{item.date}}</td>
+            <td>{{item.type}}</td>
+            <td>{{item.business}}</td>
+            <td>{{item.detail}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <br><br>
+    <div ng-if="Items && Items.length>0">
       <section class="welTitle" style="margin: 10px auto;text-align: center;">
         <section class="welTitle bg">
           <section class="welTitle" style="margin-right: 20px;height: 25px;overflow: hidden;">
@@ -22,14 +54,16 @@ td.vertMiddle{
           </section>
         </section>
       </section>
-    </div>
-    <div>
       <table class="myTab">
         <thead>
           <tr>
             <th style="width:16px">#</th>
-            <th><div style="width:30px;">类型</div></th>
-            <th><div style="width:30px;">商家</div></th>
+            <th>
+              <div style="width:30px;">类型</div>
+            </th>
+            <th>
+              <div style="width:30px;">商家</div>
+            </th>
             <th>项目介绍</th>
             <th>实施日期</th>
             <th>截止日期</th>
@@ -41,10 +75,18 @@ td.vertMiddle{
             <td class="tdCenter">{{$index+1}}</td>
             <td>{{item.type}}</td>
             <td>{{item.business}}</td>
-            <td><div style="min-width:40%" compile="item.detail"></div></td>
-            <td class="vertMiddle"><div style="width:40px;">{{item.beginDate}}</div></td>
-            <td class="vertMiddle"><div style="width:40px">{{item.endDate}}</div></td>
-            <td class="vertMiddle"><div style="width:60px;">{{item.contact}}</div></td>
+            <td>
+              <div style="min-width:40%" compile="item.detail"></div>
+            </td>
+            <td class="vertMiddle">
+              <div style="width:40px;">{{item.beginDate}}</div>
+            </td>
+            <td class="vertMiddle">
+              <div style="width:40px">{{item.endDate}}</div>
+            </td>
+            <td class="vertMiddle">
+              <div style="width:60px;">{{item.contact}}</div>
+            </td>
           </tr>
         </tbody>
       </table>

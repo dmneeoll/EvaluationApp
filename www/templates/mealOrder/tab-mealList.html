@@ -9,7 +9,6 @@
                 <img src="{{meal.ImgPath}}">
                 <h2>{{meal.foodName}}</h2>
                 <div class="row" style="width: 100px;float: right">
-
                     <div class="col col-30"> <button  class="button button-small  button-assertive" ng-click="cutDown(meal)">-</button></div>
                     <div class="col col-20"><label style="width: 20px;" ng-model="meal.Count" >{{meal.Count}}</label></div>
                     <div class="col "> <button  class="button button-small  button-assertive" ng-click="add(meal)">+</button></div>
@@ -73,7 +72,7 @@
                         <span class="input-label" style="width: 10px;font-size:80%">就餐人数</span><span class="input-label" style="width: 10px;color: red">*</span>
                         <select  ng-model="mealPerson"  ng-change="selMealPerson(mealPerson)">
                             <option selected="">请选择</option>
-                            <option >1</option>
+                            <option>1</option>
                             <option>2</option>
                             <option>3</option>
                             <option>4</option>
@@ -83,6 +82,8 @@
                             <option>8</option>
                             <option>9</option>
                             <option>10</option>
+                            <option>15</option>
+                            <option>20</option>
                         </select>
                     </div>
                     <div class="item item-input">
@@ -94,11 +95,9 @@
                     <ion-item class="item" ng-repeat="order in SubmitList track by $index"><p>菜名：{{order.foodName}}，数量：{{order.Count}}，单价：{{order.Price}}</p></ion-item>
                     <ion-item class="item item-divider">共{{MealCount}}份 总计{{MealPay}}元</ion-item>
                 </ion-list>
-
                 <br>
                 <div style="text-align: center"><button  class="button button-block  button-positive" ng-click="submit()">{{Language.menu.submit}}</button></div>
             </ion-content>
         </ion-modal-view>
     </script>
-
 </ion-view>

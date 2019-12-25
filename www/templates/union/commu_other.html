@@ -22,7 +22,7 @@
       {{Language.union.otherCommunMethod}}
     </ion-nav-title>
   
-    <ion-content>
+    <ion-content class="padding" scroll="true" overflow-scroll="true">
         <p class="myTitle">
             1）沟通渠道：
         </p>
@@ -33,7 +33,7 @@
             <li>户外宣传栏</li>
             <li>工会开放日</li>
             <li>员工代表大会</li>
-            <li>食堂管理委员会季度走访</li>
+            <li>食堂管理委员会及宿舍管理委员会季度走访</li>
             <li>伟创力珠海官方微信：“<b>伟创力珠海</b>”</li>
             <li>工会邮箱：<a class="myLink" href="mailto:flexzh.union@flex.com">flexzh.union@flex.com</a></li>
         </ul>
@@ -42,21 +42,21 @@
         <p class="myTitle">
             2）联合工会及基层分会架构
         </p>
-        <div>
-            <ul id="auto-loop" class="gallery">
+        <div style="text-align: center;">
+            <ul class="lightgallery">
             <li data-src="img/union/unionArti.png">
                 <a href="#">
-                <img style="max-width:400px;" alt="联合工会架构" src="img/union/unionArti.png"/>
+                <img style="max-width:98%;" alt="联合工会架构" src="img/union/unionArti.png"/>
                 </a>
             </li>
-            <li data-src="img/union/unionArti2.jpg">
+            <li data-src="img/union/unionArti2.png">
                 <a href="#">
-                <img style="max-width:400px;" alt="工会福利委员会" src="img/union/unionArti2.jpg"/>
+                <img style="max-width:98%;" alt="工会福利委员会" src="img/union/unionArti2.png"/>
                 </a>
             </li>
-            <li data-src="img/union/unionArti3.jpg">
+            <li data-src="img/union/unionArti3.png">
                 <a href="#">
-                <img style="max-width:400px;" alt="工会女工委员会" src="img/union/unionArti3.jpg"/>
+                <img style="max-width:98%;" alt="工会女工委员会" src="img/union/unionArti3.png"/>
                 </a>
             </li>
             </ul>
@@ -66,13 +66,13 @@
             3）	各基层分会联络窗口
         </p>
         <div>
-            <table class="myTab" style="margin:0 4px 0 2px;">
+            <table class="myTab" style="margin:0 1px 0 1px;table-layout:fixed">
             <thead>
                 <tr>
-                <th style="width:90px">基层分会</th>
+                <th style="width:80px">基层分会</th>
                 <th>联络人</th>
                 <th>邮箱</th>
-                <th style="min-width:70px">联系电话</th>
+                <th style="min-width:50px">联系电话</th>
                 </tr>
             </thead>
             <tbody>
@@ -88,3 +88,9 @@
         <br><br><br>
     </ion-content>
   </ion-view>
+  <script>
+    setTimeout(function () {
+      //图片缩放
+      InitPhotoScale();
+    }, 1000);
+  </script>  

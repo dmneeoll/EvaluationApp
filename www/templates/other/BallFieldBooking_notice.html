@@ -1,0 +1,114 @@
+<!-- 球场公告 -->
+<ion-view view-title="{{Language.BallFieldBooking.Notice}}" cache-view="false">
+    <ion-nav-buttons side="left">
+        <button class="button button-clear button-icon ion-ios-arrow-back"
+          ng-click="closePass()">{{Language.home.home}}</button>
+      </ion-nav-buttons>
+
+      <ion-content scroll="true" overflow-scroll="true">
+        <style>
+            .tdNotice{
+                width: 100px;
+                text-align: right;
+            }
+        </style>
+        <div class="divOff lightRedBack" ng-if="noticeList && noticeList.length>0">
+            <span class="text-left" style="font-weight:700;">{{BallFieldName}}{{Language.common.Notice}}：</span>
+            <div class="divOff" style="font-size:14px;">
+                <ol style="list-style:none;">
+                    <li ng-repeat="notice in noticeList">
+                        <p ng-bind-html="trustAsHtml(notice.Notice)"></p>
+                    </li>
+                </ol>
+            </div>
+        </div>
+
+        <div class="list">
+            <div class="item" ng-repeat="bk in bkList">
+                <span style="width: 10px;font-size:90%">{{bk.Day}}</span>
+                <table style="margin:0 1px 0 1px;table-layout:fixed">
+                    <tbody>
+                        <tr ng-repeat="bkt in bk.Times">
+                            <td class='tdNotice'>{{bkt.BeginTime|date:"HH:mm"}} ~ {{bkt.EndTime|date:"HH:mm"}}</td>
+                            <td class='tdNotice'><span ng-class="{'green-text':bkt.Status==0,'blue-text':bkt.Status!=0}">{{bkt.StatusCN}}</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <br>
+        <br>
+        <br>
+    </ion-content>
+    <div class="bar bar-subfooter" style="background-color:lavender;margin-bottom:2px;">
+        <!-- <h2 class="title">共{{MealCount}}份 总计{{MealPay}}元</h2> -->
+        <!-- <a href="#/app/playlists" class="button button-icon icon ion-ios7-undo-outline"></a> -->
+        <button style="width:100px"  class="button button-positive pull-right" ng-click="openModal()">预 定</button>
+    </div>
+
+    <!-- 预定 -->
+    <script id="templates/modal.html" type="text/ng-template">
+        <ion-modal-view>
+            <ion-header-bar class="bar bar-header bar-positive">
+                <h1 class="title">{{Language.BallFieldBooking.Mybook}}</h1>
+                <button class="button button-clear button-primary" ng-click="modal.hide()">Cancel</button>
+            </ion-header-bar>
+            <ion-content class="padding">
+                <div class="list card" >
+                    <div class="item item-input">
+                        <span class="input-label" style="width: 10px;font-size:90%" >姓名</span><span class="input-label" style="width: 10px;color: red">*</span>
+                        <input type="text" style="font-size:90%" readonly="readonly" ng-model="Params.CName"/>
+                    </div>
+                    <div class="item item-input">
+                        <span class="input-label" style="width: 10px;font-size:90%">工号</span><span class="input-label" style="width: 10px;color: red">*</span>
+                        <input type="text" style="font-size:90%;"  readonly="readonly" ng-model="Params.WorkdayNO"/>
+                    </div>
+                    <div class="item item-input">
+                        <span class="input-label" style="width: 10px;font-size:90%">联系电话</span><span class="input-label" style="width: 10px;color: red">*</span>
+                        <input type="text" style="font-size:90%"  ng-model="Params.MobileNo"/>
+                    </div>
+                    <div class="item item-input">
+                        <span class="input-label" style="width: 10px;font-size:90%">日期</span><span class="input-label" style="width: 10px;color: red">*</span>
+                        <div ion-datetime-picker date 
+                            ng-model="Params.SelectedDate" 
+                            only-valid="{'after':'today', 'inclusive': true}"
+                            style="width:280px;">
+                            <i class="icon ion-ios-calendar positive" style="font-size:28px;"></i>
+                            <strong>{{Params.SelectedDate| date: "yyyy-MM-dd"}}</strong>
+                            &nbsp;&nbsp;
+                        </div>
+                    </div>                    
+                    <div class="item item-input">
+                        <span class="input-label" style="width: 10px;font-size:90%">开始时间</span><span class="input-label" style="width: 10px;color: red">*</span>
+                        <div ion-datetime-picker time 
+                            ng-model="Params.BeginTime" 
+                            style="width:280px;">
+                            <i class="icon ion-ios-clock positive" style="font-size:28px;"></i>
+                            <strong>{{Params.BeginTime| date: "HH:mm"}}</strong>
+                            &nbsp;&nbsp;
+                        </div>
+                    </div>
+                    <div class="item item-input">
+                        <span class="input-label" style="width: 10px;font-size:90%">结束时间</span><span class="input-label" style="width: 10px;color: red">*</span>
+                        <div ion-datetime-picker time 
+                            ng-model="Params.EndTime" 
+                            style="width:280px;">
+                            <i class="icon ion-ios-clock positive" style="font-size:28px;"></i>
+                            <strong>{{Params.EndTime| date: "HH:mm"}}</strong>
+                            &nbsp;&nbsp;
+                        </div>
+                    </div>                    
+                    <!-- <div class="item item-input">
+                        <span class="input-label" style="width: 10px;font-size:90%">备注：</span><span class="input-label" style="width: 10px;color: red">*</span>
+                        <textarea rows="3" id="bz" style="font-size:90%;width: 500px" placeholder="备注"  ng-model="bz"></textarea>
+                    </div> -->
+                </div>
+                <br>
+                <div style="text-align: center">
+                    <button class="button button-block button-positive" ng-click="submit()">{{Language.menu.submit}}                        
+                    </button>
+                </div>
+            </ion-content>
+        </ion-modal-view>
+    </script>
+</ion-view>

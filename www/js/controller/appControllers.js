@@ -32,16 +32,13 @@ angular.module('evaluationApp.appControllers', [])
             languageitem = JSON.parse(CacheFactory.get('LanguageItem'));
             
             if (languageitem.value == 'CN') {
-
                 $rootScope.Language = ZH_CN;
             } else {
-
                 $rootScope.Language = ZH_US;
             }
         }
 
         $scope.login = function (user) {
-
             if (typeof (user) == 'undefined') {
                 if($rootScope.Language==ZH_CN)
                 alertService.showAlert('工号或密码不能为空');
@@ -83,7 +80,7 @@ angular.module('evaluationApp.appControllers', [])
         $scope.checkWorkday = '23328424565765889534562582566117';
         $scope.isSouthCamp = isSouthCamp($rootScope.accessEmployee.Organization);
         $scope.isChineseLang = isChineseLang($rootScope);
-        console.log(parameter);
+        //console.log(parameter);
 
        $rootScope.Power=$scope.checkWorkday.indexOf( $rootScope.accessEmployee.WorkdayNO)!=-1;
 
@@ -94,67 +91,66 @@ angular.module('evaluationApp.appControllers', [])
 //        });
 
         if ($rootScope.accessEmployee) {
-            $scope.showPopup = function () {
-                $rootScope.selPersonType ='中国';
-                $rootScope.data = {}
-                $rootScope.data.PersonType=$scope.selPersonType;
-                $rootScope.PersonTypeUpdate = function (selPersonType) {
-                    $rootScope.data.PersonType=selPersonType;
-                }
+            // 2019-12-03 不检查IDno
+            // $scope.showPopup = function () {
+            //     $rootScope.selPersonType ='中国';
+            //     $rootScope.data = {}
+            //     $rootScope.data.PersonType=$scope.selPersonType;
+            //     $rootScope.PersonTypeUpdate = function (selPersonType) {
+            //         $rootScope.data.PersonType=selPersonType;
+            //     }
+            //     var myPopup = $ionicPopup.show({
+            //         templateUrl: 'templates/realNameRegistration/IDNOFilling.html',
+            //         title: $rootScope.Language.realName.title,
+            //         subTitle: $rootScope.Language.realName.title1,
+            //         scope: $rootScope,
+            //         buttons: [
+            //             { text: 'Cancel' },
+            //             {
+            //                 text: '<b>Save</b>',
+            //                 type: 'button-positive',
+            //                 onTap: function (e) {
+            //                     console.log($rootScope.data.PersonType);
+            //                     if (!$rootScope.data.IDNO) {
+            //                         //不允许用户关闭，除非他键入wifi密码
+            //                         console.log(1);
+            //                         e.preventDefault();
+            //                     }
+            //                     else if($rootScope.data.PersonType=='中国'&&$rootScope.data.IDNO.length!=18) {
+            //                         alertService.showAlert("身份证信息必须是18位");
+            //                         e.preventDefault();
+            //                     }else {
+            //                         console.log(2);
+            //                         $scope.submitIDNO($rootScope.data.IDNO);
+            //                         return ;
+            //                     }
+            //                 }
+            //             }
+            //         ]
+            //     });
+            // };
+            // $scope.submitIDNO=function(IDNO){
+            //     parameter.IDNO=IDNO;
+            //     var url=commonServices.getUrl("EvaluationAppService.ashx","RealNameRegistration");
+            //     commonServices.submit(parameter,url).then(function(data){
+            //         if(data.success){
+            //             $rootScope.accessEmployee.strIsHRConfirm='WaitRegistration';
+            //             CacheFactory.save('accessEmployee', $rootScope.accessEmployee);
 
-                var myPopup = $ionicPopup.show({
-                    templateUrl: 'templates/realNameRegistration/IDNOFilling.html',
-                    title: $rootScope.Language.realName.title,
-                    subTitle: $rootScope.Language.realName.title1,
-                    scope: $rootScope,
-                    buttons: [
-                        { text: 'Cancel' },
-                        {
-                            text: '<b>Save</b>',
-                            type: 'button-positive',
-                            onTap: function (e) {
-                                console.log($rootScope.data.PersonType);
-                                if (!$rootScope.data.IDNO) {
-                                    //不允许用户关闭，除非他键入wifi密码
-                                    console.log(1);
-                                    e.preventDefault();
-                                }
-                                else if($rootScope.data.PersonType=='中国'&&$rootScope.data.IDNO.length!=18) {
-                                    alertService.showAlert("身份证信息必须是18位");
-                                    e.preventDefault();
-                                }else {
-                                    console.log(2);
-                                    $scope.submitIDNO($rootScope.data.IDNO);
-                                    return ;
-                                }
-                            }
-                        }
-                    ]
-                });
-            }
+            //             if($rootScope.Language==ZH_CN)
+            //                 alertService.showAlert('谢谢你的提交，身份证信息需要等待HR确认后，Flex+账户才正式生效');
+            //             else
+            //                 alertService.showAlert('Thank you for your submission. The ID card information needs to wait for HR confirmation, and the Flex+ account will take effect.');
+            //         }
+            //     });
+            // };
+            // if($rootScope.accessEmployee.strIsHRConfirm=='UnRegistration'
+            //     ||$rootScope.accessEmployee.strIsHRConfirm=='FailedRegistration') {
+            //     $scope.showPopup();
+            // }
 
-            $scope.submitIDNO=function(IDNO){
-                parameter.IDNO=IDNO;
-                var url=commonServices.getUrl("EvaluationAppService.ashx","RealNameRegistration");
-                commonServices.submit(parameter,url).then(function(data){
-                    if(data.success){
-                        $rootScope.accessEmployee.strIsHRConfirm='WaitRegistration';
-                        CacheFactory.save('accessEmployee', $rootScope.accessEmployee);
-
-                        if($rootScope.Language==ZH_CN)
-                            alertService.showAlert('谢谢你的提交，身份证信息需要等待HR确认后，Flex+账户才正式生效');
-                        else
-                            alertService.showAlert('Thank you for your submission. The ID card information needs to wait for HR confirmation, and the Flex+ account will take effect.');
-                    }
-                });
-            }
-
-            if($rootScope.accessEmployee.strIsHRConfirm=='UnRegistration'||$rootScope.accessEmployee.strIsHRConfirm=='FailedRegistration') {
-                $scope.showPopup();
-            }
-
-            $scope.Scan = function () {
-                //johnsing 2018-09-07
+            //johnsing 2018-09-07
+            //$scope.Scan = function () {                
                 //cordova.plugins.barcodeScanner.scan(
                 //    function (result) {
                 //        if (result.wasCancelled) {
@@ -179,7 +175,7 @@ angular.module('evaluationApp.appControllers', [])
                 //        // disableAnimations : true // iOS
                 //    }
                 //);
-            };
+            //};
 
             commonServices.getHomeSlideImg(parameter).then(function(data) {
                 if(data=="Token is TimeOut")
@@ -206,7 +202,6 @@ angular.module('evaluationApp.appControllers', [])
             };
 
             $rootScope.updateMsgCount();
-
             $rootScope.updateSlideBox=function(){
                 $ionicSlideBoxDelegate.$getByHandle("homeSlide").next();
             }
@@ -247,11 +242,9 @@ angular.module('evaluationApp.appControllers', [])
                     break;
                 case "金点子":
                     $state.go("tabGoldIdea.goldidea");
-//                    $location.path("handbook_item1");
                     break;
                 case "E-gate":
                 try {
-
                     externalLinksService.openUr('https://zhmobile.flextronics.com/egate/Login/Signin.aspx');
                 }
                 catch (ex) {
@@ -272,7 +265,6 @@ angular.module('evaluationApp.appControllers', [])
                     break;
                 case "choujiang":
                    $state.go("choujiang");
-                  //  $state.go("choujiangName");
                     break;
                 case "chunwan":
                     $state.go("chunwan");
@@ -306,7 +298,6 @@ angular.module('evaluationApp.appControllers', [])
                 $location.path("tab/goodJob");
             }
             else if(action=="考勤查询"){
-                //$state.go("tabKQCX.kqjl");
                 $location.path("tab/kqjl");
             }
             else if(action=="消费查询"){
@@ -336,11 +327,9 @@ angular.module('evaluationApp.appControllers', [])
                 commonServices.operationLog(paras1).then(function(data){
                     $scope.sucess=data;
                 });
-
             }
             else if(action=="园区公告"){
                 $location.path("noticeList");
-
             }
             else if(action=="热线电话"){
                 if($rootScope.accessEmployee.Segment_ID!='EF922594-5FB1-409E-A3D8-F7BC940AACD9'){
@@ -359,10 +348,8 @@ angular.module('evaluationApp.appControllers', [])
                 {
                     $location.path("hotPhone");
                 }
-
             }
             else if(action=="活动"){
-
 //                if($rootScope.accessEmployee.Segment_ID=='EF922594-5FB1-409E-A3D8-F7BC940AACD9'){
 //                    $state.go("luckyGame");
 //                }
@@ -375,7 +362,6 @@ angular.module('evaluationApp.appControllers', [])
 //                {
 //                    $location.path("activityList");
 //                }
-
 //                if($rootScope.Power)
 //                {
 //                    $state.go("38Activity");
@@ -386,11 +372,9 @@ angular.module('evaluationApp.appControllers', [])
 //                }
 
                 $location.path("activityList");
-
             }
             else if(action=="聊天室"){
                 $location.path("chartRoom");
-
             }
             else if(action=="问与答"){
                 $location.path("askAndAnswer");
@@ -400,11 +384,9 @@ angular.module('evaluationApp.appControllers', [])
             }
             else if(action=="灯光控制"){
                 $location.path("lightPower");
-
             }
             else if(action=="抽奖"){
                 $location.path("choujiang");
-
             }
             else if(action=="拍照"){
                 $location.path("Photo");
@@ -421,6 +403,9 @@ angular.module('evaluationApp.appControllers', [])
              }
             else if(action=="我要求助"){
                 $state.go("tabAskForHelp.askForHelp");
+            }
+            else if(action=='球场预定'){
+                $state.go("BallFieldBooking.Notice");
             }
             else if(action=="shareCar"){
                 $state.go("tab_ShareCar.List");
@@ -444,7 +429,6 @@ angular.module('evaluationApp.appControllers', [])
             else if(action=="B11Workshop"){
                 $state.go("b11WorkShopHome");
             }
-
         }
     })
     .controller('RegCtrl', function($scope,$rootScope,$location,$ionicLoading,commonServices,alertService) 
@@ -453,7 +437,6 @@ angular.module('evaluationApp.appControllers', [])
         $scope.passmodels = {
             workdayNo: null,
             CName: null,
-            IDNO: null,
             mobile: null,
             securityCode: null,
             newPassword: null,
@@ -462,6 +445,8 @@ angular.module('evaluationApp.appControllers', [])
         $scope.closePass = function () {
             $location.path('signin');
         };
+
+        //$scope.nIDCardTry = 0; //身份证号尝试次数
 
         if ($rootScope.Language == ZH_CN)
             $scope.btnText = '获取验证码';
@@ -495,7 +480,6 @@ angular.module('evaluationApp.appControllers', [])
 
             $scope.isSending = true;
             commonServices.getSecurityCode({ WorkdayNo: passmodels.workdayNo, CName: passmodels.CName, Mobile: passmodels.mobile }).then(function (response) {
-
                 if (response.success) {
                     var i = 60;
                     $ionicLoading.show({ template: '验证码已发送', noBackdrop: true, duration: 2000 });
@@ -523,17 +507,23 @@ angular.module('evaluationApp.appControllers', [])
         $scope.checkSecurityCode = function (passmodels) {
             try {
                 if ($rootScope.Language == ZH_CN) {
-                    var idno = $.trim($scope.passmodels.IDNO);
-                    if (isEmptyString(idno) || idno.length != 18) {
-                        alertService.showAlert("身份证号码必须是18位")
-                        return;
-                    } else {
-                        //严格检查身份证号
-                        if (!CheckIdCard(idno)) {
-                            alertService.showAlert("身份证号码有误，请更正!");
-                            return;
-                        }
-                    }
+                    // 2019-12-03 no check IDno
+                    // var idno = $.trim($scope.passmodels.IDNO);
+                    // if (isEmptyString(idno)){
+                    //     alertService.showAlert("请提供身份证号码")
+                    //     return;
+                    // } else if(idno.length == 18){
+                    //     //18位的话当作中国身份，严格检查身份证号
+                    //     if (!CheckIdCard(idno)) {
+                    //         alertService.showAlert("身份证号码有误，请更正!");
+                    //         return;
+                    //     }
+                    // }else if($scope.nIDCardTry<1){
+                    //     //不为18，其它国籍号码?
+                    //     alertService.showAlert("由於您輸入的不是有效身份證號碼，為保證正確性，請自行再檢查一次。\n<br>You are not entering the Chinese identification number. Please reconfirm it by yourself for validation.");
+                    //     $scope.nIDCardTry++;
+                    //     return;
+                    // }
                 }
 
                 commonServices.checkSecurityCode({ WorkdayNo: passmodels.workdayNo, Mobile: passmodels.mobile, SecurityCode: passmodels.securityCode }).then(function (response) {
@@ -565,7 +555,7 @@ angular.module('evaluationApp.appControllers', [])
                     return;
                 }
 
-                commonServices.register({ WorkdayNo: passmodels.workdayNo, IDNO: passmodels.IDNO, Password: passmodels.newPassword }).then(function (response) {
+                commonServices.register({ WorkdayNo: passmodels.workdayNo, Password: passmodels.newPassword }).then(function (response) {
                     if (response.success) {
                         alertService.showAlert('注册成功，请重新登录！');
                         $location.path('signin');
@@ -674,7 +664,6 @@ angular.module('evaluationApp.appControllers', [])
 
         $scope.rebindModels = {
             workdayNo: null,
-            IDNO:null,
             mobile: null,
             securityCode: null
         };
@@ -720,17 +709,18 @@ angular.module('evaluationApp.appControllers', [])
         $scope.doSubmit = function(model){
             var workdayNo = $.trim($scope.rebindModels.workdayNo);
             var mobile = $.trim($scope.rebindModels.mobile);
-            var idno = $.trim($scope.rebindModels.IDNO);
-            if(0==workdayNo.length)
-            {
-                alertService.showAlert($rootScope.Language.rebindPhone.errWorkdayNo);
-                return;
-            }
-            if(0==idno.length)
-            {
-                alertService.showAlert($rootScope.Language.rebindPhone.errIdno);
-                return;
-            }
+            // 2019-12-03 no check IDno
+            // var idno = $.trim($scope.rebindModels.IDNO);
+            // if(0==workdayNo.length)
+            // {
+            //     alertService.showAlert($rootScope.Language.rebindPhone.errWorkdayNo);
+            //     return;
+            // }
+            // if(0==idno.length)
+            // {
+            //     alertService.showAlert($rootScope.Language.rebindPhone.errIdno);
+            //     return;
+            // }
             if(0==mobile.length || mobile.length<11)
             {
                 alertService.showAlert($rootScope.Language.rebindPhone.errMobile);
@@ -743,8 +733,7 @@ angular.module('evaluationApp.appControllers', [])
                     var url = commonServices.getUrl("AccountService.ashx", "RebindPhone");
                     var paras = {
                         WorkdayNo: model.workdayNo,
-                        Mobile: model.mobile,
-                        IDNO: model.IDNO
+                        Mobile: model.mobile
                     };
                     commonServices.submit(paras, url).then(function (data) {
                         if (data.success) {
@@ -813,21 +802,21 @@ angular.module('evaluationApp.appControllers', [])
         $cordovaAppVersion.getVersionNumber().then(function (version) {
             $scope.version= version;
         });
-        $scope.realName="";
-        switch ($rootScope.accessEmployee.strIsHRConfirm){
-            case 'UnRegistration':
-                $scope.realName='未认证';
-                break;
-            case 'WaitRegistration':
-                $scope.realName='等待HR认证';
-                break;
-            case 'Registration':
-                $scope.realName='已认证';
-                break;
-            case 'FailedRegistration':
-                $scope.realName='认证不通过';
-                break;
-        }
+        // $scope.realName="";
+        // switch ($rootScope.accessEmployee.strIsHRConfirm){
+        //     case 'UnRegistration':
+        //         $scope.realName='未认证';
+        //         break;
+        //     case 'WaitRegistration':
+        //         $scope.realName='等待HR认证';
+        //         break;
+        //     case 'Registration':
+        //         $scope.realName='已认证';
+        //         break;
+        //     case 'FailedRegistration':
+        //         $scope.realName='认证不通过';
+        //         break;
+        // }
         // 退出
         $scope.signOut = function () {
 //            CacheFactory.remove('accessToken');
@@ -853,7 +842,7 @@ angular.module('evaluationApp.appControllers', [])
         //$scope.canShow = IsTestAccount(accessEmployee.WorkdayNO); //!for test
         $scope.rebindPhone=function(){
             $state.go('rebindPhone');
-        }
+        };
         
     })
 ;

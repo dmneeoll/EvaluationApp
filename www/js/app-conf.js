@@ -12,7 +12,7 @@ var IsShowUpdateDetial = false; //false;
 //是否显示升级安装失败信息
 var IsShowUpdateInstalledErr = true;
 
-var LAST_PUBLISH_DATE = "2019-10-24 14:58";
+var LAST_PUBLISH_DATE = "2019-12-25 13:20";
 
 //新的测试页面控制，与 actionVisitServices, ESE_ACTION_UPDATE表配合使用
 //  $scope.canUseAction = function (action) {
@@ -56,104 +56,58 @@ if (IsDebugMode) {
 }
 
 var API = {
-
     GetMealList:API_HOST+'/MealOrder.ashx?action=GetMealList',
-
     GetMyRedEnvelopLog: API_HOST + '/EvaluationAppService.ashx?action=GetMyRedEnvelopLog',
-
     GetResearchList:API_HOST+'/ResearchService.ashx?action=GetResearchList',
-
     GetsResearchHtml:API_HOST+'/ResearchService.ashx?action=GetResearchHTML',
-
     GetsResearchDetails:API_HOST+'/ResearchService.ashx?action=GetsResearchDetails',
-
     ResearchSubmit:API_HOST+'/ResearchService.ashx?action=Submit',
-
     GetChoujiangGuestList:API_HOST+'/ChoujiangService.ashx?action=GetChoujiangGuestList',
-
     CheckHaveChoujiangShow:API_HOST+'/ChoujiangService.ashx?action=CheckHaveChoujiangShow',
-
     Choujiang:API_HOST+'/ChoujiangService.ashx?action=Choujiang_ABC',
-
     LightControl:API_HOST+'/LightService.ashx?action=LightControl',
-
     Version:API_HOST+'/UpdateService.ashx?action=Version',
-
     User_Login:API_HOST+'/EvaluationAppService.ashx?action=Login',
-
     PointsInfo: API_HOST + '/EvaluationAppService.ashx?action=GetEmployee',
-
     GetSlideImg:API_HOST+'/EvaluationAppService.ashx?action=GetHomeSlideImg',
-
     GetMsgCount: API_HOST + '/MsgService.ashx?action=GetMsgCount',
-
     GetMsgList: API_HOST + '/MsgService.ashx?action=GetMsgList',
-
     UpdateMsgStatus: API_HOST + '/MsgService.ashx?action=UpdateMsgStatus',
-
     GetNoticeList: API_HOST + '/MsgService.ashx?action=GetNoticeList',
-
     GetNoticeHTML: API_HOST + '/MsgService.ashx?action=GetNoticeHTML',
-
     GetActivityList: API_HOST + '/MsgService.ashx?action=GetActivityList',
-
     GetActivityHTML: API_HOST + '/MsgService.ashx?action=GetActivityHTML',
-
     GetActivityDetails: API_HOST + '/MsgService.ashx?action=GetActivityDetails',
-
     SubmitActivity: API_HOST + '/MsgService.ashx?action=SubmitActivity',
-
     RuleDETAIL: API_HOST + '/EvaluationAppService.ashx?action=GetEvaluateDetails',
-
     GetGoldIdeaType: API_HOST + '/EvaluationAppService.ashx?action=GetGoldIdeaType',
-
     GetGoldIdeaRecode: API_HOST + '/EvaluationAppService.ashx?action=GetGoldIdeaRecode',
-
     GetGoldIdeaShow: API_HOST + '/EvaluationAppService.ashx?action=GetGoldIdeaShow',
-
     getGoodEmployee:API_HOST + '/EvaluationAppService.ashx?action=GetGoodEmployee',
-
     addGoodEmployeeLike:API_HOST + '/EvaluationAppService.ashx?action=AddGoodEmployeeLike',
-
     Submit: API_HOST + '/EvaluationAppService.ashx?action=Submit',
-
     SubmitGoldIdea: API_HOST + '/EvaluationAppService.ashx?action=SubmitGoldIdea',
-
     SubmitSpecialPropose: API_HOST + '/EvaluationAppService.ashx?action=SubmitSpecialPropose',
-
     GetRedEnvelopLog: API_HOST + '/EvaluationAppService.ashx?action=GetRedEnvelopLog',
-
     PointsHistory: API_HOST + '/EvaluationAppService.ashx?action=GetPointsHistory',
-
     GetChartRank: API_HOST + '/EvaluationAppService.ashx?action=GetChartRank',
-
     OperationLog: API_HOST + '/EvaluationAppService.ashx?action=OperationLog',
-
     GetAskAndAnswer: API_HOST + '/EvaluationAppService.ashx?action=AskAndAnswer',
-
     getKq: API_HOST + '/KqcxService.ashx?action=GetKQ',
-
     getCustRec:API_HOST + '/KqcxService.ashx?action=GetCustRec',
-
     getCustOddfare:API_HOST + '/KqcxService.ashx?action=GetCustOddfare',
-
     GetSecurityCode: API_HOST + '/AccountService.ashx?action=GetSecurityCode',
-
     CheckSecurityCode: API_HOST + '/AccountService.ashx?action=CheckSecurityCode',
-
     Register: API_HOST + '/AccountService.ashx?action=Register',
-
     GetForgetPswSecurityCode: API_HOST + '/AccountService.ashx?action=GetForgetPswSecurityCode',
     GetPhoneSecurityCode: API_HOST + '/AccountService.ashx?action=GetPhoneSecurityCode',
-
     RestPassword: API_HOST + '/AccountService.ashx?action=RestPassword',
-
     //EHS activity
     GetEHSActList: API_HOST + '/EHSActService.ashx?action=GetEHSActList'
 };
 
 var SETTING = {
-    version: '0.1.1',
+    version: '1.1.1',
     avatar: {
         enabled: true,
         hd: false
@@ -199,6 +153,8 @@ var ZH_CN = {
         balance:"余额",
         mobile:"手机号码",
         Reply:"回复",
+        Notice:"公告",
+        Status:"状态"
     },
     signin: {
         username: "工号",
@@ -218,7 +174,6 @@ var ZH_CN = {
         myMsg:"我的消息",
         myFlex:"我的Flex+",
         msgTitle:"通知消息"
-
     },
     home: {
         home:"首页",
@@ -249,17 +204,18 @@ var ZH_CN = {
         CSER:"CSER企业社会环境责任",
         ProtectionSecurity:"安全部",
         FE:"FE公用设施部",
+        BallFieldBooking:"球场预定",
     },
     myFlex:{
         employee_ID: "工号",
         segment: "事业部",
         realName: "实名制",
-        balance: "余额",
+        balance: "活动红包余额",
         changePassword: '修改密码',
         cancellation: '注销',
         signOut:'退出',
         version:"软件版本",
-        lastUpdate:"上次发布",
+        lastUpdate:"最近发布",
     },
     realName: {
         title: "请进行实名制认证",
@@ -473,7 +429,7 @@ var ZH_CN = {
         VerificationCode: "验证码",
         ps: "如果收不到短信，请检查手机安全设置或者安全软件是否将短信拦截",
         btnSubmit: "确定",
-        passwordRemark: "请设置密码：",
+        passwordRemark: "请设置密码",
         duplicatePassword: "重复密码"
     },
     forgetPassWord: {
@@ -490,7 +446,7 @@ var ZH_CN = {
         errWorkdayNo:"工号必须要填上",
         errMobile:"手机号有问题",
         errIdno:"身份证号必须要填上",
-        ExplainTxt:"适用于已实名制的用户更换手机号码"
+        ExplainTxt:"一个工号只能绑定一个手机号码"
     },
     CSER:{
         cserDate:"CSER日历",
@@ -521,7 +477,7 @@ var ZH_CN = {
         repairDesc:'备注',
     },
     activityGood:{
-        title:"PCBA-B11第二届球类竞技赛冠军队有奖竞猜",
+        title:"有奖投票 | 选出你最喜爱的Flex50周年微视频",
         name:"姓名",
         employee_ID:"工号",
         department:"部门",
@@ -599,10 +555,9 @@ var ZH_CN = {
         otherCommunMethod:"其他沟通渠道",
         welfare_fest:"年节福利",
         welfare_union:"工惠福利汇",
-        welfare_dmUnion:"斗门公众号福利",
+        welfare_dmUnion:"斗门工会福利",
         welfare_notice:"领取通知",
         welfare_applyResult:"补贴申请结果查询",
-        welfare_old:"工惠福利汇往期福利",
         AttendAct:"一键报名",
         ActTime:"活动时间",
         ActVenue:"活动地点",
@@ -706,6 +661,19 @@ var ZH_CN = {
         failedReason:'不合格项原因',
         allCars:'点检车辆',
         cleanTimes:'手动清洁车辆次数',
+    },
+    BallFieldBooking:{
+        Notice:'球场',
+        Query:'查询',
+        Mybook:'我的预定',
+        Booked:"已预定",
+        StartDate:"开始日期",
+        EndDate:"结束日期",
+        StartTime:"开始时间",
+        EndTime:"结束时间",
+        TimeInterval:"时长(min)",
+        Booker:"预定人",
+        promptSelectDate:"请选择日期",
     }
 };
 
@@ -741,6 +709,8 @@ var ZH_US = {
         balance:"Balance",
         mobile:"Mobile",
         Reply:"Reply",
+        Notice:"Notice",
+        Status:"Status"
     },
     signin: {
         username: "Employee ID",
@@ -791,12 +761,13 @@ var ZH_US = {
         CSER:"CSER",
         ProtectionSecurity:"Brand Protection & Security",
         FE:"Zhuhai Facility",
+        BallFieldBooking:"Ball park booking",
     },
     myFlex:{
         employee_ID: "Employee ID",
         segment: "Segment",
         realName: " Real-Name Authentication ",
-        balance: "Balance Inquiry",
+        balance: "Activity red envelope balance",
         changePassword: 'Change Password',
         cancellation: 'Log Out',
         signOut:'Sigh Out',
@@ -1030,7 +1001,7 @@ var ZH_US = {
         errWorkdayNo:"WorkNo is required",
         errMobile:"Mobile is incorrect",
         errIdno:"IDNo is required",
-        ExplainTxt:"For confirmed users who changed the mobile number"
+        ExplainTxt:"A workday no can bind only one mobile number"
     },
     CSER:{
         cserDate:"CSER Calendar",
@@ -1061,7 +1032,7 @@ var ZH_US = {
         repairDesc:'Memo',
     },
     activityGood:{
-        title:"PCBA-B11第二届球类竞技赛冠军队有奖竞猜",
+        title:"有奖投票 | 选出你最喜爱的Flex50周年微视频",
         name: "Name",
         employee_ID: "Employee ID",
         department: "Department",
@@ -1142,7 +1113,6 @@ var ZH_US = {
         welfare_dmUnion:"Doumen Union Welfare",
         welfare_notice:"Welfare Notices",
         welfare_applyResult:"Welfare Application Result",
-        welfare_old:"Past Union Welfare",
         AttendAct:"Volunteer registration",
         ActTime:"Time",
         ActVenue:"Location",
@@ -1246,7 +1216,20 @@ var ZH_US = {
         failedReason:'Failed Reason',
         allCars:'Cars',
         cleanTimes:'clean times',        
-    }
+    },
+    BallFieldBooking:{
+        Notice:'Ball Field',
+        Query:'Query',
+        Mybook:'My booking',
+        Booked:"Booked",
+        StartDate:"Begin Date",
+        EndDate:"End Date",
+        StartTime:"Begin time",
+        EndTime:"End time",
+        TimeInterval:"Interval(min)",
+        Booker:"Booker",
+        promptSelectDate:"Please pick up a date",
+    }    
 };
 
 var ERROR = {

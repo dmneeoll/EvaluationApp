@@ -12,7 +12,7 @@ angular.module('evaluationApp', ['ionic', 'ionic.native',
     'angularMoment', 'chart.js', 'evaluationApp.sharCarController', 
     'ion-datetime-picker', 'evaluationApp.adminControllers', 'evaluationApp.gbshrControllers', 
     'evaluationApp.unionControllers', 'evaluationApp.testControllers', 'evaluationApp.mechCharityControllers',
-    'evaluationApp.CSERControllers'
+    'evaluationApp.CSERControllers', 'evaluationApp.otherControllers'
     ])
     //angular.module('evaluationApp', ['ionic', 'evaluationApp.router','evaluationApp.controllers', 'evaluationApp.services'])
 

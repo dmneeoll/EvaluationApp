@@ -805,37 +805,60 @@ angular.module('evaluationApp.businiessControllers', ['ngSanitize'])
   //            $ionicHistory.goBack()
   //        }
   })
-  .controller('ActivityListCtrl', function ($scope, $rootScope, CacheFactory, noticeService, alertService, eHSActService,
-    $state, $ionicHistory, commonServices, $location, actionVisitServices) {
+  .controller('ActivityListCtrl', function ($scope, $rootScope, CacheFactory, 
+          noticeService, alertService, eHSActService,
+          $state, $ionicHistory, commonServices, $location, actionVisitServices) 
+  {
     $scope.canUseAction = function (action) {
-      return actionVisitServices.canUseAction(action, $rootScope.accessEmployee.WorkdayNO)
+      return actionVisitServices.canUseAction(action, $rootScope.accessEmployee.WorkdayNO);
     }
     $scope.checkActionUpdate = function (action) {
-      return actionVisitServices.checkUpdate(action)
+      return actionVisitServices.checkUpdate(action);
     }
 
-    $scope.accessEmployee = JSON.parse(CacheFactory.get('accessEmployee'))
-    $scope.isMechanical = isMech($scope.accessEmployee.Organization)
-    $scope.isMultek = isMultek($scope.accessEmployee.Organization)
-    $scope.isB11 = isB11($scope.accessEmployee.Organization)
+    $scope.accessEmployee = JSON.parse(CacheFactory.get('accessEmployee'));
+    $scope.isMechanical = isMech($scope.accessEmployee.Organization);
+    $scope.isMultek = isMultek($scope.accessEmployee.Organization);
+    $scope.isB11 = isB11($scope.accessEmployee.Organization);
 
-    var params = commonServices.getBaseParas()
+    var params = commonServices.getBaseParas();
     // 获取一般活动列表
     noticeService.getActivityList(params).then(function (data) {
       if (data == 'Token is TimeOut') {
-        alertService.showAlert('登录失效，请重新登录')
-        $state.transitionTo('signin')
+        alertService.showAlert('登录失效，请重新登录');
+        $state.transitionTo('signin');
       }
-      $scope.activityList = data
+      $scope.activityList = data;
 
       if (typeof ($scope.activityList) == 'undefined' || $scope.activityList != null) {
-        for (var i = 0;i < $scope.activityList.length;i++) {
-          if ($scope.activityList[i].ImgPath == null || $scope.activityList[i].ImgPath == 'undefined') {
-            $scope.activityList[i].ImgPath = 'img/user-100.png'
+        for (var i = 0; i < $scope.activityList.length; i++) {
+          if (!$scope.activityList[i].ImgPath) {
+            $scope.activityList[i].ImgPath = 'img/user-100.png';
           }
         }
       }
-    })
+    });
+
+    // 2018-06-20 EHS有奖答题活动    
+    eHSActService.getEHSActList(params).then(function(data) {
+      if (data == 'Token is TimeOut') {
+        alertService.showAlert('登录失效，请重新登录');
+        $state.transitionTo('signin');
+      }
+
+      $scope.ehsActList=[];
+      $scope.CusCJList=[];
+      angular.forEach(data, function (value, key) {
+        var oAct = value;
+        if (oAct.CustomChouJiang > 0) {
+          $scope.CusCJList.push(oAct);
+        } else {
+          $scope.ehsActList.push(oAct);
+        }
+      });
+    });
+
+    $scope.canShow = !isMultek($scope.accessEmployee.Organization); //禁止multek
     $scope.ChoujiangWorkday = '4582342332842470745'
     $scope.shouCj = $scope.ChoujiangWorkday.indexOf($scope.accessEmployee.WorkdayNO) != -1
     // 获取是否有抽奖活动列表权限
@@ -853,16 +876,12 @@ angular.module('evaluationApp.businiessControllers', ['ngSanitize'])
     //        })
 
     $scope.openCJ = function () {
-      $location.path('choujiang')
-    }
+      $location.path('choujiang');
+    };
     $scope.openHandelAddAct = function () {
-      try {
-        // externalLinksService.openUr('http://cn.mikecrm.com/TcqdeQz')
-        window.cordova.InAppBrowser.open('http://cn.mikecrm.com/TcqdeQz', '_system', 'location=yes')
-      } catch (ex) {
-        alertService.showAlert(ex.message)
-      }
-    }
+      var url = 'http://cn.mikecrm.com/TcqdeQz';
+      $scope.openOutLink(url);
+    };
 
     //        获取有奖调查列表
     //        commonServices.getDataList(params,API.GetResearchList).then(function(data){
@@ -874,28 +893,24 @@ angular.module('evaluationApp.businiessControllers', ['ngSanitize'])
     //            $scope.researchList=data
     //        })
     $scope.openDC = function (research) {
-      CacheFactory.remove('researchID')
-      CacheFactory.remove('ResearchName')
-      CacheFactory.save('researchID', research.ID)
-      CacheFactory.save('ResearchName', research.ResearchName)
-      $state.go('researchHtml')
+      CacheFactory.remove('researchID');
+      CacheFactory.remove('ResearchName');
+      CacheFactory.save('researchID', research.ID);
+      CacheFactory.save('ResearchName', research.ResearchName);
+      $state.go('researchHtml');
     }
 
-    $scope.open = function (activity) {
+    $scope.open = function(activity) {
       if (activity.IsOutLink) {
         // 打开外链
-        try {
-          var url = $.trim(activity.ActivityHtml)
-          window.cordova.InAppBrowser.open(url, '_system', 'location=yes')
-        } catch (ex) {
-          alertService.showAlert(ex.message)
-        }
+        var url = $.trim(activity.ActivityHtml);
+        $scope.openOutLink(url);
       }else {
-        CacheFactory.remove('activityID')
-        CacheFactory.save('activityID', activity.ActivityID)
-        actionVisitServices.visit(activity.ActivityID) // save state
-        console.log(activity.ActivityID)
-        $state.go('activityHtml')
+        CacheFactory.remove('activityID');
+        CacheFactory.save('activityID', activity.ActivityID);
+        actionVisitServices.visit(activity.ActivityID); // save state
+        console.log(activity.ActivityID);
+        $state.go('activityHtml');
       }
     }
 
@@ -903,8 +918,8 @@ angular.module('evaluationApp.businiessControllers', ['ngSanitize'])
       $ionicHistory.nextViewOptions({
         disableAnimate: true,
         disableBack: true
-      })
-      $state.go('tab.home')
+      });
+      $state.go('tab.home');
     }
 
     // 下线的活动
@@ -915,59 +930,52 @@ angular.module('evaluationApp.businiessControllers', ['ngSanitize'])
     $scope.openOutLink = function (url) {
       // 打开外链
       try {
-        window.cordova.InAppBrowser.open(url, '_system', 'location=yes')
+        window.cordova.InAppBrowser.open(url, '_system', 'location=yes');
       } catch (ex) {
-        alertService.showAlert(ex.message)
+        alertService.showAlert(ex.message);
       }
     }
     // 2018-09-22 活动点赞
     $scope.openActivityGood = function (actID) {
-      CacheFactory.remove(GLOBAL_INFO.KEY_ACT_GOOD_ITEMID)
-      CacheFactory.save(GLOBAL_INFO.KEY_ACT_GOOD_ITEMID, actID)
-      $state.go('activityGood')
+      CacheFactory.remove(GLOBAL_INFO.KEY_ACT_GOOD_ITEMID);
+      CacheFactory.save(GLOBAL_INFO.KEY_ACT_GOOD_ITEMID, actID);
+      $state.go('activityGood');
     }
 
-    // 2018-06-20 EHS有奖答题活动
-    $scope.canShow = !isMultek($scope.accessEmployee.Organization)
-    eHSActService.getEHSActList(params).then(function (data) {
-      if (data == 'Token is TimeOut') {
-        alertService.showAlert('登录失效，请重新登录')
-        $state.transitionTo('signin')
-      }
-
-      $scope.ehsActList = data
-    // if(typeof ($scope.ehsActList) == 'undefined'||$scope.ehsActList!=null){
-    //     for(var i=0;i<$scope.ehsActList.length;i++){
-    //         if($scope.ehsActList[i].ImageUrl==null||$scope.ehsActList[i].ImageUrl== "undefined"){
-    //             $scope.ehsActList[i].ImageUrl='img/user-100.png'
-    //         }
-    //     }
-    // }
-    })
     $scope.openEHS = function (activity) {
-      CacheFactory.remove('ehsAct')
-      CacheFactory.save('ehsAct', activity)
-      actionVisitServices.visit(activity.ActID) // save state
-      $state.go('activityEHS')
-    }
+      CacheFactory.remove('ehsAct');
+      CacheFactory.save('ehsAct', activity);
+      actionVisitServices.visit(activity.ActID); // save state
+      $state.go('activityEHS');
+    };
+
+    $scope.openCusCJ=function(activity) {
+      CacheFactory.remove(GLOBAL_INFO.KEY_CONTEST_2019);
+      CacheFactory.save(GLOBAL_INFO.KEY_CONTEST_2019, JSON.stringify(activity));
+      if(activity.LimitAnsTime>0){
+        $state.go('act_PoetryContestTime');
+      }else{
+        $state.go('act_PoetryContest');
+      }      
+    };
 
     $scope.openSpecial = function (action) {
       switch (action) {
         case '补贴申请结果查询':
-          $state.go('union_welfare_applyResult')
+          $state.go('union_welfare_applyResult');
           break
         // case "Flex工会2019春节返程补贴":
         //   $state.go("act_2019SpringSubsidy")
         //   break
-        case '有奖答题2019':
-          CacheFactory.save(GLOBAL_INFO.KEY_CONTEST_2019, 'EAC722EC-3230-478C-BC41-8C3921EF486D')
-          $state.go('act_PoetryContest')
-          break
         default:
           break
       }
     }
 
+    $scope.canUseCusCJ= function(activity) {
+      var act = 'CusCJ_'+activity.ActID;
+      return $scope.canUseAction(act);
+    };
     $scope.canUseSpecial = function (action) {
       switch (action) {
         // case "B11地球周线上环保知识有奖问答":
@@ -980,89 +988,95 @@ angular.module('evaluationApp.businiessControllers', ['ngSanitize'])
         //   break
         case '活动点赞':
           if (actionVisitServices.isTesting(action, $rootScope.accessEmployee.WorkdayNO)) {
-            return true
+            return true;
           }
-          if (!$scope.isB11) {
-            return false
-          }
+          // if (!$scope.isB11) {
+          //   return false;
+          // }
           break
         default:
           break
       }
-      return $scope.canUseAction(action)
-    }
+      return $scope.canUseAction(action);
+    };
     $scope.canUseMech38 = function () {
       if ($scope.isMechanical) {
         // todo check gender
-        return true
+        return true;
       }
-      return false
-    }
+      return false;
+    };
     $scope.checkOpenMech38 = function () {
       // if(!betweenTime('2019-03-06 08:30', '2019-03-07 17:00')){
       //     alertService.showAlert("活动时间是2019年3月6日 8:30 ~ 2019年3月7日 17:00。")
       //     return
       // }
-      $scope.openOutLink('https://www.wjx.cn/jq/34994975.aspx')
-    }
+      $scope.openOutLink('https://www.wjx.cn/jq/34994975.aspx');
+    };
 
     // 历史活动列表
-    $scope.outDateActivities = []
-    actionVisitServices.getOutDateActivity($scope)
+    $scope.outDateActivities = [];
+    actionVisitServices.getOutDateActivity($scope);
   })
-  .controller('ActivityGoodCtrl', function ($scope, CacheFactory, alertService, commonServices) {
-    // 2019-08-08 B11球类有奖竞猜冠军        
+  .controller('ActivityGoodCtrl', function ($scope, CacheFactory, alertService, commonServices, UrlServices) 
+  {
+    // 2019-12-09 选出你最喜爱的Flex50周年微视频
     var baseInfo = commonServices.getBaseParas()
     var actID = CacheFactory.get(GLOBAL_INFO.KEY_ACT_GOOD_ITEMID)
     function InitInfo () {
-      $scope.titleImgUrl = null; // 'img/other/shufaTitle.jpg'
-      $scope.activityGoodIcon = 'img/user.jpg'
-      $scope.actDesc = '欢迎参与“PCBA-B11球类大赛最强战队——竞猜冠军”<br>'
-        + '谁能获好礼，就在你的点点间，快来投票吧！<br>'
-        + '本活动，每个人最多可支持一队。'
+      // $scope.titleImgUrl = null; 
+      // $scope.activityGoodIcon = 'img/user.jpg'
+      $scope.activityGoodIcon = $scope.titleImgUrl= 'img/other/flex50.png';
+      
+      $scope.actDesc = '投票 | 选出你最喜爱的伟创力50周年微视频<br>'
+                    + '五十载青春岁月，六十秒花样年华<br>'
+                    + '参与投票有机会获得精美礼品一份！<br>'
+                    + '<b>每人只能投一票，票数宝贵，且投且珍惜！</b><br>'
+                    + '时间：即日起-2019年12月16日';        
+
       var url = commonServices.getUrl('EvaluationAppService.ashx', 'getActivityGoods')
       var paras = {
         Token: baseInfo.Token,
         WorkdayNO: baseInfo.WorkdayNO,
         ActID: actID
-      }
+      };
       commonServices.submit(paras, url).then(function (resp) {
         if (resp && resp.success) {
-          $scope.Activities = resp.list
-          var arr = JSON.parse(resp.data)
-          CacheFactory.save(GLOBAL_INFO.KEY_ACT_GOOD_ID, arr)
+          $scope.Activities = resp.list;
+          var arr = JSON.parse(resp.data);
+          CacheFactory.save(GLOBAL_INFO.KEY_ACT_GOOD_ID, arr);
         // setTimeout(InitPhotoScale, 1500); //图片缩放
         }
       })
     }
-    InitInfo()
+    InitInfo();
 
     var MAX_CLICK = 1; // 一个人的最多点赞个数
     var TActivityGoodEntry = function (itemID, WorkDayNo) {
-      var self = this
-      self.RefActivityGoodID = 0
-      self.WorkdayNo = 0
+      var self = this;
+      self.RefActivityGoodID = 0;
+      self.WorkdayNo = 0;
     }
-    function GetActivityGoodCache () {
+    function GetActivityGoodCache() {
       return JSON.parse(CacheFactory.get(GLOBAL_INFO.KEY_ACT_GOOD_ID)) || []; // 数组
     }
 
-    $scope.like = function (item) {
-      var likeInfo = GetActivityGoodCache()
-      var nClick = likeInfo.length
+    $scope.like = function(sid) {
+      var likeInfo = GetActivityGoodCache();
+      var nClick = likeInfo.length;
       if (nClick >= MAX_CLICK) {
-        // alertService.showAlert("最多只能点赞"+MAX_CLICK+"个")
-        alertService.showAlert('最多只能支持' + MAX_CLICK + '队')
-        return
+        alertService.showAlert("最多只能投票"+MAX_CLICK+"个");
+        //alertService.showAlert('最多只能支持' + MAX_CLICK + '队');
+        return;
       }
-      var hasClicked = false
+      var hasClicked = false;
       for (var i = 0; i < likeInfo.length; i++) {
         var entry = likeInfo[i]
-        if (item.ID == entry.RefActivityGoodID
+        if (sid == entry.RefActivityGoodID
           && entry.WorkdayNo == $scope.accessEmployee.WorkdayNO
         ) {
           // alertService.showAlert("你已经点过赞了")
-          alertService.showAlert('感谢您的支持')
+          alertService.showAlert('感谢您的投票')
           hasClicked = true
           break
         }
@@ -1073,20 +1087,38 @@ angular.module('evaluationApp.businiessControllers', ['ngSanitize'])
           Token: baseInfo.Token,
           WorkdayNO: baseInfo.WorkdayNO,
           CName: baseInfo.CName,
-          ItemID: item.ID
-        }
+          ItemID: sid
+        };
 
         commonServices.submit(paras, url).then(function (resp) {
           if (resp.success) {
             var likeInfo = GetActivityGoodCache()
-            likeInfo.push(new TActivityGoodEntry(item.ID, $scope.accessEmployee.WorkdayNO))
+            likeInfo.push(new TActivityGoodEntry(sid, $scope.accessEmployee.WorkdayNO))
             CacheFactory.save(GLOBAL_INFO.KEY_ACT_GOOD_ID, likeInfo)
             // 刷新
-            InitInfo()
+            InitInfo();
           }
         })
       }
-    }
+    };
+
+    $scope.OpenUrl=function(surl){
+      if(isEmptyString(surl)){return;}
+      UrlServices.openForeignUrl(surl);
+    };
+
+    setTimeout(function () {
+      $('.myvid').lightGallery(
+          {
+            download: 'false',
+            share: 'false',
+            zoom: 'false',
+            enableDrag: 'false',
+            mousewheel: 'false',
+            fullScreen: 'false'
+          }
+      );
+    }, 2500);
   })
   // .controller('ActivityGoodCtrl',function($scope,$ionicHistory,CacheFactory,alertService,commonServices,UrlServices) 
   // {
@@ -1199,7 +1231,8 @@ angular.module('evaluationApp.businiessControllers', ['ngSanitize'])
   //     }
   // })
   .controller('ActivityEHSCtrl', function ($scope, $rootScope, $ionicPopup,
-    CacheFactory, alertService, $state, $ionicHistory, commonServices, $location) {
+    CacheFactory, alertService, $state, $ionicHistory, commonServices, $location) 
+  {
     // 2018-06-20 EHS有奖答题活动
     var ehsAct = JSON.parse(CacheFactory.get('ehsAct'))
     $scope.imgUrl = ehsAct.ImageUrl
@@ -2222,20 +2255,22 @@ angular.module('evaluationApp.businiessControllers', ['ngSanitize'])
     $scope.Submit = function () {
       DoChouJian()
     }
-  })
-  // 一次显示所有题，无限时    
+  })  
   .controller('ActPoetryContestCtrl', function ($scope, $rootScope, $state, $ionicHistory, $ionicPopup,
       commonServices, alertService, duplicateSubmitServices, UrlServices, CacheFactory) 
   {
+      // 一次显示所有题，无限时
       // 有奖答题2019
       var baseInfo = commonServices.getBaseParas()
       var SubmitGuid = duplicateSubmitServices.genGUID()
       $scope.SubActID=null
       $scope.CanAttend=false; //是否可参加
       $scope.CanAns=false;    //是否显示题目
-      $scope.bOnebyoneLimitTime=false; //是否一题题来，限时？
       $scope.ansDone=false;   //是否已答题完成
-      var actID = CacheFactory.get(GLOBAL_INFO.KEY_CONTEST_2019)
+
+      var oParAct = JSON.parse(CacheFactory.get(GLOBAL_INFO.KEY_CONTEST_2019));
+      var actID = oParAct.ActID;
+      var jpType = oParAct.JPType;
 
       function InitInfo() {
           var paras = {
@@ -2249,12 +2284,14 @@ angular.module('evaluationApp.businiessControllers', ['ngSanitize'])
               if (resp) {
                   if(resp.success){
                       $scope.CanAttend=true;
-                      $scope.SubActID=resp.data;
-                      $scope.htmlConent = "<h3>欢迎参加“残障平等意识周自由做自己”线上有奖答题活动</h3>"
-                                          +"<br>一共五道题，答对可参与幸运红包抽奖。"
-                                          +"<br>红包有限，先到先得，你准备好了吗？"
-                                          +"<p>备注：获奖红包将于活动结束两天之后，统一充值到IC卡(饭卡)，届时可自行通过IC卡中心的领款机刷卡领取。</p>"
-                                          ;
+                      var oAct = resp.obj;
+                      $scope.SubActID=oAct.subID;
+                      $scope.htmlConent=oAct.HtmlConent;
+                      // $scope.htmlConent = "<h3>欢迎参加“残障平等意识周自由做自己”线上有奖答题活动</h3>"
+                      //                     +"<br>一共五道题，答对可参与幸运红包抽奖。"
+                      //                     +"<br>红包有限，先到先得，你准备好了吗？"
+                      //                     +"<p>备注：获奖红包将于活动结束两天之后，统一充值到IC卡(饭卡)，届时可自行通过IC卡中心的领款机刷卡领取。</p>"
+                      //                     ;
                   }else{
                       $scope.CanAttend=false;
                       $scope.LastMsg = resp.message;
@@ -2304,7 +2341,6 @@ angular.module('evaluationApp.businiessControllers', ['ngSanitize'])
           if ($scope.isSumbiting) { return; }
           $scope.isSumbiting = true;
 
-          //var SubmitList = [];
           var sumScore = 0;
           var nDoItem = 0;
           var nRight = 0;
@@ -2389,10 +2425,9 @@ angular.module('evaluationApp.businiessControllers', ['ngSanitize'])
               commonServices.submit(paras, url).then(function (resp) {
                   if (resp.success) {
                     var sgift = resp.data;
-                    //if (sgift) { //for gift only
-                    var x = parseFloat(resp.data)
-                    if (x > 0) {
-                      $rootScope.money = '恭喜中奖: ' + sgift + '元'
+                    //var x = parseFloat(resp.data)
+                    if (sgift && sgift.length) {
+                      $rootScope.money = '恭喜中奖: ' + sgift + (!jpType?'元':'');
                       $rootScope.rebagPopup = $ionicPopup.show({
                         cssClass: 'er-popup',
                         templateUrl: 'templates/comm/hongbao.html',
@@ -2415,247 +2450,256 @@ angular.module('evaluationApp.businiessControllers', ['ngSanitize'])
               })
           }
       }
+  })  
+  .controller('ActPoetryContestTimeCtrl', function($scope, $rootScope, $state, $ionicHistory, $ionicPopup,
+                                            commonServices, alertService, duplicateSubmitServices, 
+                                            UrlServices, CacheFactory) 
+{
+    // 一次显示一道题，每一题有限时
+    // 有奖答题2019
+    var baseInfo = commonServices.getBaseParas();
+    var SubmitGuid = duplicateSubmitServices.genGUID();
+    $scope.SubActID = null;
+    $scope.CanAns = false;
+
+    var oParAct = JSON.parse(CacheFactory.get(GLOBAL_INFO.KEY_CONTEST_2019));
+    var actID = oParAct.ActID;
+    var oneLimit = oParAct.LimitAnsTime;
+    var jpType = oParAct.JPType;
+
+    function InitInfo () {
+      var paras = {
+        Token: baseInfo.Token,
+        ActID: actID,
+        WorkdayNo: baseInfo.WorkdayNO
+      };
+      // paras.SubmitGuid = duplicateSubmitServices.genGUID();
+      var url = commonServices.getUrl('ActivityService.ashx', 'GetInitRand');
+      commonServices.submit(paras, url).then(function (resp) {
+        if (resp) {
+          if (resp.success) {
+            $scope.CanAttend = true;
+            var oAct = resp.obj;
+            $scope.SubActID=oAct.subID;
+            $scope.htmlConent=oAct.HtmlConent;
+            // $scope.htmlConent = '<h3>欢迎CSER“残障意识活动周有奖问答”线上答题活动</h3><br>一共5道题，每答对一题可得到IC卡红包一元。'
+            //   + '<br><b>奖金有限，先到先得</b>，你准备好了吗？'
+            //   + '<p>备注：获奖红包将于活动结束之后（7月17日后），充值到IC卡(饭卡)，届时可通过IC卡中心的领款机刷卡领取。</p>'
+            $scope.showStartButton = true;
+          }else {
+            $scope.CanAttend = false;
+            $scope.LastMsg = resp.message;
+          }
+        }
+      })
+    }
+    InitInfo();
+
+    var questsions = null;
+    $scope.curQuest = null;
+    $scope.StartAns = function () {
+      var url = commonServices.getUrl('EHSActService.ashx', 'GetEHSActDetails');
+      var paras = {
+        ActID: $scope.SubActID,
+        WorkdayNo: baseInfo.WorkdayNO,
+        Rand: true /*rand shuffle*/
+      }
+      commonServices.submit(paras, url).then(function (resp) {
+        if (resp) {
+          if (resp.success) {
+            questsions = resp.list;
+            $scope.CanAns = (resp.list && resp.list.length > 0);
+            UserStartAns();
+          }else {
+            alertService.showAlert('该活动还没有题目');
+            $ionicHistory.goBack();
+          }
+        }
+      })
+    }
+
+    var MAX_TIMEOUT = ((oneLimit || 12) + 0) * 1000; // limit
+    $scope.curIndex = -1
+    var idTim = null
+    var idRemain = null
+    var sumScore = 0; // 实际分数
+
+    function KillIDTim () {
+      if (idTim) {
+        clearInterval(idTim)
+        idTim = null
+      }
+    }
+    function KillIDRemain () {
+      if (idRemain) {
+        clearInterval(idRemain)
+        idRemain = null
+      }
+    }
+    function SwitchQues () {
+      KillIDRemain()
+      $scope.curIndex++
+      if ($scope.curIndex >= questsions.length) {
+        // 2019-07-10 try fix
+        KillIDTim()
+        TriggerFinal()
+      }
+      $scope.curQuest = questsions[$scope.curIndex]
+      var nsec = MAX_TIMEOUT
+      idRemain = setInterval(function () {
+        $scope.$apply(function () {
+          $scope.remainSec = nsec / 1000
+        })
+        nsec -= 1000
+        if (nsec <= 0) {
+          KillIDRemain()
+        }
+      }, 1000);
+    }
+    function CalcFullScore (items) {
+      var fullScore = 0;
+      for (var i = 0; i < items.length; i++) {
+        var item = items[i];
+        for (var j = 0; j < item.Items.length; j++) {
+          fullScore += item.Items[j].ItemScore;
+        }
+      }
+      return fullScore;
+    }
+    function UserStartAns () {
+      fullScore = CalcFullScore(questsions)
+      AutoSwitch();
+    }
+    function AutoSwitch () {
+      KillIDTim();
+      if (!$scope.hasMore()) {
+        TriggerFinal();
+        return;
+      }
+      SwitchQues();
+      idTim = setInterval(function () {
+        if (!$scope.hasMore()) {
+          KillIDTim()
+          TriggerFinal()
+          return
+        }else {
+          KillIDRemain()
+          sumScore += CalcAnsScore()
+          SwitchQues()
+        }
+      }, MAX_TIMEOUT);
+    }
+    $scope.AnsQues = function () {
+      KillIDTim();
+      KillIDRemain();
+      var score = CalcAnsScore();
+      sumScore += score;
+      if ($scope.curIndex == questsions.length - 1) {
+        KillIDTim();
+        TriggerFinal();
+      }else {
+        AutoSwitch();
+      }
+    }
+    $scope.hasMore = function () {
+      return questsions && $scope.curIndex < questsions.length;
+    };
+
+    function CalcAnsScore () {
+      var item = $scope.curQuest;
+      var score = 0;
+      var qrad = $("input[name='Rad" + item.Sort + "'" + ']');
+      var qchk = $("input[name='Chk" + item.Sort + "'" + ']');
+      if (qrad.length > 0) {
+        var $rad = qrad.filter(':checked');
+        // 单选
+        for (var j = 0; j < $rad.length; j++) {
+          var selVaule = $($rad[j]).val();
+          if (typeof (selVaule) == 'undefined') {
+            continue;
+          }
+          var sScore = selVaule.split('^')[2];
+          score += parseInt(sScore);
+        // SubmitList.push({ Item: item.Sort, ItemResult: selVaule })
+        }
+      }
+      else if (qchk.length > 0) {
+        var $chk = qchk.filter(':checked');
+        // 多选
+        var tmpSum = 0;
+        // var $chk = $("input[name='Chk" + item.Sort + "'" + "]:checked")
+        var bRight = $chk.length && $chk.length > 0;
+        for (var j = 0; j < $chk.length; j++) {
+          var tmpScore = 0;
+          var selVaule = $($chk[j]).val();
+          if (typeof (selVaule) == 'undefined') {
+            continue;
+          }
+          var sScore = selVaule.split('^')[2]
+          tmpScore = parseInt(sScore)
+          if (!tmpScore) {
+            bRight = false;
+            break // wrong
+          }
+          tmpSum += tmpScore
+        }
+        if (bRight) {
+          // ！ TODO 全对，这里特殊处理，10分一题 
+          // score += tmpSum
+          score += 10
+        }
+      }
+
+      return score;
+    }
+
+    $scope.ansDone = false
+    // 最终分数提交
+    function TriggerFinal () {
+      $scope.ansDone = true
+      $scope.CanAns = false
+      $scope.CanAttend = false
+      var paras = {
+        Token: baseInfo.Token,
+        SubmitGuid: SubmitGuid,
+        ActID: $scope.SubActID,
+        WorkdayNo: baseInfo.WorkdayNO,
+        SumScore: sumScore,
+        SubmitResult: '', /*no use*/
+      }
+
+      var url = commonServices.getUrl('ActivityService.ashx', 'SubmitActResult')
+      commonServices.submit(paras, url).then(function (resp) {
+        if (resp.success) {
+          var sgift = resp.data;
+          //var x = parseFloat(resp.data)
+          if (sgift && sgift.length) {
+            $rootScope.money = '恭喜中奖: ' + sgift + (!jpType?'元':'');
+            $rootScope.rebagPopup = $ionicPopup.show({
+              cssClass: 'er-popup',
+              templateUrl: 'templates/comm/hongbao.html',
+              scope: $rootScope
+            })
+            $rootScope.rebagPopup.then(function (res) {
+              // $state.go('activityList')
+              // $state.go('myAccountMoney')
+              $ionicHistory.goBack()
+            })
+          } else {
+            alertService.showAlert('谢谢你的参与!')
+            $ionicHistory.goBack()
+            $rootScope.updateSlideBox()
+          }
+        } else {
+          alertService.showAlert(resp.message)
+          $ionicHistory.goBack()
+        }
+      })
+    }
   })
-  // 一次显示一道题，每一题有限时
-  // .controller('ActPoetryContestCtrl', function ($scope, $rootScope, $state, $ionicHistory, $ionicPopup,
-  //   commonServices, alertService, duplicateSubmitServices, UrlServices, CacheFactory) {
-  //   // 有奖答题2019
-  //   var baseInfo = commonServices.getBaseParas()
-  //   var SubmitGuid = duplicateSubmitServices.genGUID()
-  //   $scope.SubActID = null
-  //   $scope.CanAns = false
-  //   $scope.bOnebyoneLimitTime = true
-  //   var actID = CacheFactory.get(GLOBAL_INFO.KEY_CONTEST_2019)
-
-  //   function InitInfo () {
-  //     var paras = {
-  //       Token: baseInfo.Token,
-  //       ActID: actID,
-  //       WorkdayNo: baseInfo.WorkdayNO
-  //     }
-  //     // paras.SubmitGuid = duplicateSubmitServices.genGUID()
-  //     var url = commonServices.getUrl('ActivityService.ashx', 'GetInitRand')
-  //     commonServices.submit(paras, url).then(function (resp) {
-  //       if (resp) {
-  //         if (resp.success) {
-  //           $scope.CanAttend = true
-  //           $scope.SubActID = resp.data
-  //           $scope.htmlConent = '<h3>欢迎CSER“残障意识活动周有奖问答”线上答题活动</h3><br>一共5道题，每答对一题可得到IC卡红包一元。'
-  //             + '<br><b>奖金有限，先到先得</b>，你准备好了吗？'
-  //             + '<p>备注：获奖红包将于活动结束之后（7月17日后），充值到IC卡(饭卡)，届时可通过IC卡中心的领款机刷卡领取。</p>'
-  //           $scope.showStartButton = true
-  //         }else {
-  //           $scope.CanAttend = false
-  //           $scope.LastMsg = resp.message
-  //         }
-  //       }
-  //     })
-  //   }
-  //   InitInfo()
-
-  //   var questsions = null
-  //   $scope.curQuest = null
-  //   $scope.StartAns = function () {
-  //     var url = commonServices.getUrl('EHSActService.ashx', 'GetEHSActDetails')
-  //     var paras = {
-  //       ActID: $scope.SubActID,
-  //       WorkdayNo: baseInfo.WorkdayNO,
-  //       Rand: true /*rand shuffle*/
-  //     }
-  //     commonServices.submit(paras, url).then(function (resp) {
-  //       if (resp) {
-  //         if (resp.success) {
-  //           questsions = resp.list
-  //           $scope.CanAns = (resp.list && resp.list.length > 0)
-  //           UserStartAns()
-  //         }else {
-  //           alertService.showAlert('该活动还没有题目')
-  //           $ionicHistory.goBack()
-  //         }
-  //       }
-  //     })
-  //   }
-
-  //   var MAX_TIMEOUT = (15 + 0) * 1000 // limit
-  //   $scope.curIndex = -1
-  //   var idTim = null
-  //   var idRemain = null
-  //   var sumScore = 0; // 实际分数
-
-  //   function KillIDTim () {
-  //     if (idTim) {
-  //       clearInterval(idTim)
-  //       idTim = null
-  //     }
-  //   }
-  //   function KillIDRemain () {
-  //     if (idRemain) {
-  //       clearInterval(idRemain)
-  //       idRemain = null
-  //     }
-  //   }
-  //   function SwitchQues () {
-  //     KillIDRemain()
-  //     $scope.curIndex++
-  //     if ($scope.curIndex >= questsions.length) {
-  //       // 2019-07-10 try fix
-  //       KillIDTim()
-  //       TriggerFinal()
-  //     }
-  //     $scope.curQuest = questsions[$scope.curIndex]
-  //     var nsec = MAX_TIMEOUT
-  //     idRemain = setInterval(function () {
-  //       $scope.$apply(function () {
-  //         $scope.remainSec = nsec / 1000
-  //       })
-  //       nsec -= 1000
-  //       if (nsec <= 0) {
-  //         KillIDRemain()
-  //       }
-  //     }, 1000)
-  //   }
-  //   function CalcFullScore (items) {
-  //     var fullScore = 0
-  //     for (var i = 0; i < items.length; i++) {
-  //       var item = items[i]
-  //       for (var j = 0; j < item.Items.length; j++) {
-  //         fullScore += item.Items[j].ItemScore
-  //       }
-  //     }
-  //     return fullScore
-  //   }
-  //   function UserStartAns () {
-  //     fullScore = CalcFullScore(questsions)
-  //     AutoSwitch()
-  //   }
-  //   function AutoSwitch () {
-  //     KillIDTim()
-  //     if (!$scope.hasMore()) {
-  //       TriggerFinal()
-  //       return
-  //     }
-  //     SwitchQues()
-  //     idTim = setInterval(function () {
-  //       if (!$scope.hasMore()) {
-  //         KillIDTim()
-  //         TriggerFinal()
-  //         return
-  //       }else {
-  //         KillIDRemain()
-  //         sumScore += CalcAnsScore()
-  //         SwitchQues()
-  //       }
-  //     }, MAX_TIMEOUT)
-  //   }
-  //   $scope.AnsQues = function () {
-  //     KillIDTim()
-  //     KillIDRemain()
-  //     var score = CalcAnsScore()
-  //     sumScore += score
-  //     if ($scope.curIndex == questsions.length - 1) {
-  //       KillIDTim()
-  //       TriggerFinal()
-  //     }else {
-  //       AutoSwitch()
-  //     }
-  //   }
-  //   $scope.hasMore = function () {
-  //     return questsions && $scope.curIndex < questsions.length
-  //   }
-
-  //   function CalcAnsScore () {
-  //     var item = $scope.curQuest
-  //     var score = 0
-  //     var qrad = $("input[name='Rad" + item.Sort + "'" + ']')
-  //     var qchk = $("input[name='Chk" + item.Sort + "'" + ']')
-  //     if (qrad.length > 0) {
-  //       var $rad = qrad.filter(':checked')
-  //       // 单选
-  //       for (var j = 0; j < $rad.length; j++) {
-  //         var selVaule = $($rad[j]).val()
-  //         if (typeof (selVaule) == 'undefined') {
-  //           continue
-  //         }
-  //         var sScore = selVaule.split('^')[2]
-  //         score += parseInt(sScore)
-  //       // SubmitList.push({ Item: item.Sort, ItemResult: selVaule })
-  //       }
-  //     }
-  //     else if (qchk.length > 0) {
-  //       var $chk = qchk.filter(':checked')
-  //       // 多选
-  //       var tmpSum = 0
-  //       // var $chk = $("input[name='Chk" + item.Sort + "'" + "]:checked")
-  //       var bRight = $chk.length && $chk.length > 0
-  //       for (var j = 0; j < $chk.length; j++) {
-  //         var tmpScore = 0
-  //         var selVaule = $($chk[j]).val()
-  //         if (typeof (selVaule) == 'undefined') {
-  //           continue
-  //         }
-  //         var sScore = selVaule.split('^')[2]
-  //         tmpScore = parseInt(sScore)
-  //         if (!tmpScore) {
-  //           bRight = false
-  //           break // wrong
-  //         }
-  //         tmpSum += tmpScore
-  //       }
-  //       if (bRight) {
-  //         // ！ TODO 全对，这里特殊处理，10分一题 
-  //         // score += tmpSum
-  //         score += 10
-  //       }
-  //     }
-
-  //     return score
-  //   }
-
-  //   $scope.ansDone = false
-  //   // 最终分数提交
-  //   function TriggerFinal () {
-  //     $scope.ansDone = true
-  //     $scope.CanAns = false
-  //     $scope.CanAttend = false
-  //     var paras = {
-  //       Token: baseInfo.Token,
-  //       SubmitGuid: SubmitGuid,
-  //       ActID: $scope.SubActID,
-  //       WorkdayNo: baseInfo.WorkdayNO,
-  //       SumScore: sumScore,
-  //       SubmitResult: '', /*no use*/
-  //     }
-
-  //     var url = commonServices.getUrl('ActivityService.ashx', 'SubmitActResult')
-  //     commonServices.submit(paras, url).then(function (resp) {
-  //       if (resp.success) {
-  //         var x = parseFloat(resp.data)
-  //         if (x > 0) {
-  //           $rootScope.money = '红包金额:' + resp.data + '元'
-  //           $rootScope.rebagPopup = $ionicPopup.show({
-  //             cssClass: 'er-popup',
-  //             templateUrl: 'templates/comm/hongbao.html',
-  //             scope: $rootScope
-  //           })
-  //           $rootScope.rebagPopup.then(function (res) {
-  //             // $state.go('activityList')
-  //             // $state.go('myAccountMoney')
-  //             $ionicHistory.goBack()
-  //           })
-  //         } else {
-  //           alertService.showAlert('谢谢你的参与!')
-  //           $ionicHistory.goBack()
-  //           $rootScope.updateSlideBox()
-  //         }
-  //       } else {
-  //         alertService.showAlert(resp.message)
-  //         $ionicHistory.goBack()
-  //       }
-  //     })
-  //   }
-  // })
   .controller('ProtectionSecurityCtrl', function ($scope, $rootScope, CacheFactory, eHSActService,
-    $state, $ionicHistory, commonServices, $location, actionVisitServices) {
+    $state, $ionicHistory, commonServices, $location, actionVisitServices) 
+  {
     // 安全部
     $scope.closePass = function () {
       $ionicHistory.nextViewOptions({

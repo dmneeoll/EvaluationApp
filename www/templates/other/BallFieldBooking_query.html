@@ -1,0 +1,66 @@
+<!-- 查询 -->
+<ion-view view-title="{{Language.BallFieldBooking.Query}}" cache-view="false">
+  <ion-nav-buttons side="left">
+    <button class="button button-clear button-icon ion-ios-arrow-back"
+      ng-click="closePass()">{{Language.home.home}}</button>
+  </ion-nav-buttons>
+
+    <ion-content class="padding5" style="border:1px;">
+        <div class="list card">
+            <div class="item item-input">
+                    <span class="input-label" style="width:30px;font-size:80%">{{Language.BallFieldBooking.StartDate}}</span>
+                    <span class="input-label" style="width: 10px;color: red">*</span>
+                    <div ion-datetime-picker date 
+                        ng-model="modal.StartDate" 
+                        >
+                        <i class="icon ion-ios-calendar positive" style="font-size:28px;"></i>
+                        <strong>{{modal.StartDate| date: "yyyy-MM-dd"}}</strong>
+                        &nbsp;&nbsp;
+                    </div>
+                </div>            
+            <div class="item item-input searchHead">
+                <span class="input-label" style="width:30px;font-size:80%">{{Language.BallFieldBooking.EndDate}}</span>
+                <span class="input-label" style="width: 10px;color: red">*</span>
+                <div ion-datetime-picker date 
+                    ng-model="modal.EndDate" 
+                    >
+                    <i class="icon ion-ios-calendar positive" style="font-size:28px;"></i>
+                    <strong>{{modal.EndDate| date: "yyyy-MM-dd"}}</strong>
+                    &nbsp;&nbsp;
+                </div>
+                <button class="button button-icon" style="margin-left:2px" ng-click="LoadData();">
+                  <i class="ion-android-search positive" style="font-size:32px;"></i>&nbsp;&nbsp;
+                </button>
+            </div>
+        </div>
+    
+        <div ng-if="items.length>0">
+          <table class="myTab" style="margin:0 4px 0 2px;width:100%">
+            <thead>
+              <tr>
+                <th>{{Language.BallFieldBooking.StartTime}}</th>
+                <th>{{Language.BallFieldBooking.EndTime}}</th>
+                <th>{{Language.BallFieldBooking.TimeInterval}}</th>
+                <th style="width:80px;">{{Language.myFlex.segment}}</th>
+                <th>{{Language.BallFieldBooking.Booker}}</th>
+                <th style="width:36px;">{{Language.common.Status}}</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr ng-repeat="item in items" class="hCent">
+                <td>{{item.BeginTime| date: "yyyy-MM-dd HH:mm"}}</td>
+                <td>{{item.EndTime| date: "HH:mm"}}</td>
+                <td>{{item.TimeInterval}}</td>
+                <td>{{item.Segment}}</td>
+                <td>{{item.WorkdayNo}}</td>
+                <td>{{item.StatusCN}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div ng-if="items.length==0">
+          <h4 style="color:red">{{Language.common.NoData}}</h4>
+        </div>
+      </ion-content>
+
+</ion-view>

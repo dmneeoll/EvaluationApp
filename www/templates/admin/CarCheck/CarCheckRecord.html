@@ -2,17 +2,6 @@
 <ion-view view-title="{{Language.admin.carCheckRecord}}" cache-view="false">
 
     <ion-content class="padding5" style="border:1px;">
-        <style>
-            .red-text {
-                color: red;
-                font-weight: 700;
-            }
-
-            .green-text {
-                color: blue;
-                font-weight: 400;
-            }
-        </style>
         <div class="item item-input searchHead">
             <span class="input-label" style="width:30px;font-size:80%">{{Language.common.date}}</span>
             <div ion-datetime-picker date ng-model="model.SelDate" only-valid="{'before':'today', 'inclusive':true}"
@@ -42,7 +31,7 @@
                         <td>{{item.CarName}}</td>
                         <td>{{item.CheckerName}}</td>
                         <td>{{item.Status}}</td>
-                        <td ng-class="{'green-text': item.Result=='合格', 'red-text': item.Result!='合格'}">{{item.Result}}
+                        <td ng-class="{'blue-text': item.Result=='合格', 'red-text': item.Result!='合格'}">{{item.Result}}
                         </td>
                         <td>{{item.FailedReason}}</td>
                     </tr>

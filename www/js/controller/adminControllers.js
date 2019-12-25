@@ -180,7 +180,6 @@ angular.module('evaluationApp.adminControllers', [])
         $scope.MobileNo=$rootScope.accessEmployee.MobileNo;
 
         commonServices.getDataList(params,API.GetMealList).then(function(data){
-
             if(data=="Token is TimeOut"){
                 alertService.showAlert("登录失效，请重新登录");
                 $state.transitionTo('signin');
@@ -199,8 +198,8 @@ angular.module('evaluationApp.adminControllers', [])
                 $scope.MealCount=$scope.MealCount-1;
                 $scope.MealPay=$scope.MealPay-meal.Price;
 
-                console.log(meal);
-                console.log($scope.SubmitList);
+                // console.log(meal);
+                // console.log($scope.SubmitList);
 
                 for(var i=0;i<$scope.SubmitList.length;i++){
                     if($scope.SubmitList[i].id==meal.id){
@@ -210,7 +209,7 @@ angular.module('evaluationApp.adminControllers', [])
                         }
                         break;
                     }
-                    console.log($scope.SubmitList);
+                    //console.log($scope.SubmitList);
                 }
             }
         };
@@ -231,7 +230,7 @@ angular.module('evaluationApp.adminControllers', [])
             if(isOK==false){
                 $scope.SubmitList.push({id:meal.id,foodName:meal.foodName,Count:meal.Count,Price:meal.Price});
             }
-            console.log($scope.SubmitList);
+            //console.log($scope.SubmitList);
         };
 
         $scope.closePass=function(){
@@ -242,50 +241,28 @@ angular.module('evaluationApp.adminControllers', [])
             $state.go('admin');
         };
 
-        $scope.like=function(meal){
-
-            params.foodName=meal.foodName;
-            params.isLike='1';
-            var url=commonServices.getUrl("MealOrder.ashx","AddLike");
-            commonServices.submit(params,url).then(function(data){
-                if(data.success){
-//                    commonServices.getDataListNoMask(params,API.GetMealList).then(function(data){
-//
-//                        if(data=="Token is TimeOut"){
-//                            alertService.showAlert("登录失效，请重新登录");
-//                            $state.transitionTo('signin');
-//                        }
-//                        $scope.mealList=data;
-//                        console.log( $scope.mealList);
-
-//                    });
-                meal.LikeQty=meal.LikeQty+1;
+        $scope.like = function (meal) {
+            params.foodName = meal.foodName;
+            params.isLike = '1';
+            var url = commonServices.getUrl("MealOrder.ashx", "AddLike");
+            commonServices.submit(params, url).then(function (data) {
+                if (data.success) {
+                    meal.LikeQty = meal.LikeQty + 1;
                 }
-                else{
+                else {
                     alertService.showLoading(data.message);
                 }
             });
         };
 
-        $scope.unLike=function(meal){
-
-            params.foodName=meal.foodName;
-            params.isLike='0';
-            var url=commonServices.getUrl("MealOrder.ashx","AddLike");
-            commonServices.submit(params,url).then(function(data){
-                if(data.success){
-//                    commonServices.getDataListNoMask(params,API.GetMealList).then(function(data){
-//
-//                        if(data=="Token is TimeOut"){
-//                            alertService.showAlert("登录失效，请重新登录");
-//                            $state.transitionTo('signin');
-//                        }
-//                        $scope.mealList=data;
-//                        console.log( $scope.mealList);
-//                    });
-                    meal.UnLikeQty=meal.UnLikeQty+1;
-                }else
-                {
+        $scope.unLike = function (meal) {
+            params.foodName = meal.foodName;
+            params.isLike = '0';
+            var url = commonServices.getUrl("MealOrder.ashx", "AddLike");
+            commonServices.submit(params, url).then(function (data) {
+                if (data.success) {
+                    meal.UnLikeQty = meal.UnLikeQty + 1;
+                } else {
                     alertService.showLoading(data.message);
                 }
             });
@@ -296,7 +273,7 @@ angular.module('evaluationApp.adminControllers', [])
             animation: 'slide-in-up'
         }).then(function(modal) {
             $scope.modal = modal
-        })
+        });
         $scope.openModal = function() {
             if($scope.MealCount==0){
                 alertService.showAlert("请选择后再下单");
@@ -319,12 +296,10 @@ angular.module('evaluationApp.adminControllers', [])
         });
         $scope.mealPerson="请选择";
         $scope.selMealPerson=function(mealPerson){
-
             $scope.mealPerson=mealPerson;
         };
 
         $scope.submit=function(){
-
             var selTime = $("#lcTime").val(); //获取
             if(selTime.length==0)
             {
@@ -343,7 +318,7 @@ angular.module('evaluationApp.adminControllers', [])
             params.MealTime=selTime;
             params.bz=$("#bz").val();
             params.mealPerson=$scope.mealPerson;
-            console.log(params);
+            //console.log(params);
             var url=commonServices.getUrl("MealOrder.ashx","SubmitOder");
             commonServices.submit(params,url).then(function(data){
                 if(data.success){
@@ -354,13 +329,11 @@ angular.module('evaluationApp.adminControllers', [])
                     alertService.showAlert(data.message);
                 }
             });
-
         }
-
     })
-    .controller('MealLinkManCtrl',function($scope,$state,$ionicHistory,commonServices,CacheFactory,alertService){
+    .controller('MealLinkManCtrl',function($scope,$state,$ionicHistory,commonServices,CacheFactory,alertService)
+    {
         var params=commonServices.getBaseParas();
-
         $scope.closePass=function(){
             $ionicHistory.nextViewOptions({
                 disableAnimate: true,
@@ -369,9 +342,9 @@ angular.module('evaluationApp.adminControllers', [])
             $state.go('admin');
         }
     })
-    .controller('MyOrderCtrl',function($scope,$state,$ionicHistory,commonServices,CacheFactory,alertService){
+    .controller('MyOrderCtrl',function($scope,$state,$ionicHistory,commonServices,CacheFactory,alertService)
+    {
         var params=commonServices.getBaseParas();
-
         $scope.load=function(){
             var url=commonServices.getUrl("MealOrder.ashx","GetMyOrderList");
             commonServices.getDataList(params,url).then(function(data){
@@ -380,7 +353,6 @@ angular.module('evaluationApp.adminControllers', [])
                     $state.transitionTo('signin');
                 }
                 $scope.myOrderList=data;
-
             });
         }
 
@@ -397,7 +369,6 @@ angular.module('evaluationApp.adminControllers', [])
                 else{
                     alertService.showAlert(data.message);
                 }
-
                 $scope.load();
             });
         };
@@ -422,8 +393,7 @@ angular.module('evaluationApp.adminControllers', [])
         $scope.model = {
             CName: paras.CName,
             WorkdayNO: paras.WorkdayNO,
-            MobileNo: paras.MobileNo,
-            IDNO: null
+            MobileNo: paras.MobileNo
         };
 
         function GetLastLostICCardState() {
@@ -459,19 +429,18 @@ angular.module('evaluationApp.adminControllers', [])
         $scope.Submit = function () {
             $scope.isSumbiting = true;
 
-            var idno = $.trim($scope.model.IDNO);
-            if (idno.length == 18) {
-                if (!CheckIdCard(idno)) {
-                    alertService.showAlert("身份证号码有误，请更正!");
-                    return;
-                }
-            }
-            else if (!idno || !idno.length) {
-                alertService.showAlert( $rootScope.Language.common.InfoProvideIDNO);
-                return;
-            }
-
-            $scope.model.IDNO = idno;
+            // var idno = $.trim($scope.model.IDNO);
+            // if (idno.length == 18) {
+            //     if (!CheckIdCard(idno)) {
+            //         alertService.showAlert("身份证号码有误，请更正!");
+            //         return;
+            //     }
+            // }
+            // else if (!idno || !idno.length) {
+            //     alertService.showAlert( $rootScope.Language.common.InfoProvideIDNO);
+            //     return;
+            // }
+            // $scope.model.IDNO = idno;
             var confirmPopup = $ionicPopup.confirm({
                 title: $rootScope.Language.admin.promptTitle,
                 template: $rootScope.Language.admin.promptReportLost,

@@ -1,6 +1,6 @@
 <ion-view view-title="Sign In"  class="loginBg" hide-nav-bar="true" cache-view="true">
     <ion-content  class="padding" style="background:url(img/siginbg1.jpg);background-repeat:round;background-size:cover">
-
+        <!-- 登录 -->
         <div class="row" style=" margin-top:320px;">
             <div class="col">
                 <div class="list list-inset removePM">
@@ -11,18 +11,19 @@
                     </label>
                 </div>
                 <div>
-                    <select class="button " ng-options='t.name for t in LanguageItems' ng-model="LanguageItem.item" ng-change="languageUpdate()"></select>
+                    <select class="button " ng-options='t.name for t in LanguageItems' ng-model="LanguageItem.item"
+                        ng-change="languageUpdate()"></select>
                 </div>
                 <div class="loginButton">
                     <button class="button ion-unlocked button-block button-balanced" ng-click="login(user);"> Login </button>
                 </div>
-
+            
                 <ul class="nav">
                     <li><a style="text-decoration:underline" ng-click="forgetPsw();">{{Language.signin.forgetPassword}}</a></li>
                     <li><a style="text-decoration:underline" ng-click="rebindPhone();">{{Language.signin.rebindPhone}}</a></li>
                     <li><a style="text-decoration:underline;" ng-click="register();">{{Language.signin.register}}</a></li>
                 </ul>
-
+            
                 <!-- <div style="float:left;">
                     <a style="text-decoration:underline" ng-click="forgetPsw();">{{Language.signin.forgetPassword}}</a>
                 </div>
@@ -36,9 +37,7 @@
                 <br>
                 <!--<p style="text-align: center;font-size: 12px">Flex+app仅供公司内部员工使用</p>-->
                 <!--<p style="text-align: center;font-size: 12px">请遵循公司信息保密政策，未经授权严禁转载分享</p>-->
-        
                 <!--<div class="loginButton"><button class="button ion-unlocked button-block button-balanced" ng-click="loginEx(user);" > LoginJsonp </button>  </div>-->
-        
             </div>
         </div>
     </ion-content>

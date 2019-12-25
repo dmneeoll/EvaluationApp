@@ -24,7 +24,7 @@
             ng-click="checkOpenMech38()"
             ng-if="canUseMech38();"
             >
-        <img src="img/gh.JPG">
+        <img src="img/gh.png">
         <br>
         <h2>MECH基层工会三八节有奖答题活动</h2>
         <br>
@@ -32,15 +32,15 @@
 
         <ion-list>
             <!-- 有奖答题2019 -->
-            <ion-item class="item item-thumbnail-left" ng-click="openSpecial('有奖答题2019')" ng-if="canUseSpecial('有奖答题2019');">
+            <ion-item ng-repeat="activity in CusCJList" class="item item-thumbnail-left"  ng-click="openCusCJ(activity)" ng-if="canUseCusCJ(activity)">
                 <img src="img/other/jiang.png">
                 <br>
-                <h3>{{Language.activityGood.PoetryTitle}}</h3>
+                <h3>{{activity.ActivityTitle}}</h3>
             </ion-item>
 
             <!-- johnsing 2019-10-23 -->
             <ion-item class="item item-thumbnail-left" ng-click="openSpecial('补贴申请结果查询')" ng-if="canUseAction('补贴申请结果查询');">
-                <img src="img/gh.JPG">
+                <img src="img/gh.png">
                 <br>
                 <h3>2019暑期亲子团聚关爱金</h3>
                 <h3>补贴申请结果查询</h3>
@@ -51,11 +51,11 @@
         <!--活动点赞-->
         <ion-list>
         <ion-item class="item item-thumbnail-left" ng-click="openActivityGood(2)" ng-if="canUseSpecial('活动点赞');">
-            <img src="img/user-100.png">
+            <!-- <img src="img/user-100.png"> -->
+            <img src="img/other/videojiang.png">
+            <h3 style='white-space:pre-wrap;'>{{Language.activityGood.title}}</h3>
             <br>
-            <h3>{{Language.activityGood.title}}</h3>
-            <br>
-            <p>2019-08-12</p>
+            <p>2019-12-10</p>
         </ion-item>
         </ion-list>
 
@@ -72,8 +72,6 @@
                 <!--<i class="icon ion-ios-arrow-forward"></i>-->
             </ion-item>
         </ion-list>
-
-
 
         <!--<div>-->
             <!--<section class="wx96Diy cur" data-source="bj.96weixin.com">-->
@@ -129,7 +127,7 @@
 
             <!-- <ion-item class="item item-thumbnail-left"
                       ng-click="openHandelAddAct()">
-                <img src="img/gh.JPG">
+                <img src="img/gh.png">
                 <br>
                 <h2>异地务工人员暑期亲子团聚关爱金</h2>
                 <br>

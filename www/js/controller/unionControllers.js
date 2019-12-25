@@ -82,8 +82,8 @@ angular.module('evaluationApp.unionControllers', [])
       },
       {
         building: "PCBA-B11",
-        basePeople: "Willa Wan",
-        baseEmail: "willa.wan@flex.com",
+        basePeople: "Mujiao Yang",
+        baseEmail: "mujiao.yang@flex.com",
         basePhone: "5183394"
       },
       {
@@ -112,10 +112,7 @@ angular.module('evaluationApp.unionControllers', [])
         case "工惠福利汇":
           $state.go("union_welfare_union");
           break;
-        case "工惠福利汇往期福利":
-          $state.go("union_welfare_old");
-          break;
-        case "斗门公众号福利":
+        case "斗门工会福利":
           $state.go("union_welfare_dmUnion");
           break;
         case "领取通知":
@@ -191,9 +188,9 @@ angular.module('evaluationApp.unionControllers', [])
   .controller('UnionWelfareFestCtrl', function ($scope, $state, $ionicHistory) {
     //年节福利
     $scope.Items = [{
-        welfare: "餐厅赠餐",
+        welfare: "年节赠餐",
         target: "全体员工",
-        detail: "春节、元宵节、端午节、中秋节在各餐厅赠餐（饺子/汤圆/粽子）",
+        detail: "春节、元宵节、端午节、中秋节在各餐厅赠餐",
         date: "节日当天"
       },
       {
@@ -203,34 +200,22 @@ angular.module('evaluationApp.unionControllers', [])
         date: "每月"
       },
       {
-        welfare: "端午节礼包",
+        welfare: "节日福利",
         target: "全体员工",
-        detail: "端午礼包一份",
-        date: "节前一周"
+        detail: "端午礼包、中秋礼包各一份",
+        date: "中秋节、端午节节前一周"
       },
       {
         welfare: "夏送清凉",
         target: "全体员工",
-        detail: "全园送凉茶，每月每人2罐，发放3个月",
-        date: "7月-9月"
-      },
-      {
-        welfare: "中秋节礼包",
-        target: "全体员工",
-        detail: "中秋大礼包一份",
-        date: "节前一周"
-      },
-      {
-        welfare: "开工红包",
-        target: "全体员工",
-        detail: "开工红包50元（转至工资卡）",
-        date: "春节后开工之月"
+        detail: "高温季节，每周二周四餐厅赠送免费清凉饮料一份",
+        date: "8月—9月"
       }
     ];
   })
   .controller('UnionWelfareDMCtrl', function ($scope, $state, $ionicHistory,
     commonServices, CacheFactory, UrlServices) {
-    //斗门公众号福利
+    //斗门工会福利
     $scope.open = function (action) {
       switch (action) {
         case "往期福利":
@@ -239,9 +224,9 @@ angular.module('evaluationApp.unionControllers', [])
         case "关注指南":
           $state.go("union_welfare_dm_guide");
           break;
-        case "幸运抽奖":
-          UrlServices.openForeignUrl('https://www.wjx.top/jq/21587410.aspx');
-        default:
+        // case "幸运抽奖":
+        //   UrlServices.openForeignUrl('https://www.wjx.top/jq/21587410.aspx');
+        // default:
           break;
       }
     }
@@ -249,115 +234,128 @@ angular.module('evaluationApp.unionControllers', [])
   .controller('UnionWelfareDMHistoryCtrl', function ($scope, $state, $ionicHistory,
     commonServices, CacheFactory, UrlServices) {
     //斗门往期福利
-    $scope.Items = [{
-        date: "不定期",
-        detail: "1000个两癌筛查体检名额",
-        category: "健康关爱"
-      },
+    $scope.Items = [
       {
-        date: "新春",
-        detail: "新春职工亲子一天游（每期50名，三期）",
+        date: "元旦",
+        detail: "职工亲子游（50名）",
         category: "旅游"
       },
       {
+        date: "元旦",
+        detail: "元旦轮盘大抽奖（书卡、电影票、书卡、雨伞、娘家米）",
+        category: "抽奖"
+      },      
+      {
         date: "新春",
-        detail: "1000个新春交通返程补贴（300元）",
+        detail: "新春轮盘大抽奖（电磁炉、电热水壶、花生油、好运米）",
+        category: "抽奖"
+      },
+      {
+        date: "新春",
+        detail: "1000个新春交通返程补贴（省外300元，省内150元）",
         category: "补贴"
       },
       {
-        date: "五一",
-        detail: "五一职工广州一天游（每期100名，三期）",
-        category: "旅游"
-      },
-      {
-        date: "五一",
-        detail: "五一轮盘抽奖 （烤箱、电风扇、腾讯王卡、书卡、娘家米）",
-        category: "抽奖"
-      },
-      {
-        date: "端午",
-        detail: "端午轮盘大抽奖（天地一号饮料、花生油、电影票、雨伞）",
-        category: "抽奖"
-      },
-      {
-        date: "三八妇女节",
-        detail: "女职工权益知识答题抽奖（娘家米）",
+        date: "元宵",
+        detail: "元宵节猜灯谜赢好礼（水饺、汤圆）",
         category: "答题抽奖"
-      },
+      },      
       {
         date: "三月",
         detail: "十九大有奖知识问答（娘家米）",
         category: "答题抽奖"
       },
       {
-        date: "六月",
-        detail: "安全生产月答题送礼活动（1500份娘家米）",
+        date: "三月",
+        detail: "三八妇女节女职工权益知识答题抽奖（娘家米）",
         category: "答题抽奖"
+      },      
+      {
+        date: "五月",
+        detail: "五一职工广州一天游（100名）",
+        category: "旅游"
       },
+      {
+        date: "五月",
+        detail: "五一轮盘抽奖 （电饭煲、电风扇、电风吹、电影票、娘家米）",
+        category: "抽奖"
+      },      
+      {
+        date: "六月",
+        detail: "端午轮盘大抽奖（粽子、娘家米、洗衣液等）",
+        category: "抽奖"
+      },
+      {
+        date: "六月",
+        detail: "安全生产月答题送礼活动（1000份娘家米）",
+        category: "答题抽奖"
+      },      
       {
         date: "七月",
         detail: "庆七 · 一留言活动 – 书卡",
         category: "答题抽奖"
       },
       {
+        date: "九月",
+        detail: "中秋轮盘大抽奖（餐厅消费卡、花生油、书卡、娘家米）",
+        category: "抽奖"
+      },
+      {
+        date: "十月",
+        detail: "重阳节有奖问答活动（999份娘家米）",
+        category: "答题抽奖"
+      },
+      {
+        date: "十月",
+        detail: "庆国庆轮盘大抽奖（电磁炉、电烤箱、100元书卡、电影票鸡蛋娘家米）",
+        category: "抽奖"
+      },
+      {
+        date: "十月",
+        detail: "“不忘初心、牢记使命”主题教育有奖竞答（900份娘家米）",
+        category: "答题抽奖"
+      },            
+      {
         date: "不定期",
-        detail: "积分兑换活动（3次）（珠海渔女工艺品、充电宝、天地一号饮料、书卡、羽毛球拍）",
-        category: "其他"
+        detail: "职工亲子游",
+        category: "抽奖"
       },
       {
         date: "不定期",
-        detail: "其他福利活动",
-        category: "其他"
+        detail: "插画培训、瑜伽班、摄影班、积分兑换（月饼、娘家米、洗衣液、电影票、书卡、雨伞等）、国庆游等",
+        category: "积分兑换"
+      },      
+      {
+        date: "不定期",
+        detail: "1000个两癌筛查体检名额",
+        category: "健康关爱"
       },
+      {
+        date: "不定期",
+        detail: "其它",
+        category: "其它"
+      }      
     ];
   })
   .controller('UnionWelfareWnionCtrl', function ($scope, $state, $ionicHistory,
     commonServices, CacheFactory, UrlServices) 
   {
     //工惠福利汇
-    //"<a class='padding' href='#' ng-click='openGeneralNotice(0, \"751A73EC-E97B-4099-974F-79068BBEBE4C\")'>了解详情</a>"
-    $scope.Items = [{
-        type: "医疗",
-        business: "拜博口腔",
-        detail: "<ul><li>洁牙套餐A-【挂号+口腔检查+超声波洁牙+抛光】188元（原价200）；</li>"+
-                "<li>洁牙套餐B-【挂号+口腔检查+超声波洁牙+抛光+喷砂】200元（原价280元）;</li>"+
-                "<li>拍全景口腔片免费（原价100元）；</li>"+
-                "<li>小孩窝沟封闭免费治疗（原价100元/1颗）；</li>"+
-                "<li>口腔检查、治疗（除洁牙项目外）凭厂牌，员工及家属享受8折优惠（不可同享店内其他优惠）</li></ul>"
-                ,
-        beginDate: "7/1/2018",
-        endDate: "7/1/2019",
-        contact: "0756-2160088",
-      },
-      {
-        type: "教育",
-        business: "九拍音乐教育机构",
-        detail: "<ul><li>2018年10月31日至2019年12月30日 课时费享8折优惠；</li>"+
-                "<li>后续续费5年内享8折 首次报名可报多期课程（享5折优惠）;</li>"+
-                "<li>2018年10月31日至2019年12月30日 课时费享8折优惠</li></ul>",
-        beginDate: "8/17/2018",
-        endDate: "12/30/2019",
-        contact: "梁老师 18025078894",
-      },
-      {
-        type: "购房",
-        business: "华发又一城",
-        detail: "凭厂牌享华发内部折扣价，最高优惠2%",
-        beginDate: "8/10/2018",
-        endDate: "\\",
-        contact: "0756-5888888",
-      }
+    $scope.Items = [
+      // {
+      //   type: "教育",
+      //   business: "九拍音乐教育机构",
+      //   detail: "<ul><li>2018年10月31日至2019年12月30日 课时费享8折优惠；</li>"+
+      //           "<li>后续续费5年内享8折 首次报名可报多期课程（享5折优惠）;</li>"+
+      //           "<li>2018年10月31日至2019年12月30日 课时费享8折优惠</li></ul>",
+      //   beginDate: "8/17/2018",
+      //   endDate: "12/30/2019",
+      //   contact: "梁老师 18025078894",
+      // }
     ];
 
-    $scope.openGeneralNotice = function (isUrlHtml, id, html) {
-      UrlServices.openGeneralNotice(isUrlHtml,id,html);
-    };
-  })
-  .controller('UnionWelfareOldCtrl', function ($scope, $state, $ionicHistory,
-    commonServices, CacheFactory, UrlServices) 
-  {
     //工惠福利汇往期福利
-    $scope.Items = [{
+    $scope.OldItems = [{
       "date": "元旦、新春",
       "type": "购物",
       "business": "威丝曼",
@@ -468,6 +466,10 @@ angular.module('evaluationApp.unionControllers', [])
       "business": "香山安琪儿幼儿园",
       "detail": "子女就读、托管、兴趣班优惠"
     }];
+
+    $scope.openGeneralNotice = function (isUrlHtml, id, html) {
+      UrlServices.openGeneralNotice(isUrlHtml,id,html);
+    };
   })    
   .controller('UnionWelfareApplyResultCtrl', 
     function ($scope, $state, $ionicHistory, commonServices, CacheFactory, UrlServices) 
@@ -499,94 +501,61 @@ angular.module('evaluationApp.unionControllers', [])
     }
     $scope.LoadData();
   })
-  .controller('UnionHelpSupportCtrl', function ($scope, $state, $ionicHistory, commonServices, CacheFactory) {
+  .controller('UnionHelpSupportCtrl', function ($scope, $state, $ionicHistory, commonServices, CacheFactory) 
+  {
     //员工帮扶
-    $scope.open = function (action) {
-      switch (action) {
-        case "申请指引":
-          $state.go("union_helpSupport_guide");
-          break;
-        case "联系信息":
-          $state.go("union_helpSupport_contact");
-          break;
-        default:
-          break;
-      }
-    }
-  })
-  .controller('UnionHelpSupportGuideCtrl', function ($scope, $state, $ionicHistory) {
     //公司爱心帮扶
     $scope.helps = [{
-        ItemName: "死亡",
-        Object: "职工本人",
-        Memo: "仅做一次性帮扶"
-      },
-      {
-        ItemName: "死亡",
-        Object: "配偶",
-        Memo: "仅做一次性帮扶"
-      },
-      {
-        ItemName: "重大疾病",
-        Object: "职工本人",
-        Memo: "仅做一次性帮扶"
-      },
-      {
-        ItemName: "重大疾病",
-        Object: "配偶或子女",
-        Memo: "仅做一次性帮扶"
-      },
-      {
-        ItemName: "重大疾病",
-        Object: "父母",
-        Memo: "仅做一次性帮扶"
-      },
-      {
-        ItemName: "工伤住院",
-        Object: "职工本人",
-        Memo: "仅做一次性帮扶"
-      },
-      {
-        ItemName: "生活困难",
-        Object: "一人收入照顾全家※",
-        Memo: "仅做一次性帮扶"
-      },
-      {
-        ItemName: "灾难救助",
-        Object: "职工本人",
-        Memo: "仅做一次性帮扶"
-      }
+      ItemName: "生活困难",
+      Object: "※一人收入照顾全家"
+    },
+    {
+      ItemName: "工伤住院",
+      Object: "职工本人"
+    },
+    {
+      ItemName: "灾难救助",
+      Object: "职工本人"
+    },
+    {
+      ItemName: "重大疾病",
+      Object: "职工本人、配偶或子女、父母"
+    },
+    {
+      ItemName: "死亡",
+      Object: "职工本人、配偶"
+    }
     ];
 
     $scope.projHelps = [{
-        ItemName: "阳光助学<br>（金秋助学补充项目）",
-        Object: "职工子女",
-        Memo: "不与金秋助学重复申领，不限户籍"
-      }
+      ItemName: "阳光助学<br>（金秋助学补充项目）",
+      Object: "职工子女",
+      Memo: "不与金秋助学重复申领，不限户籍"
+    }
     ];
 
-    $scope.dmHelps=[
+    $scope.dmHelps = [
       {
         ItemName: "临时困难救助",
         Object: "职工本人或家庭成员",
         Memo: "仅做一次性帮扶需发票复印件",
-        Material:"<span class='redtext'>临救申请表</span>、档案表、户口薄复印件、近1年社保清单、家庭成员收入证明、银行卡复印件、<span class='redtext'>发票复印件</span>及致困相关证明"
+        Material: "<span class='redtext'>临救申请表</span>、档案表、户口薄复印件、近1年社保清单、家庭成员收入证明、银行卡复印件、<span class='redtext'>发票复印件</span>及致困相关证明"
       },
       {
         ItemName: "大病救助",
         Object: "患重大疾病的职工本人",
         Memo: "仅做一次性帮扶需发票原件",
-        Material:"<span class='redtext'>大病申请表</span>、档案表、户口薄复印件、近1年社保清单、家庭成员收入证明、银行卡复印件、<span class='redtext'>发票原件</span>及致困相关证明"
+        Material: "<span class='redtext'>大病申请表</span>、档案表、户口薄复印件、近1年社保清单、家庭成员收入证明、银行卡复印件、<span class='redtext'>发票原件</span>及致困相关证明"
       },
       {
         ItemName: "农民工子女成长关爱",
         Object: "外来工或本地户籍农民工",
         Memo: "隔年申请",
-        Material:"<span class='redtext'>助学申请表</span>、档案表、户口薄复印件、近1年社保清单、家庭成员收入证明、银行卡复印件、<span class='redtext'>发票复印件</span>及致困相关证明"
+        Material: "<span class='redtext'>助学申请表</span>、档案表、户口薄复印件、近1年社保清单、家庭成员收入证明、银行卡复印件、<span class='redtext'>发票复印件</span>及致困相关证明"
       },
     ];
 
-    $scope.dmProjHelps=[
+    $scope.dmProjHelps = [
       {
         ItemName: "秋送助学",
         Object: "职工子女",
@@ -599,37 +568,35 @@ angular.module('evaluationApp.unionControllers', [])
       }
     ];
 
-  })
-  .controller('UnionHelpSupportContactCtrl', function ($scope, $state, $ionicHistory) {
     //爱心帮扶联系方式
     $scope.contacts = [{
-        Building: "CR & RR",
-        hrPeople: "Ellis Zhou",
-        hrPhone: "5189889",
-        basePeople: "Tara Qiu",
-        basePhone: "5188838"
-      },
-      {
-        Building: "Mechanical",
-        hrPeople: "Boswell Jin",
-        hrPhone: "5181017",
-        basePeople: "Sirong He",
-        basePhone: "5189160"
-      },
-      {
-        Building: "PCBA-B11",
-        hrPeople: "Sandy Liu",
-        hrPhone: "5183914",
-        basePeople: "Willa Wan",
-        basePhone: "5183394"
-      },
-      {
-        Building: "PCBA-South Campus",
-        hrPeople: "Aaron Guo",
-        hrPhone: "5186026",
-        basePeople: "Minhua Lu",
-        basePhone: "5186714"
-      },
+      Building: "CR & RR",
+      basePeople: "Tara Qiu",
+      basePhone: "5188838",      
+      hrPeople: "Ellis Zhou",
+      hrPhone: "5189889"
+    },
+    {
+      Building: "Mechanical",
+      basePeople: "JH Deng",
+      basePhone: "5181138",
+      hrPeople: "Boswell Jin",
+      hrPhone: "5181017"
+    },
+    {
+      Building: "PCBA-B11",      
+      basePeople: "Mujiao Yang",
+      basePhone: "5183394",
+      hrPeople: "Sandy Liu",
+      hrPhone: "5183914"
+    },
+    {
+      Building: "PCBA-South Campus",      
+      basePeople: "Minhua Lu",
+      basePhone: "5186714",
+      hrPeople: "Aaron Guo",
+      hrPhone: "5186026"
+    }
     ];
   })
   .controller('UnionActivityCtrl', function ($scope, $rootScope, $ionicPopup,

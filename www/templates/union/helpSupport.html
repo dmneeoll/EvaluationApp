@@ -1,13 +1,204 @@
 <!-- 员工帮扶 -->
-<ion-view view-title="{{Language.union.helpSupport}}" cache-view="true">
+<ion-view cache-view="true">
+  <ion-nav-title>
+    申请指引
+  </ion-nav-title>
   <ion-content scroll="true" overflow-scroll="true">
-    <div class="list list-inset">
-      <div class="item" ng-click="open('申请指引');">
-        申请指引
+    <style>
+      .myTab td.tdCenter {
+        text-align: center;
+        vertical-align: middle;
+      }
+      .myTab .blueTitle {
+        background: blue;
+        color: white;
+      }
+      .myArraw {
+        color: red;
+        font-weight: 800;
+        font-size: 1.8em;
+      }
+    </style>
+
+    <div style="margin:0 2px 0 2px">
+      <!-- ======================= -->
+      <p class="myTitle">
+        一、困难帮扶申请流程：
+      </p>
+      <div>
+        <span>员工自愿申请 <span class="myArraw">→</span>
+          事业部人力资源部就近领取资料 <span class="myArraw">→</span>
+          资料审批及审核 <span class="myArraw">→</span>
+          资金到账</span>
+        <table class="myTab" style="margin:10px 4px 0 2px;">
+          <tbody>
+            <tr>
+              <th colspan="5">各事业部帮扶工作联系人及联系方式</th>
+            </tr>
+            <tr>
+              <th rowspan="2" style="width:72px;vertical-align:middle;">事业部</th>
+              <th colspan="2">基层分会</th>
+              <th colspan="2">人力资源部</th>
+            </tr>
+            <tr class="blueTitle">
+              <td style="width: 55px;">联系人</td>
+              <td>联系电话</td>
+              <td style="width: 55px;">联系人</td>
+              <td>联系电话</td>
+            </tr>
+            <tr ng-repeat="item in contacts">
+              <td>{{item.Building}}</td>
+              <td>{{item.basePeople}}</td>
+              <td class="tdCenter"><a class="myLink" href="tel:{{item.hrPhone}}">{{item.basePhone}}</a></td>
+              <td>{{item.hrPeople}}</td>
+              <td class="tdCenter"><a class="myLink" href="tel:{{item.hrPhone}}">{{item.hrPhone}}</a></td>
+            </tr>
+          </tbody>
+        </table>
       </div>
-      <div class="item" ng-click="open('联系信息');">
-        联系信息
+
+      <!-- ======================= -->
+      <p class="myTitle" style="margin-top:16px;">
+        二、主要帮扶类别、对象及申请材料：
+      </p>
+      <div>
+        <p>1）伟创力联合工会帮扶：</p>
+        <p class="lightRedBack" style="padding:3px;">
+          &nbsp;&nbsp;&nbsp;&nbsp;联合工会于2012年设立了爱心帮扶基金，旨在为有需求的员工提供帮助，帮助困难员工解决燃眉之急，让他们感受到来自公司及工会的关怀与温暖。符合困难帮扶申请条件的员工，可到事业部联系人处就近领取帮扶资料。
+        </p>
+        <table class="myBlueTab">
+          <tbody>
+            <tr class="head" style="height:26px;">
+              <td class="hCent vCent" colspan="6">
+                <strong>常规帮扶</strong>
+              </td>
+            </tr>
+            <tr class="tdetail">
+              <td class="head vCent" rowspan="{{helps.length+1}}">
+                <p>伟创力爱心帮扶基金</p>
+              </td>
+              <td>#</td>
+              <td style="width:64px">
+                帮扶类别
+              </td>
+              <td class="hCent" style="min-width:80px">对象
+              </td>
+              <td class="hCent">材料
+              </td>
+            </tr>
+            <tr class="tdetail" ng-repeat="item in helps">
+              <td class="tdCenter">{{$index+1}}</td>
+              <td class="tdCenter">{{item.ItemName}}</td>
+              <td>{{item.Object}}</td>
+              <td class="vCent" rowspan="{{helps.length}}" ng-if="$index==0">
+                <p>爱心帮扶基金申请表、身份证复印件、厂牌复印件及相关致困证明等</p>
+              </td>
+            </tr>
+            <tr>
+              <td colspan="6" class="tail">
+                &nbsp;※&nbsp;家庭成员非主动失业且人均收入低于本地区最低生活保障线
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <table class="myBlueTab">
+          <tbody>
+            <tr class="head" style="height:26px;">
+              <td class="hCent vCent" colspan="6">
+                <strong>项目式帮扶</strong>
+              </td>
+            </tr>
+            <tr class="tdetail">
+              <td class="head vCent" rowspan="{{projHelps.length+1}}">
+                <p>伟创力爱心帮扶基金</p>
+              </td>
+              <td>#</td>
+              <td style="width:90px">
+                帮扶类别
+              </td>
+              <td class="hCent" style="width:80px">对象
+              </td>
+              <td class="hCent">备注
+              </td>
+            </tr>
+            <tr class="tdetail" ng-repeat="item in projHelps">
+              <td class="tdCenter">{{$index+1}}</td>
+              <td class="tdCenter"><span ng-bind-html="item.ItemName"></span></td>
+              <td>{{item.Object}}</td>
+              <td>{{item.Memo}}</td>
+            </tr>
+          </tbody>
+        </table>
       </div>
+      <!-- ================= -->
+      <div style="margin-top:10px;">
+        <p>2）斗门总工会帮扶：</p>
+        <p class="lightRedBack" style="padding:3px;">
+          &nbsp;&nbsp;&nbsp;&nbsp;斗门区总工会针对全区的困难职工提供相应的帮扶，伟创力联合工会向有需求的职工提供帮助，代为转交相关申请资料。
+        </p>
+        <table class="myBlueTab">
+          <tbody>
+            <tr class="head" style="height:26px;">
+              <td class="hCent vCent" colspan="6">
+                <strong>常规帮扶</strong>
+              </td>
+            </tr>
+            <tr class="tdetail">
+              <td class="head vCent" rowspan="{{dmHelps.length+1}}">
+                <p>斗门区总工会帮扶</p>
+              </td>
+              <td>#</td>
+              <td style="width:64px">
+                帮扶类别
+              </td>
+              <td class="hCent" style="width:72px">对象
+              </td>
+              <td class="hCent" style="width:60px">备注
+              </td>
+              <td class="hCent">材料
+              </td>
+            </tr>
+            <tr class="tdetail" ng-repeat="item in dmHelps">
+              <td class="vCent">{{$index+1}}</td>
+              <td class="vCent">{{item.ItemName}}</td>
+              <td class="vCent">{{item.Object}}</td>
+              <td class="vCent">{{item.Memo}}</td>
+              <td><span ng-bind-html="item.Material"></span></td>
+            </tr>
+          </tbody>
+        </table>
+
+        <table class="myBlueTab">
+          <tbody>
+            <tr class="head" style="height:26px;">
+              <td class="hCent vCent" colspan="6">
+                <strong>项目式帮扶</strong>
+              </td>
+            </tr>
+            <tr class="tdetail">
+              <td class="head vCent" rowspan="{{dmProjHelps.length+1}}">
+                <p>斗门区总工会帮扶</p>
+              </td>
+              <td>#</td>
+              <td style="width:64px">
+                帮扶类别
+              </td>
+              <td class="hCent" style="width:80px">对象
+              </td>
+              <td class="hCent" style="width:60px">备注
+              </td>
+            </tr>
+            <tr class="tdetail" ng-repeat="item in dmProjHelps">
+              <td class="tdCenter">{{$index+1}}</td>
+              <td class="tdCenter">{{item.ItemName}}</td>
+              <td>{{item.Object}}</td>
+              <td>{{item.Memo}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <br><br>
     </div>
   </ion-content>
 </ion-view>

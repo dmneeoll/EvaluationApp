@@ -1,0 +1,41 @@
+<!-- 我的预定 -->
+<ion-view view-title="{{Language.BallFieldBooking.Mybook}}" cache-view="false">
+    <ion-nav-buttons side="left">
+        <button class="button button-clear button-icon ion-ios-arrow-back"
+          ng-click="closePass()">{{Language.home.home}}</button>
+      </ion-nav-buttons>
+
+    <ion-content class="padding5" style="border:1px;">        
+        <div ng-if="items.length>0">
+            <table class="myTab" style="margin:0 4px 0 2px;width:100%">
+                <thead>
+                    <tr>
+                        <th>{{Language.BallFieldBooking.StartDate}}</th>
+                        <th>{{Language.BallFieldBooking.StartTime}}</th>
+                        <th>{{Language.BallFieldBooking.EndTime}}</th>
+                        <th>{{Language.BallFieldBooking.TimeInterval}}</th>
+                        <th>{{Language.common.Status}}</th>
+                        <th>Cancel</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="item in items">
+                        <td>{{item.BeginTime| date: "yyyy-MM-dd"}}</td>
+                        <td>{{item.BeginTime| date: "HH:mm"}}</td>
+                        <td>{{item.EndTime| date: "HH:mm"}}</td>
+                        <td>{{item.TimeInterval}}</td>
+                        <td>{{item.StatusCN}}</td>
+                        <td>
+                            <button class="button button-icon ion-close" 
+                                style="margin-left:5px;color:red" ng-click="cancelBook(item.BookID);" ng-if="CheckCancel(item)">
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div ng-if="items.length==0">
+            <h4 style="color:red">{{Language.common.NoData}}</h4>
+        </div>
+    </ion-content>
+</ion-view>

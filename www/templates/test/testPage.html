@@ -31,6 +31,7 @@
         <button class="button button-calm button-small" ng-click="SelPic(false);">从相册中选择</button>
         <button class="button button-calm button-small" ng-click="SelPic(true);">拍照</button>
         <button class="button button-calm button-small" ng-click="Reset();">Reset</button>
+        <button class="button button-calm button-small" ng-click="OpenOutLink();">Out link</button>
         <!-- images here -->
         <div>Image count: <span>{{imgs.length}}</span></div>
         <div id="images" style="margin-top:10px;" ng-if="imgs.length>0">
@@ -41,6 +42,52 @@
             <!-- <button class="button button-positive" ng-disabled="0==imgs.length" ng-click="doUpload()">上传文件</button> -->
             <button class="button button-positive" ng-click="doUpload()">上传文件</button>
         </div>
-    </ion-content>
+        <div>
+            <p>Test gif</p>
+            <img src='https://zhmobile.flextronics.com/EvaluationApp/Upload/Other/mov2.gif' style="max-width:90%;height:240px;" alt="Test gif">
+        </div>
 
+        <!-- ======================= -->
+        <div style="max-width:98%;height:320px;">
+            <!-- data-src should not be provided when you use html5 videos -->
+            <div class="video-gallery">
+                <ul id="html5-videos" class="list-unstyled row">
+                    <li class="video" data-poster="img/earth.png" data-html="#video1">
+                        <a href="#">
+                            <img class="img-responsive" src="img/earth.png">
+                            <div class="video-gallery-poster">
+                                <img src="img/playbtn.png">
+                            </div>
+                        </a>
+                    </li>                
+                </ul>
+            </div>
+            <div class="video-gallery">
+                <ul id="html5-videos2" class="list-unstyled row">
+                    <li class="video" data-poster="img/gh.jpg" data-html="#video2">
+                        <a href="#">
+                            <img class="img-responsive" src="img/gh.jpg">
+                            <div class="video-gallery-poster">
+                                <img src="img/playbtn.png">
+                            </div>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <!-- Hidden video div -->
+            <div style="display:none;" id="video1">
+                <video class="lg-video-object lg-html5" controls>
+                    <source src="https://zhmobile.flextronics.com/EvaluationApp/Upload/Other/mov.mp4" type="video/mp4">
+                    Your Flex+ does not support HTML5 video.
+                </video>
+            </div>
+            <div style="display:none;" id="video2">
+                <video class="lg-video-object lg-html5" controls preload="none">
+                    <source src="https://zhmobile.flextronics.com/EvaluationApp/Upload/Other/mov2.mp4" type="video/mp4">
+                    Your Flex+ does not support HTML5 video.
+                </video>
+            </div>
+        </div>
+
+    </ion-content>
 </ion-view>

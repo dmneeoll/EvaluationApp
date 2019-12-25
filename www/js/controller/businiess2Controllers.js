@@ -526,18 +526,11 @@ angular.module('evaluationApp.businiess2Controllers', [])
             }
 
             $scope.zjList=data;
-
             if($scope.zjList.length==0)
             {
                 $scope.Msg='您没有中奖';
             }
-
-
         });
-
-
-
-
 
         $scope.closePass=function(){
             $ionicHistory.nextViewOptions({
@@ -559,20 +552,16 @@ angular.module('evaluationApp.businiess2Controllers', [])
 //                $state.transitionTo('signin');
 //            }
 //            $scope.applyList=data;
-//
-//
 //        });
 
         $scope.open=function(apply){
             CacheFactory.remove('applyID');
             CacheFactory.save('applyID',apply);
-
             console.log(apply);
             $state.go('applyHtml');
         };
 
         $scope.openZhibo=function(){
-
             try {
                 externalLinksService.openUr('http://zklive-aliyun.myzaker.com/xlive/al151658441329265809c05_sd.m3u8');
             }
@@ -582,7 +571,6 @@ angular.module('evaluationApp.businiess2Controllers', [])
         };
 
         $scope.openHudong=function(){
-
             try {
                 externalLinksService.openUr('https://yun.aiyaopai.com/live/20180130wcl?from=singlemessage&isappinstalled=0');
             }
@@ -592,17 +580,14 @@ angular.module('evaluationApp.businiess2Controllers', [])
         };
 
         $scope.openNamelist=function(){
-
             $state.go('chunwanNameListHtml');
         };
 
 
         $scope.openjiangpin=function(){
-
             $state.go('chunwanjiangpin');
         };
         $scope.openjiemu=function(){
-
             $state.go('chunwanjiemu');
         };
         $scope.openZJ=function(){

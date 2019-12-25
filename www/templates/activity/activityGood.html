@@ -1,19 +1,22 @@
 <!--活动点赞 2018-05-23-->
-<ion-view view-title="{{Language.activityGood.title}}" cache-view="true">
+<ion-view view-title="{{Language.activityGood.title}}" cache-view="false">
   <ion-content style="background-color:lavender">
     <!-- 标题图，有的话 -->
     <ion-slide-box does-continue="true" auto-play="false" show-pager="false" ng-if="titleImgUrl">
       <img ng-src="{{titleImgUrl}}">
     </ion-slide-box>
     <style>
-        .headpic {
+        /* .headpic {
           margin-left: auto;
           margin-right: auto;
-          max-width: 98%;
+          max-width: 99.5%;
+        } */
+        .myvid{
+          border:none;
         }
     </style>
     <!-- 标题描述，有的话 -->
-    <div class="divOff lightRedBack" ng-if="actDesc">
+    <div class="divOff" style="background-color:lightblue;" ng-if="actDesc">
       <div class="divOff" style="font-size:14px;" ng-bind-html="actDesc">
       </div>
     </div>
@@ -21,45 +24,65 @@
     <div class="list card">
       <ion-list>
         <ion-item ng-repeat="act in Activities">
-          <div class="item item-avatar">
-            <!-- <img ng-src="{{activityGoodIcon}}"> -->
-            <span style="font-size:1.1em;">{{act.Name}}</span>
-            <!-- <h3>{{act.Designer}}</h3> -->
+          <div class="item">
+          <!-- <div class="item item-avatar">
+            <img ng-src="{{activityGoodIcon}}"> -->
+            <span style="font-size:1.1em;white-space:pre-wrap;">{{act.Name}}</span>
+            <h3 ng-if="act.Designer">{{Language.activityGood.designer}}: {{act.Designer}}</h3>
             <!-- <h3>{{Language.activityGood.employee_ID}}：{{act.Designer}}</h3> -->
             <!-- <h3 ng-if="act.BU">{{Language.activityGood.department}}：{{act.BU}}</h3> -->
           </div>
 
-          <div class="item item-body">
-            <img class="headpic" ng-src="{{act.ImgPath}}">
+          <div class="item item-body" style="padding:0;border:none;">
+            <!-- 固定图片 -->
+            <!-- <img class="headpic" ng-src="{{act.ImgPath}}" ng-click="OpenUrl(act.LinkUrl)"> -->
+            <!-- 可缩放图片 -->
             <!-- <ul class="lightgallery">
-              <li data-src="{{act.ImgPath}}">
-                <a href="#">
-                  <img class="full-image" src="{{act.ImgPath}}" />
-                </a>
-              </li>
-            </ul> -->
-
+                        <li data-src="{{act.ImgPath}}">
+                          <a href="#">
+                            <img class="full-image" src="{{act.ImgPath}}" />
+                          </a>
+                        </li>
+                      </ul> -->
+            <!-- 图片，单击后打开URL -->
+            <div class="video-gallery">
+              <ul class="myvid list-unstyled row">
+                <li class="video" data-poster="{{act.ImgPath}}" data-html="#video{{$index}}">
+                  <a href="">
+                    <img class="img-responsive" style="min-height:170px;" src="{{act.ImgPath}}">
+                    <div class="video-gallery-poster">
+                      <img src="img/playbtn.png">
+                    </div>
+                  </a>
+                </li>
+              </ul>
+            </div>
             <div ng-if="act.Describe" style="margin-top:10px;">
               <!-- <p class="text-left small">{{Language.activityGood.desc}}：</p> -->
-              <!-- <p ng-bind-html="act.Describe"></p> -->
-              <div compile="act.Describe"></div>
+              <p ng-bind-html="act.Describe"></p>
+              <!-- <div compile="act.Describe"></div> -->
             </div>
             <p ng-if="act.Like>0">
-              <a href="#" class="subdued">{{act.Like}} 人支持</a>
+              <span><i class="icon ion-thumbsup"></i>{{act.Like}}赞</span>
             </p>
           </div>
 
-          <div class="item tabs tabs-secondary tabs-icon-right">
-            <!-- <a class="tab-item" ng-click="like(act)">
-                            <i class="icon ion-thumbsup"></i>
-                            为他们加油
-            </a> -->
-            <div style="margin:auto;margin-top: 10px;">
-              <button class="button button-balanced button-small" style="text-align:center" ng-click="like(act)">
+          <div class="item tabs tabs-secondary tabs-icon-right" style="border:none;">
+            <div style="margin:auto;margin-top:5px;">
+              <button class="button button-balanced button-small" 
+                style="text-align:center" ng-click="like(act.ID)">
                 <i class="icon ion-thumbsup"></i>
-                支持
+                投票
               </button>
             </div>
+          </div>
+
+          <!-- Hidden video div -->
+          <div style="display:none;" id="video{{$index}}">
+            <video class="lg-video-object lg-html5" controls>
+                <source src="{{act.LinkUrl}}" type="video/mp4">
+                Your Flex+ does not support HTML5 video.
+            </video>
           </div>
         </ion-item>
         <ion-item ng-if="IsSuggest">

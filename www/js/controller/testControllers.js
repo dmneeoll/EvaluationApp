@@ -5,7 +5,7 @@
 angular.module('evaluationApp.testControllers', [])
   .controller('TestPageCtrl', function ($scope, $rootScope, $state, $ionicHistory, $ionicPopup,
                                       commonServices, CacheFactory, alertService, 
-                                      actionVisitServices, UrlServices, PicServices) 
+                                      actionVisitServices, UrlServices, PicServices, externalLinksService) 
   {
     // $scope.canUseAction = function (action) {
     //   return actionVisitServices.canUseAction(action, $rootScope.accessEmployee.WorkdayNO);
@@ -55,6 +55,38 @@ angular.module('evaluationApp.testControllers', [])
         });
     };
 
+    $scope.OpenOutLink = function(){
+        try {
+            //externalLinksService.openUr('http://u3379629.viewer.maka.im/k/9DTNKL9FW3379629');
+            var url = 'https://v.qq.com/x/page/n30310tfzkb.html';
+            //var url = 'https://v.qq.com/x/page/j0506qcq93d.html';
+            //var url = 'https://v.qq.com/x/page/y0876xuxfdg.html';
+            externalLinksService.openUr(url);
+          } catch (ex) {
+            alertService.showAlert(ex.message)
+          }
+    };
 
+      $('#html5-videos').lightGallery(
+          {
+              download: 'false',
+              share: 'false',
+              zoom: 'false',
+              enableDrag: 'false',
+              mousewheel: 'false',
+              fullScreen: 'false'
+          }
+      );
+      $('#html5-videos2').lightGallery(
+        {
+            download: 'false',
+            share: 'false',
+            zoom: 'false',
+            enableDrag: 'false',
+            mousewheel: 'false',
+            fullScreen: 'false'
+        }
+    );
+    
   })
 

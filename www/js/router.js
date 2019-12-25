@@ -8,27 +8,27 @@ angular.module('evaluationApp.router', [])
     .config(['$provide', '$stateProvider', '$urlRouterProvider', function ($provide, $stateProvider, $urlRouterProvider) {
 
         $stateProvider
-//            .state('menu', {
-//                url: "/menu",
-//                abstract: true,
-//                templateUrl: "templates/menu.html",
-//                controller: 'AppCtrl'
-//            })
+            //            .state('menu', {
+            //                url: "/menu",
+            //                abstract: true,
+            //                templateUrl: "templates/menu.html",
+            //                controller: 'AppCtrl'
+            //            })
             .state('signin', {
                 url: '/signin',
                 templateUrl: 'templates/tab-signin.html',
                 controller: 'AppCtrl'
             })
-//            .state('signin', {
-//                url: '/signin',
-//                templateUrl: 'templates/choujiang/choujiangInPutName.html',
-//                controller: 'ChoujiangNameCtrl'
-//            })
-//            .state('signin', {
-//                url: '/signin',
-//                templateUrl: 'templates/choujiangForGame/choujiangGame.html',
-//                controller: 'ChoujiangGameCtrl'
-//            })
+            //            .state('signin', {
+            //                url: '/signin',
+            //                templateUrl: 'templates/choujiang/choujiangInPutName.html',
+            //                controller: 'ChoujiangNameCtrl'
+            //            })
+            //            .state('signin', {
+            //                url: '/signin',
+            //                templateUrl: 'templates/choujiangForGame/choujiangGame.html',
+            //                controller: 'ChoujiangGameCtrl'
+            //            })
             .state('tab', {
                 url: "/tab",
                 abstract: true,
@@ -90,15 +90,15 @@ angular.module('evaluationApp.router', [])
                 templateUrl: 'templates/kqcx/kqyc.html',
                 controller: 'KqAbnormalCtrl'
             })
-//            .state('tabAskForHelp.myHelp', {
-//                url: '/myHelp',
-//                views: {
-//                    'myHelp': {
-//                        templateUrl: 'templates/askForHelp/tab-myHelp.html',
-//                        controller: 'MyHelpCtrl'
-//                    }
-//                }
-//            })
+            //            .state('tabAskForHelp.myHelp', {
+            //                url: '/myHelp',
+            //                views: {
+            //                    'myHelp': {
+            //                        templateUrl: 'templates/askForHelp/tab-myHelp.html',
+            //                        controller: 'MyHelpCtrl'
+            //                    }
+            //                }
+            //            })
 
 
             .state('tab.cust', {
@@ -280,7 +280,7 @@ angular.module('evaluationApp.router', [])
                 templateUrl: 'templates/activity/activityHtml.html',
                 controller: 'ActivityHtmlCtrl'
             })
-            .state('activityGood',{
+            .state('activityGood', {
                 url: '/activityGood',
                 templateUrl: 'templates/activity/activityGood.html',
                 controller: 'ActivityGoodCtrl'
@@ -300,7 +300,7 @@ angular.module('evaluationApp.router', [])
                 templateUrl: 'templates/account/account_rebindPhone.html',
                 controller: 'RebindPhoneCtrl'
             })
-            
+
 
             //移除tab
             // .state('tabCar', {
@@ -548,7 +548,7 @@ angular.module('evaluationApp.router', [])
                 url: '/newEmployeeIntroIDL',
                 templateUrl: 'templates/GBS/newEmployeeIntro/newEmployeeIntro2List.html',
                 controller: 'NewEmployeeIntroIDLCtrl'
-            })               
+            })
             .state('HandbookItemOne', {
                 url: '/HandbookItemOne',
                 templateUrl: 'templates/handBook/handbookItemOne.html',
@@ -632,11 +632,11 @@ angular.module('evaluationApp.router', [])
                 templateUrl: 'templates/chunwan/chunwanZJName.html',
                 controller: 'ChunwanZJNameCtrl'
             })
-//            .state('GBS', {
-//                url: '/GBS',
-//                templateUrl: 'templates/GBS/gbs-list.html'
-//
-//            })
+            //            .state('GBS', {
+            //                url: '/GBS',
+            //                templateUrl: 'templates/GBS/gbs-list.html'
+            //
+            //            })
 
             .state('GBS', {
                 url: '/GBS',
@@ -669,42 +669,42 @@ angular.module('evaluationApp.router', [])
                 templateUrl: 'templates/GBS/lostFound/lostFound.html',
                 abstract: true,
             })
-                .state('tab_LostFound.List', {
-                    url: '/lostFoundList',
-                    views: {
-                        'lostFoundList': {
-                            templateUrl: 'templates/GBS/lostFound/lostFound_list.html',
-                            controller: 'LostFoundListCtrl'
-                        }
+            .state('tab_LostFound.List', {
+                url: '/lostFoundList',
+                views: {
+                    'lostFoundList': {
+                        templateUrl: 'templates/GBS/lostFound/lostFound_list.html',
+                        controller: 'LostFoundListCtrl'
                     }
-                })
-                .state('tab_LostFound.My', {
-                    url: '/lostFoundMy',
-                    views: {
-                        'lostFoundMy': {
-                            templateUrl: 'templates/GBS/lostFound/lostFound_my.html',
-                            controller: 'LostFoundMyCtrl'
-                        }
+                }
+            })
+            .state('tab_LostFound.My', {
+                url: '/lostFoundMy',
+                views: {
+                    'lostFoundMy': {
+                        templateUrl: 'templates/GBS/lostFound/lostFound_my.html',
+                        controller: 'LostFoundMyCtrl'
                     }
-                })
-                .state('tab_LostFound.Public', {
-                    url: '/lostFoundPublic',
-                    views: {
-                        'lostFoundPublic': {
-                            templateUrl: 'templates/GBS/lostFound/lostFound_public.html',
-                            controller: 'LostFoundPublicCtrl'
-                        }
+                }
+            })
+            .state('tab_LostFound.Public', {
+                url: '/lostFoundPublic',
+                views: {
+                    'lostFoundPublic': {
+                        templateUrl: 'templates/GBS/lostFound/lostFound_public.html',
+                        controller: 'LostFoundPublicCtrl'
                     }
-                })
-                .state('tab_LostFound.Detail', {
-                    url: '/lostFoundDetail',
-                    views: {
-                        'lostFoundList': {
-                            templateUrl: 'templates/GBS/lostFound/lostFound_detail.html',
-                            controller: 'LostFoundDetailCtrl'
-                        }
+                }
+            })
+            .state('tab_LostFound.Detail', {
+                url: '/lostFoundDetail',
+                views: {
+                    'lostFoundList': {
+                        templateUrl: 'templates/GBS/lostFound/lostFound_detail.html',
+                        controller: 'LostFoundDetailCtrl'
                     }
-                })
+                }
+            })
             .state('earthWeekNoticeList', {
                 url: '/earthWeekNoticeList',
                 templateUrl: 'templates/earthWeek/notice-list.html',
@@ -715,230 +715,230 @@ angular.module('evaluationApp.router', [])
                 templateUrl: 'templates/cser/cser-list.html',
                 controller: 'CSERCtrl'
             })
-                .state('cserDate', {
-                    url: '/cserDate',
-                    templateUrl: 'templates/cser/cser-Date.html',
-                    controller: 'CserDateCtrl'
-                })
-                .state('cser_kidsCaring', {
-                    url: '/cser_kidsCaring',
-                    templateUrl: 'templates/cser/cser-kidsCaring.html',
-                    controller: 'CSERKidsCaringCtrl'
-                })
-                .state('cser_sumwinCamp', {
-                    url: '/cser_sumwinCamp',
-                    templateUrl: 'templates/cser/cser-sumwinCamp.html',
-                    controller: 'CSERSumwinCampCtrl'
-                })
-                .state('cser_activityCenter', {
-                    url: '/cser_activityCenter',
-                    templateUrl: 'templates/cser/cser_activityCenterList.html',
-                    controller: 'CSERActivityCenterCtrl'
-                })
-                    .state('cser_center_map', {
-                        url: '/cser_center_map',
-                        templateUrl: 'templates/cser/activityCenter/cser_activityCenterMap.html',
-                        controller: 'CSERActivityCenterMapCtrl'
-                    })
-                    .state('cser_center_protocol', {
-                        url: '/cser_center_protocol',
-                        templateUrl: 'templates/cser/activityCenter/cser_activityCenterProtocol.html',
-                        controller: 'CSERActivityCenterProtocolCtrl'
-                    })
-                    .state('cser_center_faq', {
-                        url: '/cser_center_faq',
-                        templateUrl: 'templates/cser/activityCenter/cser_activityCenterFaq.html',
-                        controller: 'CSERActivityCenterFaqCtrl'
-                    })
-                    .state('cser_center_repair', {
-                        url: '/cser_center_repair',
-                        templateUrl: 'templates/cser/activityCenter/cser_activityCenterRepair.html',
-                        controller: 'CSERActivityCenterRepairCtrl'
-                    })
-                    .state('cser_center_suggest', {
-                        url: '/cser_center_suggest',
-                        templateUrl: 'templates/cser/activityCenter/cser_activityCenterSuggest.html',
-                        controller: 'CSERActivityCenterSuggestCtrl'
-                    })
+            .state('cserDate', {
+                url: '/cserDate',
+                templateUrl: 'templates/cser/cser-Date.html',
+                controller: 'CserDateCtrl'
+            })
+            .state('cser_kidsCaring', {
+                url: '/cser_kidsCaring',
+                templateUrl: 'templates/cser/cser-kidsCaring.html',
+                controller: 'CSERKidsCaringCtrl'
+            })
+            .state('cser_sumwinCamp', {
+                url: '/cser_sumwinCamp',
+                templateUrl: 'templates/cser/cser-sumwinCamp.html',
+                controller: 'CSERSumwinCampCtrl'
+            })
+            .state('cser_activityCenter', {
+                url: '/cser_activityCenter',
+                templateUrl: 'templates/cser/cser_activityCenterList.html',
+                controller: 'CSERActivityCenterCtrl'
+            })
+            .state('cser_center_map', {
+                url: '/cser_center_map',
+                templateUrl: 'templates/cser/activityCenter/cser_activityCenterMap.html',
+                controller: 'CSERActivityCenterMapCtrl'
+            })
+            .state('cser_center_protocol', {
+                url: '/cser_center_protocol',
+                templateUrl: 'templates/cser/activityCenter/cser_activityCenterProtocol.html',
+                controller: 'CSERActivityCenterProtocolCtrl'
+            })
+            .state('cser_center_faq', {
+                url: '/cser_center_faq',
+                templateUrl: 'templates/cser/activityCenter/cser_activityCenterFaq.html',
+                controller: 'CSERActivityCenterFaqCtrl'
+            })
+            .state('cser_center_repair', {
+                url: '/cser_center_repair',
+                templateUrl: 'templates/cser/activityCenter/cser_activityCenterRepair.html',
+                controller: 'CSERActivityCenterRepairCtrl'
+            })
+            .state('cser_center_suggest', {
+                url: '/cser_center_suggest',
+                templateUrl: 'templates/cser/activityCenter/cser_activityCenterSuggest.html',
+                controller: 'CSERActivityCenterSuggestCtrl'
+            })
             .state('FE', {
                 url: '/FE',
                 templateUrl: 'templates/FE/FE-list.html',
                 controller: 'FECtrl'
             })
-                .state('FE_repair', {
-                    url: '/FE_repair',
-                    templateUrl: 'templates/FE/FE_Repair.html',
-                    controller: 'FERepairCtrl'
-                })
-            .state('activityEHS',{
+            .state('FE_repair', {
+                url: '/FE_repair',
+                templateUrl: 'templates/FE/FE_Repair.html',
+                controller: 'FERepairCtrl'
+            })
+            .state('activityEHS', {
                 url: '/activityEHS',
                 templateUrl: 'templates/ehs/activityEHS.html',
                 controller: 'ActivityEHSCtrl'
             })
-            .state('basicGuide',{
+            .state('basicGuide', {
                 url: '/basicGuide',
                 templateUrl: 'templates/GBS/basicGuide.html',
                 controller: 'BasicGuideCtrl'
             })
-            .state('ltpTraining',{
+            .state('ltpTraining', {
                 url: '/ltpTraining',
                 templateUrl: 'templates/GBS/ltpTraining.html',
                 controller: null
             })
-            .state('hrGuide',{
+            .state('hrGuide', {
                 url: '/hrGuide',
                 templateUrl: 'templates/GBS/hrGuide/hrGuideList.html',
                 controller: 'HrGuideListCtrl'
             })
-                .state('contractGuide',{
-                    url: '/contractGuide',
-                    templateUrl: 'templates/GBS/hrGuide/contractGuide.html',
-                    controller: null
-                })
-                .state('updateIDInfoGuide',{
-                    url: '/updateIDInfoGuide',
-                    templateUrl: 'templates/GBS/hrGuide/updateIDInfoGuide.html',
-                    controller: null
-                })
-            .state('admin',{
+            .state('contractGuide', {
+                url: '/contractGuide',
+                templateUrl: 'templates/GBS/hrGuide/contractGuide.html',
+                controller: null
+            })
+            .state('updateIDInfoGuide', {
+                url: '/updateIDInfoGuide',
+                templateUrl: 'templates/GBS/hrGuide/updateIDInfoGuide.html',
+                controller: null
+            })
+            .state('admin', {
                 url: '/admin',
                 templateUrl: 'templates/admin/admin-list.html',
                 controller: 'AdminCtrl'
             })
             /*sub of admin*/
-            .state('icCardLost',{
+            .state('icCardLost', {
                 url: '/icCardLost',
                 templateUrl: 'templates/admin/icCardLost.html',
                 controller: 'ICCardLostCtrl'
             })
-            .state('dormManage',{
+            .state('dormManage', {
                 url: '/dormManage',
                 templateUrl: 'templates/admin/dormManage-list.html',
                 controller: 'DormManageCtrl'
             })
-                /*sub of dormManage*/
-                .state('dormHotline',{
-                    url: '/dormHotline',
-                    templateUrl: 'templates/admin/dorm/dormHotline.html',
-                    controller: 'DormHotlineCtrl'
-                })
-                .state('housingAllowance',{
-                    url: '/housingAllowance',
-                    templateUrl: 'templates/admin/dorm/housingAllowance.html',
-                    controller: 'HousingAllowanceCtrl'
-                })            
-                .state('dormNoticeProtocol',{
-                    url: '/dormNoticeProtocol',
-                    templateUrl: 'templates/admin/dorm/protocolDormPage.html',
-                    controller:'ProtocolDormPageCtrl'
-                })
-                .state('applyDorm',{
-                    url: '/applyDorm',
-                    templateUrl: 'templates/admin/dorm/applyDorm.html',
-                    controller: 'ApplyDormCtrl'
-                })
-                .state('chargingDefine',{
-                    url: '/chargingDefine',
-                    templateUrl: 'templates/admin/dorm/chargingDefine.html',
-                    controller: 'ChargingDefineCtrl'
-                })
-                // .state('dormMap', {
-                //     url: '/dormMap',
-                //     templateUrl: 'templates/admin/dorm/dormMap.html',
-                //     controller: 'DormMapCtrl'
-                // })
-                .state('dormNotice', {
-                    url: '/dormNotice',
-                    templateUrl: 'templates/admin/dorm/dormNotice-list.html',
-                    controller: 'DormNoticeCtrl'
-                })
-                .state('dormNoticeDetail', {
-                    url: '/dormNoticeDetail',
-                    templateUrl: 'templates/admin/dorm/dormNotice-detail.html',
-                    controller: 'DormNoticeDetailCtrl'
-                })
-                .state('repairDorm', {
-                    url: '/repairDorm',
-                    templateUrl: 'templates/admin/dorm/repairDorm.html',
-                    controller: 'RepairDormCtrl'
-                })
-                .state('reissueKey', {
-                    url: '/reissueKey',
-                    templateUrl: 'templates/admin/dorm/reissueKey.html',
-                    controller: 'ReissueKeyCtrl'
-                })
-                .state('freeDormWifi', {
-                    url: '/freeDormWifi',
-                    templateUrl: 'templates/admin/dorm/freeDormWifi.html',
-                    controller: 'FreeDormWifiCtrl'
-                })
-                .state('freeDormWifi_ios', {
-                    url: '/freeDormWifi_ios',
-                    templateUrl: 'templates/admin/dorm/freeDormWifi_ios.html',
-                    controller: null
-                })
-                .state('freeDormWifi_android', {
-                    url: '/freeDormWifi_android',
-                    templateUrl: 'templates/admin/dorm/freeDormWifi_android.html',
-                    controller: null
-                })
-                .state('dormAskAndAns', {
-                    url: '/dormAskAndAns',
-                    templateUrl: 'templates/admin/dorm/dormAskAndAns.html',
-                    controller: 'DormAskAndAnsCtrl'
-                })
-                .state('dormSuggest', {
-                    url: '/dormSuggest',
-                    templateUrl: 'templates/admin/dorm/dormSuggest.html',
-                    controller: 'DormSuggestCtrl'
-                })
+            /*sub of dormManage*/
+            .state('dormHotline', {
+                url: '/dormHotline',
+                templateUrl: 'templates/admin/dorm/dormHotline.html',
+                controller: 'DormHotlineCtrl'
+            })
+            .state('housingAllowance', {
+                url: '/housingAllowance',
+                templateUrl: 'templates/admin/dorm/housingAllowance.html',
+                controller: 'HousingAllowanceCtrl'
+            })
+            .state('dormNoticeProtocol', {
+                url: '/dormNoticeProtocol',
+                templateUrl: 'templates/admin/dorm/protocolDormPage.html',
+                controller: 'ProtocolDormPageCtrl'
+            })
+            .state('applyDorm', {
+                url: '/applyDorm',
+                templateUrl: 'templates/admin/dorm/applyDorm.html',
+                controller: 'ApplyDormCtrl'
+            })
+            .state('chargingDefine', {
+                url: '/chargingDefine',
+                templateUrl: 'templates/admin/dorm/chargingDefine.html',
+                controller: 'ChargingDefineCtrl'
+            })
+            // .state('dormMap', {
+            //     url: '/dormMap',
+            //     templateUrl: 'templates/admin/dorm/dormMap.html',
+            //     controller: 'DormMapCtrl'
+            // })
+            .state('dormNotice', {
+                url: '/dormNotice',
+                templateUrl: 'templates/admin/dorm/dormNotice-list.html',
+                controller: 'DormNoticeCtrl'
+            })
+            .state('dormNoticeDetail', {
+                url: '/dormNoticeDetail',
+                templateUrl: 'templates/admin/dorm/dormNotice-detail.html',
+                controller: 'DormNoticeDetailCtrl'
+            })
+            .state('repairDorm', {
+                url: '/repairDorm',
+                templateUrl: 'templates/admin/dorm/repairDorm.html',
+                controller: 'RepairDormCtrl'
+            })
+            .state('reissueKey', {
+                url: '/reissueKey',
+                templateUrl: 'templates/admin/dorm/reissueKey.html',
+                controller: 'ReissueKeyCtrl'
+            })
+            .state('freeDormWifi', {
+                url: '/freeDormWifi',
+                templateUrl: 'templates/admin/dorm/freeDormWifi.html',
+                controller: 'FreeDormWifiCtrl'
+            })
+            .state('freeDormWifi_ios', {
+                url: '/freeDormWifi_ios',
+                templateUrl: 'templates/admin/dorm/freeDormWifi_ios.html',
+                controller: null
+            })
+            .state('freeDormWifi_android', {
+                url: '/freeDormWifi_android',
+                templateUrl: 'templates/admin/dorm/freeDormWifi_android.html',
+                controller: null
+            })
+            .state('dormAskAndAns', {
+                url: '/dormAskAndAns',
+                templateUrl: 'templates/admin/dorm/dormAskAndAns.html',
+                controller: 'DormAskAndAnsCtrl'
+            })
+            .state('dormSuggest', {
+                url: '/dormSuggest',
+                templateUrl: 'templates/admin/dorm/dormSuggest.html',
+                controller: 'DormSuggestCtrl'
+            })
             /*sub of EAdmin*/
-              .state('EAdminList',{
+            .state('EAdminList', {
                 url: '/EAdminList',
                 templateUrl: 'templates/admin/EAdmin/eAdmin-List.html',
                 controller: 'EAdminListCtrl'
             })
-            .state('eCarApproveList',{
+            .state('eCarApproveList', {
                 url: '/eCarApproveList',
                 templateUrl: 'templates/admin/EAdmin/eCarApproveList-List.html',
                 controller: 'ECarApproveListCtrl'
             })
-              .state('eCarApproveDetail', {
-                  url: '/eCarApproveDetail',
-                  templateUrl: 'templates/admin/EAdmin/eCarApprover_Details.html',
-                  controller: 'ECarApproveDetailsCtrl'
-              })
-            .state('DormMngApplication',{
+            .state('eCarApproveDetail', {
+                url: '/eCarApproveDetail',
+                templateUrl: 'templates/admin/EAdmin/eCarApprover_Details.html',
+                controller: 'ECarApproveDetailsCtrl'
+            })
+            .state('DormMngApplication', {
                 url: '/DormMngApplication',
                 templateUrl: 'templates/admin/EAdmin/DormMngApplication-List.html',
                 controller: 'DormMngApplicationCtrl'
             })
-                .state('DormMngApplicationDetail',{
-                    url: '/DormMngApplicationDetail',
-                    templateUrl: 'templates/admin/EAdmin/DormMngApplication-Detail.html',
-                    controller: 'DormMngApplicationDetailCtrl'
-                })
-                .state('DormVisitorApplicationDetail',{
-                    url: '/DormVisitorApplicationDetail',
-                    templateUrl: 'templates/admin/EAdmin/DormVisitorApplication-Detail.html',
-                    controller: 'DormVisitorApplicationDetailCtrl'
-                })
-            .state('DormHousingSubsidy',{
+            .state('DormMngApplicationDetail', {
+                url: '/DormMngApplicationDetail',
+                templateUrl: 'templates/admin/EAdmin/DormMngApplication-Detail.html',
+                controller: 'DormMngApplicationDetailCtrl'
+            })
+            .state('DormVisitorApplicationDetail', {
+                url: '/DormVisitorApplicationDetail',
+                templateUrl: 'templates/admin/EAdmin/DormVisitorApplication-Detail.html',
+                controller: 'DormVisitorApplicationDetailCtrl'
+            })
+            .state('DormHousingSubsidy', {
                 url: '/DormHousingSubsidy',
                 templateUrl: 'templates/admin/EAdmin/DormHousingSubsidy-List.html',
                 controller: 'DormHousingSubsidyCtrl'
             })
-                .state('DormHousingSubsidyDetail',{
-                    url: '/DormHousingSubsidyDetail',
-                    templateUrl: 'templates/admin/EAdmin/DormHousingSubsidy-Detail.html',
-                    controller: 'DormHousingSubsidyDetailCtrl'
-                })
-            .state('carCheck',{
+            .state('DormHousingSubsidyDetail', {
+                url: '/DormHousingSubsidyDetail',
+                templateUrl: 'templates/admin/EAdmin/DormHousingSubsidy-Detail.html',
+                controller: 'DormHousingSubsidyDetailCtrl'
+            })
+            .state('carCheck', {
                 url: '/CarCheck',
                 templateUrl: 'templates/admin/CarCheck/CarCheck.html',
                 controller: 'CarCheckCtrl'
             })
-            .state('carCheckRecord',{
+            .state('carCheckRecord', {
                 url: '/CarCheckRecord',
                 templateUrl: 'templates/admin/CarCheck/CarCheckRecord.html',
                 controller: 'CarCheckRecordCtrl'
@@ -963,7 +963,7 @@ angular.module('evaluationApp.router', [])
                 url: '/dismissIntro',
                 templateUrl: 'templates/GBS/employeeDismiss/dismissIntro-list.html',
                 controller: 'DismissIntroCtrl'
-            })        
+            })
             .state('dismissStatus', {
                 url: '/dismissStatus',
                 templateUrl: 'templates/GBS/employeeDismiss/dismissStatus.html',
@@ -979,83 +979,78 @@ angular.module('evaluationApp.router', [])
                 templateUrl: 'templates/research/researchNew.html',
                 controller: 'ResearchNewCtrl'
             })
-            
-        .state('dynpage', {
-            url: '/dynpage',
-            templateUrl: 'templates/generalNotice/dynPage.html',
-            controller: 'DynpageCtrl'
-        })
-        .state('testPage', {
-            url: '/testPage',
-            templateUrl: 'templates/test/testPage.html',
-            controller: 'TestPageCtrl'
-        })
-        .state('union', {
-            url: '/union',
-            templateUrl: 'templates/union/union-list.html',
-            controller: 'UnionCtrl'
-        })
+
+            .state('dynpage', {
+                url: '/dynpage',
+                templateUrl: 'templates/generalNotice/dynPage.html',
+                controller: 'DynpageCtrl'
+            })
+            .state('testPage', {
+                url: '/testPage',
+                templateUrl: 'templates/test/testPage.html',
+                controller: 'TestPageCtrl'
+            })
+            .state('union', {
+                url: '/union',
+                templateUrl: 'templates/union/union-list.html',
+                controller: 'UnionCtrl'
+            })
             /*sub of union*/
             .state('union_commu', {
                 url: '/union_commu',
                 templateUrl: 'templates/union/communicate.html',
                 controller: 'UnionCommuCtrl'
             })
-                .state('union_commu_hotline',{
-                    url: '/union_commu_hotline',
-                    templateUrl: 'templates/union/commu_hotline.html',
-                    controller: null
-                })
-                .state('union_commu_other',{
-                    url: '/union_commu_other',
-                    templateUrl: 'templates/union/commu_other.html',
-                    controller: 'CommuOtherCtrl'
-                })            
+            .state('union_commu_hotline', {
+                url: '/union_commu_hotline',
+                templateUrl: 'templates/union/commu_hotline.html',
+                controller: null
+            })
+            .state('union_commu_other', {
+                url: '/union_commu_other',
+                templateUrl: 'templates/union/commu_other.html',
+                controller: 'CommuOtherCtrl'
+            })
             .state('union_welfare', {
                 url: '/union_welfare',
                 templateUrl: 'templates/union/welfare.html',
                 controller: 'UnionWelfareCtrl'
             })
-                .state('union_welfare_fest', {
-                    url: '/union_welfare_fest',
-                    templateUrl: 'templates/union/welfare_fest.html',
-                    controller: 'UnionWelfareFestCtrl'
-                })
-                .state('union_welfare_union', {
-                    url: '/union_welfare_union',
-                    templateUrl: 'templates/union/welfare_union.html',
-                    controller: 'UnionWelfareWnionCtrl'
-                })
-                .state('union_welfare_old', {
-                    url: '/union_welfare_old',
-                    templateUrl: 'templates/union/welfare_Old.html',
-                    controller: 'UnionWelfareOldCtrl'
-                })
-                .state('union_welfare_dmUnion', {
-                    url: '/union_welfare_dmUnion',
-                    templateUrl: 'templates/union/welfare_dmUnion.html',
-                    controller: 'UnionWelfareDMCtrl'
-                })
-                    .state('union_welfare_dm_his', {
-                        url: '/union_welfare_dm_his',
-                        templateUrl: 'templates/union/welfare_dm_history.html',
-                        controller: 'UnionWelfareDMHistoryCtrl'
-                    })
-                    .state('union_welfare_dm_guide', {
-                        url: '/union_welfare_dm_guide',
-                        templateUrl: 'templates/union/welfare_dm_guide.html',
-                        controller: null
-                    })                
-                .state('union_welfare_notice', {
-                    url: '/union_welfare_notice',
-                    templateUrl: 'templates/union/welfare_notice.html',
-                    controller: 'UnionWelfareNoticeCtrl'
-                })
-                .state('union_welfare_applyResult', {
-                    url: '/union_welfare_applyResult',
-                    templateUrl: 'templates/union/welfare_applyResult.html',
-                    controller: 'UnionWelfareApplyResultCtrl'
-                })
+            .state('union_welfare_fest', {
+                url: '/union_welfare_fest',
+                templateUrl: 'templates/union/welfare_fest.html',
+                controller: 'UnionWelfareFestCtrl'
+            })
+            .state('union_welfare_union', {
+                url: '/union_welfare_union',
+                templateUrl: 'templates/union/welfare_union.html',
+                controller: 'UnionWelfareWnionCtrl'
+            })
+            .state('union_welfare_dmUnion', {
+                url: '/union_welfare_dmUnion',
+                templateUrl: 'templates/union/welfare_dmUnion.html',
+                controller: 'UnionWelfareDMCtrl'
+            })
+            .state('union_welfare_dm_his', {
+                url: '/union_welfare_dm_his',
+                templateUrl: 'templates/union/welfare_dm_history.html',
+                controller: 'UnionWelfareDMHistoryCtrl'
+            })
+            .state('union_welfare_dm_guide', {
+                url: '/union_welfare_dm_guide',
+                templateUrl: 'templates/union/welfare_dm_guide.html',
+                controller: null
+            })
+            .state('union_welfare_notice', {
+                url: '/union_welfare_notice',
+                templateUrl: 'templates/union/welfare_notice.html',
+                controller: 'UnionWelfareNoticeCtrl'
+            })
+            .state('union_welfare_applyResult', {
+                url: '/union_welfare_applyResult',
+                templateUrl: 'templates/union/welfare_applyResult.html',
+                controller: 'UnionWelfareApplyResultCtrl'
+            })
             .state('union_activity', {
                 url: '/union_activity',
                 templateUrl: 'templates/union/union-activity.html',
@@ -1066,71 +1061,61 @@ angular.module('evaluationApp.router', [])
                 templateUrl: 'templates/union/helpSupport.html',
                 controller: 'UnionHelpSupportCtrl'
             })
-            .state('union_helpSupport_guide', {
-                url: '/union_helpSupport_guide',
-                templateUrl: 'templates/union/helpSupportGuide.html',
-                controller: 'UnionHelpSupportGuideCtrl'
-            })
-            .state('union_helpSupport_contact', {
-                url: '/union_helpSupport_contact',
-                templateUrl: 'templates/union/helpSupportContact.html',
-                controller: 'UnionHelpSupportContactCtrl'
-            })            
             .state('union_wonderfulmoment', {
                 url: '/union_wonderfulmoment',
                 templateUrl: 'templates/union/wonderfulMoment.html',
                 controller: 'UnionWonderfulmomentCtrl'
             })
-                .state('union_wonderfulmoment_detail', {
-                    url: '/union_wonderfulmoment_detail',
-                    templateUrl: 'templates/union/wonderfulMomentDetail.html',
-                    controller: 'UnionWonderfulmomentDetailCtrl'
-                })
+            .state('union_wonderfulmoment_detail', {
+                url: '/union_wonderfulmoment_detail',
+                templateUrl: 'templates/union/wonderfulMomentDetail.html',
+                controller: 'UnionWonderfulmomentDetailCtrl'
+            })
             .state('union_suggest', {
                 url: '/union_suggest',
                 templateUrl: 'templates/union/suggest.html',
                 controller: 'UnionSuggestCtrl'
             })
-                .state('union_suggest_my', {
-                    url: '/union_suggest_my',
-                    templateUrl: 'templates/union/suggest_my.html',
-                    controller: 'UnionSuggestMyCtrl'
-                })
-                .state('union_suggest_open', {
-                    url: '/union_suggest_open',
-                    templateUrl: 'templates/union/suggest_open.html',
-                    controller: 'UnionSuggestOpenCtrl'
-                })
-                .state('union_suggest_openDetail', {
-                    url: '/union_suggest_openDetail',
-                    templateUrl: 'templates/union/suggest_openDetail.html',
-                    controller: 'UnionSuggestOpenDetailCtrl'
-                })
-        .state('mechCharity', {
-            url: '/mechCharity',
-            templateUrl: 'templates/mechCharity/mech-list.html',
-            controller: 'MechCharityCtrl'
-        })
+            .state('union_suggest_my', {
+                url: '/union_suggest_my',
+                templateUrl: 'templates/union/suggest_my.html',
+                controller: 'UnionSuggestMyCtrl'
+            })
+            .state('union_suggest_open', {
+                url: '/union_suggest_open',
+                templateUrl: 'templates/union/suggest_open.html',
+                controller: 'UnionSuggestOpenCtrl'
+            })
+            .state('union_suggest_openDetail', {
+                url: '/union_suggest_openDetail',
+                templateUrl: 'templates/union/suggest_openDetail.html',
+                controller: 'UnionSuggestOpenDetailCtrl'
+            })
+            .state('mechCharity', {
+                url: '/mechCharity',
+                templateUrl: 'templates/mechCharity/mech-list.html',
+                controller: 'MechCharityCtrl'
+            })
             .state('mechCharity_introduce', {
                 url: '/mechCharity_introduce',
                 templateUrl: 'templates/mechCharity/mech-introduce.html',
                 controller: 'MechCharityIntroduceCtrl'
             })
-                .state('mechCharity_introduce_detail', {
-                    url: '/mechCharity_introduce_detail',
-                    templateUrl: 'templates/mechCharity/mech-introDetail.html',
-                    controller: null
-                })
-                .state('mechCharity_introduce_arch', {
-                    url: '/mechCharity_introduce_arch',
-                    templateUrl: 'templates/mechCharity/mech-introArch.html',
-                    controller: null
-                })
-                .state('mechCharity_introduce_proj', {
-                    url: '/mechCharity_introduce_proj',
-                    templateUrl: 'templates/mechCharity/mech-introProj.html',
-                    controller: null
-                })                                
+            .state('mechCharity_introduce_detail', {
+                url: '/mechCharity_introduce_detail',
+                templateUrl: 'templates/mechCharity/mech-introDetail.html',
+                controller: null
+            })
+            .state('mechCharity_introduce_arch', {
+                url: '/mechCharity_introduce_arch',
+                templateUrl: 'templates/mechCharity/mech-introArch.html',
+                controller: null
+            })
+            .state('mechCharity_introduce_proj', {
+                url: '/mechCharity_introduce_proj',
+                templateUrl: 'templates/mechCharity/mech-introProj.html',
+                controller: null
+            })
             .state('mechCharity_activity', {
                 url: '/mechCharity_activity',
                 templateUrl: 'templates/mechCharity/mech-activity.html',
@@ -1141,63 +1126,99 @@ angular.module('evaluationApp.router', [])
                 templateUrl: 'templates/mechCharity/mech-wonderfulMoment.html',
                 controller: 'MechCharityWonderfulMomentCtrl'
             })
-                .state('mechCharity_wonderfulMoment_Detail', {
-                    url: '/mechCharity_wonderfulMoment_Detail',
-                    templateUrl: 'templates/mechCharity/mech-wonderfulMomentDetail.html',
-                    controller: 'MechCharityWonderfulMomentDetailCtrl'
-                })
+            .state('mechCharity_wonderfulMoment_Detail', {
+                url: '/mechCharity_wonderfulMoment_Detail',
+                templateUrl: 'templates/mechCharity/mech-wonderfulMomentDetail.html',
+                controller: 'MechCharityWonderfulMomentDetailCtrl'
+            })
             .state('mechCharity_accountingPublic', {
                 url: '/mechCharity_accountingPublic',
                 templateUrl: 'templates/mechCharity/mech-accountingPublic.html',
                 controller: 'MechCharityAccountingPublicCtrl'
             })
-                .state('mechCharity_publicMoney', {
-                    url: '/mechCharity_publicMoney',
-                    templateUrl: 'templates/mechCharity/mech-accountingPublicMoney.html',
-                    controller: 'MechCharityAccountingPublicMoneyCtrl'
-                })
-                .state('mechCharity_publicMaterial', {
-                    url: '/mechCharity_publicMaterial',
-                    templateUrl: 'templates/mechCharity/mech-accountingPublicMaterial.html',
-                    controller: 'MechCharityAccountingPublicMaterialCtrl'
-                })
-                .state('mechCharity_publicYear', {
-                    url: '/mechCharity_publicYear',
-                    templateUrl: 'templates/mechCharity/mech-accountingPublicYear.html',
-                    controller: 'MechCharityAccountingPublicYearCtrl'
-                })            
+            .state('mechCharity_publicMoney', {
+                url: '/mechCharity_publicMoney',
+                templateUrl: 'templates/mechCharity/mech-accountingPublicMoney.html',
+                controller: 'MechCharityAccountingPublicMoneyCtrl'
+            })
+            .state('mechCharity_publicMaterial', {
+                url: '/mechCharity_publicMaterial',
+                templateUrl: 'templates/mechCharity/mech-accountingPublicMaterial.html',
+                controller: 'MechCharityAccountingPublicMaterialCtrl'
+            })
+            .state('mechCharity_publicYear', {
+                url: '/mechCharity_publicYear',
+                templateUrl: 'templates/mechCharity/mech-accountingPublicYear.html',
+                controller: 'MechCharityAccountingPublicYearCtrl'
+            })
             .state('mechCharity_research', {
                 url: '/mechCharity_research',
                 templateUrl: 'templates/mechCharity/mech-researchList.html',
                 controller: 'MechCharityResearchCtrl'
             })
-                .state('mechCharity_research_detail', {
-                    url: '/mechCharity_research_detail',
-                    templateUrl: 'templates/mechCharity/mech-researchDetail.html',
-                    controller: 'MechCharityResearchDetailCtrl'
-                })
-        .state('canteenImg', {
-            url: '/canteenImg',
-            templateUrl: 'templates/admin/canteen-list.html',
-            controller: 'CanteenImgCtrl'
-        })                
-        .state('act_AnnualPartyTicket2019', {
-            url: '/act_AnnualPartyTicket2019',
-            templateUrl: 'templates/activity/annualPartyTicket2019.html',
-            controller: 'AnnualPartyTicket2019Ctrl'
-        })
-        .state('act_2019SpringSubsidy', {
-            url: '/act_2019SpringSubsidy',
-            templateUrl: 'templates/activity/activity2019SprintSubsidy.html',
-            controller: 'Act2019SpringSubsidyCtrl'
-        })
-        .state('act_PoetryContest', {
-            url: '/act_PoetryContest',
-            templateUrl: 'templates/activity/activityPoetryContest.html',
-            controller: 'ActPoetryContestCtrl'
-        })        
+            .state('mechCharity_research_detail', {
+                url: '/mechCharity_research_detail',
+                templateUrl: 'templates/mechCharity/mech-researchDetail.html',
+                controller: 'MechCharityResearchDetailCtrl'
+            })
+            .state('canteenImg', {
+                url: '/canteenImg',
+                templateUrl: 'templates/admin/canteen-list.html',
+                controller: 'CanteenImgCtrl'
+            })
+            .state('act_AnnualPartyTicket2019', {
+                url: '/act_AnnualPartyTicket2019',
+                templateUrl: 'templates/activity/annualPartyTicket2019.html',
+                controller: 'AnnualPartyTicket2019Ctrl'
+            })
+            .state('act_2019SpringSubsidy', {
+                url: '/act_2019SpringSubsidy',
+                templateUrl: 'templates/activity/activity2019SprintSubsidy.html',
+                controller: 'Act2019SpringSubsidyCtrl'
+            })
+            .state('act_PoetryContest', {
+                url: '/act_PoetryContest',
+                templateUrl: 'templates/activity/activityPoetryContest.html',
+                controller: 'ActPoetryContestCtrl'
+            })
+            .state('act_PoetryContestTime', {
+                url: '/act_PoetryContestTime',
+                templateUrl: 'templates/activity/activityPoetryContest.html',
+                controller: 'ActPoetryContestTimeCtrl'
+            })
+            .state('BallFieldBooking', {
+                url: "/BallFieldBooking",
+                abstract: true,
+                templateUrl: "templates/other/BallFieldBooking.html"
+            })
+            .state('BallFieldBooking.Notice', {
+                url: '/BallFieldBookingNotice',
+                views: {
+                    'BallFieldBookingNotice': {
+                        templateUrl: 'templates/other/BallFieldBooking_notice.html',
+                        controller: 'BallFieldBookingNoticeCtrl'
+                    }
+                }
+            })
+            .state('BallFieldBooking.Query', {
+                url: '/BallFieldBookingQuery',
+                views: {
+                    'BallFieldBookingQuery': {
+                        templateUrl: 'templates/other/BallFieldBooking_query.html',
+                        controller: 'BallFieldBookingQueryCtrl'
+                    }
+                }
+            })
+            .state('BallFieldBooking.MyBook', {
+                url: '/BallFieldBookingBook',
+                views: {
+                    'BallFieldBookingBook': {
+                        templateUrl: 'templates/other/BallFieldBooking_mybook.html',
+                        controller: 'BallFieldBookingBookCtrl'
+                    }
+                }
+            });
 
-        
+
         $urlRouterProvider.otherwise('signin');
-
-    }])
+    }]);
