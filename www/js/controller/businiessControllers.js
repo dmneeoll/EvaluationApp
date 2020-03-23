@@ -999,19 +999,25 @@ angular.module('evaluationApp.businiessControllers', ['ngSanitize'])
       }
       return $scope.canUseAction(action);
     };
-    $scope.canUseMech38 = function () {
-      if ($scope.isMechanical) {
+    $scope.canUseB1138 = function () {
+      // if('2566117'==$scope.accessEmployee.WorkdayNO){
+      //   return true;
+      // }
+      // if(!betweenTime('2020-03-06 00:00', '2020-03-09 08:30')){
+      //   return false;
+      // }
+      if ($scope.isB11) {
         // todo check gender
         return true;
       }
       return false;
     };
-    $scope.checkOpenMech38 = function () {
-      // if(!betweenTime('2019-03-06 08:30', '2019-03-07 17:00')){
-      //     alertService.showAlert("活动时间是2019年3月6日 8:30 ~ 2019年3月7日 17:00。")
-      //     return
-      // }
-      $scope.openOutLink('https://www.wjx.cn/jq/34994975.aspx');
+    $scope.checkOpenB1138 = function () {
+      if(!betweenTime('2019-03-06 08:30', '2019-03-08 17:00')){
+          alertService.showAlert("活动时间是2019年3月6日 8:30 ~ 2019年3月7日 17:00。")
+          return
+      }
+      $scope.openOutLink('https://ks.wjx.top/jq/60098836.aspx');
     };
 
     // 历史活动列表
@@ -1636,21 +1642,25 @@ angular.module('evaluationApp.businiessControllers', ['ngSanitize'])
       }
     }
   })
-  .controller('ActivityHtmlCtrl', function ($scope, CacheFactory, noticeService, alertService, $state, $ionicHistory, $location, commonServices) {
+  .controller('ActivityHtmlCtrl', function ($scope, CacheFactory, noticeService, 
+    alertService, $state, $ionicHistory, $location, commonServices, UrlServices) 
+  {
     $scope.accessEmployee = JSON.parse(CacheFactory.get('accessEmployee'))
     var activityID = CacheFactory.get('activityID')
 
     var strHtml = ''
 
-    var params = { WorkdayNO: $scope.accessEmployee.WorkdayNO,Token: $scope.accessEmployee.Token,ActivityID: activityID}
+    var params = { WorkdayNO: $scope.accessEmployee.WorkdayNO, Token: $scope.accessEmployee.Token, ActivityID: activityID }
     noticeService.getActivityHTML(params).then(function (data) {
       if (data == 'Token is TimeOut') {
         alertService.showAlert('登录失效，请重新登录')
         $state.transitionTo('signin')
       }
-      strHtml = data
+      strHtml = data;
 
-      $('#Activity_html').html(strHtml)
+      $('#Activity_html').html(strHtml);
+      UrlServices.activityLinks();
+
       CacheFactory.remove('activityID')
     })
 
@@ -1659,7 +1669,7 @@ angular.module('evaluationApp.businiessControllers', ['ngSanitize'])
         alertService.showAlert('登录失效，请重新登录')
         $state.transitionTo('signin')
       }
-      $scope.activityDetailsList = data
+      $scope.activityDetailsList = data;
 
       // 总人数
       $scope.activityCount = $scope.activityDetailsList[0].ActivityCount
@@ -1670,7 +1680,7 @@ angular.module('evaluationApp.businiessControllers', ['ngSanitize'])
       // 柱状图
       $scope.labels = []
       $scope.SelCount = []
-      for (var i = 0; i < $scope.activityDetailsList.length;i++) {
+      for (var i = 0; i < $scope.activityDetailsList.length; i++) {
         $scope.labels.push($scope.activityDetailsList[i].Items)
         $scope.SelCount.push($scope.activityDetailsList[i].Count)
       }
@@ -1683,7 +1693,7 @@ angular.module('evaluationApp.businiessControllers', ['ngSanitize'])
     $scope.CheckChang = function (t) {
       $scope.detailsID = t.ID
 
-      for (var i = 0;i < $scope.activityDetailsList.length;i++) {
+      for (var i = 0; i < $scope.activityDetailsList.length; i++) {
         if ($scope.activityDetailsList[i] != t) {
           $scope.activityDetailsList[i].check = false
         }
@@ -1705,7 +1715,7 @@ angular.module('evaluationApp.businiessControllers', ['ngSanitize'])
             alertService.showAlert('提交成功')
 
             $ionicHistory.goBack()
-          }else {
+          } else {
             alertService.showAlert(data.message)
           }
         })
@@ -2269,6 +2279,7 @@ angular.module('evaluationApp.businiessControllers', ['ngSanitize'])
       $scope.ansDone=false;   //是否已答题完成
 
       var oParAct = JSON.parse(CacheFactory.get(GLOBAL_INFO.KEY_CONTEST_2019));
+      $scope.ActName = oParAct.ActName;
       var actID = oParAct.ActID;
       var jpType = oParAct.JPType;
 
@@ -2892,6 +2903,58 @@ angular.module('evaluationApp.businiessControllers', ['ngSanitize'])
       })
     }
   })
+  .controller('TrainingDeptCtrl', function($scope, $rootScope, $state, $ionicHistory, $ionicPopup,
+                                        commonServices, CacheFactory, alertService, UrlServices, externalLinksService) 
+  {
+    // 园区培训
+    //var baseInfo = commonServices.getBaseParas();
+    $scope.closePass = function() {
+      $ionicHistory.nextViewOptions({
+        disableAnimate: true,
+        disableBack: true
+      })
+      $state.go('tab.home')
+    };
+    $scope.canUseAction = function(action) {
+      return actionVisitServices.canUseAction(action, $rootScope.accessEmployee.WorkdayNO);
+    };
+    $scope.checkActionUpdate = function (action) {
+      return actionVisitServices.checkUpdate(action);
+    };
+    $scope.openGeneralNotice = function(isUrlHtml, id, html){
+        if(isUrlHtml){
+            //打开外链
+            try {
+                //在app内打开链接
+                externalLinksService.openUr(html);
+            }
+            catch (ex) {
+                alertService.showAlert(ex.message);
+            }
+        }else{
+            CacheFactory.remove('gnID');
+            CacheFactory.save('gnID', id);
+            $state.go("generalNoticeDetail");
+        }
+    };
 
+    $scope.open=function(action){
+        //actionVisitServices.visit(action); //save state
+        switch (action) {
+            // case "宿舍热线":
+            //     $state.go('dormHotline');
+            //     break;
+            // case "宿舍地图":
+            //     $scope.openGeneralNotice(false, 0, '671705D6-DEAE-4B19-9969-ABED6400F251');
+            //     break;
+            case "学习推送":
+                $scope.openGeneralNotice(true, 0, 'https://mp.weixin.qq.com/s/EqfaiJNJKvNRHgVRhFbnMQ');
+                break;
+            default: 
+              console.log('unkonwn action: '+action);
+              break;
+        }
+    };    
+  })
 ////////////////////////////////////////////////    
 ;

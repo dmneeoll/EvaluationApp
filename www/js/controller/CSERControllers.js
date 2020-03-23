@@ -28,6 +28,9 @@ angular.module('evaluationApp.CSERControllers', [])
         case "CSER员工娱乐中心":
           $state.go('cser_activityCenter');
           break;
+        case "球场预定":
+          $state.go("BallFieldBooking.Notice");
+          break;          
         default:
           break;
       }

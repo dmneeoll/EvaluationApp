@@ -12,7 +12,7 @@ var IsShowUpdateDetial = false; //false;
 //是否显示升级安装失败信息
 var IsShowUpdateInstalledErr = true;
 
-var LAST_PUBLISH_DATE = "2019-12-25 13:20";
+var LAST_PUBLISH_DATE = "2020-03-09 08:30";
 
 //新的测试页面控制，与 actionVisitServices, ESE_ACTION_UPDATE表配合使用
 //  $scope.canUseAction = function (action) {
@@ -44,6 +44,12 @@ function isValidMobile(str){
 }
 function isValidArray(arr){
     return arr && arr.length>0;
+}
+function betweenTime(sdt1, sdt2){
+    var dt = new Date();
+    var dt1=new Date(sdt1);
+    var dt2=new Date(sdt2);
+    return dt1<=dt && dt<=dt2;
 }
 ///////////////////////////////////////////////////////////////////////////////////
 
@@ -204,7 +210,10 @@ var ZH_CN = {
         CSER:"CSER企业社会环境责任",
         ProtectionSecurity:"安全部",
         FE:"FE公用设施部",
-        BallFieldBooking:"球场预定",
+        BallFieldBooking: "球场预定",
+        search: "中奖查询",
+        Passcheck:"通行证",
+        TrainingDept:"园区培训"
     },
     myFlex:{
         employee_ID: "工号",
@@ -674,6 +683,11 @@ var ZH_CN = {
         TimeInterval:"时长(min)",
         Booker:"预定人",
         promptSelectDate:"请选择日期",
+    },
+    TrainingDept:{
+        Learning:'学习推送',
+        TrainingPlan:'培训计划',
+        Cultrue:'学习文化',
     }
 };
 
@@ -761,7 +775,10 @@ var ZH_US = {
         CSER:"CSER",
         ProtectionSecurity:"Brand Protection & Security",
         FE:"Zhuhai Facility",
-        BallFieldBooking:"Ball park booking",
+        BallFieldBooking: "Ball park booking",
+        search: "Gift",
+        Passcheck:"Pass check",
+        TrainingDept:"Training of Campus"
     },
     myFlex:{
         employee_ID: "Employee ID",
@@ -1229,7 +1246,12 @@ var ZH_US = {
         TimeInterval:"Interval(min)",
         Booker:"Booker",
         promptSelectDate:"Please pick up a date",
-    }    
+    },
+    TrainingDept:{
+        Learning:'News',
+        TrainingPlan:'Training Plan',
+        Cultrue:'Cultrue',
+    }
 };
 
 var ERROR = {

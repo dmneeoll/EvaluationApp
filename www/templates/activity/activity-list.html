@@ -20,38 +20,37 @@
         <!--</ion-list>-->
 
         <!-- 放置有限制的外链 -->
-        <!-- <ion-item class="item item-thumbnail-left" 
-            ng-click="checkOpenMech38()"
-            ng-if="canUseMech38();"
+        <ion-item class="item item-thumbnail-left" 
+            ng-click="checkOpenB1138()"
+            ng-if="canUseB1138()"
             >
-        <img src="img/gh.png">
+        <img src="img/other/jiang.png">
         <br>
-        <h2>MECH基层工会三八节有奖答题活动</h2>
+        <h2>PCBA-B11 女神节在线有奖问答</h2>
         <br>
-        </ion-item> -->
+        </ion-item>
 
         <ion-list>
             <!-- 有奖答题2019 -->
             <ion-item ng-repeat="activity in CusCJList" class="item item-thumbnail-left"  ng-click="openCusCJ(activity)" ng-if="canUseCusCJ(activity)">
                 <img src="img/other/jiang.png">
                 <br>
-                <h3>{{activity.ActivityTitle}}</h3>
+                <h3>{{activity.ActName}}</h3>
             </ion-item>
 
             <!-- johnsing 2019-10-23 -->
-            <ion-item class="item item-thumbnail-left" ng-click="openSpecial('补贴申请结果查询')" ng-if="canUseAction('补贴申请结果查询');">
+            <!-- <ion-item class="item item-thumbnail-left" ng-click="openSpecial('补贴申请结果查询')" ng-if="canUseAction('补贴申请结果查询');">
                 <img src="img/gh.png">
                 <br>
                 <h3>2019暑期亲子团聚关爱金</h3>
                 <h3>补贴申请结果查询</h3>
-            </ion-item>
+            </ion-item> -->
         </ion-list>
 
         <!-- johnsing 2018-10-11 -->
         <!--活动点赞-->
         <ion-list>
         <ion-item class="item item-thumbnail-left" ng-click="openActivityGood(2)" ng-if="canUseSpecial('活动点赞');">
-            <!-- <img src="img/user-100.png"> -->
             <img src="img/other/videojiang.png">
             <h3 style='white-space:pre-wrap;'>{{Language.activityGood.title}}</h3>
             <br>

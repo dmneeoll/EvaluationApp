@@ -1,13 +1,25 @@
 <!-- 有奖答题2019 -->
 <ion-view cache-view="false">
     <ion-nav-title>
-        {{Language.activityGood.PoetryTitle}}
+        {{ ActName }}
     </ion-nav-title>
-    <ion-content scroll="true" lazy-scroll>
+    <style>
+        /* 2020-03-03 MECH38特殊处理 */
+        .bg38{
+            background-image: url(img/bg38.jpg);
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        .bg38Off{
+            margin-top: 53px;
+            font-size: 1.2em;
+        }
+    </style>
+    <ion-content scroll="true" lazy-scroll ng-class="{'bg38': SubActID=='38856EEA-AF45-4562-881A-6608187F6204'}">
         <ion-slide-box does-continue="true" auto-play="false" show-pager="false" ng-if="imgUrl!=null">
             <img ng-src="{{imgUrl}}">
         </ion-slide-box>
-        <div class="divOff lightGrayBack" compile="htmlConent" ng-if="!CanAns">
+        <div class="divOff" compile="htmlConent" ng-if="!CanAns" ng-class="{'lightGrayBack': SubActID!='38856EEA-AF45-4562-881A-6608187F6204'}">
         </div>
         <div class="divOff lightGrayBack" ng-if="ansDone">
             <h3 style="color:blue">答题结束，谢谢您的参与！</h3>
@@ -59,7 +71,7 @@
             </div>
         </div>
 
-        <div ng-if="!bOnebyoneLimitTime && CanAns">
+        <div ng-if="!bOnebyoneLimitTime && CanAns" ng-class="{'bg38Off': SubActID=='38856EEA-AF45-4562-881A-6608187F6204'}">
             <!-- 一次显示所有题，无限时 -->
             <div ng-repeat="ques in questsions">
                 <fieldset>
@@ -98,7 +110,7 @@
         </div>
 
         <!-- 开始答题按钮 -->
-        <div style="text-align: center" ng-if="CanAttend && !CanAns">
+        <div style="text-align:center;margin-top:6px" ng-if="CanAttend && !CanAns">
             <button class="button button-positive" ng-click="StartAns()">{{Language.activityGood.StartButton}}</button>
         </div>
     </ion-content>

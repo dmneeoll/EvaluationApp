@@ -14,7 +14,7 @@ angular.module('evaluationApp.otherControllers', [])
                 disableAnimate: true,
                 disableBack: true
             });
-            $state.go('tab.home');
+            $state.go('cser');
         };
 
         $scope.trustAsHtml = function (html) {
@@ -138,7 +138,7 @@ angular.module('evaluationApp.otherControllers', [])
                 disableAnimate: true,
                 disableBack: true
             });
-            $state.go('tab.home');
+            $state.go('cser');
         };
 
         $scope.modal = {
@@ -196,7 +196,7 @@ angular.module('evaluationApp.otherControllers', [])
                 disableAnimate: true,
                 disableBack: true
             });
-            $state.go('tab.home');
+            $state.go('cser');
         };
                 
         var baseInfo = commonServices.getBaseParas();
@@ -254,6 +254,61 @@ angular.module('evaluationApp.otherControllers', [])
                 }
             });
         };
-    })        
+    })
+    .controller('COVID19PassCtrl', function ($scope, $rootScope, $state, $ionicHistory, $ionicPopup,
+                                            commonServices, CacheFactory, alertService,
+                                            UrlServices, externalLinksService) 
+    {
+        //2020 COVID19新冠病毒通行证
+        $scope.closePass = function () {
+            $ionicHistory.nextViewOptions({
+                disableAnimate: true,
+                disableBack: true
+            });
+            $state.go('tab.home');
+        };
+
+        $scope.CurTime=new Date();
+        var baseInfo = commonServices.getBaseParas();
+        function InitInfo() {
+            var url = commonServices.getUrl("OtherService.ashx", "GetCOVID19Pass");
+            var paras = {
+                WorkdayNo: baseInfo.WorkdayNO,
+                MobileNo: baseInfo.MobileNo
+            };
+            $scope.PassEntry={
+                WorkdayNo: baseInfo.WorkdayNO,
+                CnName: baseInfo.CName,
+                Department: baseInfo.Organization,
+                Memo:'',
+                EnablePass: -2 //EnablePass>0能进，其它不能进
+            };
+            alertService.showOperating('Processing...');
+            commonServices.submit(paras, url).then(function (resp) {
+                alertService.hideOperating();
+                if (resp) {
+                    if (!resp.success) {
+                        var msg = $rootScope.Language.common.CommunicationErr;
+                        alertService.showAlert(msg);
+                        $ionicHistory.goBack();
+                    } else {
+                        $scope.PassEntry = resp.obj;
+                        StartTimer();
+                    }
+                }
+            });
+        }
+
+        function StartTimer(){
+            setInterval(function () {
+                $scope.$apply(function () {
+                    $scope.CurTime=new Date();
+                });
+              }, 1000)
+        }
+        ////////////////////
+        InitInfo();
+
+    })            
 ///////////////////////////////////////
 ;

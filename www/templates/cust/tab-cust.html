@@ -13,7 +13,7 @@
         </label>
 
         <ion-list>
-            <ion-item class="item item-divider">{{Language.xfcx.title2}}{{custCount}}{{Language.xfcx.title3}}{{oddfare}}{{Language.xfcx.title4}}</ion-item>
+            <ion-item class="item item-divider" style="white-space:normal;">{{Language.xfcx.title2}}{{custCount}}{{Language.xfcx.title3}}{{oddfare}}{{Language.xfcx.title4}}</ion-item>
             <ion-item ng-if="custList" ng-repeat="cust in custList" class="item">
                 <div class="row">
                     <div class="col"><h3 style="color: {{cust.DscrpColor}}">{{cust.Dscrp}}{{cust.Opfare}}{{Language.xfcx.title4}}</h3></div>

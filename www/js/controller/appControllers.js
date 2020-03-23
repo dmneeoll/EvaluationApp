@@ -286,7 +286,10 @@ angular.module('evaluationApp.appControllers', [])
                     break;
                 case "FE":
                     $state.go("FE");
-                    break;                    
+                    break;
+                case "ChunWanJP":
+                    $state.go("chunwanZJName");
+                    break;
             }
             
             if(action=='自评'){
@@ -404,9 +407,6 @@ angular.module('evaluationApp.appControllers', [])
             else if(action=="我要求助"){
                 $state.go("tabAskForHelp.askForHelp");
             }
-            else if(action=='球场预定'){
-                $state.go("BallFieldBooking.Notice");
-            }
             else if(action=="shareCar"){
                 $state.go("tab_ShareCar.List");
                 $ionicPopup.show({
@@ -428,6 +428,15 @@ angular.module('evaluationApp.appControllers', [])
             }
             else if(action=="B11Workshop"){
                 $state.go("b11WorkShopHome");
+            }
+            else if(action=="COVID19通行证"){
+                $location.path("COVID19Pass");
+            }
+            else if(action=="Training培训部"){
+                $state.go("TrainingDept");
+            }
+            else {
+                console.log('Unknown action: '+action);
             }
         }
     })

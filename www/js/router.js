@@ -1217,7 +1217,18 @@ angular.module('evaluationApp.router', [])
                         controller: 'BallFieldBookingBookCtrl'
                     }
                 }
-            });
+            })
+            .state('COVID19Pass', {
+                url: '/COVID19Pass',
+                templateUrl: 'templates/other/COVID19PassList.html',
+                controller: 'COVID19PassCtrl'
+            })
+            .state('TrainingDept', {
+                url: '/TrainingDept',
+                templateUrl: 'templates/TrainingDept/TrainingDeptList.html',
+                controller: 'TrainingDeptCtrl'
+            })
+            ;
 
 
         $urlRouterProvider.otherwise('signin');

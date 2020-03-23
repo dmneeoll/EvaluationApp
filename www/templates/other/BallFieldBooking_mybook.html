@@ -2,7 +2,7 @@
 <ion-view view-title="{{Language.BallFieldBooking.Mybook}}" cache-view="false">
     <ion-nav-buttons side="left">
         <button class="button button-clear button-icon ion-ios-arrow-back"
-          ng-click="closePass()">{{Language.home.home}}</button>
+          ng-click="closePass()">-</button>
       </ion-nav-buttons>
 
     <ion-content class="padding5" style="border:1px;">        
@@ -26,8 +26,10 @@
                         <td>{{item.TimeInterval}}</td>
                         <td>{{item.StatusCN}}</td>
                         <td>
-                            <button class="button button-icon ion-close" 
-                                style="margin-left:5px;color:red" ng-click="cancelBook(item.BookID);" ng-if="CheckCancel(item)">
+                            <!-- <button class="button button-icon ion-close"  -->
+                            <button class="button button-small button-positive" 
+                                style="margin-left:5px;margin-top:2px;" ng-click="cancelBook(item.BookID);" ng-if="CheckCancel(item)">
+                                Cancel
                             </button>
                         </td>
                     </tr>

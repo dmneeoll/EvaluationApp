@@ -2,18 +2,22 @@
 <ion-view view-title="{{Language.BallFieldBooking.Notice}}" cache-view="false">
     <ion-nav-buttons side="left">
         <button class="button button-clear button-icon ion-ios-arrow-back"
-          ng-click="closePass()">{{Language.home.home}}</button>
-      </ion-nav-buttons>
+            ng-click="closePass()">-</button>
+    </ion-nav-buttons>
 
       <ion-content scroll="true" overflow-scroll="true">
         <style>
-            .tdNotice{
+            .tdNoticeRight{
                 width: 100px;
                 text-align: right;
             }
+            .tdNoticeLeft{
+                width: 100px;
+                text-align: left;
+            }
         </style>
-        <div class="divOff lightRedBack" ng-if="noticeList && noticeList.length>0">
-            <span class="text-left" style="font-weight:700;">{{BallFieldName}}{{Language.common.Notice}}：</span>
+        <div class="divOff" ng-if="noticeList && noticeList.length>0">
+            <!-- <span class="text-left" style="font-weight:700;">{{BallFieldName}}{{Language.common.Notice}}：</span> -->
             <div class="divOff" style="font-size:14px;">
                 <ol style="list-style:none;">
                     <li ng-repeat="notice in noticeList">
@@ -29,8 +33,8 @@
                 <table style="margin:0 1px 0 1px;table-layout:fixed">
                     <tbody>
                         <tr ng-repeat="bkt in bk.Times">
-                            <td class='tdNotice'>{{bkt.BeginTime|date:"HH:mm"}} ~ {{bkt.EndTime|date:"HH:mm"}}</td>
-                            <td class='tdNotice'><span ng-class="{'green-text':bkt.Status==0,'blue-text':bkt.Status!=0}">{{bkt.StatusCN}}</span></td>
+                            <td class='tdNoticeRight'>{{bkt.BeginTime|date:"HH:mm"}} ~ {{bkt.EndTime|date:"HH:mm"}}</td>
+                            <td class='tdNoticeLeft'>&nbsp;<span ng-class="{'green-text':bkt.Status==0,'blue-text':bkt.Status!=0}">{{bkt.StatusCN}}</span></td>
                         </tr>
                     </tbody>
                 </table>

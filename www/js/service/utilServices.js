@@ -7,10 +7,14 @@ angular.module('evaluationApp.utilServices', ['ionic.native'])
   {
     //调用浏览器打开外链
     var openForeignUrl = function (url) {
-      url = url.toLocaleLowerCase();
-      if (0 != url.indexOf("http")) {
-        url = "http://" + url;
+      if(url.length>4){
+        var sh = url.substring(0, 4);
+        sh = sh.toLocaleLowerCase();
+        if(sh != "http") {
+          url = "http://" + url;
+        }
       }
+
       try {
         //externalLinksService.openUr(url);
         cordova.InAppBrowser.open(url, '_system', 'location=yes');
@@ -132,10 +136,67 @@ angular.module('evaluationApp.utilServices', ['ionic.native'])
         });
     };
 
+    var downloadImage = function(furl,fname){
+      //2020-02-18 此方法还在测试，似乎不能使用
+      var localURLs = [
+        cordova.file.dataDirectory,
+        cordova.file.documentsDirectory,
+        cordova.file.syncedDataDirectory,
+        cordova.file.sharedDirectory,
+        cordova.file.applicationStorageDirectory
+      ];
+      var fileTransfer = new FileTransfer();
+      var url = encodeURI(furl);
+      // File name only
+      var filename = (!fname||!fname.length) ? url.split("/").pop() : fname;
+      var bok=false;
+      var targetPath = '';
+      for(var i=0; i<localURLs.length; i++){
+        targetPath = localURLs[i] + filename;        
+        fileTransfer.download(
+          url,
+          targetPath,
+          function(entry) {
+            bok=true;
+          },
+          function(error) {
+            console.log("**download error");
+            var msg = 'Error:';
+            msg += error.source + '==';
+            msg += error.target + '==';
+            msg += error.code + '==';
+            alertService.showAlert(msg);
+          },
+          true
+        );
+        if(bok){
+          //save ok
+          break;
+        }
+      }
+      if(bok){
+        //save ok
+        alertService.showAlert("File save at:"+targetPath);
+      }else{
+        alertService.showAlert("File save failed");
+      }
+    };
+
+    var activityLinks = function(){
+      $('a').click(function(el){
+        el.preventDefault();
+        var surl = $(this).attr("href");
+        if(isEmptyString(surl) && "#"==surl){return;}
+        openForeignUrl(surl);
+      });
+    };
+    ///////////////////////////////////////
     return {
       openForeignUrl: openForeignUrl,
       openGeneralNotice: openGeneralNotice,
-      uploadImages: uploadImages
+      uploadImages: uploadImages,
+      downloadImage: downloadImage,
+      activityLinks: activityLinks
     };
   })
   .service('PicServices', function ($state, $q) 

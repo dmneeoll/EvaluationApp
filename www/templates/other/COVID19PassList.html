@@ -1,0 +1,43 @@
+<ion-view view-title="{{Language.home.Passcheck}}" cache-view="false"  hide-tabs >
+    <ion-nav-buttons side="left">
+        <button class="button button-clear button-icon ion-ios-arrow-back"
+            ng-click="closePass()">{{Language.menu.homePage}}</button>
+    </ion-nav-buttons>
+
+    <style>
+        .green-bg{
+            background-color: green;
+        }
+        .red-bg{
+            background-color: red;
+        }
+        .pass-text{
+            text-align: center;            
+            color: white;
+            font-family: sans-serif;
+            font-weight: 800;
+            font-size: 48px;
+            line-height: 40px;
+            margin: 12px 0 14px 0
+        }
+        .memo-text{
+            text-align: center;
+            color: white;
+            font-family: sans-serif;
+            font-size: 24px;
+            line-height: 26px;
+        }
+    </style>
+    <ion-content ng-class="{'green-bg': PassEntry.EnablePass>0, 'red-bg': !PassEntry.EnablePass ||PassEntry.EnablePass<=0}">
+        <div class="divOff">
+            <p class="pass-text" ng-if='PassEntry.EnablePass>0'>通行证</p>
+            <p class="pass-text" ng-if='!PassEntry.EnablePass ||PassEntry.EnablePass<=0'>禁止通行</p>
+            <p class="memo-text" ng-if='PassEntry.Memo'>{{PassEntry.Memo}}</p>
+
+            <p class="pass-text">{{PassEntry.WorkdayNo}}</p>
+            <p class="pass-text">{{PassEntry.CnName}}</p>
+            <p class="pass-text">{{PassEntry.Department}}</p>
+            <p class="memo-text" style="font-size:28px;">时间：{{CurTime|date:"yyyy-MM-dd HH:mm:ss"}}</p>
+        </div>
+    </ion-content>
+</ion-view>

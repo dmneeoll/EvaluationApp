@@ -1,0 +1,34 @@
+<ion-view view-title="中奖名单" cache-view="false">
+
+    <ion-nav-buttons side="left">
+        <button class="button button-clear button-icon ion-ios-arrow-back" ng-click="closePass()">首页</button>
+    </ion-nav-buttons>
+
+    <ion-content scroll="true" overflow-scroll="true" >
+
+        <form>
+            <div  class="bar bar-header item-input-inset" style="height: 50px;">
+                <label class="item-input-wrapper">
+                    <i class="icon ion-search placeholder-icon" ></i>
+                    <input type="text" placeholder="Search" ng-model="query">
+                </label>
+            </div>
+        </form>
+
+
+        {{Msg}}
+
+        <div class="list card"  collection-repeat="zjInfor in zjList | filter:query" >
+          {{zjInfor.Name}} | {{zjInfor.Infor}}
+
+        </div>
+
+
+
+
+    </ion-content>
+
+
+
+
+</ion-view>

@@ -1,33 +1,40 @@
 <!-- CSER -->
 <ion-view view-title="{{Language.home.CSER}}" cache-view="false">
-    <ion-nav-buttons side="left">
-      <button class="button button-clear button-icon ion-ios-arrow-back" ng-click="closePass()">{{Language.menu.homePage}}</button>
-    </ion-nav-buttons>
-    <ion-content scroll="true" overflow-scroll="true">
-      <div class="row" style="height:110px;text-align: center">
-        <div class="col col-25  custom-og light" style="Margin:1px;" ng-click="open('CSER日历');">
-          <i style="font-size:50px;" class="ion-android-list"></i>
-          <div>{{Language.CSER.calender}}</div>
-          <span style="font-size:10px" class="badge badge-assertive" ng-if="checkActionUpdate('CSER日历')">New</span>
-        </div>
-        <div class="col col-25 positive-bg light" style="Margin:1px" ng-click="open('CSER托管');">
-          <i style="font-size:50px;" class="icon ion-heart"></i>
-          <div>
-            {{Language.CSER.kidsCaring}}
-            <!-- <span style="font-size:10px" class="badge badge-assertive" ng-if="checkActionUpdate('KidsCaring')">New</span> -->
-          </div>
-        </div>
-        <div class="col col-25 royal-bg light" style="Margin:1px" ng-click="open('CSER员工娱乐中心');">
-          <i style="font-size:50px;" class="icon ion-ios-people"></i>
-          <div>{{Language.CSER.activityCenter}}</div>
-          <!-- <span style="font-size:10px" class="badge badge-assertive" ng-if="checkActionUpdate('CSER员工娱乐中心')">New</span> -->
-          <span style="font-size:10px" class="badge badge-assertive">New</span>
-        </div>
-        <div class="col custom-og light" style="Margin:1px" ng-click="open('CSER夏令营冬令营');">
-          <i style="font-size:50px;" class="ion-ios-body"></i>
-          <div>{{Language.CSER.sumwinCamp}}</div>
+  <ion-nav-buttons side="left">
+    <button class="button button-clear button-icon ion-ios-arrow-back"
+      ng-click="closePass()">{{Language.menu.homePage}}</button>
+  </ion-nav-buttons>
+  <ion-content scroll="true" overflow-scroll="true">
+    <div class="row" style="height:110px;text-align: center">
+      <div class="col col-25  custom-og light" style="Margin:1px;" ng-click="open('CSER日历');">
+        <i style="font-size:50px;" class="ion-android-list"></i>
+        <div>{{Language.CSER.calender}}</div>
+        <span style="font-size:10px" class="badge badge-assertive" ng-if="checkActionUpdate('CSER日历')">New</span>
+      </div>
+      <div class="col col-25 positive-bg light" style="Margin:1px" ng-click="open('CSER托管');">
+        <i style="font-size:50px;" class="icon ion-heart"></i>
+        <div>
+          {{Language.CSER.kidsCaring}}
+          <!-- <span style="font-size:10px" class="badge badge-assertive" ng-if="checkActionUpdate('KidsCaring')">New</span> -->
         </div>
       </div>
-  
-    </ion-content>
-  </ion-view>
+      <div class="col col-25 royal-bg light" style="Margin:1px" ng-click="open('CSER员工娱乐中心');">
+        <i style="font-size:50px;" class="icon ion-ios-people"></i>
+        <div>{{Language.CSER.activityCenter}}</div>
+        <!-- <span style="font-size:10px" class="badge badge-assertive" ng-if="checkActionUpdate('CSER员工娱乐中心')">New</span> -->
+        <span style="font-size:10px" class="badge badge-assertive">New</span>
+      </div>
+      <div class="col custom-og light" style="Margin:1px" ng-click="open('CSER夏令营冬令营');">
+        <i style="font-size:50px;" class="ion-ios-body"></i>
+        <div>{{Language.CSER.sumwinCamp}}</div>
+      </div>
+    </div>
+    <div class="row" style="height:110px;text-align: center">
+      <div class="col col-25 positive-bg light" style="Margin:1px;" ng-click="open('球场预定');">
+        <i style="font-size:50px;" class="icon ion-ios-football"></i>
+        <div>{{Language.home.BallFieldBooking}}</div>
+      </div>       
+    </div>
+
+  </ion-content>
+</ion-view>
