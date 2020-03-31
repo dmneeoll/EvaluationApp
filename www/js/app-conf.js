@@ -12,7 +12,7 @@ var IsShowUpdateDetial = false; //false;
 //是否显示升级安装失败信息
 var IsShowUpdateInstalledErr = true;
 
-var LAST_PUBLISH_DATE = "2020-03-09 08:30";
+var LAST_PUBLISH_DATE = "2020-03-23 17:20";
 
 //新的测试页面控制，与 actionVisitServices, ESE_ACTION_UPDATE表配合使用
 //  $scope.canUseAction = function (action) {
@@ -213,7 +213,7 @@ var ZH_CN = {
         BallFieldBooking: "球场预定",
         search: "中奖查询",
         Passcheck:"通行证",
-        TrainingDept:"园区培训"
+        TrainingDept:"园区人才发展"
     },
     myFlex:{
         employee_ID: "工号",
@@ -685,9 +685,10 @@ var ZH_CN = {
         promptSelectDate:"请选择日期",
     },
     TrainingDept:{
-        Learning:'学习推送',
-        TrainingPlan:'培训计划',
-        Cultrue:'学习文化',
+        Learning:'知多点',
+        TranNews:'最快讯',
+        Activity:'超有料',
+        GoodBook:'读好书',
     }
 };
 
@@ -778,7 +779,7 @@ var ZH_US = {
         BallFieldBooking: "Ball park booking",
         search: "Gift",
         Passcheck:"Pass check",
-        TrainingDept:"Training of Campus"
+        TrainingDept:"Campus Talent Development"
     },
     myFlex:{
         employee_ID: "Employee ID",
@@ -1248,10 +1249,11 @@ var ZH_US = {
         promptSelectDate:"Please pick up a date",
     },
     TrainingDept:{
-        Learning:'News',
-        TrainingPlan:'Training Plan',
-        Cultrue:'Cultrue',
-    }
+        Learning:'知多点',
+        TranNews:'News',
+        Activity:'超有料',
+        GoodBook:'读好书',  
+    }  
 };
 
 var ERROR = {

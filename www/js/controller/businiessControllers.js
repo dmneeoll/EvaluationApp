@@ -2906,7 +2906,7 @@ angular.module('evaluationApp.businiessControllers', ['ngSanitize'])
   .controller('TrainingDeptCtrl', function($scope, $rootScope, $state, $ionicHistory, $ionicPopup,
                                         commonServices, CacheFactory, alertService, UrlServices, externalLinksService) 
   {
-    // 园区培训
+    // 园区培训,园区人才发展
     //var baseInfo = commonServices.getBaseParas();
     $scope.closePass = function() {
       $ionicHistory.nextViewOptions({
@@ -2952,6 +2952,7 @@ angular.module('evaluationApp.businiessControllers', ['ngSanitize'])
                 break;
             default: 
               console.log('unkonwn action: '+action);
+              alertService.showAlert('敬请期待！');
               break;
         }
     };    

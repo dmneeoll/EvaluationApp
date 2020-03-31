@@ -522,3 +522,7 @@ table .vCent{
   color:green;
   font-weight:500;
 }
+
+div.col >i >svg{
+  margin-top: 3px;
+}
